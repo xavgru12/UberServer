@@ -41,7 +41,7 @@ namespace UberStrok.WebServices.Core
             var member = Context.Users.GetMember(cmid);
             if (member == null)
             {
-                Log.Error("An unidentified CMID was passed.");
+                Log.Error("An undefined CMID was passed.");
                 return null;
             }
 
@@ -159,7 +159,7 @@ namespace UberStrok.WebServices.Core
             {
                 MemberAuthenticationResult = result,
                 AuthToken = session.AuthToken,
-                IsAccountComplete = !incomplete,
+                IsAccountComplete = true,
                 ServerTime = DateTime.Now,
 
                 MemberView = member,

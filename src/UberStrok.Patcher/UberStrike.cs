@@ -51,7 +51,7 @@ namespace UberStrok.Patcher
                 module = ModuleDefMD.Load(modulePath, _moduleCtx);
                 module.EnableTypeDefFindCache = true;
 
-                _moduleCtx.AssemblyResolver.AddToCache(module);
+                ((AssemblyResolver)_moduleCtx.AssemblyResolver).AddToCache(module);
                 _modules.Add(modulePath, module);
             }
 

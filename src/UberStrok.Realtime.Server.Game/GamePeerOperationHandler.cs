@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Forms;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
 
@@ -80,10 +81,10 @@ namespace UberStrok.Realtime.Server.Game
                     return;
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to authenticate user. Try restarting UberStrike.");
-                throw;
+                MessageBox.Show(ex.ToString());
             }
 
             GameRoom room;

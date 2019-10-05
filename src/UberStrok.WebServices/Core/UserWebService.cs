@@ -3,6 +3,7 @@ using System.ServiceModel;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
 using System.Collections.Generic;
+using System;
 
 namespace UberStrok.WebServices.Core
 {
@@ -59,13 +60,6 @@ namespace UberStrok.WebServices.Core
                 Log.Error("An unidentified AuthToken was passed.");
                 return null;
             }
-
-            if (Context.Configuration.ServiceAuth != serviceAuth)
-            {
-                Log.Error("An invalid service auth was passed.");
-                return null;
-            }
-
             var view = Context.Users.Db.Loadouts.Load(member.PublicProfile.Cmid);
             return view;
         }
@@ -73,6 +67,7 @@ namespace UberStrok.WebServices.Core
         public override UberstrikeUserView OnGetMember(string authToken)
         {
             // Get loaded member in memory using the auth token.
+            Console.WriteLine("AuthToken received " + authToken);
             var member = Context.Users.GetMember(authToken);
             if (member == null)
             {
@@ -115,5 +110,6 @@ namespace UberStrok.WebServices.Core
             Context.Users.Db.Loadouts.Save(loadoutView);
             return MemberOperationResult.Ok;
         }
+
     }
 }

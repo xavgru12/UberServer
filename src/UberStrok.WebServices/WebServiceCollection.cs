@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using System.ServiceModel.Description;
 using UberStrok.WebServices.Core;
 
 namespace UberStrok.WebServices
@@ -55,7 +56,18 @@ namespace UberStrok.WebServices
         public void Open()
         {
             for (int i = 0; i < _hosts.Count; i++)
+            {
                 _hosts[i].Open();
+                if(_hosts[i].State == CommunicationState.Opened)
+                {
+                    Console.WriteLine("Endpoint " + _hosts[i].Description.Endpoints[0].Address + " is started" );
+                }
+                else
+                {
+                    Console.WriteLine("Endpoint " + _hosts[i].Description.Endpoints[0].Address + " failed to start!");
+                }
+            }
+
         }
 
         public void Close()
@@ -91,8 +103,8 @@ namespace UberStrok.WebServices
             builder.Path = Path.Combine(builder.Path, name);
 
             var host = new ServiceHost(service);
-            host.AddServiceEndpoint(contractType, binding, builder.Uri);
-
+            ServiceEndpoint endpoint = host.AddServiceEndpoint(contractType, binding, builder.Uri);
+            Console.WriteLine("Url binded on " + endpoint.ListenUri);
             _hosts.Add(host);
         }
     }

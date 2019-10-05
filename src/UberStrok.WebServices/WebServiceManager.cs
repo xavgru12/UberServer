@@ -1,6 +1,8 @@
 ﻿using log4net;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Net;
 using System.ServiceModel;
 
 namespace UberStrok.WebServices
@@ -23,7 +25,6 @@ namespace UberStrok.WebServices
             }
 
             _config = config;
-
             _ctx = new WebServiceContext(this);
 
             try
@@ -64,7 +65,7 @@ namespace UberStrok.WebServices
         private readonly WebServiceCollection _services;
         private readonly WebServiceContext _ctx;
 
-        private readonly BasicHttpBinding _binding;
+        private static BasicHttpBinding _binding;
 
         public void Start()
         {
@@ -72,7 +73,10 @@ namespace UberStrok.WebServices
                 throw new InvalidOperationException("Web services already started.");
 
             Log.Info("Binding contracts...");
-
+            _binding.Security.Mode = BasicHttpSecurityMode.None;
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, errors) => true;
+            Services.Bind(_binding);
+            /*
             var sw = Stopwatch.StartNew();
 
             try
@@ -86,7 +90,7 @@ namespace UberStrok.WebServices
                 Log.Fatal("Unable to bind contracts to endpoint.");
                 throw;
             }
-
+            */
             Log.Info("Opening services...");
 
             try
@@ -101,8 +105,9 @@ namespace UberStrok.WebServices
                 throw;
             }
 
-            sw.Stop();
-            Log.Info($"Done in {sw.Elapsed.TotalSeconds}s.");
+            //sw.Stop();
+            //Log.Info($"Done in {sw.Elapsed.TotalSeconds}s.");
+            Log.Info("Done");
             _started = true;
         }
     }

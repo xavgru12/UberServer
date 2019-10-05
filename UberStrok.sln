@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.106
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberStrok.WebServices", "src\UberStrok.WebServices\UberStrok.WebServices.csproj", "{033FDB2F-09EF-4BF0-AB73-6E622703E1C0}"
 EndProject
@@ -52,11 +52,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{2AC22AED-C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberStrok.Patcher", "src\UberStrok.Patcher\UberStrok.Patcher.csproj", "{30B545E0-60F3-4BAC-A53A-5CAD8D2D7FF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnlib", "libs\dnlib\src\dnlib.csproj", "{FDFC1237-143F-4919-8318-4926901F4639}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberStrok.Realtime.Server.Game.Tests", "tests\UberStrok.Realtime.Server.Game.Tests\UberStrok.Realtime.Server.Game.Tests.csproj", "{550D6A90-016A-4283-A102-CBF46B043D37}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberStrok.Core", "src\UberStrok.Core\UberStrok.Core.csproj", "{32C19193-C316-4E15-92BD-1030485FAFC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnlib", "libs\dnlib\dnlib.csproj", "{62CAAAB5-11F0-4CFF-9BF5-C36D710CABC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,10 +124,6 @@ Global
 		{30B545E0-60F3-4BAC-A53A-5CAD8D2D7FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B545E0-60F3-4BAC-A53A-5CAD8D2D7FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30B545E0-60F3-4BAC-A53A-5CAD8D2D7FF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDFC1237-143F-4919-8318-4926901F4639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDFC1237-143F-4919-8318-4926901F4639}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDFC1237-143F-4919-8318-4926901F4639}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDFC1237-143F-4919-8318-4926901F4639}.Release|Any CPU.Build.0 = Release|Any CPU
 		{550D6A90-016A-4283-A102-CBF46B043D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{550D6A90-016A-4283-A102-CBF46B043D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{550D6A90-016A-4283-A102-CBF46B043D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -136,6 +132,10 @@ Global
 		{32C19193-C316-4E15-92BD-1030485FAFC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32C19193-C316-4E15-92BD-1030485FAFC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32C19193-C316-4E15-92BD-1030485FAFC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62CAAAB5-11F0-4CFF-9BF5-C36D710CABC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62CAAAB5-11F0-4CFF-9BF5-C36D710CABC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62CAAAB5-11F0-4CFF-9BF5-C36D710CABC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62CAAAB5-11F0-4CFF-9BF5-C36D710CABC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,9 +160,9 @@ Global
 		{A83B68F8-7A05-462E-AFA4-77D5BE488A23} = {B408F019-9656-4641-BB73-B55BF7DB3F58}
 		{FD8539F5-C109-4264-8228-3A0235899E5A} = {A83B68F8-7A05-462E-AFA4-77D5BE488A23}
 		{30B545E0-60F3-4BAC-A53A-5CAD8D2D7FF0} = {2AC22AED-CEB7-415D-A591-5137D9CB9BCF}
-		{FDFC1237-143F-4919-8318-4926901F4639} = {2AC22AED-CEB7-415D-A591-5137D9CB9BCF}
 		{550D6A90-016A-4283-A102-CBF46B043D37} = {CEACCD26-CB32-46CF-8AEA-E3020185AA47}
 		{32C19193-C316-4E15-92BD-1030485FAFC1} = {61BF1225-0BEF-40D8-A70B-9A69CDB6D379}
+		{62CAAAB5-11F0-4CFF-9BF5-C36D710CABC6} = {2AC22AED-CEB7-415D-A591-5137D9CB9BCF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A7BA424-A650-44CB-A10B-96A4785B646C}

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Text;
+using System.Windows.Forms;
 
 namespace UberStrok.Patcher
 {
@@ -9,7 +12,9 @@ namespace UberStrok.Patcher
         public static int Main(string[] args)
         {
             const int UBERSTRIKE_STEAMAPP_ID = 291210;
-
+            Console.WriteLine("If you haven't installed UberStrike on Steam yet, Please click the link below and wait for installation completed! Else just press enter and start patching!");
+            Console.WriteLine("https://steamdb.info/app/291210/");
+            Console.ReadLine();
             var sw = Stopwatch.StartNew();
             Console.WriteLine(" Searching for Steam installation...");
 
@@ -39,21 +44,22 @@ namespace UberStrok.Patcher
             if (!Steam.Apps.TryGetValue(UBERSTRIKE_STEAMAPP_ID, out uberStrikeApp))
             {
                 Console.Error.WriteLine(" Unable to find UberStrike manifest.");
-                return 1;
             }
-
             var uberStrikePath = default(string);
-            try { uberStrikePath = uberStrikeApp.Path; }
+            try
+            {
+                uberStrikePath = uberStrikeApp.Path;
+            }
             catch
             {
                 Console.Error.WriteLine(" Unable to parse UberStrike manifest.");
-                return 1;
+                uberStrikePath = OpenFile();
             }
 
             if (!Directory.Exists(uberStrikePath))
             {
                 Console.Error.WriteLine(" Unable to find UberStrike installation directory.");
-                return 1;
+                
             }
 
             Console.WriteLine(" -----------------------------------");
@@ -61,7 +67,6 @@ namespace UberStrok.Patcher
 
             var uberStrike = new UberStrike(uberStrikePath);
 
-            /*
             Console.WriteLine(" Backups ->");
 
             var dlls = Directory.GetFiles(uberStrike.ManagedPath, "*.dll");
@@ -77,7 +82,6 @@ namespace UberStrok.Patcher
             }
 
             Console.WriteLine(" -----------------------------------");
-            */
 
             var patches = new Patch[]
             {
@@ -112,11 +116,58 @@ namespace UberStrok.Patcher
             try { uberStrike.Save("patched"); }
             catch { Console.Error.WriteLine("Failed to write."); }
 
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Removing Steam Dependies...");
+            Random rnd = new Random();
+            string AppId = rnd.Next(99999).ToString();
+            string Name = GenerateName(rnd.Next(4,10));
+            string valve = Resource.valve.Replace("00000", AppId).Replace("AAAAA", Name);
+            File.WriteAllText(uberStrikePath + "\\UberStrike_Data\\.uberstrok", "http://uberstrike/2.0/");
+            File.WriteAllText(uberStrikePath + "\\valve.ini",valve);
+            File.WriteAllBytes(uberStrikePath + "\\steam_api.dll", Resource.steam_api);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("done");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Extracting WebService...");
+            File.WriteAllBytes(uberStrikePath + "\\webService.zip", Resource.WebService);
+            try
+            {
+                ZipFile.ExtractToDirectory(uberStrikePath + "\\webService.zip", uberStrikePath + "\\");
+            }
+            catch(Exception ex)
+            {
+                Console.Error.WriteLine(ex.ToString());
+            }
+            File.Delete(uberStrikePath + "\\webService.zip");
             sw.Stop();
 
             Console.WriteLine(" -----------------------------------");
-            Console.WriteLine($" Finished in {sw.Elapsed.TotalMilliseconds}ms");
+            Console.WriteLine($" Finished in {sw.Elapsed.TotalMilliseconds} ms");
+            Console.ReadLine();
             return 0;
+        }
+        public static string GenerateName(int len)
+        {
+            Random r = new Random();
+            char[] consonants = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'l', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x' };
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y' };
+            StringBuilder Name = new StringBuilder();
+            int b = 0; //b tells how many times a new letter has been added. It's 2 right now because the first two letters are already in the name.
+            while (b < len)
+            {
+                Name.Append(consonants[r.Next(consonants.Length)]);
+                b++;
+                Name.Append(vowels[r.Next(vowels.Length)]);
+                b++;
+            }
+            return Name.ToString();
+        }
+        private static string OpenFile()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.ShowDialog();
+            return ofd.FileName;
         }
     }
 }

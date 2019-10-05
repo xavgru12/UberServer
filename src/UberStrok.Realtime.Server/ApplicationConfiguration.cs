@@ -9,7 +9,7 @@ namespace UberStrok.Realtime.Server
     {
         public static readonly ApplicationConfiguration Default = new ApplicationConfiguration
         {
-            WebServices = "http://localhost/2.0/",
+            WebServices = "http://uberstrike/2.0/",
             WebServicesAuth = null,
             HeartbeatTimeout = 5,
             HeartbeatInterval = 5,

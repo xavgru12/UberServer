@@ -32,7 +32,7 @@ namespace UberStrok.Realtime.Server.Comm.Tests
         {
             // Create a new account on the web server.
 
-            var client = new AuthenticationWebServiceClient("http://localhost/2.0");
+            var client = new AuthenticationWebServiceClient("http://uberstrike/2.0");
             var loginResult = client.LoginSteam(SteamId, string.Empty, string.Empty);
             if (loginResult.MemberAuthenticationResult != MemberAuthenticationResult.Ok)
             {

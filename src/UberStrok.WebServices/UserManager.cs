@@ -49,13 +49,15 @@ namespace UberStrok.WebServices
         public MemberView NewMember()
         {
             var cmid = Interlocked.Increment(ref _nextCmid);
+            Random rnd = new Random();
+            var name = GenerateName(rnd.Next(4, 10));
             var publicProfile = new PublicProfileView(
                 cmid,
-                "Player",
-                MemberAccessLevel.Default,
+                name,
+                MemberAccessLevel.Admin,
                 false,
                 DateTime.UtcNow,
-                EmailAddressStatus.Unverified,
+                EmailAddressStatus.Verified,
                 "-1"
             );
 
@@ -67,12 +69,11 @@ namespace UberStrok.WebServices
                 DateTime.MaxValue
             );
 
-            var memberInventories = new List<ItemInventoryView>
+            var memberInventories = new List<ItemInventoryView>();
+            for(int x =0; x < 130; x++)
             {
-                new ItemInventoryView(1, null, -1, cmid),
-                new ItemInventoryView(12, null, -1, cmid)
-            };
-
+                memberInventories.Add(new ItemInventoryView(x, null, -1, cmid));
+            }
             //TODO: Create helper function for conversion of this stuff.
             var memberItems = new List<int>();
             for (int i = 0; i < memberInventories.Count; i++)
@@ -107,17 +108,22 @@ namespace UberStrok.WebServices
             if (authToken == null)
                 throw new ArgumentNullException(nameof(authToken));
 
-            var session = default(Session);
             lock (_sessions)
             {
-                if (!_sessions.TryGetValue(authToken, out session))
-                    return null;
+                foreach( var s in _sessions)
+                {
+                    if (s.Key.Contains(authToken))
+                    {
+                        return s.Value.Member;
+                    }
+                }
             }
-            return session.Member;
+            return null;
         }
 
         public MemberView GetMember(int cmid)
         {
+            Console.WriteLine("Received cmid " + cmid);
             if (cmid <= 0)
                 throw new ArgumentException("CMID must be greater than 0.");
 
@@ -125,6 +131,7 @@ namespace UberStrok.WebServices
             {
                 foreach (var value in _sessions.Values)
                 {
+                    Console.WriteLine(value.Member.PublicProfile.Cmid);
                     if (value.Member.PublicProfile.Cmid == cmid)
                         return value.Member;
                 }
@@ -170,7 +177,7 @@ namespace UberStrok.WebServices
                     if (value.Member.PublicProfile.Cmid == member.PublicProfile.Cmid)
                     {
                         /* Replace players with same CMID, not the neatest of fixes, but it works. */
-                        _sessions.Remove(kv.Key);
+                        LogOutUser(value.Member);
                         Log.Info($"Kicking player with CMID {value.Member.PublicProfile.Cmid} cause of new login.");
                         break;
                     }
@@ -183,7 +190,7 @@ namespace UberStrok.WebServices
                     Ip = null,
                     Hwd = null
                 };
-
+                Console.WriteLine("Login with authToken " + authToken);
                 _sessions.Add(authToken, session);
             }
 
@@ -207,6 +214,23 @@ namespace UberStrok.WebServices
             }
 
             return false;
+        }
+
+        public static string GenerateName(int len)
+        {
+            Random r = new Random();
+            char[] consonants = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'l', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x' };
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y' };
+            StringBuilder Name = new StringBuilder();
+            int b = 0; //b tells how many times a new letter has been added. It's 2 right now because the first two letters are already in the name.
+            while (b < len)
+            {
+                Name.Append(consonants[r.Next(consonants.Length)]);
+                b++;
+                Name.Append(vowels[r.Next(vowels.Length)]);
+                b++;
+            }
+            return Name.ToString();
         }
     }
 }

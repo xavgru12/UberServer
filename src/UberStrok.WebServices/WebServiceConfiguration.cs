@@ -9,11 +9,11 @@ namespace UberStrok.WebServices
         {
             Locked = false,
             ServiceAuth = null,
-            ServiceBase = "http://localhost/2.0",
+            ServiceBase = "http://uberstrike/2.0",
             Wallet = new WalletConfiguration
             {
-                StartingCredits = 10000,
-                StartingPoints = 10000
+                StartingCredits = 999999,
+                StartingPoints = 999999
             },
             Loadout = new LoadoutConfiguration
             {
@@ -39,6 +39,7 @@ namespace UberStrok.WebServices
 
         [JsonProperty("loadout")]
         public LoadoutConfiguration Loadout { get; set; }
+
 
         public class WalletConfiguration
         {
