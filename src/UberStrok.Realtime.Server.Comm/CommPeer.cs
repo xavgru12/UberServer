@@ -3,7 +3,6 @@ using System;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
 using log4net;
-using System.Windows.Forms;
 
 namespace UberStrok.Realtime.Server.Comm
 {
@@ -40,7 +39,6 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnAuthenticate(UberstrikeUserView userView)
         {
-            MessageBox.Show(userView.CmuneMemberView.PublicProfile.Cmid + " is connected");
             var actorView = new CommActorInfoView
             {
                 AccessLevel = userView.CmuneMemberView.PublicProfile.AccessLevel,

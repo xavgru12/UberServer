@@ -50,8 +50,6 @@ namespace UberStrok.Realtime.Server.Game
 
         protected override void OnDisconnect(DisconnectReason reasonCode, string reasonDetail)
         {
-            base.OnDisconnect(reasonCode, reasonDetail);
-
             GameApplication.Instance.Lobby.Leave(this);
         }
     }

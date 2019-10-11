@@ -28,7 +28,8 @@ namespace UberStrok.Realtime.Server.Game
 
         protected override void OnTearDown()
         {
-            Lobby.Dispose();
+            if(Lobby != null)
+                Lobby.Dispose();
         }
 
         protected override Peer OnCreatePeer(InitRequest initRequest)
