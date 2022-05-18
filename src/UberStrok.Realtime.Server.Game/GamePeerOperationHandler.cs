@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
@@ -156,6 +157,15 @@ namespace UberStrok.Realtime.Server.Game
                 }
                 else
                 {
+                    var samePlayer = room.Players.Where(x => x.PlayerId == peer.Actor.PlayerId);
+                    if (samePlayer.Count() > 0)
+                    {
+                        //there is bugged player!
+                        foreach(var p in samePlayer)
+                        {
+                            room.Leave(p.Peer);
+                        }
+                    }
                     try { room.Join(peer); }
                     catch
                     {

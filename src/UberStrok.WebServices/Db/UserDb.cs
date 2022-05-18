@@ -47,7 +47,7 @@ namespace UberStrok.WebServices.Db
 
             if (!LoadHwdBans())
             {
-                _hwdBans= new HashSet<string>();
+                _hwdBans = new HashSet<string>();
                 // Create the file if it does not exists.
                 SaveHwdBans();
             }

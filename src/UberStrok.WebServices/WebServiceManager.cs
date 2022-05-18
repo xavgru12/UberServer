@@ -1,7 +1,5 @@
 ﻿using log4net;
 using System;
-using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.ServiceModel;
 
@@ -76,21 +74,6 @@ namespace UberStrok.WebServices
             _binding.Security.Mode = BasicHttpSecurityMode.None;
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, errors) => true;
             Services.Bind(_binding);
-            /*
-            var sw = Stopwatch.StartNew();
-
-            try
-            {
-                // Bind the services to the HTTP endpoint.
-                Services.Bind(_binding);
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex);
-                Log.Fatal("Unable to bind contracts to endpoint.");
-                throw;
-            }
-            */
             Log.Info("Opening services...");
 
             try

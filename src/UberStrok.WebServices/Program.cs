@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Threading;
 
 namespace UberStrok.WebServices
@@ -28,7 +24,7 @@ namespace UberStrok.WebServices
         {
             try
             {
-                
+
                 Manager = new WebServiceManager();
                 Manager.Start();
             }

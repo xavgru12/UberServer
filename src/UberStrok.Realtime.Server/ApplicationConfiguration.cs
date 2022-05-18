@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace UberStrok.Realtime.Server
@@ -9,7 +10,7 @@ namespace UberStrok.Realtime.Server
     {
         public static readonly ApplicationConfiguration Default = new ApplicationConfiguration
         {
-            WebServices = "http://uberstrike/2.0/",
+            WebServices = File.ReadAllText("WebService.txt"),
             WebServicesAuth = null,
             HeartbeatTimeout = 5,
             HeartbeatInterval = 5,

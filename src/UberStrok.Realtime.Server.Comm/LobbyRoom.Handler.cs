@@ -17,12 +17,12 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnFullPlayerListUpdate(CommPeer peer)
         {
-            throw new NotImplementedException();
+
         }
 
         protected override void OnUpdatePlayerRoom(CommPeer peer, GameRoomView room)
         {
-            throw new NotImplementedException();
+
         }
 
         protected override void OnResetPlayerRoom(CommPeer peer)

@@ -58,9 +58,9 @@ namespace UberStrok.WebServices
             for (int i = 0; i < _hosts.Count; i++)
             {
                 _hosts[i].Open();
-                if(_hosts[i].State == CommunicationState.Opened)
+                if (_hosts[i].State == CommunicationState.Opened)
                 {
-                    Console.WriteLine("Endpoint " + _hosts[i].Description.Endpoints[0].Address + " is started" );
+                    Console.WriteLine("Endpoint " + _hosts[i].Description.Endpoints[0].Address + " is started");
                 }
                 else
                 {

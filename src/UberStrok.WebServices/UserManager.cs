@@ -70,7 +70,7 @@ namespace UberStrok.WebServices
             );
 
             var memberInventories = new List<ItemInventoryView>();
-            for(int x =0; x < 130; x++)
+            for (int x = 0; x < 130; x++)
             {
                 memberInventories.Add(new ItemInventoryView(x, null, -1, cmid));
             }
@@ -110,7 +110,7 @@ namespace UberStrok.WebServices
 
             lock (_sessions)
             {
-                foreach( var s in _sessions)
+                foreach (var s in _sessions)
                 {
                     if (s.Key.Contains(authToken))
                     {
@@ -209,7 +209,7 @@ namespace UberStrok.WebServices
                     /* Replace players with same CMID, not the neatest of fixes, but it works. */
                     _sessions.Remove(kv.Key);
                     Log.Info($"Player with CMID {value.Member.PublicProfile.Cmid} logged out.");
-                     return true;
+                    return true;
                 }
             }
 

@@ -2,9 +2,9 @@
 using System;
 using System.IO;
 using System.ServiceModel;
+using UberStrok.Core.Common;
 using UberStrok.Core.Serialization;
 using UberStrok.Core.Serialization.Views;
-using UberStrok.Core.Common;
 using UberStrok.Core.Views;
 using UberStrok.WebServices.Contracts;
 

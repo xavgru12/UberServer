@@ -1,9 +1,9 @@
 ﻿using log4net;
+using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
-using System.Collections.Generic;
-using System;
 
 namespace UberStrok.WebServices.Core
 {
