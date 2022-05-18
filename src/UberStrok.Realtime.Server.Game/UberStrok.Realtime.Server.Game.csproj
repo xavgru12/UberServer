@@ -37,6 +37,9 @@
     <Reference Include="Photon.SocketServer">
       <HintPath>..\..\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\Photon.SocketServer.dll</HintPath>
     </Reference>
+    <Reference Include="Photon3DotNet">
+      <HintPath>..\..\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\Photon3DotNet.dll</HintPath>
+    </Reference>
     <Reference Include="PhotonHostRuntimeInterfaces">
       <HintPath>..\..\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\PhotonHostRuntimeInterfaces.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>

@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
-      <HintPath>..\..\photon\lib\log4net.dll</HintPath>
+      <HintPath>..\..\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Photon.SocketServer">
-      <HintPath>..\..\photon\lib\Photon.SocketServer.dll</HintPath>
+      <HintPath>..\..\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\Photon.SocketServer.dll</HintPath>
     </Reference>
     <Reference Include="PhotonHostRuntimeInterfaces">
       <HintPath>..\..\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\PhotonHostRuntimeInterfaces.dll</HintPath>
