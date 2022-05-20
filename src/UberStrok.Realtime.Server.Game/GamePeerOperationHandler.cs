@@ -101,9 +101,9 @@ namespace UberStrok.Realtime.Server.Game
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "UberStrok does not support the selected game mode.");
                 return;
             }
-            catch
+            catch(Exception ex)
             {
-                peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to create game room.");
+                peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to create game room. Exception: " + ex.Message);
                 throw;
             }
 

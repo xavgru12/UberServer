@@ -51,7 +51,7 @@ namespace UberStrok.WebServices.Core
 
             member.PublicProfile.Name = name;
             // Set email status to complete so we don't ask for the player name again.
-            member.PublicProfile.EmailAddressStatus = EmailAddressStatus.Unverified;
+            member.PublicProfile.EmailAddressStatus = EmailAddressStatus.Verified;
 
             if (Context.Users.Db.UseName(name))
                 // Save the profile since we modified it.

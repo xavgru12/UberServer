@@ -1648,6 +1648,399 @@
       "ShopHighlightType": 3,
       "CustomProperties": {},
       "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 13,
+      "ID": 1062,
+      "Name": "Frog Head (Green)",
+      "PrefabName": "FrogHeadGreen",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 13,
+      "ID": 1063,
+      "Name": "Frog Head (Red)",
+      "PrefabName": "FrogHeadRed",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ItemClass": 14,
+      "ID": 1064,
+      "Name": "Ghost Pirate Face",
+      "PrefabName": "GhostPirate-Face",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 12,
+      "ID": 1065,
+      "Name": "Ghost Pirate Shoes",
+      "PrefabName": "GhostPirateShoes",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 17,
+      "ID": 1066,
+      "Name": "Ghost Pirate Gloves",
+      "PrefabName": "GhostPirateGloves",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 15,
+      "ID": 1067,
+      "Name": "Ghost Pirate Cloths",
+      "PrefabName": "GhostPirateUpperbody",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 16,
+      "ID": 1068,
+      "Name": "Base of Ghost Pirate",
+      "PrefabName": "GhostPirateLowerbody",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 13,
+      "ID": 1069,
+      "Name": "Unicorn Head",
+      "PrefabName": "HorseHeadUnicorn",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 13,
+      "ID": 1070,
+      "Name": "Horse Head",
+      "PrefabName": "HorseHeadBrown",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 13,
+      "ID": 1071,
+      "Name": "Dark Knight Head",
+      "PrefabName": "KnightHead_1_Black",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 17,
+      "ID": 1072,
+      "Name": "Dark Knight Gloves",
+      "PrefabName": "KnightGlovesBlack",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 15,
+      "ID": 1073,
+      "Name": "Dark Knight Cloths",
+      "PrefabName": "KnightUpperbodyBlack",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 16,
+      "ID": 1074,
+      "Name": "Base of Dark Knight",
+      "PrefabName": "KnightLowerbodyBlack",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
+    },
+    {
+      "ItemType": 3,
+      "ArmorPoints": 100,
+      "ArmorWeight": 0,
+      "ItemClass": 13,
+      "ID": 1075,
+      "Name": "Skeleton",
+      "PrefabName": "HalloweenSkeleton-Head",
+      "Description": null,
+      "LevelLock": 0,
+      "MaxDurationDays": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 0,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
+        }
+      ],
+      "IsForSale": true,
+      "ShopHighlightType": 3,
+      "CustomProperties": {},
+      "ItemProperties": {}
     }
   ],
   "QuickItems": [
