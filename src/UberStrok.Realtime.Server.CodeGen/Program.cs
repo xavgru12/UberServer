@@ -9,7 +9,7 @@ namespace UberStrok.Realtime.Server.CodeGen
     {
         public static int Main(string[] args)
         {
-            var assemblyCSharpFirstpassPath = "../../../../libs/uberstrike/Assembly-CSharp-firstpass.dll";
+            var assemblyCSharpFirstpassPath = "libs/uberstrike/Assembly-CSharp-firstpass.dll";
             var lobbyRoomOperationSender = "UberStrike.Realtime.Client.LobbyRoomOperations";
 
             try

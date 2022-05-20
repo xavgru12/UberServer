@@ -53,6 +53,13 @@ namespace UberStrok.Realtime.Client
                 case StatusCode.Connect:
                     _peer.OnConnect(string.Empty);
                     break;
+                case StatusCode.Disconnect:
+                case StatusCode.TimeoutDisconnect:
+                case StatusCode.DisconnectByServerLogic:
+                case StatusCode.DisconnectByServerUserLimit:
+                case StatusCode.DisconnectByServer:
+                    _peer.Disconnect();
+                    break;
             }
         }
     }

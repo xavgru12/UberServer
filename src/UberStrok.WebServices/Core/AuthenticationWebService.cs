@@ -51,7 +51,7 @@ namespace UberStrok.WebServices.Core
 
             member.PublicProfile.Name = name;
             // Set email status to complete so we don't ask for the player name again.
-            member.PublicProfile.EmailAddressStatus = EmailAddressStatus.Verified;
+            member.PublicProfile.EmailAddressStatus = EmailAddressStatus.Unverified;
 
             if (Context.Users.Db.UseName(name))
                 // Save the profile since we modified it.
@@ -146,11 +146,6 @@ namespace UberStrok.WebServices.Core
             if (!linked)
                 result = MemberAuthenticationResult.InvalidEsns;
 
-            // Use the PublicProfile.EmailAddrsessStatus to figure out if its an incomplete account,
-            // because why not.
-            if (member.PublicProfile.EmailAddressStatus == EmailAddressStatus.Unverified)
-                incomplete = true;
-
             var session = Context.Users.LogInUser(member);
             session.Hwd = machineId;
             session.Ip = ip;
@@ -159,7 +154,7 @@ namespace UberStrok.WebServices.Core
             {
                 MemberAuthenticationResult = result,
                 AuthToken = session.AuthToken,
-                IsAccountComplete = true,
+                IsAccountComplete = !incomplete,
                 ServerTime = DateTime.Now,
 
                 MemberView = member,

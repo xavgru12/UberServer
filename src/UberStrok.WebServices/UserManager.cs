@@ -1,6 +1,7 @@
 ﻿using log4net;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Threading;
 using UberStrok.Core.Common;
@@ -54,7 +55,7 @@ namespace UberStrok.WebServices
             var publicProfile = new PublicProfileView(
                 cmid,
                 name,
-                MemberAccessLevel.Admin,
+                MemberAccessLevel.Default,
                 false,
                 DateTime.UtcNow,
                 EmailAddressStatus.Verified,
@@ -70,9 +71,22 @@ namespace UberStrok.WebServices
             );
 
             var memberInventories = new List<ItemInventoryView>();
-            for (int x = 0; x < 130; x++)
+            var shop = _ctx.Items.GetShop();
+            foreach(var w in shop.WeaponItems)
             {
-                memberInventories.Add(new ItemInventoryView(x, null, -1, cmid));
+                memberInventories.Add(new ItemInventoryView(w.ID, null, -1, cmid));
+            }
+            foreach (var w in shop.GearItems)
+            {
+                memberInventories.Add(new ItemInventoryView(w.ID, null, -1, cmid));
+            }
+            foreach (var w in shop.QuickItems)
+            {
+                memberInventories.Add(new ItemInventoryView(w.ID, null, -1, cmid));
+            }
+            foreach (var w in shop.FunctionalItems)
+            {
+                memberInventories.Add(new ItemInventoryView(w.ID, null, -1, cmid));
             }
             //TODO: Create helper function for conversion of this stuff.
             var memberItems = new List<int>();
