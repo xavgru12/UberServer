@@ -123,9 +123,8 @@ namespace UberStrok.Realtime.Server.Game
                     if (_rooms.TryGetValue(roomId, out GameRoom room))
                     {
                         _rooms.Remove(roomId);
-                        room.Dispose();
-
                         Log.Info($"Removed {room.GetDebug()}");
+                        room.Dispose();
                     }
                 }
 

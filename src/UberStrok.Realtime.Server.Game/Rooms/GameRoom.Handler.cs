@@ -401,22 +401,25 @@ namespace UberStrok.Realtime.Server.Game
         protected sealed override void OnIsFiring(GameActor actor, bool on)
         {
             var weapon = actor.Loadout.Weapons[actor.Info.CurrentWeaponID];
-            var state = actor.Info.PlayerState;
-
-            if (on)
+            if(weapon != null)
             {
-                state |= PlayerStates.Shooting;
-                weapon.StartFire();
-            }
-            else
-            {
-                state &= ~PlayerStates.Shooting;
+                var state = actor.Info.PlayerState;
 
-                int count = weapon.StopFire();
-                actor.Statistics.RecordShot(weapon.GetView().ItemClass, count);
-            }
+                if (on)
+                {
+                    state |= PlayerStates.Shooting;
+                    weapon.StartFire();
+                }
+                else
+                {
+                    state &= ~PlayerStates.Shooting;
 
-            actor.Info.PlayerState = state;
+                    int count = weapon.StopFire();
+                    actor.Statistics.RecordShot(weapon.GetView().ItemClass, count);
+                }
+
+                actor.Info.PlayerState = state;
+            }
         }
 
         protected sealed override void OnIsPaused(GameActor actor, bool on)
