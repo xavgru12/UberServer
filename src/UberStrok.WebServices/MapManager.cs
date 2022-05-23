@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UberStrok.Core.Views;
@@ -7,6 +8,7 @@ namespace UberStrok.WebServices
 {
     public class MapManager
     {
+        private readonly ILog Log = LogManager.GetLogger(typeof(MapManager).Name);
         public MapManager(WebServiceContext ctx)
         {
             if (ctx == null)
@@ -17,11 +19,24 @@ namespace UberStrok.WebServices
             var maps = Utils.DeserializeJsonAt<List<MapView>>("configs/game/maps.json");
             if (maps == null)
                 throw new FileNotFoundException("configs/game/maps.json file not found.");
-
+            _hotReload = new FileSystemWatcher("configs\\game");
+            _hotReload.Filter = "maps.json";
+            _hotReload.NotifyFilter = NotifyFilters.Size | NotifyFilters.LastWrite;
+            _hotReload.Changed += _hotReload_Changed;
+            _hotReload.IncludeSubdirectories = true;
+            _hotReload.EnableRaisingEvents = true;
             _maps = maps;
         }
 
-        private readonly List<MapView> _maps;
+        private void _hotReload_Changed(object sender, FileSystemEventArgs e)
+        {
+            Log.Info("Refreshing Maps");
+            var maps = Utils.DeserializeJsonAt<List<MapView>>("configs/game/maps.json");
+            _maps = maps;
+        }
+
+        private readonly FileSystemWatcher _hotReload;
+        private List<MapView> _maps;
         private readonly WebServiceContext _ctx;
 
         public List<MapView> GetAll()
