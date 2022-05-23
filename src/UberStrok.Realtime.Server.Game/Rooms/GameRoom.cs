@@ -18,7 +18,7 @@ namespace UberStrok.Realtime.Server.Game
 
         private ushort _frame;
         private readonly Timer _frameTimer;
-
+        //A time that players had retrain the same for long time
         private readonly GameRoomDataView _view;
 
         /* 
@@ -343,9 +343,10 @@ namespace UberStrok.Realtime.Server.Game
                          * NOTE: This should never happen, but just incase 
                          * stuff goes wild.
                          */
-                        Log.Error($"Failed to tick {actor.GetDebug()}.", ex);
+                        Log.Error($"Failed to tick {actor.GetDebug()}. Disconnecting...", ex);
                         actor.Peer.Disconnect();
-
+                        //remove from actors list
+                        DoLeave(actor.Peer);
                         /* Something happened; we dip. */
                         continue;
                     }
@@ -419,9 +420,16 @@ namespace UberStrok.Realtime.Server.Game
         private void DoJoin(GamePeer peer)
         {
             Debug.Assert(peer != null);
-
             try
             {
+                //disconnect those ghost actors
+                for(int x = 0; x < _actors.Count; x++)
+                {
+                    if (_actors[x].Cmid == peer.Actor.Cmid)
+                    {
+                        DoLeave(_actors[x].Peer);
+                    }
+                }
                 peer.Handlers.Add(this);
 
                 var view = GetView();

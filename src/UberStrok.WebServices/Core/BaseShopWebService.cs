@@ -167,7 +167,7 @@ namespace UberStrok.WebServices.Core
         {
             try
             {
-                throw new NotImplementedException();
+                return new byte[0];
             }
             catch (Exception ex)
             {

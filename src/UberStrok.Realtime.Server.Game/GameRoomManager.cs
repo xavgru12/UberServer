@@ -105,6 +105,7 @@ namespace UberStrok.Realtime.Server.Game
 
                     if (!view.IsPermanentGame && room.Actors.Count == 0 && room.Loop.Time >= 15 * 1000)
                     {
+                        Log.Info("Removing empty room " + room.RoomId);
                         _removedRooms.Add(room.RoomId);
                     }
                     else if (room.Updated)
