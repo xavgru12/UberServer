@@ -25,7 +25,7 @@ namespace UberStrok.Realtime.Server.Comm
         {
             var settings = new JsonSerializerSettings();
             settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            Log.Info(JsonConvert.SerializeObject(peer, Formatting.Indented, settings) + "\n" + JsonConvert.SerializeObject(room, Formatting.Indented, settings));
+            Log.Info(peer.Actor.Cmid + "\n" + JsonConvert.SerializeObject(room, Formatting.Indented, settings));
         }
 
         protected override void OnResetPlayerRoom(CommPeer peer)
@@ -101,11 +101,17 @@ namespace UberStrok.Realtime.Server.Comm
                                         response = "Banning yourself might be a bad idea. :)";
                                         break;
                                     }
-
-                                    if (DoBan(peer, cmid))
-                                        response = $"Banned user with CMID {cmid}.";
-                                    else
-                                        response = "Error: Failed to ban user.";
+                                    try
+                                    {
+                                        if (DoBan(peer, cmid))
+                                            response = $"Banned user with CMID {cmid}.";
+                                        else
+                                            response = "Error: Failed to ban user.";
+                                    }
+                                    catch(Exception ex)
+                                    {
+                                        response = "Error: Exception thrown while trying to ban a user: " + ex.Message;
+                                    }
                                     break;
                                 }
 
@@ -270,14 +276,21 @@ namespace UberStrok.Realtime.Server.Comm
         protected override void OnModerationPermanentBan(CommPeer peer, int cmid)
         {
             /* NOTE: Not reachable from game client. */
+            if (peer.Actor.AccessLevel < MemberAccessLevel.SeniorQA)
+                return;
+            DoBan(peer, cmid);
         }
 
         protected override void OnModerationBanPlayer(CommPeer peer, int cmid)
         {
             if (peer.Actor.AccessLevel < MemberAccessLevel.SeniorQA)
                 return;
-
-            Find(cmid)?.SendError("You have been kicked from the game.");
+            var user = Find(cmid);
+            if(user != null)
+            {
+                user.SendError("You have been kicked from the game.");
+                Leave(user);
+            }
         }
 
         protected override void OnModerationKickGame(CommPeer peer, int cmid)
@@ -291,6 +304,7 @@ namespace UberStrok.Realtime.Server.Comm
         protected override void OnModerationUnbanPlayer(CommPeer peer, int cmid)
         {
             /* NOTE: Not reachable from game client. */
+            DoUnban(peer, cmid);
         }
 
         protected override void OnModerationCustomMessage(CommPeer peer, int cmid, string message)
@@ -339,7 +353,7 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnUpdateContacts(CommPeer peer)
         {
-            throw new NotImplementedException();
+            
         }
 
         private bool DoBan(CommPeer peer, int cmid)
@@ -353,10 +367,14 @@ namespace UberStrok.Realtime.Server.Comm
             catch (Exception ex)
             {
                 Log.Error("Failed to ban user.", ex);
-                code = 1;
+                throw;
             }
-
-            Find(cmid)?.SendError("You have been banned.");
+            var user = Find(cmid);
+            if (user != null)
+            {
+                user.SendError("You have been banned.");
+                Leave(user);
+            }
             return code == 0;
         }
 
@@ -373,8 +391,12 @@ namespace UberStrok.Realtime.Server.Comm
                 Log.Error("Failed to ban user.", ex);
                 code = 1;
             }
-
-            Find(cmid)?.SendError("You have been banned.");
+            var user = Find(cmid);
+            if (user != null)
+            {
+                user.SendError("You have been banned.");
+                Leave(user);
+            }
             return code == 0;
         }
 

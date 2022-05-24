@@ -1,12 +1,15 @@
 ﻿using UberStrok.Core.Common;
+using log4net;
 
 namespace UberStrok.WebServices.Core
 {
     public class ModerationWebService : BaseModerationWebService
     {
+        private ILog Log;
         public ModerationWebService(WebServiceContext ctx) : base(ctx)
         {
             /* Space */
+            Log = LogManager.GetLogger(GetType().Name);
         }
 
         public override int OnBan(string serviceAuth, int cmid)
@@ -31,8 +34,11 @@ namespace UberStrok.WebServices.Core
         public override int OnUnbanCmid(string authToken, int cmid)
         {
             var member = Context.Users.GetMember(authToken);
-            if (member.PublicProfile.AccessLevel < MemberAccessLevel.SeniorQA)
+            if (member.PublicProfile.AccessLevel < MemberAccessLevel.Moderator)
+            {
+                Log.Debug("Ban User failed, Access level " + member.PublicProfile.AccessLevel + " not reached");
                 return 1;
+            }
 
             Context.Users.Db.UnbanCmid(cmid);
             return 0;
@@ -41,8 +47,11 @@ namespace UberStrok.WebServices.Core
         public override int OnBanCmid(string authToken, int cmid)
         {
             var member = Context.Users.GetMember(authToken);
-            if (member.PublicProfile.AccessLevel < MemberAccessLevel.SeniorQA)
+            if (member.PublicProfile.AccessLevel < MemberAccessLevel.Moderator)
+            {
+                Log.Debug("Ban User failed, Access level " + member.PublicProfile.AccessLevel + " not reached");
                 return 1;
+            }
 
             Context.Users.Db.BanCmid(cmid);
             return 0;
@@ -51,8 +60,11 @@ namespace UberStrok.WebServices.Core
         public override int OnBanHwd(string authToken, string hwd)
         {
             var member = Context.Users.GetMember(authToken);
-            if (member.PublicProfile.AccessLevel < MemberAccessLevel.SeniorModerator)
+            if (member.PublicProfile.AccessLevel < MemberAccessLevel.Moderator)
+            {
+                Log.Debug("Ban User failed, Access level " + member.PublicProfile.AccessLevel + " not reached");
                 return 1;
+            }
 
             Context.Users.Db.BanHwd(hwd);
             return 0;
@@ -61,8 +73,11 @@ namespace UberStrok.WebServices.Core
         public override int OnBanIp(string authToken, string ip)
         {
             var member = Context.Users.GetMember(authToken);
-            if (member.PublicProfile.AccessLevel < MemberAccessLevel.SeniorModerator)
+            if (member.PublicProfile.AccessLevel < MemberAccessLevel.Moderator)
+            {
+                Log.Debug("Ban User failed, Access level " + member.PublicProfile.AccessLevel + " not reached");
                 return 1;
+            }
 
             Context.Users.Db.BanIp(ip);
             return 0;
