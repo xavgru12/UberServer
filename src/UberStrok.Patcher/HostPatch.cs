@@ -111,6 +111,8 @@ namespace UberStrok.Patcher
                 TryStart = ilBody.Instructions[0],
                 TryEnd = ilBody.Instructions[8]
             });
+
+            //delete credit purchase
         }
     }
 }

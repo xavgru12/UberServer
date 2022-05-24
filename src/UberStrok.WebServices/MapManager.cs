@@ -31,8 +31,22 @@ namespace UberStrok.WebServices
         private void _hotReload_Changed(object sender, FileSystemEventArgs e)
         {
             Log.Info("Refreshing Maps");
-            var maps = Utils.DeserializeJsonAt<List<MapView>>("configs/game/maps.json");
-            _maps = maps;
+            do
+            {
+                try
+                {
+                    var maps = Utils.DeserializeJsonAt<List<MapView>>("configs/game/maps.json");
+                    _maps = maps;
+                    break;
+                }
+                catch
+                {
+                    //having error, keep repeats
+                }
+            }
+            while (true);
+
+
         }
 
         private readonly FileSystemWatcher _hotReload;

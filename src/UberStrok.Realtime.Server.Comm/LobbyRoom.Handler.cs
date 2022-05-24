@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using PhotonHostRuntimeInterfaces;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
@@ -22,7 +23,9 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnUpdatePlayerRoom(CommPeer peer, GameRoomView room)
         {
-
+            var settings = new JsonSerializerSettings();
+            settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            Log.Info(JsonConvert.SerializeObject(peer, Formatting.Indented, settings) + "\n" + JsonConvert.SerializeObject(room, Formatting.Indented, settings));
         }
 
         protected override void OnResetPlayerRoom(CommPeer peer)

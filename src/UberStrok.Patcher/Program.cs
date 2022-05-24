@@ -87,7 +87,9 @@ namespace UberStrok.Patcher
             {
                 new QuickSwitchPatch(),
                 new WebServicesPatch(),
-                new HostPatch()
+                new HostPatch(),
+                new MouseSensitivePatch(),
+                new CreditPatch()
             };
 
             Console.WriteLine(" Patches ->");
@@ -115,33 +117,12 @@ namespace UberStrok.Patcher
             Console.WriteLine(" Writing new assemblies...");
             try { uberStrike.Save("patched"); }
             catch { Console.Error.WriteLine("Failed to write."); }
-
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("Removing Steam Dependies...");
-            Random rnd = new Random();
-            string AppId = rnd.Next(99999).ToString();
-            string Name = GenerateName(rnd.Next(4,10));
-            string valve = Resource.valve.Replace("00000", AppId).Replace("AAAAA", Name);
-            File.WriteAllText(uberStrikePath + "\\UberStrike_Data\\.uberstrok", "http://uberstrike/2.0/");
-            File.WriteAllText(uberStrikePath + "\\valve.ini",valve);
-            File.WriteAllBytes(uberStrikePath + "\\steam_api.dll", Resource.steam_api);
+            if(!File.Exists(uberStrikePath + "\\UberStrike_Data\\.uberstrok"))
+            {
+                File.WriteAllText(uberStrikePath + "\\UberStrike_Data\\.uberstrok", "http://uberstrike/2.0/");
+            }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("done");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("Extracting WebService...");
-            File.WriteAllBytes(uberStrikePath + "\\webService.zip", Resource.WebService);
-            try
-            {
-                ZipFile.ExtractToDirectory(uberStrikePath + "\\webService.zip", uberStrikePath + "\\");
-            }
-            catch(Exception ex)
-            {
-                Console.Error.WriteLine(ex.ToString());
-            }
-            File.Delete(uberStrikePath + "\\webService.zip");
-            sw.Stop();
-
             Console.WriteLine(" -----------------------------------");
             Console.WriteLine($" Finished in {sw.Elapsed.TotalMilliseconds} ms");
             Console.ReadLine();
