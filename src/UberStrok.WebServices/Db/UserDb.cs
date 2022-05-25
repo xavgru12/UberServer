@@ -220,7 +220,7 @@ namespace UberStrok.WebServices.Db
 
         private bool LoadIpBans()
         {
-            _ipBans = Utils.DeserializeJsonAt<HashSet<string>>("data/ips.json");
+            _ipBans = Utils.DeserializeJsonAt<HashSet<string>>("data/ip.json");
             return _ipBans != null;
         }
 
