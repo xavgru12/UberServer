@@ -84,10 +84,7 @@ namespace UberStrok.WebServices
             {
                 memberInventories.Add(new ItemInventoryView(w.ID, null, -1, cmid));
             }
-            foreach (var w in shop.FunctionalItems)
-            {
-                memberInventories.Add(new ItemInventoryView(w.ID, null, -1, cmid));
-            }
+
             //TODO: Create helper function for conversion of this stuff.
             var memberItems = new List<int>();
             for (int i = 0; i < memberInventories.Count; i++)

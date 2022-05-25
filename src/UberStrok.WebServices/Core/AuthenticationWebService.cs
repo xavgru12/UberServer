@@ -108,7 +108,7 @@ namespace UberStrok.WebServices.Core
             var member = Context.Users.Db.LoadMember(steamId);
             if (member == null)
             {
-                Log.Info($"Member entry {steamId} does not exists, creating new entry");
+                Log.Info($"Member entry {steamId} does not exists, creating new entry. IP:" + ip + ", MachineId: " + machineId);
 
                 // Create a new member if its not in the db.
                 incomplete = true;
