@@ -23,7 +23,11 @@ namespace UberStrok.WebServices.Db
 
             _ipBans = new HashSet<string>();
             _hwdBans = new HashSet<string>();
-
+            _hotReload = new FileSystemWatcher("data");
+            _hotReload.NotifyFilter = NotifyFilters.LastWrite;
+            _hotReload.Filter = "*.json";
+            _hotReload.Changed += _hotReload_Changed;
+            _hotReload.EnableRaisingEvents = true;
             if (!LoadSteamIds())
             {
                 _steamId2Cmid = new Dictionary<string, int>();
@@ -60,6 +64,46 @@ namespace UberStrok.WebServices.Db
             }
         }
 
+        private void _hotReload_Changed(object sender, FileSystemEventArgs e)
+        {
+            Log.Info("Reloading Settings");
+            if (!LoadSteamIds())
+            {
+                _steamId2Cmid = new Dictionary<string, int>();
+                // Create the file if it does not exists.
+                SaveSteamIds();
+            }
+
+            if (!LoadCmidBans())
+            {
+                _cmidBans = new HashSet<int>();
+                // Create the file if it does not exists.
+                SaveCmidBans();
+            }
+
+            if (!LoadIpBans())
+            {
+                _ipBans = new HashSet<string>();
+                // Create the file if it does not exists.
+                SaveIpBans();
+            }
+
+            if (!LoadHwdBans())
+            {
+                _hwdBans = new HashSet<string>();
+                // Create the file if it does not exists.
+                SaveHwdBans();
+            }
+
+            if (!LoadUsedNames())
+            {
+                _usedNames = new HashSet<string>();
+                // Create the file if it does not exists.
+                SaveUsedNames();
+            }
+        }
+
+        private FileSystemWatcher _hotReload;
         private Dictionary<string, int> _steamId2Cmid; // SteamID -> CMID
 
         private HashSet<int> _cmidBans;

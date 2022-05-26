@@ -98,7 +98,7 @@ namespace UberStrok.WebServices.Core
                     PlayerStatisticsView = null
                 };
             }
-
+            Log.Debug("Hwd: "+machineId);
             // Figure out if the account has been linked.
             var linked = true;
             // Figure out if the account existed. true -> existed otherwise false.
@@ -108,6 +108,19 @@ namespace UberStrok.WebServices.Core
             var member = Context.Users.Db.LoadMember(steamId);
             if (member == null)
             {
+                if (Context.Users.IsDumbAss(ip, machineId))
+                {
+                    return new MemberAuthenticationResultView
+                    {
+                        MemberAuthenticationResult = MemberAuthenticationResult.IsIpBanned,
+                        AuthToken = null,
+                        IsAccountComplete = true,
+                        ServerTime = DateTime.Now,
+
+                        MemberView = null,
+                        PlayerStatisticsView = null
+                    };
+                }
                 Log.Info($"Member entry {steamId} does not exists, creating new entry. IP:" + ip + ", MachineId: " + machineId);
 
                 // Create a new member if its not in the db.
@@ -146,7 +159,7 @@ namespace UberStrok.WebServices.Core
             if (!linked)
                 result = MemberAuthenticationResult.InvalidEsns;
 
-            var session = Context.Users.LogInUser(member);
+            var session = Context.Users.LogInUser(member, ip, machineId);
             session.Hwd = machineId;
             session.Ip = ip;
 

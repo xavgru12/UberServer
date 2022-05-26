@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using UberStrok.Core.Common;
 
 namespace UberStrok.Core.Views
@@ -23,10 +24,6 @@ namespace UberStrok.Core.Views
             SetPublicProfile(cmid, name, accesLevel, isChatDisabled, string.Empty, lastLoginDate, emailAddressStatus, facebookId);
 		}
 
-		public PublicProfileView(int cmid, string name, MemberAccessLevel accesLevel, bool isChatDisabled, string groupTag, DateTime lastLoginDate, EmailAddressStatus emailAddressStatus, string facebookId)
-		{
-            SetPublicProfile(cmid, name, accesLevel, isChatDisabled, groupTag, lastLoginDate, emailAddressStatus, facebookId);
-		}
 
 		private void SetPublicProfile(int cmid, string name, MemberAccessLevel accesLevel, bool isChatDisabled, string groupTag, DateTime lastLoginDate, EmailAddressStatus emailAddressStatus, string facebookId)
 		{

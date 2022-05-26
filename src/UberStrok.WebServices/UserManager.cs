@@ -26,7 +26,6 @@ namespace UberStrok.WebServices
         private readonly Dictionary<string, Session> _sessions; // AuthToken -> Session
 
         private readonly WebServiceContext _ctx;
-
         public UserManager(WebServiceContext ctx)
         {
             _ctx = ctx;
@@ -166,7 +165,7 @@ namespace UberStrok.WebServices
             return null;
         }
 
-        public Session LogInUser(MemberView member)
+        public Session LogInUser(MemberView member, string ip, string machineId)
         {
             if (member == null)
                 throw new ArgumentNullException(nameof(member));
@@ -198,8 +197,8 @@ namespace UberStrok.WebServices
                 {
                     AuthToken = authToken,
                     Member = member,
-                    Ip = null,
-                    Hwd = null
+                    Ip = ip,
+                    Hwd = machineId
                 };
                 Console.WriteLine("Login with authToken " + authToken);
                 _sessions.Add(authToken, session);
@@ -227,7 +226,31 @@ namespace UberStrok.WebServices
             return false;
         }
 
-        public static string GenerateName(int len)
+        public bool IsDumbAss(string ip, string machineId)
+        {
+            bool checkIp = true;
+            if (IPAddress.IsLoopback(IPAddress.Parse(ip)))
+            {
+                checkIp = false;
+            }
+            int weight = 0;
+            foreach(var kv in _sessions)
+            {
+                if (checkIp)
+                {
+                    if(kv.Value.Ip == ip)
+                    {
+                        weight++;
+                    }
+                }
+                if(kv.Value.Hwd == machineId)
+                {
+                    weight++;
+                }
+            }
+            return weight > 1;
+        }
+        public string GenerateName(int len)
         {
             Random r = new Random();
             char[] consonants = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'l', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x' };
