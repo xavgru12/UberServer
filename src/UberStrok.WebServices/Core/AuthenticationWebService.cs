@@ -114,7 +114,7 @@ namespace UberStrok.WebServices.Core
                     {
                         MemberAuthenticationResult = MemberAuthenticationResult.IsIpBanned,
                         AuthToken = null,
-                        IsAccountComplete = true,
+                        IsAccountComplete = false,
                         ServerTime = DateTime.Now,
 
                         MemberView = null,

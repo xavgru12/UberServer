@@ -228,6 +228,10 @@ namespace UberStrok.WebServices
 
         public bool IsDumbAss(string ip, string machineId)
         {
+            if(ip == null || machineId == null)
+            {
+                return true;
+            }
             bool checkIp = true;
             if (IPAddress.IsLoopback(IPAddress.Parse(ip)))
             {
