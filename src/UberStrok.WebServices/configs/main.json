@@ -1,5 +1,5 @@
 ﻿{
-    "service_base": "http://uberstrike/2.0",
+    "service_base": "http://0.0.0.0/",
     "wallet": {
         "starting_points": 999999,
         "starting_credits": 999999
