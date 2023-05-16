@@ -17,8 +17,10 @@ bfg.jar
 packages/
 
 # Build files
-bin/
-obj/
+src/**/bin/
+tests/**/bin/
+src/**/obj/
+tests/**/obj/
 
 # Libraries
 libs/uberstrike/*.dll
