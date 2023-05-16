@@ -1,21 +1,54 @@
-## UberStrok
-An effort to write a shitty UberStrike back-end implementation intended for educational purposes.
+## Server Setup
 
-### Why
-I've never written realtime servers for FPS before and to learn how to work with the Photon SDK. But
-mostly to be able to play this game again with some friends for the sake of nostalgia.
+### Firewall Settings
 
-And because [dropshot](https://www.github.com/festivaldev/dropshot) seem to be inactive, so I decided
-to continue on my own.
+Go to Firewall Advanced Settings
 
-### Setting Up
-Check [issue #9](https://github.com/FICTURE7/uberstrok/issues/9) & [#13](https://github.com/FICTURE7/uberstrok/issues/13) for some instructions.
+Inbound -> TCP -> Port 80 -> allow connections
 
-### 'Bugs'
-Its not a bug, its a feature, but if you're not happy with it, you can still create a new issue 
-about the feature, maybe I will polish it up. Or you could send a pull request with the polished feature.
+Inbound -> UDP -> Port 5055 and 5056 -> allow connections
 
-If you managed to get it running even.
+Same settings need to be applied on both the Windows as well as in webhost settings
 
-### License
-MIT License.
+### Photon License
+
+Get your free license (100 CCU) from Photon's Website: https://www.photonengine.com/server
+
+### Get server files
+Compile all Releases using Visual Studio.
+Get files from bin/Release.
+Get Webservice and copy to ServerSetup/Webservice
+Get Realtime server:
+Get from src\UberStrok.Realtime.Server.Comm and copy to ServerSetup/PhotonRealtimeServer/UberStrok.Realtime.Server.Comm
+Get from src\UberStrok.Realtime.Server.Game and copy to ServerSetup/PhotonRealtimeServer/UberStrok.Realtime.Server.Game/bin
+copy ServerSetup to your server.
+
+### Webservice configuration
+IP address is set to 127.0.0.1 per default for both Webservice and Realtime.
+Webservice Server can contain Realtime, while Realtime could be one or more separate servers.
+
+Take your servers' public IP address(es) and put it into following config files.
+
+in Webservice Server:
+Edit Webservices/configs/game/servers.json
+CommServer is the Webservice server.
+GameServer is the Realtime server.
+
+in Realtime Server:
+Edit Webservice.txt, default content is: http://127.0.0.1/
+Locations:
+PhotonRealtimeServer\UberStrok.Realtime.Server.Comm and 
+PhotonRealtimeServer\UberStrok.Realtime.Server.Game
+
+### Run Server
+Start the Webservice by executing the .exe from Webservices.
+
+Steps to start Realtime:
+Paste Photon License to: bin_Win64 or bin_Win32
+It might show .NET Framework 3.5 missing, which can be ignored.
+Start PhotonController.exe.
+The PhotonController will be started at your taskbar tray, rightclick and find UberStrok, click Start as application.
+
+### Client Setup
+
+Compile UberStrok.Patcher, go to its bin/Release and execute.
