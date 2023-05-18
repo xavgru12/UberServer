@@ -27,7 +27,7 @@ namespace UberStrok.Core
                 throw new ArgumentNullException(nameof(positions));
             if (rotations == null)
                 throw new ArgumentNullException(nameof(rotations));
-            
+
             int length = positions.Count;
             var spawns = new List<SpawnPoint>(length);
             for (int i = 0; i < length; i++)

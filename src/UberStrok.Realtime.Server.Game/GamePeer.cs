@@ -1,5 +1,6 @@
 ﻿using Photon.SocketServer;
 using PhotonHostRuntimeInterfaces;
+using System;
 using UberStrok.Core.Views;
 using UberStrok.WebServices.Client;
 
@@ -11,6 +12,7 @@ namespace UberStrok.Realtime.Server.Game
         public GamePeerEvents Events { get; }
 
         private LoadoutView LoadoutView { get; set; }
+        public Action OnLeaveRoom { get; set; }
 
         public GamePeer(InitRequest initRequest) : base(initRequest)
         {
@@ -50,6 +52,7 @@ namespace UberStrok.Realtime.Server.Game
 
         protected override void OnDisconnect(DisconnectReason reasonCode, string reasonDetail)
         {
+            base.OnDisconnect(reasonCode, reasonDetail);
             GameApplication.Instance.Lobby.Leave(this);
         }
     }

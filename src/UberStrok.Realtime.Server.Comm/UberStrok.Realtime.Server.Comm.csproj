@@ -49,6 +49,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BufferedAdministratorMessage.cs" />
     <Compile Include="Core\BaseCommPeerOperationHandler.cs" />
     <Compile Include="CommActor.cs" />
     <Compile Include="CommApplication.cs" />

@@ -38,7 +38,6 @@ namespace UberStrok.Realtime.Server.Comm
         {
             var authToken = StringProxy.Deserialize(bytes);
             var magicHash = StringProxy.Deserialize(bytes);
-
             OnAuthenticationRequest(peer, authToken, magicHash);
         }
 

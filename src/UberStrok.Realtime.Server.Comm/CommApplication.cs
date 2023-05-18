@@ -15,7 +15,7 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnTearDown()
         {
-            /* Space */
+            Instance.Rooms.Global.Dispose();
         }
 
         protected override Peer OnCreatePeer(InitRequest initRequest)

@@ -45,7 +45,7 @@ namespace UberStrok.Core.Serialization.Views
                     ListProxy<StatsSummaryView>.Serialize(bytes, instance.MostValuablePlayers, new ListProxy<StatsSummaryView>.Serializer<StatsSummaryView>(StatsSummaryViewProxy.Serialize));
                 else
                     mask |= 2;
-                
+
                 if (instance.PlayerStatsBestPerLife != null)
                     StatsCollectionViewProxy.Serialize(bytes, instance.PlayerStatsBestPerLife);
                 else

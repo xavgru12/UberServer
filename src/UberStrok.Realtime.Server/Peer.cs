@@ -99,8 +99,8 @@ namespace UberStrok.Realtime.Server
             OnAuthenticate(userView);
 
 #if !DEBUG
-            bool isAdmin = userView.CmuneMemberView.PublicProfile.AccessLevel != MemberAccessLevel.Admin;
-            if (Configuration.CompositeHashes.Count > 0 && isAdmin)
+            bool notAdmin = userView.CmuneMemberView.PublicProfile.AccessLevel != MemberAccessLevel.Admin;
+            if (Configuration.CompositeHashes.Count > 0 && notAdmin)
             {
                 var authTokenBytes = Encoding.ASCII.GetBytes(authToken);
                 for (int i = 0; i < Configuration.CompositeHashes.Count; i++)
@@ -171,7 +171,7 @@ namespace UberStrok.Realtime.Server
                     return true;
                 }
 
-                Log.Error($"Heartbeat: {expectedHeartbeat} != {responseHash}");
+                Log.Error($"Heartbeat: {expectedHeartbeat} != {responseHash}. Heartbeat response failed for {RemoteIP}");
             }
 
             _heartbeat = null;
@@ -193,7 +193,7 @@ namespace UberStrok.Realtime.Server
 
             return new ModerationWebServiceClient(Configuration.WebServices)
                     .Ban(
-                        Configuration.WebServicesAuth, 
+                        Configuration.WebServicesAuth,
                         UserView.CmuneMemberView.PublicProfile.Cmid
                      );
         }

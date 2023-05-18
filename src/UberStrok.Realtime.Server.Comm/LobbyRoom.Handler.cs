@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using PhotonHostRuntimeInterfaces;
+using System;
+using System.Collections.Generic;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
 using UberStrok.WebServices.Client;
@@ -18,7 +18,11 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnFullPlayerListUpdate(CommPeer peer)
         {
+            var actors = new List<CommActorInfoView>(_peers.Count);
+            for (int i = 0; i < this._peers.Count; i++)
+                actors.Add(this._peers[i].Actor.View);
 
+            peer.Events.Lobby.SendFullPlayerListUpdate(actors);
         }
 
         protected override void OnUpdatePlayerRoom(CommPeer peer, GameRoomView room)
@@ -30,32 +34,65 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnResetPlayerRoom(CommPeer peer)
         {
-            throw new NotImplementedException();
+            peer.Actor.View.CurrentRoom = null;
+
+            foreach (var otherPeer in this._peers)
+            {
+                otherPeer.Events.Lobby.SendPlayerUpdate(peer.Actor.View);
+            }
         }
 
         protected override void OnUpdateFriendsList(CommPeer peer, int cmid)
         {
-            throw new NotImplementedException();
+            CommPeer userPeer = this.Find(cmid);
+
+            if (userPeer != null)
+            {
+                userPeer.Events.Lobby.SendUpdateFriendsList();
+            }
         }
 
         protected override void OnUpdateClanData(CommPeer peer, int cmid)
         {
-            throw new NotImplementedException();
+            CommPeer userPeer = this.Find(cmid);
+
+            if (userPeer != null)
+            {
+                userPeer.Events.Lobby.SendUpdateClanData();
+            }
         }
 
         protected override void OnUpdateInboxMessages(CommPeer peer, int cmid, int messageId)
         {
-            throw new NotImplementedException();
+            CommPeer userPeer = this.Find(cmid);
+
+            if (userPeer != null)
+            {
+                userPeer.Events.Lobby.SendUpdateInboxMessages(messageId);
+            }
         }
 
         protected override void OnUpdateInboxRequests(CommPeer peer, int cmid)
         {
-            throw new NotImplementedException();
+            CommPeer friendPeer = this.Find(cmid);
+
+            if (friendPeer != null)
+            {
+                friendPeer.Events.Lobby.SendUpdateInboxRequests();
+            }
         }
 
         protected override void OnUpdateClanMembers(CommPeer peer, List<int> clanMembers)
         {
-            throw new NotImplementedException();
+            foreach (var clanMember in clanMembers)
+            {
+                CommPeer clanMemberPeer = this.Find(clanMember);
+
+                if (clanMemberPeer != null)
+                {
+                    clanMemberPeer.Events.Lobby.SendUpdateClanMembers();
+                }
+            }
         }
 
         protected override void OnGetPlayersWithMatchingName(CommPeer peer, string search)
@@ -108,7 +145,7 @@ namespace UberStrok.Realtime.Server.Comm
                                         else
                                             response = "Error: Failed to ban user.";
                                     }
-                                    catch(Exception ex)
+                                    catch (Exception ex)
                                     {
                                         response = "Error: Exception thrown while trying to ban a user: " + ex.Message;
                                     }
@@ -256,7 +293,15 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnChatMessageToClan(CommPeer peer, List<int> clanMembers, string message)
         {
-            throw new NotImplementedException();
+            foreach (int clanMember in clanMembers)
+            {
+                CommPeer clanMemberPeer = this.Find(clanMember);
+
+                if (clanMemberPeer != null)
+                {
+                    clanMemberPeer.Events.Lobby.SendClanChatMessage(peer.Actor.Cmid, peer.Actor.Name, message);
+                }
+            }
         }
 
         protected override void OnModerationMutePlayer(CommPeer peer, int durationInMinutes, int mutedCmid, bool disableChat)
@@ -268,8 +313,8 @@ namespace UberStrok.Realtime.Server.Comm
             if (mutedPeer != null && mutedPeer.Actor.AccessLevel < MemberAccessLevel.Moderator)
             {
                 mutedPeer.Actor.IsMuted = durationInMinutes > 0;
-                mutedPeer.Actor.MuteEndTime = DateTime.UtcNow.AddSeconds(durationInMinutes);
-                mutedPeer.Events.Lobby.SendModerationMutePlayer(disableChat);
+                mutedPeer.Actor.MuteEndTime = DateTime.UtcNow.AddMinutes(durationInMinutes);
+                mutedPeer.Events.Lobby.SendModerationMutePlayer(mutedPeer.Actor.IsMuted);
             }
         }
 
@@ -283,10 +328,10 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnModerationBanPlayer(CommPeer peer, int cmid)
         {
-            if (peer.Actor.AccessLevel < MemberAccessLevel.SeniorQA)
+            if (peer.Actor.AccessLevel < MemberAccessLevel.Moderator)
                 return;
             var user = Find(cmid);
-            if(user != null)
+            if (user != null)
             {
                 user.SendError("You have been kicked from the game.");
                 Leave(user);
@@ -343,7 +388,7 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnSetContactList(CommPeer peer, List<int> cmids)
         {
-            throw new NotImplementedException();
+            peer.Actor.ContactList = new HashSet<int>(cmids);
         }
 
         protected override void OnUpdateAllActors(CommPeer peer)
@@ -353,7 +398,7 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnUpdateContacts(CommPeer peer)
         {
-            
+            throw new NotImplementedException();
         }
 
         private bool DoBan(CommPeer peer, int cmid)

@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using UberStrok.Core.Views;
 using UberStrok.Core.Common;
+using UberStrok.Core.Views;
 
 namespace UberStrok.Core.Serialization.Views
 {

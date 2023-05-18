@@ -6,7 +6,7 @@ namespace UberStrok.Realtime.Server.Game
     {
         private readonly Countdown _countdown;
 
-        public CountdownRoomState(GameRoom room) 
+        public CountdownRoomState(GameRoom room)
             : base(room)
         {
             _countdown = new Countdown(Room.Loop, 5, 0);

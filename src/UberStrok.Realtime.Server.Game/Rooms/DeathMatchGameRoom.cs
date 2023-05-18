@@ -8,7 +8,7 @@ namespace UberStrok.Realtime.Server.Game
 {
     public sealed class DeathMatchGameRoom : GameRoom
     {
-        public DeathMatchGameRoom(GameRoomDataView data, ILoopScheduler scheduler) 
+        public DeathMatchGameRoom(GameRoomDataView data, ILoopScheduler scheduler)
             : base(data, scheduler)
         {
             if (data.GameMode != GameModeType.DeathMatch)
@@ -57,21 +57,27 @@ namespace UberStrok.Realtime.Server.Game
         protected override void OnPlayerKilled(PlayerKilledEventArgs e)
         {
             base.OnPlayerKilled(e);
+            if (State.Current != RoomState.Id.WaitingForPlayers)
+            {
+                /* If player killed himself, don't update round score. */
+                if (e.Attacker != e.Victim)
+                {
+                    int killsRemaining = GetKillsRemaining();
+                    foreach (var player in Players)
+                        player.Peer.Events.Game.SendKillsRemaining(killsRemaining, 0);
 
-            /* If player killed himself, don't update round score. */
-            if (e.Attacker == e.Victim)
-                return;
-
-            int killsRemaining = GetKillsRemaining();
-            foreach (var player in Players)
-                player.Peer.Events.Game.SendKillsRemaining(killsRemaining, 0);
-
-            /* 
-             * The client doesn't care about which team wins, it uses
-             * its local data to figure out which player won.
-             */
-            if (killsRemaining <= 0)
-                State.Set(RoomState.Id.End);
+                    /* 
+                     * The client doesn't care about which team wins, it uses
+                     * its local data to figure out which player won.
+                     */
+                    if (killsRemaining <= 0)
+                        State.Set(RoomState.Id.AfterRound);
+                }
+            }
+            else
+            {
+                OnRespawnRequest(e.Victim);
+            };
         }
 
         private int GetKillsRemaining()
@@ -81,6 +87,10 @@ namespace UberStrok.Realtime.Server.Game
              * maintain the leader directly through killed events.
              */
             return GetView().KillLimit - (Players.Count > 0 ? Players.Aggregate((a, b) => a.Info.Kills > b.Info.Kills ? a : b).Info.Kills : 0);
+        }
+
+        protected override void OnSwitchTeam(GameActor actor)
+        {
         }
     }
 }

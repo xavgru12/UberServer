@@ -7,17 +7,22 @@ namespace UberStrok.Realtime.Server.Game
     {
         private readonly Countdown _respawnCountdown;
         private readonly Countdown _disconnectCountdown;
+        private readonly bool _teamElimination;
 
-        public KilledActorState(GameActor actor) 
+        public KilledActorState(GameActor actor)
             : base(actor)
         {
-            _respawnCountdown = new Countdown(Room.Loop, 5, 0);
-            _respawnCountdown.Counted += OnRespawnCountdownCounted;
-            _respawnCountdown.Completed += OnRespawnCountdownCompleted;
+            _teamElimination = Room.IsTeamElimination;
+            if (!_teamElimination)
+            {
+                _respawnCountdown = new Countdown(Room.Loop, 5, 0);
+                _respawnCountdown.Counted += OnRespawnCountdownCounted;
+                _respawnCountdown.Completed += OnRespawnCountdownCompleted;
 
-            _disconnectCountdown = new Countdown(Room.Loop, 60 * 3, 0);
-            _disconnectCountdown.Counted += OnDisconnectCountdownCounted;
-            _disconnectCountdown.Completed += OnDisconnectCountdownCompleted;
+                _disconnectCountdown = new Countdown(Room.Loop, 60 * 3, 0);
+                _disconnectCountdown.Counted += OnDisconnectCountdownCounted;
+                _disconnectCountdown.Completed += OnDisconnectCountdownCompleted;
+            }
         }
 
         public override void OnEnter()
@@ -29,14 +34,22 @@ namespace UberStrok.Realtime.Server.Game
             /* Reset current statistics view. */
             Actor.Statistics.Reset(hard: false);
 
-            _respawnCountdown.Restart();
-            _disconnectCountdown.Restart();
+            if (_teamElimination)
+            {
+                Actor.Info.PlayerState |= PlayerStates.Spectator;
+                Peer.Events.Game.SendJoinedAsSpectator();
+            }
+            else
+            {
+                _respawnCountdown.Restart();
+                _disconnectCountdown.Restart();
+            }
         }
 
         public override void OnTick()
         {
-            _respawnCountdown.Tick();
-            _disconnectCountdown.Tick();
+            _respawnCountdown?.Tick();
+            _disconnectCountdown?.Tick();
         }
 
         public override void OnExit()
@@ -44,6 +57,9 @@ namespace UberStrok.Realtime.Server.Game
             Actor.Info.Health = 100;
             Actor.Info.ArmorPoints = Actor.Info.ArmorPointCapacity;
             Actor.Info.PlayerState &= ~PlayerStates.Dead;
+
+            if (_teamElimination)
+                Actor.Info.PlayerState &= ~PlayerStates.Spectator;
         }
 
         private void OnRespawnCountdownCounted(int count)

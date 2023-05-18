@@ -8,7 +8,7 @@ namespace UberStrok.Core
     {
         private readonly List<Timer> _respawnTimers;
         private readonly Loop _loop;
-        
+
         public bool IsLoaded { get; private set; }
         public List<int> Respawning { get; }
 

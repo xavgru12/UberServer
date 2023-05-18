@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
+using UberStrok.WebServices.Client;
 
 namespace UberStrok.Realtime.Server.Game
 {
@@ -82,7 +83,7 @@ namespace UberStrok.Realtime.Server.Game
                     return;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to authenticate user. Try restarting UberStrike.");
                 MessageBox.Show(ex.ToString());
@@ -93,15 +94,19 @@ namespace UberStrok.Realtime.Server.Game
             {
                 string webServices = GameApplication.Instance.Configuration.WebServices;
 
+                /* Retrieve loadout data from the web server. */
+                var client = new ShopWebServiceClient(webServices);
+                var shopView = client.GetShop();
+
                 room = GameApplication.Instance.Rooms.Create(roomData, password);
-                room.Shop.Load(webServices, authToken);
+                room.Shop.Load(shopView);
             }
             catch (NotSupportedException)
             {
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "UberStrok does not support the selected game mode.");
                 return;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to create game room. Exception: " + ex.Message);
                 throw;
@@ -157,16 +162,10 @@ namespace UberStrok.Realtime.Server.Game
                 }
                 else
                 {
-                    var samePlayer = room.Players.Where(x => x.PlayerId == peer.Actor.PlayerId);
-                    if (samePlayer.Count() > 0)
-                    {
-                        //there is bugged player!
-                        foreach(var p in samePlayer)
-                        {
-                            room.Leave(p.Peer);
-                        }
+                    try 
+                    { 
+                        room.Join(peer); 
                     }
-                    try { room.Join(peer); }
                     catch
                     {
                         peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to join room.");
@@ -206,33 +205,34 @@ namespace UberStrok.Realtime.Server.Game
 
         protected override void OnUpdateKeyState(GamePeer peer, byte state)
         {
-            if (peer.Actor != null)
-                peer.Actor.Movement.KeyState = state;
+
         }
 
         protected override void OnUpdateLoadout(GamePeer peer)
         {
             var actor = peer.Actor;
-            if (actor != null)
+            if (actor == null)
             {
-                try
-                {
-                    var shop = actor.Room.Shop;
-                    var loadout = peer.GetLoadout(retrieve: true);
+                Log.Error("Peer attempted to update loadout but was not associated with any Actor.");
+                return;
+            }
+            try
+            {
+                var shop = actor.Room.Shop;
+                var loadout = peer.GetLoadout(retrieve: true);
 
-                    actor.Loadout.Update(shop, loadout);
+                actor.Loadout.Update(shop, loadout);
 
-                    actor.Info.Gear = actor.Loadout.Gear.GetAsList();
-                    actor.Info.Weapons = actor.Loadout.Weapons.GetAsList();
-                    actor.Info.QuickItems = actor.Loadout.QuickItems.GetAsList();
+                actor.Info.Gear = actor.Loadout.Gear.GetAsList();
+                actor.Info.Weapons = actor.Loadout.Weapons.GetAsList();
+                actor.Info.QuickItems = actor.Loadout.QuickItems.GetAsList();
 
-                    actor.Info.ArmorPointCapacity = actor.Loadout.Gear.GetArmorCapacity();
-                }
-                catch
-                {
-                    peer.Disconnect();
-                    throw;
-                }
+                actor.Info.ArmorPointCapacity = actor.Loadout.Gear.GetArmorCapacity();
+            }
+            catch
+            {
+                peer.Disconnect();
+                throw;
             }
         }
 

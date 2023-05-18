@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
 
@@ -8,10 +9,9 @@ namespace UberStrok.Realtime.Server.Comm
     {
         public CommPeer Peer { get; }
         public CommActorInfoView View { get; }
-
         public bool IsMuted { get; set; }
         public DateTime MuteEndTime { get; set; }
-
+        public HashSet<int> ContactList { get; set; }
         public int Cmid => View.Cmid;
         public string Name => View.PlayerName;
         public MemberAccessLevel AccessLevel => View.AccessLevel;

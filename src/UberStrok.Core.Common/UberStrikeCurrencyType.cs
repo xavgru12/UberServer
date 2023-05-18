@@ -3,9 +3,9 @@
     // -> UberStrikeCurrencyType
 
     public enum UberStrikeCurrencyType
-	{
-		None,
-		Credits,
-		Points
-	}
+    {
+        None,
+        Credits,
+        Points
+    }
 }

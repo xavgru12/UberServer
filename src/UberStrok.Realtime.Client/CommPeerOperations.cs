@@ -34,7 +34,7 @@ namespace UberStrok.Realtime.Client
                     }
                 };
 
-                _peer._peer.OpCustom((byte)ICommPeerOperationsType.AuthenticationRequest, param, true, 0, false); 
+                _peer._peer.OpCustom((byte)ICommPeerOperationsType.AuthenticationRequest, param, true, 0, false);
             }
         }
     }

@@ -21,6 +21,7 @@ namespace UberStrok.Realtime.Server.Game
         protected abstract void OnDirectDamage(GameActor actor, ushort damage);
         protected abstract void OnDirectDeath(GameActor actor);
         protected abstract void OnSwitchWeapon(GameActor actor, byte slot);
+        protected abstract void OnSwitchTeam(GameActor actor);
         protected abstract void OnSingleBulletFire(GameActor actor);
         protected abstract void OnIsPaused(GameActor actor, bool on);
         protected abstract void OnIsInSniperMode(GameActor actor, bool on);
@@ -31,6 +32,7 @@ namespace UberStrok.Realtime.Server.Game
         protected abstract void OnPowerUpRespawnTimes(GameActor actor, List<ushort> respawnTimes);
         protected abstract void OnSpawnPositions(GameActor actor, TeamID team, List<Vector3> positions, List<byte> rotations);
         protected abstract void OnJoinTeam(GameActor actor, TeamID team);
+        protected abstract void OnJoinAsSpectator(GameActor actor);
         protected abstract void OnOpenDoor(GameActor actor, int doorId);
         protected abstract void OnHitFeedback(GameActor actor, int targetCmid, Vector3 force);
 
@@ -99,8 +101,14 @@ namespace UberStrok.Realtime.Server.Game
                 case IGameRoomOperationsType.JoinGame:
                     JoinGame(peer, bytes);
                     break;
+                case IGameRoomOperationsType.JoinAsSpectator:
+                    JoinAsSpectator(peer, bytes);
+                    break;
                 case IGameRoomOperationsType.OpenDoor:
                     OpenDoor(peer, bytes);
+                    break;
+                case IGameRoomOperationsType.SwitchTeam:
+                    SwitchTeam(peer);
                     break;
                 case IGameRoomOperationsType.HitFeedback:
                     HitFeedback(peer, bytes);
@@ -268,11 +276,21 @@ namespace UberStrok.Realtime.Server.Game
             Enqueue(() => OnJoinTeam(peer.Actor, team));
         }
 
+        private void JoinAsSpectator(GamePeer peer, MemoryStream bytes)
+        {
+            Enqueue(() => OnJoinAsSpectator(peer.Actor));
+        }
+
         private void OpenDoor(GamePeer peer, MemoryStream bytes)
         {
             var doorId = Int32Proxy.Deserialize(bytes);
 
             Enqueue(() => OnOpenDoor(peer.Actor, doorId));
+        }
+
+        private void SwitchTeam(GamePeer peer)
+        {
+            Enqueue(() => OnSwitchTeam(peer.Actor));
         }
 
         private void HitFeedback(GamePeer peer, MemoryStream bytes)

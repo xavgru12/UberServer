@@ -7,7 +7,7 @@ using UberStrok.Core.Common;
 
 namespace UberStrok.Realtime.Server.Game
 {
-    public abstract partial class GameRoom :  BaseGameRoomOperationHandler
+    public abstract partial class GameRoom : BaseGameRoomOperationHandler
     {
         /* 
          * Enqueue the work on the loop so processing of operations are serial
@@ -20,11 +20,14 @@ namespace UberStrok.Realtime.Server.Game
 
         public sealed override void OnDisconnect(GamePeer peer, DisconnectReason reasonCode, string reasonDetail)
         {
+            peer.Disconnect();
             Leave(peer);
         }
 
         protected sealed override void OnJoinTeam(GameActor actor, TeamID team)
         {
+            if (actor == null)
+                return;
             if (!CanJoin(actor, team))
             {
                 actor.Peer.Events.Game.SendJoinGameFailed("Room or team is full.");
@@ -55,8 +58,18 @@ namespace UberStrok.Realtime.Server.Game
             }
         }
 
+        protected sealed override void OnJoinAsSpectator(GameActor actor)
+        {
+            if (actor == null)
+                return;
+            actor.PlayerId = _nextPlayer++;
+            actor.State.Set(ActorState.Id.Spectator);
+        }
+
         protected sealed override void OnChatMessage(GameActor actor, string message, byte context)
         {
+            if (actor == null)
+                throw new ArgumentNullException(nameof(actor));
             var cmid = actor.Cmid;
             var playerName = actor.Info.PlayerName;
             var accessLevel = actor.Info.AccessLevel;
@@ -83,9 +96,9 @@ namespace UberStrok.Realtime.Server.Game
         protected sealed override void OnPowerUpPicked(GameActor actor, int pickupId, PickupItemType type, byte value)
         {
             PowerUps.PickUp(
-                actor, 
+                actor,
                 pickupId,
-                type, 
+                type,
                 value
             );
         }
@@ -142,7 +155,6 @@ namespace UberStrok.Realtime.Server.Game
             if (actor.Projectiles.FalsePositive >= 10)
             {
                 ReportLog.Warn($"[Weapon] OnExplosionDamage False positive reached {actor.Cmid}");
-                actor.Peer.Disconnect();
             }
             else
             {
@@ -162,8 +174,6 @@ namespace UberStrok.Realtime.Server.Game
                             Part = BodyPart.Body,
                             Direction = -direction
                         });
-
-                        break;
                     }
                 }
             }
@@ -194,7 +204,6 @@ namespace UberStrok.Realtime.Server.Game
             if (weapon.FalsePositive >= weapon.FalsePositiveThreshold)
             {
                 ReportLog.Warn($"[Weapon] OnDirectHitDamage FalsePositive reached {actor.Cmid}");
-                actor.Peer.Disconnect();
             }
             else
             {
@@ -238,6 +247,7 @@ namespace UberStrok.Realtime.Server.Game
             {
                 Log.Warn($"Negative damage: {damage}; Disconnecting.");
                 actor.Peer.Disconnect();
+                Leave(actor.Peer);
             }
             else
             {
@@ -267,9 +277,12 @@ namespace UberStrok.Realtime.Server.Game
                 var damage = (ushort)actor.Info.Health;
 
                 actor.Info.Health = 0;
-                actor.Info.Deaths++;
-                actor.Info.Kills--;
-                actor.Statistics.RecordSuicide();
+                if(State.Current == RoomState.Id.Running)
+                {
+                    actor.Info.Deaths++;
+                    actor.Info.Kills--;
+                    actor.Statistics.RecordSuicide();
+                }
 
                 OnPlayerKilled(new PlayerKilledEventArgs
                 {
@@ -305,7 +318,6 @@ namespace UberStrok.Realtime.Server.Game
             if (weapon.FalsePositive >= weapon.FalsePositiveThreshold)
             {
                 ReportLog.Warn($"[Weapon] OnEmitProjectile FalsePositive reached {actor.Cmid}");
-                actor.Peer.Disconnect();
                 return;
             }
 
@@ -315,6 +327,7 @@ namespace UberStrok.Realtime.Server.Game
             {
                 ReportLog.Warn($"[Projectiles] OnEmitProjectile FalsePositive reached {actor.Cmid}");
                 actor.Peer.Disconnect();
+                Leave(actor.Peer);
             }
             else
             {
@@ -344,6 +357,7 @@ namespace UberStrok.Realtime.Server.Game
             {
                 ReportLog.Warn($"[Projectiles] OnRemoveProjectile FalsePositive reached {actor.Cmid}");
                 actor.Peer.Disconnect();
+                Leave(actor.Peer);
             }
             else
             {
@@ -378,8 +392,13 @@ namespace UberStrok.Realtime.Server.Game
 
         protected sealed override void OnSingleBulletFire(GameActor actor)
         {
+            if (State.Current != RoomState.Id.Running)
+                return;
+
             var weapon = actor.Loadout.Weapons[actor.Info.CurrentWeaponID];
-            
+
+            if (weapon == null)
+                return;
             /* Send single bullet fire to all peers. */
             foreach (var otherActors in Actors)
                 otherActors.Peer.Events.Game.SendSingleBulletFire(actor.Cmid);
@@ -401,7 +420,7 @@ namespace UberStrok.Realtime.Server.Game
         protected sealed override void OnIsFiring(GameActor actor, bool on)
         {
             var weapon = actor.Loadout.Weapons[actor.Info.CurrentWeaponID];
-            if(weapon != null)
+            if (weapon != null)
             {
                 var state = actor.Info.PlayerState;
 

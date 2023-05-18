@@ -9,7 +9,7 @@ namespace UberStrok.Realtime.Server.Game
     public class GameActor
     {
         private StatisticsManager _statistics;
-        
+
         protected ILog Log { get; }
 
         public int Cmid => Info.Cmid;
@@ -59,7 +59,7 @@ namespace UberStrok.Realtime.Server.Game
         public GamePeer Peer { get; }
         public GameRoom Room { get; }
         public StateMachine<ActorState.Id> State { get; }
-        
+
         public GameActor(GamePeer peer, GameRoom room)
         {
             Peer = peer ?? throw new ArgumentNullException(nameof(peer));
@@ -86,7 +86,8 @@ namespace UberStrok.Realtime.Server.Game
             State.Register(ActorState.Id.Playing, new PlayingActorState(this));
             State.Register(ActorState.Id.Killed, new KilledActorState(this));
             State.Register(ActorState.Id.End, new EndActorState(this));
-
+            State.Register(ActorState.Id.AfterRound, new PlayerAfterRoundState(this));
+            State.Register(ActorState.Id.Spectator, new PlayerSpectatingState(this));
             Reset();
         }
 
@@ -107,7 +108,7 @@ namespace UberStrok.Realtime.Server.Game
             Loadout.Update(Room.Shop, loadoutView);
 
             PlayerId = 0;
-            
+
             Info.PlayerName = profileView.Name;
             Info.PlayerState = PlayerStates.None;
             Info.TeamID = TeamID.NONE;

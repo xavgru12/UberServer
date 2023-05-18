@@ -40,7 +40,7 @@ namespace UberStrok.Realtime.Server.Comm
                 SendEvent((byte)ICommPeerEventsType.LoadData, bytes);
             }
         }
-       
+
         public void SendLobbyEntered()
         {
             using (var bytes = new MemoryStream())

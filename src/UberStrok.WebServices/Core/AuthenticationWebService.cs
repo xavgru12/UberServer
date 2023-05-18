@@ -98,7 +98,7 @@ namespace UberStrok.WebServices.Core
                     PlayerStatisticsView = null
                 };
             }
-            Log.Debug("Hwd: "+machineId);
+            Log.Debug("Hwd: " + machineId);
             // Figure out if the account has been linked.
             var linked = true;
             // Figure out if the account existed. true -> existed otherwise false.

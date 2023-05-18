@@ -40,7 +40,7 @@ namespace UberStrok.Realtime.Server.Game
         {
             lock (_sync)
             {
-                if (_rooms.TryGetValue(roomId, out GameRoom room) && room.Actors.Count == 0)
+                if (!_rooms.TryGetValue(roomId, out GameRoom room))
                     return null;
                 return room;
             }
@@ -69,7 +69,9 @@ namespace UberStrok.Realtime.Server.Game
                     case GameModeType.TeamDeathMatch:
                         room = new TeamDeathMatchGameRoom(data, _loopScheduler);
                         break;
-
+                    case GameModeType.EliminationMode:
+                        room = new TeamEliminationGameRoom(data, _loopScheduler);
+                        break;
                     default:
                         throw new NotSupportedException();
                 }
@@ -103,7 +105,7 @@ namespace UberStrok.Realtime.Server.Game
                     var room = kv.Value;
                     var view = room.GetView();
 
-                    if (!view.IsPermanentGame && room.Actors.Count == 0 && room.Loop.Time >= 15 * 1000)
+                    if (room.EmptyTickTime > 10000 / 15)
                     {
                         Log.Info("Removing empty room " + room.RoomId);
                         _removedRooms.Add(room.RoomId);
@@ -114,9 +116,12 @@ namespace UberStrok.Realtime.Server.Game
                         room.Updated = false;
                     }
                 }
+                if (_removedRooms.Count > 0 || _updatedRooms.Count > 0)
+                {
+                    foreach (var peer in GameApplication.Instance.Lobby.Peers)
+                        peer.Events.SendGameListUpdate(_updatedRooms, _removedRooms);
+                }
 
-                foreach (var peer in GameApplication.Instance.Lobby.Peers)
-                    peer.Events.SendGameListUpdate(_updatedRooms, _removedRooms);
 
                 foreach (var roomId in _removedRooms)
                 {
@@ -148,10 +153,7 @@ namespace UberStrok.Realtime.Server.Game
             {
                 foreach (var kv in _rooms)
                 {
-                    var room = kv.Value;
-                    /* Filter out empty rooms. */
-                    if (room.Actors.Count != 0)
-                        yield return room;
+                    yield return kv.Value;
                 }
             }
         }

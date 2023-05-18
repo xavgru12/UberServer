@@ -30,7 +30,7 @@ namespace UberStrok.Realtime.Server.Game.Tests
 
             timerSampler = new TickSampler(sampleSize);
             fixedTimerSampler = new TickSampler(sampleSize);
-            
+
             timer.Start();
             fixedTimer.Start();
 

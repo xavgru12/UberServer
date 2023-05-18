@@ -31,16 +31,19 @@ namespace UberStrok.Realtime.Server.Game
             args.Victim.State.Set(ActorState.Id.Killed);
 
             /* Let all actors know that the player has died. */
-            foreach (var otherActor in Actors)
+            if (State.Current == RoomState.Id.Running)
             {
-                otherActor.Peer.Events.Game.SendPlayerKilled(
-                    args.Attacker.Cmid, 
-                    args.Victim.Cmid, 
-                    args.ItemClass, 
-                    args.Damage, 
-                    args.Part, 
-                    args.Direction
-                );
+                foreach (var otherActor in Actors)
+                {
+                    otherActor.Peer.Events.Game.SendPlayerKilled(
+                        args.Attacker.Cmid,
+                        args.Victim.Cmid,
+                        args.ItemClass,
+                        args.Damage,
+                        args.Part,
+                        args.Direction
+                    );
+                }
             }
 
             Log.Info($"{args.Victim.GetDebug()} was killed by {args.Attacker.GetDebug()}.");
@@ -63,7 +66,7 @@ namespace UberStrok.Realtime.Server.Game
                 Debug.Assert(otherActor.Movement.PlayerId == otherActor.PlayerId);
 
                 otherActor.Peer.Events.Game.SendPlayerJoinedGame(
-                    args.Player.Info.GetView(), 
+                    args.Player.Info.GetView(),
                     args.Player.Movement
                 );
             }

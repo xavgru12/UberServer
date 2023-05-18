@@ -2,7 +2,6 @@
 using System;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
-using log4net;
 
 namespace UberStrok.Realtime.Server.Comm
 {
@@ -31,10 +30,22 @@ namespace UberStrok.Realtime.Server.Comm
 
         public override void Tick()
         {
-            base.Tick();
-
-            if (Actor.IsMuted && DateTime.UtcNow >= Actor.MuteEndTime)
-                Actor.IsMuted = false;
+            try
+            {
+                base.Tick();
+                if (Actor.IsMuted)
+                {
+                    if (Actor.MuteEndTime < DateTime.UtcNow)
+                    {
+                        Events.Lobby.SendModerationMutePlayer(false);
+                        Actor.IsMuted = false;
+                    }
+                }
+            }
+            catch
+            {
+                HasError = true;
+            }
         }
 
         protected override void OnAuthenticate(UberstrikeUserView userView)
@@ -45,6 +56,7 @@ namespace UberStrok.Realtime.Server.Comm
                 Channel = ChannelType.Steam,
                 Cmid = userView.CmuneMemberView.PublicProfile.Cmid,
                 PlayerName = userView.CmuneMemberView.PublicProfile.Name,
+                ClanTag = userView.CmuneMemberView.PublicProfile.GroupTag,
             };
 
             Actor = new CommActor(this, actorView);
@@ -52,7 +64,7 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnDisconnect(global::PhotonHostRuntimeInterfaces.DisconnectReason reasonCode, string reasonDetail)
         {
-            
+            HasError = true;
         }
     }
 }

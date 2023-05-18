@@ -60,6 +60,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "harmony", "harmony", "{EB90
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uberstrok.Harmony", "src\Uberstrok.Harmony\Uberstrok.Harmony.csproj", "{52CAEB91-BADC-43B1-8EDA-52158C759D85}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UberStrok.WebServices.AspNetCore", "src\UberStrok.WebServices.AspNetCore\UberStrok.WebServices.AspNetCore.csproj", "{0B2246B4-7A68-4E8B-9A2C-183B0B194561}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UberStrok.WebServices.AspNetCore.Contracts", "src\UberStrok.WebServices.AspNetCore.Contracts\UberStrok.WebServices.AspNetCore.Contracts.csproj", "{AFBA9B00-3DC3-4B02-BA5F-A71FFFC7CD57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,6 +142,14 @@ Global
 		{52CAEB91-BADC-43B1-8EDA-52158C759D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52CAEB91-BADC-43B1-8EDA-52158C759D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52CAEB91-BADC-43B1-8EDA-52158C759D85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B2246B4-7A68-4E8B-9A2C-183B0B194561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B2246B4-7A68-4E8B-9A2C-183B0B194561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B2246B4-7A68-4E8B-9A2C-183B0B194561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B2246B4-7A68-4E8B-9A2C-183B0B194561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFBA9B00-3DC3-4B02-BA5F-A71FFFC7CD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFBA9B00-3DC3-4B02-BA5F-A71FFFC7CD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFBA9B00-3DC3-4B02-BA5F-A71FFFC7CD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFBA9B00-3DC3-4B02-BA5F-A71FFFC7CD57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +177,8 @@ Global
 		{550D6A90-016A-4283-A102-CBF46B043D37} = {CEACCD26-CB32-46CF-8AEA-E3020185AA47}
 		{32C19193-C316-4E15-92BD-1030485FAFC1} = {61BF1225-0BEF-40D8-A70B-9A69CDB6D379}
 		{52CAEB91-BADC-43B1-8EDA-52158C759D85} = {EB90CE66-8CF6-4FD1-8E1C-18C5B0F7B1A5}
+		{0B2246B4-7A68-4E8B-9A2C-183B0B194561} = {68AB459A-15D6-4F40-B9FC-EFD26B8BA49A}
+		{AFBA9B00-3DC3-4B02-BA5F-A71FFFC7CD57} = {68AB459A-15D6-4F40-B9FC-EFD26B8BA49A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A7BA424-A650-44CB-A10B-96A4785B646C}

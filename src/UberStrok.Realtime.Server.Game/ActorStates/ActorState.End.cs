@@ -5,7 +5,7 @@ namespace UberStrok.Realtime.Server.Game
 {
     public class EndActorState : ActorState
     {
-        public EndActorState(GameActor actor) 
+        public EndActorState(GameActor actor)
             : base(actor)
         {
             /* Space */

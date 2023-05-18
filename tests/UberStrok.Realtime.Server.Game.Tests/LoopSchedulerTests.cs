@@ -11,7 +11,7 @@ namespace UberStrok.Realtime.Server.Game.Tests
 
         private static float dtSampleSum;
         private static float dtSampleCount;
-        
+
         private static Loop loop;
         private static LoopScheduler loopScheduler;
 

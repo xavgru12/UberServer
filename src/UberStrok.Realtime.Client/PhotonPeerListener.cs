@@ -1,5 +1,5 @@
-﻿using System;
-using ExitGames.Client.Photon;
+﻿using ExitGames.Client.Photon;
+using System;
 using System.Collections.Generic;
 
 namespace UberStrok.Realtime.Client

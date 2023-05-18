@@ -1,4 +1,6 @@
-﻿namespace UberStrok.Core.Common
+﻿using System;
+
+namespace UberStrok.Core.Common
 {
     public static class MathUtils
     {
@@ -20,6 +22,16 @@
                 value = max;
 
             return value;
+        }
+
+        public static int CeilToInt(float f)
+        {
+            return (int)Math.Ceiling(f);
+        }
+
+        public static int Max(int a, int b)
+        {
+            return (a <= b) ? b : a;
         }
     }
 }

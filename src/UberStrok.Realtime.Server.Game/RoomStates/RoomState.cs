@@ -12,7 +12,8 @@ namespace UberStrok.Realtime.Server.Game
             WaitingForPlayers,
             Countdown,
             Running,
-            End
+            End,
+            AfterRound
         }
 
         protected ILog Log { get; }

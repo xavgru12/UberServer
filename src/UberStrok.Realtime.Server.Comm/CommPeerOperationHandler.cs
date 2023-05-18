@@ -13,6 +13,11 @@ namespace UberStrok.Realtime.Server.Comm
             {
                 if (!peer.Authenticate(authToken, magicHash))
                     peer.SendError();
+                else
+                {
+                    CommApplication.Instance.Rooms.Global.Join(peer);
+                }
+
             }
             catch (Exception ex)
             {

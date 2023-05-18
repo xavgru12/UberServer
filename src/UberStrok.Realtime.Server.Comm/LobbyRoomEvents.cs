@@ -23,6 +23,26 @@ namespace UberStrok.Realtime.Server.Comm
                 SendEvent((byte)ILobbyRoomEventsType.PrivateChatMessage, bytes);
             }
         }
+        public void SendPlayerUpdate(CommActorInfoView commActor)
+        {
+            using (MemoryStream bytes = new MemoryStream())
+            {
+                CommActorInfoViewProxy.Serialize(bytes, commActor);
+                base.SendEvent(7, bytes);
+            }
+        }
+
+        public void SendClanChatMessage(int cmid, string name, string message)
+        {
+            using (MemoryStream bytes = new MemoryStream())
+            {
+                Int32Proxy.Serialize(bytes, cmid);
+                StringProxy.Serialize(bytes, name);
+                StringProxy.Serialize(bytes, message);
+                base.SendEvent(11, bytes);
+            }
+        }
+
 
         public void SendFullPlayerListUpdate(List<CommActorInfoView> actors)
         {
@@ -70,6 +90,47 @@ namespace UberStrok.Realtime.Server.Comm
             using (var bytes = new MemoryStream())
             {
                 SendEvent((byte)ILobbyRoomEventsType.ModerationKickGame, bytes);
+            }
+        }
+
+        public void SendUpdateFriendsList()
+        {
+            using (MemoryStream bytes = new MemoryStream())
+            {
+                base.SendEvent((byte)ILobbyRoomEventsType.UpdateFriendsList, bytes);
+            }
+        }
+
+        public void SendUpdateClanMembers()
+        {
+            using (MemoryStream bytes = new MemoryStream())
+            {
+                base.SendEvent((byte)ILobbyRoomEventsType.UpdateClanMembers, bytes);
+            }
+        }
+
+        public void SendUpdateInboxRequests()
+        {
+            using (MemoryStream bytes = new MemoryStream())
+            {
+                base.SendEvent((byte)ILobbyRoomEventsType.UpdateInboxRequests, bytes);
+            }
+        }
+
+        public void SendUpdateInboxMessages(int messageId)
+        {
+            using (MemoryStream bytes = new MemoryStream())
+            {
+                Int32Proxy.Serialize(bytes, messageId);
+                base.SendEvent((byte)ILobbyRoomEventsType.UpdateInboxMessages, bytes);
+            }
+        }
+
+        public void SendUpdateClanData()
+        {
+            using (MemoryStream bytes = new MemoryStream())
+            {
+                base.SendEvent((byte)ILobbyRoomEventsType.UpdateClanData, bytes);
             }
         }
     }

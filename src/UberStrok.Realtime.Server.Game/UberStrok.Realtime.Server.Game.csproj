@@ -50,10 +50,13 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActorStates\ActorState.AfterRound.cs" />
     <Compile Include="ActorStates\ActorState.End.cs" />
+    <Compile Include="ActorStates\ActorState.Spectating.cs" />
     <Compile Include="GameLobby.cs" />
     <Compile Include="Operations\BaseGamePeerOperationHandler.cs" />
     <Compile Include="Operations\BaseGameRoomOperationHandler.cs" />
+    <Compile Include="RoomStates\RoomState.AfterRound.cs" />
     <Compile Include="RoomStates\RoomState.End.cs" />
     <Compile Include="ActorStates\ActorState.Countdown.cs" />
     <Compile Include="GameActor.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rooms\TeamDeathMatchGameRoom.cs" />
     <Compile Include="ActorStates\ActorState.WaitingForPlayers.cs" />
+    <Compile Include="Rooms\TeamEliminationGameRoom.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UberStrok.Core.Common\UberStrok.Core.Common.csproj">

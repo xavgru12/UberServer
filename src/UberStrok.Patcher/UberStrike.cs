@@ -5,7 +5,7 @@ using System.IO;
 
 namespace UberStrok.Patcher
 {
-    public class UberStrike
+    public class UberStrike : IDisposable
     {
         private readonly string _managedPath;
         private readonly ModuleContext _moduleCtx;
@@ -41,6 +41,13 @@ namespace UberStrok.Patcher
 
         public string ManagedPath => _managedPath;
 
+        public void Dispose()
+        {
+            _assemblyCSharp.Dispose();
+            _assemblyCSharpFirstpass.Dispose();
+            _unityEngine.Dispose();
+        }
+
         public ModuleDefMD GetModule(string name)
         {
             var modulePath = Path.Combine(_managedPath, name);
@@ -64,7 +71,7 @@ namespace UberStrok.Patcher
             foreach (var keyValue in _modules)
             {
                 var src = keyValue.Key;
-                var dst = Path.Combine(outDir,  Path.GetFileName(src));
+                var dst = Path.Combine(outDir, Path.GetFileName(src));
 
                 keyValue.Value.Write(dst);
             }
