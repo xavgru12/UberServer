@@ -1,5 +1,16 @@
 ## Server Setup
 
+This version is using .NET 6 and LiteDB as database. In Serversetup/Webservices the LiteDB client is added.
+
+### WAF setup
+
+Go to Serversetup/WAF and edit the appsettings,json
+add IP address of your server, default is: 13.38.94.69
+WAF is used to redirect the webservices for better security. A domain shall be used in a live version. Putting in the IP address is a little hack for easy setup.
+If the domain shall be used, it needs to be set in:
+WAF -> appsettings.json like the example for live.uberforever.eu
+and in Realtime Server, look in Webservice configuration for more info.
+
 ### Firewall Settings
 
 Go to Firewall Advanced Settings

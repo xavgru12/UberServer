@@ -11,7 +11,7 @@
         "Region": 1,
         "Port": 5056,
         "UsageType": 1,
-        "MinLatency": 100
+        "MinLatency": 500
       }
     ]
   }
