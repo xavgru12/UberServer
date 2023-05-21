@@ -1,0 +1,2 @@
+dotnet-hosting-3.0.3-win.exe filter=lfs diff=lfs merge=lfs -text
+mongodb-windows-x86_64-5.0.9-signed.msi filter=lfs diff=lfs merge=lfs -text
