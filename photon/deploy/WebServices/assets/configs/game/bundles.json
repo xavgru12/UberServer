@@ -1,0 +1,24 @@
+﻿[
+  {
+    "Id": 0,
+    "ApplicationId": 0,
+    "Name": "UberKill",
+    "ImageUrl": null,
+    "IconUrl": null,
+    "Description": "Package",
+    "IsOnSale": false,
+    "IsPromoted": false,
+    "USDPrice": 0.0,
+    "USDPromoPrice": 0.0,
+    "Credits": 0,
+    "Points": 0,
+    "BundleItemViews": null,
+    "Category": 0,
+    "Availability": null,
+    "PromotionTag": null,
+    "MacAppStoreUniqueId": null,
+    "IosAppStoreUniqueId": null,
+    "AndroidStoreUniqueId": null,
+    "IsDefault": false
+  }
+]

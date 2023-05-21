@@ -1,0 +1,37 @@
+2019-05-03 00:05:36,581 [1] INFO  Photon.StarDust.Client.Program - Starting 5 games with 3 players
+2019-05-03 00:05:36,831 [4] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:37,174 [6] INFO  Photon.StarDust.Client.Program - [1064] Started game NS3054468(1064)1 with 3 clients
+2019-05-03 00:05:37,299 [7] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:37,456 [15] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:37,581 [13] DEBUG Photon.StarDust.Client.Program - peers: 6, r-ev: 11.74811, ur-ev: 0, r-op: 23.4962, ur-op: 0, res: 17.62207, r-rtt: 0, ur-rtt: 0, rtt: 4.333333, var: 34.33333, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:37,596 [6] INFO  Photon.StarDust.Client.Program - [1064] Started game NS3054468(1064)2 with 3 clients
+2019-05-03 00:05:37,659 [14] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:37,721 [5] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:37,893 [6] INFO  Photon.StarDust.Client.Program - [1064] Started game NS3054468(1064)3 with 3 clients
+2019-05-03 00:05:38,018 [15] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:38,034 [7] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:38,112 [4] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:38,362 [19] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:38,393 [6] INFO  Photon.StarDust.Client.Program - [1064] Started game NS3054468(1064)4 with 3 clients
+2019-05-03 00:05:38,440 [5] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:38,518 [18] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:38,581 [4] DEBUG Photon.StarDust.Client.Program - peers: 13, r-ev: 88.21381, ur-ev: 0, r-op: 82.19923, ur-op: 0, res: 29.07046, r-rtt: 40.04546, ur-rtt: 0, rtt: 8.8, var: 28.2, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:38,768 [14] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:38,940 [81] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:38,956 [6] INFO  Photon.StarDust.Client.Program - [1064] Started game NS3054468(1064)5 with 3 clients
+2019-05-03 00:05:39,190 [4] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:39,425 [7] INFO  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForGameServerConnect - Connecting to 213.32.6.98:5056
+2019-05-03 00:05:39,581 [80] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 213.9833, ur-ev: 0, r-op: 124.9903, ur-op: 0, res: 15.99876, r-rtt: 38.62189, ur-rtt: 0, rtt: 12.86667, var: 15.53333, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:40,581 [80] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 273.984, ur-ev: 0, r-op: 137.9919, ur-op: 0, res: 0, r-rtt: 41.43796, ur-rtt: 0, rtt: 18.46667, var: 6.333333, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:41,581 [78] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 270.942, ur-ev: 0, r-op: 136.9707, ur-op: 0, res: 0, r-rtt: 43.50922, ur-rtt: 0, rtt: 21.13333, var: 7.333333, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:42,581 [19] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 272.9849, ur-ev: 0, r-op: 136.9924, ur-op: 0, res: 0, r-rtt: 39.32235, ur-rtt: 0, rtt: 22, var: 6.8, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:43,583 [18] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 274.5255, ur-ev: 0, r-op: 136.7635, ur-op: 0, res: 0, r-rtt: 41.37184, ur-rtt: 0, rtt: 22.73333, var: 7.266667, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:44,583 [15] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 270.9815, ur-ev: 0, r-op: 137.9906, ur-op: 0, res: 0, r-rtt: 42.05576, ur-rtt: 0, rtt: 22.06667, var: 7.6, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:45,583 [78] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 276.9668, ur-ev: 0, r-op: 137.9835, ur-op: 0, res: 0, r-rtt: 43.66426, ur-rtt: 0, rtt: 21.86667, var: 7.133333, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:46,583 [79] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 274.9796, ur-ev: 0, r-op: 134.99, ur-op: 0, res: 0, r-rtt: 41.65454, ur-rtt: 0, rtt: 22.8, var: 7.266667, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:47,583 [79] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 276.9215, ur-ev: 0, r-op: 134.9618, ur-op: 0, res: 0, r-rtt: 39.90648, ur-rtt: 0, rtt: 22.86667, var: 7.8, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:48,583 [4] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 272.0071, ur-ev: 0, r-op: 138.0036, ur-op: 0, res: 0, r-rtt: 37.39114, ur-rtt: 0, rtt: 22, var: 7, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:49,585 [5] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 269.674, ur-ev: 0, r-op: 136.8346, ur-op: 0, res: 0, r-rtt: 38.95185, ur-rtt: 0, rtt: 22, var: 7, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:50,585 [80] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 274.9599, ur-ev: 0, r-op: 134.9803, ur-op: 0, res: 0, r-rtt: 40.66909, ur-rtt: 0, rtt: 22.2, var: 7, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:51,585 [73] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 274.949, ur-ev: 0, r-op: 143.9734, ur-op: 0, res: 0, r-rtt: 39.48, ur-rtt: 0, rtt: 21.86667, var: 7, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2019-05-03 00:05:52,585 [69] DEBUG Photon.StarDust.Client.Program - peers: 15, r-ev: 269.9825, ur-ev: 0, r-op: 135.9911, ur-op: 0, res: 0, r-rtt: 38.34317, ur-rtt: 0, rtt: 21.6, var: 6.933333, flsh-rtt: 0, flsh-ev 0, flsh-op 0

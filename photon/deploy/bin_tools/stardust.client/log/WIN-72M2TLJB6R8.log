@@ -1,0 +1,84 @@
+2020-03-17 21:29:20,958 [1] INFO  Photon.StarDust.Client.Program - Starting 5 games with 3 players
+2020-03-17 21:29:21,081 [5] ERROR Photon.StarDust.Client.Connections.ClientConnection - 4032828: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:21,085 [5] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:21,247 [7] ERROR Photon.StarDust.Client.Connections.ClientConnection - 12547953: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:21,248 [7] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:21,407 [5] ERROR Photon.StarDust.Client.Connections.ClientConnection - 33711845: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:21,409 [5] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:21,487 [4] INFO  Photon.StarDust.Client.Program - [4988] Started game WIN-72M2TLJB6R8(4988)1 with 3 clients
+2020-03-17 21:29:21,515 [12] ERROR Photon.StarDust.Client.Connections.ClientConnection - 20974680: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:21,516 [12] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:21,734 [20] ERROR Photon.StarDust.Client.Connections.ClientConnection - 22460983: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:21,738 [20] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:21,935 [12] ERROR Photon.StarDust.Client.Connections.ClientConnection - 37916227: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:21,939 [12] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:21,965 [23] DEBUG Photon.StarDust.Client.Program - peers: 0, r-ev: 0, ur-ev: 0, r-op: 0, ur-op: 0, res: 0, r-rtt: 0, ur-rtt: 0, rtt: 0, var: 0, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2020-03-17 21:29:22,105 [4] INFO  Photon.StarDust.Client.Program - [4988] Started game WIN-72M2TLJB6R8(4988)2 with 3 clients
+2020-03-17 21:29:22,137 [22] ERROR Photon.StarDust.Client.Connections.ClientConnection - 25960677: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:22,141 [22] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:22,251 [34] ERROR Photon.StarDust.Client.Connections.ClientConnection - 35974591: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:22,255 [34] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:22,468 [38] ERROR Photon.StarDust.Client.Connections.ClientConnection - 52565416: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:22,472 [38] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:22,513 [4] INFO  Photon.StarDust.Client.Program - [4988] Started game WIN-72M2TLJB6R8(4988)3 with 3 clients
+2020-03-17 21:29:22,545 [7] ERROR Photon.StarDust.Client.Connections.ClientConnection - 11429296: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:22,549 [7] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:22,747 [16] ERROR Photon.StarDust.Client.Connections.ClientConnection - 49538252: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:22,751 [16] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:22,966 [12] ERROR Photon.StarDust.Client.Connections.ClientConnection - 63403007: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:22,966 [7] DEBUG Photon.StarDust.Client.Program - peers: 0, r-ev: 0, ur-ev: 0, r-op: 0, ur-op: 0, res: 0, r-rtt: 0, ur-rtt: 0, rtt: 0, var: 0, flsh-rtt: 0, flsh-ev 0, flsh-op 0
+2020-03-17 21:29:22,970 [12] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:23,149 [4] INFO  Photon.StarDust.Client.Program - [4988] Started game WIN-72M2TLJB6R8(4988)4 with 3 clients
+2020-03-17 21:29:23,169 [16] ERROR Photon.StarDust.Client.Connections.ClientConnection - 62696216: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:23,173 [16] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:23,373 [22] ERROR Photon.StarDust.Client.Connections.ClientConnection - 65532796: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:23,377 [22] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:23,450 [39] ERROR Photon.StarDust.Client.Connections.ClientConnection - 16455498: Receive issue. State: Connected Exception: System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer)
+   at ExitGames.Client.Photon.SocketUdp.ReceiveLoop() 
+2020-03-17 21:29:23,454 [39] WARN  Photon.StarDust.Client.ConnectionStates.LoadBalancing.WaitingForMasterConnect - Waiting: OnPeerStatusCallback: unexpected return code ExceptionOnReceive
+2020-03-17 21:29:23,582 [4] INFO  Photon.StarDust.Client.Program - [4988] Started game WIN-72M2TLJB6R8(4988)5 with 3 clients
+2020-03-17 21:29:23,967 [4] DEBUG Photon.StarDust.Client.Program - peers: 0, r-ev: 0, ur-ev: 0, r-op: 0, ur-op: 0, res: 0, r-rtt: 0, ur-rtt: 0, rtt: 0, var: 0, flsh-rtt: 0, flsh-ev 0, flsh-op 0

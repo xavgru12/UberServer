@@ -1,0 +1,16 @@
+{
+    "webservices": "http://13.38.250.55:5000/2.0/",
+	"webservices_auth": "AmgomgomgFuckyouElOverfuckCrack4235this5424524YO!UassHole",
+    "heartbeat_interval": 5,
+    "heartbeat_timeout": 5,
+	"server_game_version": "4.8.0",
+	"composite_hash": [
+	"4137cfc57fb43598e8ba6d15016b074d60a8492ba97bd04e49119eb1b47fd89c",
+	"3394328776f6f0332478a33c285a931efc86dff7efdd58a1d63ff54754effc39"
+	   ],
+	"junk_hash": [
+	"457729ad8526883dc9702434933509b3412869794c8f32942d2ba86a89ffe80b",
+	"031c4339bda70812fc92be1cb70e45d6103e2d1070c83c552f8b41b2ce8e36ff",
+	"125e9e4ad2babf56fa4058af3efa6f66323a26b29d1ab1ab3037813262fa74e2"
+	]
+}
