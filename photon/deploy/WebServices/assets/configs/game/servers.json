@@ -1,12 +1,12 @@
 ﻿{
     "CommServer": {
-        "IP": "13.38.94.69",
+        "IP": "127.0.0.1",
         "Port": 5055
     },
     "GameServers": [
         {
             "Name": "version 4.8.3",
-            "IP": "13.38.94.69",
+            "IP": "127.0.0.1",
             "Region": 1,
             "Port": 5056,
             "UsageType": 1,
