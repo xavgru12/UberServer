@@ -52,6 +52,7 @@ PhotonRealtimeServer\UberStrok.Realtime.Server.Comm and
 PhotonRealtimeServer\UberStrok.Realtime.Server.Game   
 
 ### Run Server
+Install dotnet 6.0 on server. Dotnet Installer is in /ServerSetup.
 Start the Webservice by executing the .exe from Webservices.    
 
 Steps to start Realtime:   
