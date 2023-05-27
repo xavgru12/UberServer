@@ -31,8 +31,8 @@ namespace UberStrok.WebServices.Core
             {
                 using (var bytes = new MemoryStream(data))
                 {
-                    var version = StringProxy.Deserialize(bytes); // 4.7.1
-                    var channelType = EnumProxy<ChannelType>.Deserialize(bytes); // Steam
+                    var version = StringProxy.Deserialize(bytes); // 4.3.10
+                    var channelType = EnumProxy<ChannelType>.Deserialize(bytes); // WindowsStandalone
                     var publicKey = StringProxy.Deserialize(bytes); // string.Empty;
 
                     var view = OnAuthenticateApplication(version, channelType, publicKey);

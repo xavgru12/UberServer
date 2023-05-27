@@ -111,7 +111,7 @@ namespace UberStrok.Realtime.Server.Game
             Info.PlayerName = profileView.Name;
             Info.PlayerState = PlayerStates.None;
             Info.TeamID = TeamID.NONE;
-            Info.Channel = ChannelType.Steam;
+            Info.Channel = ChannelType.WindowsStandalone;
             Info.Level = statsView.Level == 0 ? 1 : statsView.Level;
             Info.Cmid = profileView.Cmid;
             Info.ClanTag = profileView.GroupTag;

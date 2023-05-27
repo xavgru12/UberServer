@@ -68,7 +68,7 @@ namespace UberStrok.Realtime.Server.Game
         protected override void OnCreateRoom(GamePeer peer, GameRoomDataView roomData, string password, string clientVersion, string authToken, string magicHash)
         {
             /* Check the client version. */
-            if (clientVersion != "4.7.1")
+            if (clientVersion != "4.3.10")
             {
                 peer.Disconnect();
                 return;
@@ -123,7 +123,7 @@ namespace UberStrok.Realtime.Server.Game
         protected override void OnJoinRoom(GamePeer peer, int roomId, string password, string clientVersion, string authToken, string magicHash)
         {
             /* Check the client version. */
-            if (clientVersion != "4.7.1")
+            if (clientVersion != "4.3.10")
             {
                 peer.Disconnect();
                 return;

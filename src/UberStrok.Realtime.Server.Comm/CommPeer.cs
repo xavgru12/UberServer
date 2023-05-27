@@ -42,7 +42,7 @@ namespace UberStrok.Realtime.Server.Comm
             var actorView = new CommActorInfoView
             {
                 AccessLevel = userView.CmuneMemberView.PublicProfile.AccessLevel,
-                Channel = ChannelType.Steam,
+                Channel = ChannelType.WindowsStandalone,
                 Cmid = userView.CmuneMemberView.PublicProfile.Cmid,
                 PlayerName = userView.CmuneMemberView.PublicProfile.Name,
             };
