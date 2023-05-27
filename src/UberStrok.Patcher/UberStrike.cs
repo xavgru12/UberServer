@@ -31,7 +31,7 @@ namespace UberStrok.Patcher
             _managedPath = Path.Combine(path, "UberStrike_Data", "Managed");
 
             _assemblyCSharp = GetModule("Assembly-CSharp.dll");
-            _assemblyCSharpFirstpass = GetModule("Assembly-CSharp-firstpass.dll");
+            _assemblyCSharpFirstpass = GetModule("UberStrike.DataCenter.UnitySdk.dll");
             _unityEngine = GetModule("UnityEngine.dll");
         }
 
