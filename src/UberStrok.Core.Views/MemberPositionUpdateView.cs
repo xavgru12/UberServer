@@ -11,10 +11,10 @@ namespace UberStrok.Core.Views
 
         public MemberPositionUpdateView(int groupId, string authToken, int memberCmid, GroupPosition position)
         {
-            this.GroupId = groupId;
-            this.AuthToken = authToken;
-            this.MemberCmid = memberCmid;
-            this.Position = position;
+            GroupId = groupId;
+            AuthToken = authToken;
+            MemberCmid = memberCmid;
+            Position = position;
         }
 
         public int GroupId { get; set; }
@@ -30,18 +30,18 @@ namespace UberStrok.Core.Views
             string text = string.Concat(new object[]
             {
                 "[MemberPositionUpdateView: [GroupId:",
-                this.GroupId,
+                GroupId,
                 "][AuthToken:",
-                this.AuthToken,
+                AuthToken,
                 "][MemberCmid:",
-                this.MemberCmid
+                MemberCmid
             });
             string text2 = text;
             return string.Concat(new object[]
             {
                 text2,
                 "][Position:",
-                this.Position,
+                Position,
                 "]]"
             });
         }

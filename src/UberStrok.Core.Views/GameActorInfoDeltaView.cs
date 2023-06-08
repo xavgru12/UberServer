@@ -18,8 +18,10 @@ namespace UberStrok.Core.Views
         public void Update()
         {
             int mask = 0;
-            foreach (var key in Changes.Keys)
+            foreach (Keys key in Changes.Keys)
+            {
                 mask |= 1 << (int)key;
+            }
 
             DeltaMask = mask;
         }

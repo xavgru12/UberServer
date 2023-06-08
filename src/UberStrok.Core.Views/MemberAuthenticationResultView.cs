@@ -6,16 +6,6 @@ namespace UberStrok.Core.Views
     [Serializable]
     public class MemberAuthenticationResultView
     {
-        public MemberAuthenticationResultView()
-        {
-            /* Space. */
-        }
-
-        public MemberAuthenticationResultView(MemberAuthenticationResult result)
-        {
-            MemberAuthenticationResult = result;
-        }
-
         public string AuthToken { get; set; }
         public bool IsAccountComplete { get; set; }
         public LuckyDrawUnityView LuckyDraw { get; set; }
@@ -23,5 +13,8 @@ namespace UberStrok.Core.Views
         public MemberView MemberView { get; set; }
         public PlayerStatisticsView PlayerStatisticsView { get; set; }
         public DateTime ServerTime { get; set; }
+        public string ServerGameVersion { get; set; }
+        public int BanDuration { get; set; } = 0;
+        public int MuteDuration { get; set; } = 0;
     }
 }

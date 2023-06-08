@@ -19,7 +19,9 @@ namespace UberStrok.Core
         public void Update(int value)
         {
             if (!CanUpdate)
+            {
                 FalsePositive++;
+            }
 
             _lastUpdate = DateTime.UtcNow;
             Value = value;

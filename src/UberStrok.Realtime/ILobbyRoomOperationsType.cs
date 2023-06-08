@@ -27,6 +27,9 @@
         ClearModeratorFlags,
         SetContactList,
         UpdateAllActors,
-        UpdateContacts
+        UpdateContacts,
+        RequestModules,
+        UberBeatAuthenticate,
+        UberBeatReport
     }
 }

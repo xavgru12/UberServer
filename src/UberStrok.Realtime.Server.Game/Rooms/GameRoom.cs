@@ -1,8 +1,15 @@
 ﻿using log4net;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Photon.SocketServer;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Sockets;
+using System.Text;
+using Uberstrok.Core.Common;
 using UberStrok.Core;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
@@ -44,8 +51,21 @@ namespace UberStrok.Realtime.Server.Game
         public Loop Loop { get; }
         public ILoopScheduler Scheduler { get; }
 
-        public ICollection<GameActor> Players { get; }
-        public ICollection<GameActor> Actors { get; }
+        public ICollection<GameActor> Players
+        {
+            get
+            {
+                return _players;
+            }
+        }
+
+        public ICollection<GameActor> Actors
+        {
+            get
+            {
+                return _actors;
+            }
+        }
 
         public StateMachine<RoomState.Id> State { get; }
 
@@ -88,104 +108,86 @@ namespace UberStrok.Realtime.Server.Game
 
         public GameRoom(GameRoomDataView data, ILoopScheduler scheduler)
         {
-            _view = data ?? throw new ArgumentNullException(nameof(data));
-            Scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
-
-            ReportLog = LogManager.GetLogger("Report");
-
-            _stats = new Dictionary<int, StatisticsManager>();
-
+            if (data == null)
+            {
+                throw new ArgumentNullException("data");
+            }
+            this._view = data;
+            if (scheduler == null)
+            {
+                throw new ArgumentNullException("scheduler");
+            }
+            this.Scheduler = scheduler;
+            this.ReportLog = LogManager.GetLogger("Report");
+            this._stats = new Dictionary<int, StatisticsManager>();
             int capacity = data.PlayerLimit / 2;
-            _players = new List<GameActor>(capacity);
-            _actors = new List<GameActor>(capacity);
-            _actorDeltas = new List<GameActorInfoDeltaView>(capacity);
-            _actorMovements = new List<PlayerMovement>(capacity);
-
-            Players = _players;
-            Actors = _actors;
-
-            /* 
-             * Using a high tick rate to push updates to the client faster.
-             * But the player movements are still sent at ~10 tick/s.
-             */
-            Loop = new Loop(OnTick, OnTickError);
-
-            Shop = new ShopManager();
-            Spawns = new SpawnManager();
-            PowerUps = new PowerUpManager(this);
-
-            State = new StateMachine<RoomState.Id>();
-            State.Register(RoomState.Id.None, null);
-            State.Register(RoomState.Id.WaitingForPlayers, new WaitingForPlayersRoomState(this));
-            State.Register(RoomState.Id.Countdown, new CountdownRoomState(this));
-            State.Register(RoomState.Id.Running, new RunningRoomState(this));
-            State.Register(RoomState.Id.End, new EndRoomState(this));
-            State.Register(RoomState.Id.AfterRound, new AfterRoundState(this));
-            /* 
-             * * Expected interval between ticks by the client is 100ms 
-             * (10 tick/s).
-             *
-             * * Lag extrapolation starts when the packets arrive at around
-             * 150ms late assuming the client receives a constant stream of
-             * packets of 100ms intervals. The threshold of 150ms is not
-             * constant and varies according to the measurements done by the
-             * client.
-             * 
-             * * We're actually updating at 9.5 tick/s, because it seems the
-             * client can not truely handle packets at 10 tick/s. This is
-             * likely because sometimes packets gets "clogged" in the client's
-             * packet queue and since packets don't have a timestamp of when
-             * they were sent; it appears to be have been sent faster than
-             * 10 tick/s. This therefore causes the client to update the
-             * position of the players with little to no interpolation in an
-             * attempt to catch up.
-             * 
-             * So we use a tick rate lower than that expected by the client to
-             * give it some breathing room and reduce the chance of packets
-             * building up in its packet queue to the point where it does hard
-             * position updates.
-             * 
-             * * TLDR; 
-             * A lower tick rate gives a smoother motion but more inaccurate
-             * positions.
-             * A higher tick rate gives a choppier motion but more accurate
-             * positions.
-             */
-            const float UBZ_INTERVAL = 1000f / 9.5f;
-            _frameTimer = new Timer(Loop, UBZ_INTERVAL);
-
-            Reset();
-
-            /* Schedule Loop of room. */
-            Scheduler.Schedule(Loop);
+            this._players = new List<GameActor>(capacity);
+            this._actors = new List<GameActor>(capacity);
+            this._actorDeltas = new List<GameActorInfoDeltaView>(capacity);
+            this._actorMovements = new List<PlayerMovement>(capacity);
+            this.Loop = new Loop(new Action(this.OnTick), new Action<Exception>(this.OnTickError));
+            this.Shop = new ShopManager();
+            this.Spawns = new SpawnManager();
+            this.PowerUps = new PowerUpManager(this);
+            this.State = new StateMachine<RoomState.Id>();
+            this.State.Register(RoomState.Id.None, null);
+            this.State.Register(RoomState.Id.WaitingForPlayers, new WaitingForPlayersRoomState(this));
+            this.State.Register(RoomState.Id.Countdown, new CountdownRoomState(this));
+            this.State.Register(RoomState.Id.Running, new RunningRoomState(this));
+            this.State.Register(RoomState.Id.End, new EndRoomState(this));
+            this.State.Register(RoomState.Id.AfterRound, new AfterRoundState(this));
+            this._frameTimer = new Timer(this.Loop, 105.263161f);
+            this.Reset();
+            this.Scheduler.Schedule(this.Loop);
         }
 
         public void Join(GamePeer peer)
         {
             if (peer == null)
-                throw new ArgumentNullException(nameof(peer));
-            if (peer.Actor != null && peer.Actor.Room != null)
             {
-                peer.Actor.Room.Leave(peer);
+                throw new ArgumentNullException("peer");
             }
-            Enqueue(() => DoJoin(peer));
+            if (peer.Actor != null)
+            {
+                throw new InvalidOperationException("Peer already in another room");
+            }
+
+            Enqueue(delegate
+            {
+                DoJoin(peer);
+            });
         }
 
         public void Leave(GamePeer peer)
         {
             if (peer == null)
-                throw new ArgumentNullException(nameof(peer));
+            {
+                throw new ArgumentNullException("peer");
+            }
             if (peer.Actor == null)
+            {
                 throw new InvalidOperationException("Peer is not in a room");
-            Enqueue(() => DoLeave(peer));
+            }
+            if (peer.Actor.Room != this)
+            {
+                throw new InvalidOperationException("Peer is not leaving the correct room");
+            }
+            Enqueue(delegate
+            {
+                DoLeave(peer);
+            });
         }
 
         public void Spawn(GameActor actor)
         {
             if (actor == null)
-                throw new ArgumentNullException(nameof(actor));
-
-            Enqueue(() => DoSpawn(actor));
+            {
+                throw new ArgumentNullException("actor");
+            }
+            Enqueue(delegate
+            {
+                DoSpawn(actor);
+            });
         }
 
         private struct Achievement
@@ -233,7 +235,6 @@ namespace UberStrok.Realtime.Server.Game
 
                 foreach (var player in Players)
                 {
-                    var stats = player.Statistics.Total;
                     var summary = new StatsSummaryView
                     {
                         Cmid = player.Cmid,
@@ -288,59 +289,50 @@ namespace UberStrok.Realtime.Server.Game
 
         public virtual void Reset()
         {
-            _frame = 6;
-            _frameTimer.Restart();
-
-            _nextPlayer = 0;
-
-            /* Reset all the actors in the room's player list. */
-            foreach (var player in Players)
+            this._frame = 6;
+            this._frameTimer.Restart();
+            this._nextPlayer = 0;
+            foreach (GameActor player in this.Players)
             {
-                foreach (var otherActor in Actors)
+                foreach (GameActor otherActor in this.Actors)
                 {
                     otherActor.Peer.Events.Game.SendPlayerLeftGame(player.Cmid);
-                    otherActor.Peer.GetStats(out int rtt, out int rttVar, out int numFailures);
-                    Log.Info($"{otherActor.GetDebug()} RTT: {rtt} var<RTT>: {rttVar} NumFailures: {numFailures}");
+                    int rtt;
+                    int rttVar;
+                    int numFailures;
+                    otherActor.Peer.GetStats(out rtt, out rttVar, out numFailures);
+                    base.Log.Info(string.Format("{0} RTT: {1} var<RTT>: {2} NumFailures: {3}", new object[]
+                    {
+                        otherActor.GetDebug(),
+                        rtt,
+                        rttVar,
+                        numFailures
+                    }));
                 }
             }
-
-            _mvps = null;
-            _stats.Clear();
-            _players.Clear();
-
-            PowerUps.Reset();
-
-            State.Reset();
-            State.Set(RoomState.Id.WaitingForPlayers);
-
-            Log.Info($"{GetDebug()} has been reset.");
+            this._mvps = null;
+            this._stats.Clear();
+            this._players.Clear();
+            this.PowerUps.Reset();
+            this.State.Reset();
+            this.State.Set(RoomState.Id.WaitingForPlayers);
+            base.Log.Info(this.GetDebug() + " has been reset.");
         }
 
         private void OnTick()
         {
-            bool updateMovements = _frameTimer.Tick();
+            bool updateMovements = this._frameTimer.Tick();
             if (updateMovements)
-                _frame++;
-
-            State.Tick();
-            PowerUps.Tick();
-
-            if (Actors.Count == 0)
             {
-                EmptyTickTime++;
+                this._frame += 1;
             }
-            else
+            this.State.Tick();
+            this.PowerUps.Tick();
+            foreach (GameActor actor in this.Actors)
             {
-                EmptyTickTime = 0;
-            }
-
-            for (int i = 0; i < _actors.Count; i++)
-            {
-                var actor = _actors[i];
                 if (actor.Peer.HasError)
                 {
                     actor.Peer.Disconnect();
-                    Leave(actor.Peer);
                 }
                 else
                 {
@@ -350,75 +342,49 @@ namespace UberStrok.Realtime.Server.Game
                     }
                     catch (Exception ex)
                     {
-                        /* 
-                         * NOTE: This should never happen, but just incase 
-                         * stuff goes wild.
-                         */
-                        Log.Error($"Failed to tick {actor.GetDebug()}. Disconnecting...", ex);
+                        base.Log.Error("Failed to tick " + actor.GetDebug() + ".", ex);
                         actor.Peer.Disconnect();
-                        //remove from actors list
-                        Leave(actor.Peer);
-                        /* Something happened; we dip. */
                         continue;
                     }
-
-                    /* 
-                     * If the actor is a player.
-                     */
-                    if (Players.Contains(actor) || actor.State.Current == ActorState.Id.Spectator)
+                    if (this.Players.Contains(actor) || actor.State.Current == ActorState.Id.Spectator)
                     {
-                        var delta = actor.Info.GetViewDelta();
-
-                        /* 
-                         * If the player has changed something since the last tick.
-                         */
+                        GameActorInfoDeltaView delta = actor.Info.GetViewDelta();
                         if (delta.Changes.Count > 0)
                         {
                             delta.Update();
-                            _actorDeltas.Add(delta);
+                            this._actorDeltas.Add(delta);
                         }
-
-                        /* 
-                         * If the player has any damage events, we send them.
-                         */
                         if (actor.Damages.Count > 0)
                         {
                             actor.Peer.Events.Game.SendDamageEvent(actor.Damages);
                             actor.Damages.Clear();
                         }
-
-                        /* 
-                         * If we need to update positions and the player is 
-                         * alive, we register it to the list of movements.
-                         */
                         if (updateMovements && actor.Info.IsAlive)
                         {
-                            Debug.Assert(actor.Movement.PlayerId == actor.PlayerId);
-                            _actorMovements.Add(actor.Movement);
+                            this._actorMovements.Add(actor.Movement);
                         }
                     }
                 }
             }
-
-            if (_actorDeltas.Count > 0)
+            if (this._actorDeltas.Count > 0)
             {
-                for (int i = 0; i < _actors.Count; i++)
-                    _actors[i].Peer.Events.Game.SendAllPlayerDeltas(_actorDeltas);
-
-                /* Wipe actor delta changes. */
-                for (int i = 0; i < _actorDeltas.Count; i++)
-                    _actorDeltas[i].Reset();
-
-                _actorDeltas.Clear();
+                foreach (GameActor gameActor in this.Actors)
+                {
+                    gameActor.Peer.Events.Game.SendAllPlayerDeltas(this._actorDeltas);
+                }
+                foreach (GameActorInfoDeltaView gameActorInfoDeltaView in this._actorDeltas)
+                {
+                    gameActorInfoDeltaView.Reset();
+                }
+                this._actorDeltas.Clear();
             }
-
-            if (_actorMovements.Count > 0 && updateMovements)
+            if (this._actorMovements.Count > 0 && updateMovements)
             {
-                for (int i = 0; i < _actors.Count; i++)
-                    _actors[i].Peer.Events.Game.SendAllPlayerPositions(_actorMovements, _frame);
-
-                /* Wipe player movements. */
-                _actorMovements.Clear();
+                foreach (GameActor gameActor2 in this.Actors)
+                {
+                    gameActor2.Peer.Events.Game.SendAllPlayerPositions(this._actorMovements, this._frame);
+                }
+                this._actorMovements.Clear();
             }
         }
 
@@ -430,71 +396,66 @@ namespace UberStrok.Realtime.Server.Game
         /* This is executed on the game room loop thread. */
         private void DoJoin(GamePeer peer, bool reJoin = false)
         {
-            Debug.Assert(peer != null);
             try
             {
                 peer.Handlers.Add(this);
-
-                var view = GetView();
-                var actor = new GameActor(peer, this);
-
+                GameRoomDataView view = this.GetView();
+                GameActor actor = new GameActor(peer, this);
                 if (view.IsFull && actor.Info.AccessLevel < MemberAccessLevel.QA)
                 {
-                    peer.Events.SendRoomEnterFailed(default, default, "The game is full.");
+                    peer.Events.SendRoomEnterFailed(null, 0, "The game is full.");
                 }
                 else
                 {
-                    /* 
-                     * This prepares the client for the game room; that is it 
-                     * creates the game room instance type and registers the
-                     * GameRoom OperationHandler to its photon client.
-                     */
-                    peer.Events.SendRoomEntered(view, reJoin);
-
+                    peer.Events.SendRoomEntered(view, false);
                     peer.Actor = actor;
                     peer.Actor.State.Set(ActorState.Id.Overview);
-
-                    _actors.Add(peer.Actor);
-
-                    Log.Info($"{peer.Actor.GetDebug()} joined.");
+                    this._actors.Add(peer.Actor);
+                    base.Log.Info(peer.Actor.GetDebug() + " joined.");
                 }
             }
             catch (Exception ex)
             {
                 peer.Actor = null;
-                peer.Handlers.Remove(Id);
-
-                /* The client doesn't care about `server` and `roomId`. */
-                peer.Events.SendRoomEnterFailed(default, default, "Failed to join room.");
-
-                Log.Error($"Failed to join {GetDebug()}.", ex);
+                peer.Handlers.Remove(this.Id);
+                peer.Events.SendRoomEnterFailed(null, 0, "Failed to join room.");
+                base.Log.Error("Failed to join " + this.GetDebug() + ".", ex);
             }
         }
 
         private void DoLeave(GamePeer peer)
         {
-            var actor = peer.Actor;
+            if (peer == null)
+            {
+                Log.Error("Peer was null when tried to leave the room");
+                return;
+            }
             bool donotResetActor = false;
-
-            if (peer.Actor.Room != this)
+            if (peer.Actor != null && peer.Actor.Room != this)
             {
                 Log.Error("Peer tried to leave a room, but doesnt belong to this room");
                 donotResetActor = true;
             }
+            var actor = peer.Actor;
             try
             {
-                if (_actors.Remove(actor))
+                if(actor != null)
                 {
-                    if (_players.Contains(actor))
-                        OnPlayerLeft(new PlayerLeftEventArgs { Player = peer.Actor });
-
-                    /* OnPlayerLeft should remove it. */
-                    Debug.Assert(!_players.Contains(actor));
-                    Log.Info($"{actor.GetDebug()} left.");
-                }
-                else
-                {
-                    Log.Warn($"{actor.GetDebug()} tried to leave but was not in the list of Actors.");
+                    if (_actors.Remove(actor))
+                    {
+                        if (_players.Contains(actor))
+                        {
+                            OnPlayerLeft(new PlayerLeftEventArgs
+                            {
+                                Player = actor
+                            });
+                        }
+                        base.Log.Info((object)(actor.GetDebug() + " left."));
+                    }
+                    else
+                    {
+                        base.Log.Warn((object)(actor.GetDebug() + " tried to leave but was not in the list of Actors."));
+                    }
                 }
             }
             finally
@@ -503,7 +464,7 @@ namespace UberStrok.Realtime.Server.Game
                 if (!donotResetActor)
                 {
                     peer.Actor = null;
-                    peer.Handlers.Remove(Id);
+                    _ = peer.Handlers.Remove(Id);
                 }
                 if (peer.OnLeaveRoom != null)
                 {
@@ -515,28 +476,15 @@ namespace UberStrok.Realtime.Server.Game
 
         private void DoSpawn(GameActor actor)
         {
-            Debug.Assert(actor != null);
-            Debug.Assert(actor.Room == this);
-
-            var spawn = Spawns.Get(actor.Info.TeamID);
-            var movement = actor.Movement;
-
-            Debug.Assert(movement.PlayerId == actor.PlayerId);
-
+            SpawnPoint spawn = this.Spawns.Get(actor.Info.TeamID);
+            PlayerMovement movement = actor.Movement;
             movement.Position = spawn.Position;
             movement.HorizontalRotation = spawn.Rotation;
-
-            /* Let the other actors know it has spawned. */
-            foreach (var otherActor in Actors)
+            foreach (GameActor gameActor in this.Actors)
             {
-                otherActor.Peer.Events.Game.SendPlayerRespawned(
-                    actor.Cmid,
-                    spawn.Position,
-                    spawn.Rotation
-                );
+                gameActor.Peer.Events.Game.SendPlayerRespawned(actor.Cmid, spawn.Position, spawn.Rotation);
             }
-
-            Log.Debug($"{actor.GetDebug()} spawned at {spawn}.");
+            base.Log.Debug(string.Format("{0} spawned at {1}.", actor.GetDebug(), spawn));
         }
 
         /* Determine if state of the room can be switched to RunningRoomState. */
@@ -666,6 +614,14 @@ namespace UberStrok.Realtime.Server.Game
             }
 
             return false;
+        }
+
+        public virtual void EndMatch()
+        {
+            foreach (GameActor player in Players)
+            {
+                player.EndMatch(Winner == player.Info.TeamID);
+            }
         }
 
         public string GetDebug()

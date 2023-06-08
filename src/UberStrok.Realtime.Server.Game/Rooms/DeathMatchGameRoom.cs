@@ -3,94 +3,94 @@ using System.Linq;
 using UberStrok.Core;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
+using UberStrok.Realtime.Server.Game;
 
-namespace UberStrok.Realtime.Server.Game
+public sealed class DeathMatchGameRoom : GameRoom
 {
-    public sealed class DeathMatchGameRoom : GameRoom
+    public DeathMatchGameRoom(GameRoomDataView data, ILoopScheduler scheduler)
+        : base(data, scheduler)
     {
-        public DeathMatchGameRoom(GameRoomDataView data, ILoopScheduler scheduler)
-            : base(data, scheduler)
+        //IL_0009: Unknown result type (might be due to invalid IL or missing references)
+        //IL_000f: Invalid comparison between Unknown and I4
+        if (data.GameMode != GameModeType.DeathMatch)
         {
-            if (data.GameMode != GameModeType.DeathMatch)
-                throw new ArgumentException("GameRoomDataView is not in deathmatch mode", nameof(data));
+            throw new ArgumentException("GameRoomDataView is not in deathmatch mode", "data");
         }
+    }
 
-        public override bool CanStart()
+    public override bool CanJoin(GameActor actor, TeamID team)
+    {
+        return actor.Info.AccessLevel >= MemberAccessLevel.Moderator || (team == TeamID.NONE && !base.GetView().IsFull);
+    }
+
+    public override bool CanStart()
+    {
+        return base.Players.Count > 1;
+    }
+
+    public override bool CanDamage(GameActor victim, GameActor attacker)
+    {
+        return base.IsMatchRunning;
+    }
+
+    protected override void OnPlayerJoined(PlayerJoinedEventArgs e)
+    {
+        base.OnPlayerJoined(e);
+        e.Player.Peer.Events.Game.SendKillsRemaining(GetKillsRemaining(), 0);
+    }
+
+    protected override void OnPlayerLeft(PlayerLeftEventArgs e)
+    {
+        base.OnPlayerLeft(e);
+        if (!base.IsWaitingForPlayers && base.Players.Count <= 1)
         {
-            return Players.Count > 1;
+            base.State.Set(RoomState.Id.End);
         }
-
-        public override bool CanJoin(GameActor actor, TeamID team)
+        else
         {
-            if (actor.Info.AccessLevel >= MemberAccessLevel.Moderator)
-                return true;
-            return team == TeamID.NONE && !GetView().IsFull;
-        }
-
-        public override bool CanDamage(GameActor victim, GameActor attacker)
-        {
-            return true;
-        }
-
-        protected override void OnPlayerJoined(PlayerJoinedEventArgs e)
-        {
-            base.OnPlayerJoined(e);
-            e.Player.Peer.Events.Game.SendKillsRemaining(GetKillsRemaining(), default);
-        }
-
-        protected override void OnPlayerLeft(PlayerLeftEventArgs e)
-        {
-            base.OnPlayerLeft(e);
-
-            if (State.Current != RoomState.Id.WaitingForPlayers && Players.Count <= 1)
+            if (base.State.Current != RoomState.Id.Running)
             {
-                State.Set(RoomState.Id.End);
+                return;
             }
-            else if (State.Current == RoomState.Id.Running)
+            int killsRemaining = GetKillsRemaining();
+            foreach (GameActor actor in base.Actors)
             {
-                int killsRemaining = GetKillsRemaining();
-                foreach (var otherActor in Actors)
-                    otherActor.Peer.Events.Game.SendKillsRemaining(killsRemaining, default);
+                actor.Peer.Events.Game.SendKillsRemaining(killsRemaining, 0);
             }
         }
+    }
 
-        protected override void OnPlayerKilled(PlayerKilledEventArgs e)
+    protected override void OnPlayerKilled(PlayerKilledEventArgs args)
+    {
+        base.OnPlayerKilled(args);
+        if (!base.IsWaitingForPlayers)
         {
-            base.OnPlayerKilled(e);
-            if (State.Current != RoomState.Id.WaitingForPlayers)
+            if (args.Attacker == args.Victim)
             {
-                /* If player killed himself, don't update round score. */
-                if (e.Attacker != e.Victim)
-                {
-                    int killsRemaining = GetKillsRemaining();
-                    foreach (var player in Players)
-                        player.Peer.Events.Game.SendKillsRemaining(killsRemaining, 0);
-
-                    /* 
-                     * The client doesn't care about which team wins, it uses
-                     * its local data to figure out which player won.
-                     */
-                    if (killsRemaining <= 0)
-                        State.Set(RoomState.Id.AfterRound);
-                }
+                return;
             }
-            else
+            int killsRemaining = GetKillsRemaining();
+            foreach (GameActor player in base.Players)
             {
-                OnRespawnRequest(e.Victim);
-            };
+                player.Peer.Events.Game.SendKillsRemaining(killsRemaining, 0);
+            }
+            if (killsRemaining <= 0)
+            {
+                base.State.Set(RoomState.Id.AfterRound);
+            }
         }
-
-        private int GetKillsRemaining()
+        else
         {
-            /* 
-             * NOTE: Possible performance gain by avoiding using LINQ but
-             * maintain the leader directly through killed events.
-             */
-            return GetView().KillLimit - (Players.Count > 0 ? Players.Aggregate((a, b) => a.Info.Kills > b.Info.Kills ? a : b).Info.Kills : 0);
+            OnRespawnRequest(args.Victim);
         }
+    }
 
-        protected override void OnSwitchTeam(GameActor actor)
-        {
-        }
+    private int GetKillsRemaining()
+    {
+        return GetView().KillLimit - ((base.Players.Count > 0) ? base.Players.Aggregate((GameActor a, GameActor b) => (a.Info.Kills <= b.Info.Kills) ? b : a).Info.Kills : 0);
+    }
+
+    protected override void OnSwitchTeam(GameActor actor)
+    {
     }
 }

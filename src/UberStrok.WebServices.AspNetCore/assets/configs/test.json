@@ -1,0 +1,1 @@
+{"locked":false,"service_auth":"HelloWorld","service_base":"http://localhost/2.0","server_game_version":"4.7.2","wallet":{"starting_points":10000,"starting_credits":10000},"loadout":{"starting_items":[1,12]},"service_database":{"host":"http://localhost/","username":"root","password":"admin"},"service_bucket":[{"bucket_name":"player"},{"bucket_name":"clan"}]}

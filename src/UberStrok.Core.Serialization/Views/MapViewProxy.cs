@@ -8,61 +8,78 @@ namespace UberStrok.Core.Serialization.Views
     {
         public static MapView Deserialize(Stream bytes)
         {
-            var mask = Int32Proxy.Deserialize(bytes);
-            var view = new MapView();
-
-            if ((mask & 1) != 0)
-                view.Description = StringProxy.Deserialize(bytes);
-            if ((mask & 2) != 0)
-                view.DisplayName = StringProxy.Deserialize(bytes);
-
-            view.IsBlueBox = BooleanProxy.Deserialize(bytes);
-            view.MapId = Int32Proxy.Deserialize(bytes);
-            view.MaxPlayers = Int32Proxy.Deserialize(bytes);
-            view.RecommendedItemId = Int32Proxy.Deserialize(bytes);
-
-            if ((mask & 4) != 0)
-                view.SceneName = StringProxy.Deserialize(bytes);
-            if ((mask & 8) != 0)
-                view.Settings = DictionaryProxy<GameModeType, MapSettingsView>.Deserialize(bytes, EnumProxy<GameModeType>.Deserialize, MapSettingsViewProxy.Deserialize);
-
-            view.SupportedGameModes = Int32Proxy.Deserialize(bytes);
-            view.SupportedItemClass = Int32Proxy.Deserialize(bytes);
-            return view;
+            int num = Int32Proxy.Deserialize(bytes);
+            MapView val = new MapView();
+            if (((uint)num & (true ? 1u : 0u)) != 0)
+            {
+                val.Description = StringProxy.Deserialize(bytes);
+            }
+            if (((uint)num & 2u) != 0)
+            {
+                val.DisplayName = StringProxy.Deserialize(bytes);
+            }
+            val.BoxType = EnumProxy<GameBoxType>.Deserialize(bytes);
+            val.MapId = Int32Proxy.Deserialize(bytes);
+            val.MaxPlayers = Int32Proxy.Deserialize(bytes);
+            val.RecommendedItemId = Int32Proxy.Deserialize(bytes);
+            if (((uint)num & 4u) != 0)
+            {
+                val.SceneName = StringProxy.Deserialize(bytes);
+            }
+            if (((uint)num & 8u) != 0)
+            {
+                val.Settings = DictionaryProxy<GameModeType, MapSettingsView>.Deserialize(bytes, EnumProxy<GameModeType>.Deserialize, MapSettingsViewProxy.Deserialize);
+            }
+            val.SupportedGameModes = Int32Proxy.Deserialize(bytes);
+            val.SupportedItemClass = Int32Proxy.Deserialize(bytes);
+            return val;
         }
 
         public static void Serialize(Stream stream, MapView instance)
         {
-            var mask = 0;
-            using (var bytes = new MemoryStream())
+            int num = 0;
+            using (MemoryStream memoryStream = new MemoryStream())
             {
                 if (instance.Description != null)
-                    StringProxy.Serialize(bytes, instance.Description);
+                {
+                    StringProxy.Serialize(memoryStream, instance.Description);
+                }
                 else
-                    mask |= 1;
+                {
+                    num |= 1;
+                }
                 if (instance.DisplayName != null)
-                    StringProxy.Serialize(bytes, instance.DisplayName);
+                {
+                    StringProxy.Serialize(memoryStream, instance.DisplayName);
+                }
                 else
-                    mask |= 2;
-
-                BooleanProxy.Serialize(bytes, instance.IsBlueBox);
-                Int32Proxy.Serialize(bytes, instance.MapId);
-                Int32Proxy.Serialize(bytes, instance.MaxPlayers);
-                Int32Proxy.Serialize(bytes, instance.RecommendedItemId);
-
+                {
+                    num |= 2;
+                }
+                EnumProxy<GameBoxType>.Serialize(memoryStream, instance.BoxType);
+                Int32Proxy.Serialize(memoryStream, instance.MapId);
+                Int32Proxy.Serialize(memoryStream, instance.MaxPlayers);
+                Int32Proxy.Serialize(memoryStream, instance.RecommendedItemId);
                 if (instance.SceneName != null)
-                    StringProxy.Serialize(bytes, instance.SceneName);
+                {
+                    StringProxy.Serialize(memoryStream, instance.SceneName);
+                }
                 else
-                    mask |= 4;
+                {
+                    num |= 4;
+                }
                 if (instance.Settings != null)
-                    DictionaryProxy<GameModeType, MapSettingsView>.Serialize(bytes, instance.Settings, EnumProxy<GameModeType>.Serialize, MapSettingsViewProxy.Serialize);
+                {
+                    DictionaryProxy<GameModeType, MapSettingsView>.Serialize(memoryStream, instance.Settings, EnumProxy<GameModeType>.Serialize, MapSettingsViewProxy.Serialize);
+                }
                 else
-                    mask |= 8;
-
-                Int32Proxy.Serialize(bytes, instance.SupportedGameModes);
-                Int32Proxy.Serialize(bytes, instance.SupportedItemClass);
-                Int32Proxy.Serialize(stream, ~mask);
-                bytes.WriteTo(stream);
+                {
+                    num |= 8;
+                }
+                Int32Proxy.Serialize(memoryStream, instance.SupportedGameModes);
+                Int32Proxy.Serialize(memoryStream, instance.SupportedItemClass);
+                Int32Proxy.Serialize(stream, ~num);
+                memoryStream.WriteTo(stream);
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Drawing;
 
 namespace UberStrok.Core.Common
 {
@@ -43,21 +42,8 @@ namespace UberStrok.Core.Common
 
         public static Color Convert(string hex)
         {
-            System.Drawing.Color col; // from System.Drawing or System.Windows.Media
-            if (hex.Length == 6)
-                col = System.Drawing.Color.FromArgb(255, // hardcoded opaque
-                            int.Parse(hex.Substring(0, 2), NumberStyles.HexNumber),
-                            int.Parse(hex.Substring(2, 2), NumberStyles.HexNumber),
-                            int.Parse(hex.Substring(4, 2), NumberStyles.HexNumber));
-            else if (hex.Length == 8)
-                col = System.Drawing.Color.FromArgb(
-                            int.Parse(hex.Substring(0, 2), NumberStyles.HexNumber),
-                            int.Parse(hex.Substring(2, 2), NumberStyles.HexNumber),
-                            int.Parse(hex.Substring(4, 2), NumberStyles.HexNumber),
-                            int.Parse(hex.Substring(6, 2), NumberStyles.HexNumber));
-            else
-                throw new ArgumentException("Hex invalid");
-            return new Color(col.R, col.G, col.B, col.A);
+            System.Drawing.Color baseColor = ColorTranslator.FromHtml(hex);
+            return new Color(baseColor.R / 255f, baseColor.G / 255f, baseColor.B / 255f, 255f / 255f);
         }
     }
 }

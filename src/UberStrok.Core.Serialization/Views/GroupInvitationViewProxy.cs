@@ -8,9 +8,11 @@ namespace UberStrok.Core.Serialization.Views
         public static GroupInvitationView Deserialize(Stream bytes)
         {
             int num = Int32Proxy.Deserialize(bytes);
-            GroupInvitationView groupInvitationView = new GroupInvitationView();
-            groupInvitationView.GroupId = Int32Proxy.Deserialize(bytes);
-            groupInvitationView.GroupInvitationId = Int32Proxy.Deserialize(bytes);
+            GroupInvitationView groupInvitationView = new GroupInvitationView
+            {
+                GroupId = Int32Proxy.Deserialize(bytes),
+                GroupInvitationId = Int32Proxy.Deserialize(bytes)
+            };
             if ((num & 1) != 0)
             {
                 groupInvitationView.GroupName = StringProxy.Deserialize(bytes);

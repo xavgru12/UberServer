@@ -18,8 +18,6 @@
         InvalidData,
         TooManyUsage,
         InvalidLevel = 100,
-        ItemNotFound = 404,
-
-        UnknownError = -1, // UberStrok extension.
+        ItemNotFound = 404
     }
 }

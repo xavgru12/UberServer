@@ -9,9 +9,14 @@ namespace UberStrok.Core.Views
         {
         }
 
+        public BasicClanView(int groupId, int membersCount, string description, string name, string motto, string address, DateTime foundingDate, string picture, GroupType type, DateTime lastUpdated, string tag, int membersLimit, GroupColor colorStyle, GroupFontStyle fontStyle, int applicationId, int ownerCmid, string ownerName)
+        {
+            SetClan(groupId, membersCount, description, name, motto, address, foundingDate, picture, type, lastUpdated, tag, membersLimit, colorStyle, fontStyle, applicationId, ownerCmid, ownerName);
+        }
+
         public int GroupId { get; set; }
 
-        public int MembersCount { get; set; } = 50;
+        public int MembersCount { get; set; }
 
         public string Description { get; set; }
 
@@ -43,17 +48,37 @@ namespace UberStrok.Core.Views
 
         public string OwnerName { get; set; }
 
+        public void SetClan(int groupId, int membersCount, string description, string name, string motto, string address, DateTime foundingDate, string picture, GroupType type, DateTime lastUpdated, string tag, int membersLimit, GroupColor colorStyle, GroupFontStyle fontStyle, int applicationId, int ownerCmid, string ownerName)
+        {
+            GroupId = groupId;
+            MembersCount = membersCount;
+            Description = description;
+            Name = name;
+            Motto = motto;
+            Address = address;
+            FoundingDate = foundingDate;
+            Picture = picture;
+            Type = type;
+            LastUpdated = lastUpdated;
+            Tag = tag;
+            MembersLimit = membersLimit;
+            ColorStyle = colorStyle;
+            FontStyle = fontStyle;
+            ApplicationId = applicationId;
+            OwnerCmid = ownerCmid;
+            OwnerName = ownerName;
+        }
 
         public override string ToString()
         {
             string text = string.Concat(new object[]
             {
                 "[Clan: [Id: ",
-                this.GroupId,
+                GroupId,
                 "][Members count: ",
-                this.MembersCount,
+                MembersCount,
                 "][Description: ",
-                this.Description,
+                Description,
                 "]"
             });
             string text2 = text;
@@ -61,11 +86,11 @@ namespace UberStrok.Core.Views
             {
                 text2,
                 "[Name: ",
-                this.Name,
+                Name,
                 "][Motto: ",
-                this.Name,
+                Name,
                 "][Address: ",
-                this.Address,
+                Address,
                 "]"
             });
             text2 = text;
@@ -73,13 +98,13 @@ namespace UberStrok.Core.Views
             {
                 text2,
                 "[Creation date: ",
-                this.FoundingDate,
+                FoundingDate,
                 "][Picture: ",
-                this.Picture,
+                Picture,
                 "][Type: ",
-                this.Type,
+                Type,
                 "][Last updated: ",
-                this.LastUpdated,
+                LastUpdated,
                 "]"
             });
             text2 = text;
@@ -87,13 +112,13 @@ namespace UberStrok.Core.Views
             {
                 text2,
                 "[Tag: ",
-                this.Tag,
+                Tag,
                 "][Members limit: ",
-                this.MembersLimit,
+                MembersLimit,
                 "][Color style: ",
-                this.ColorStyle,
+                ColorStyle,
                 "][Font style: ",
-                this.FontStyle,
+                FontStyle,
                 "]"
             });
             text2 = text;
@@ -101,11 +126,11 @@ namespace UberStrok.Core.Views
             {
                 text2,
                 "[Application Id: ",
-                this.ApplicationId,
+                ApplicationId,
                 "][Owner Cmid: ",
-                this.OwnerCmid,
+                OwnerCmid,
                 "][Owner name: ",
-                this.OwnerName,
+                OwnerName,
                 "]]"
             });
         }

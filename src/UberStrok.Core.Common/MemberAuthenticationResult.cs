@@ -12,6 +12,7 @@
         InvalidEsns,
         InvalidCookie,
         IsIpBanned,
-        UnknownError
+        UnknownError,
+        NewUpdate
     }
 }

@@ -1,78 +1,91 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using log4net;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using Quartz;
 using SoapCore;
-using System;
-using UberStrok.Core;
-using UberStrok.WebServices.AspNetCore.Authentication;
-using UberStrok.WebServices.AspNetCore.Authentication.Jwt;
-using UberStrok.WebServices.AspNetCore.Configurations;
-using UberStrok.WebServices.AspNetCore.Database;
-using UberStrok.WebServices.AspNetCore.Database.LiteDb;
-using UberStrok.WebServices.AspNetCore.Job;
+using System.IO;
+using System.Net;
+using UberStrok.WebServices.AspNetCore.Core.Db.Tables;
+using UberStrok.WebServices.AspNetCore.Core.Discord;
+using UberStrok.WebServices.AspNetCore.Core.Manager;
+using UberStrok.WebServices.AspNetCore.Helper;
+using UberStrok.WebServices.AspNetCore.Middleware;
+using UberStrok.WebServices.AspNetCore.WebService;
 
 namespace UberStrok.WebServices.AspNetCore
 {
     public class Startup
     {
-        private IConfiguration Configuration { get; }
+        private static readonly ILog Log = LogManager.GetLogger(typeof(Startup));
+        public IWebHostEnvironment HostingEnvironment { get; private set; }
+        public IConfiguration Configuration { get; private set; }
 
-        public Startup(IConfiguration configuration)
-            => Configuration = configuration;
+        public static WebServiceConfiguration WebServiceConfiguration
+        {
+            get;
+            private set;
+        }
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        {
+            HostingEnvironment = env;
+            Configuration = configuration;
+            Log.Info("Initializing web services...");
+            WebServiceConfiguration config = Utils.DeserializeJsonAt<WebServiceConfiguration>("assets/configs/main.json");
+            if (config == null)
+            {
+                config = WebServiceConfiguration.Default;
+                Utils.SerializeJsonAt("assets/configs/main.json", config);
+            }
+            WebServiceConfiguration = config;
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Register configurations.
-
-            services.Configure<MapsConfiguration>(Configuration.GetSection("Maps"));
-            services.Configure<ItemsConfiguration>(Configuration.GetSection("Items"));
-            services.Configure<ExcludedItemsNewPlayerConfiguration>(Configuration.GetSection("ExcludedItemsNewPlayer"));
-            services.Configure<ServersConfiguration>(Configuration.GetSection("Servers"));
-            services.Configure<ApplicationConfiguration>(Configuration.GetSection("Application"));
-            services.Configure<AccountConfiguration>(Configuration.GetSection("Account"));
-            services.Configure<AuthConfiguration>(Configuration.GetSection("Auth"));
-
             // Register services.
-            services.AddScoped<IDbService, LiteDbService>();
-            services.AddSingleton<IAuthService, JwtAuthService>();
-            services.AddScoped<ISessionService, SessionService>();
-
             services.AddSoapCore();
 
-            services.AddScoped(s => new ItemManager(s.GetRequiredService<IOptions<ItemsConfiguration>>().Value));
-            services.AddScoped(s => new MapManager(s.GetRequiredService<IOptions<MapsConfiguration>>().Value));
-
             // Register web services.
-            services.AddScoped<ApplicationWebService>();
-            services.AddScoped<AuthenticationWebService>();
-            services.AddScoped<ShopWebService>();
-            services.AddScoped<UserWebService>();
-            services.AddScoped<ClanWebService>();
-            services.AddScoped<PrivateMessageWebService>();
-            services.AddScoped<RelationshipWebService>();
+            services.AddSingleton<ApplicationWebService>();
+            services.AddSingleton<AuthenticationWebService>();
+            services.AddSingleton<ShopWebService>();
+            services.AddSingleton<UserWebService>();
+            services.AddSingleton<ClanWebService>();
+            services.AddSingleton<PrivateMessageWebService>();
+            services.AddSingleton<RelationshipWebService>();
+            services.AddSingleton<ModerationWebService>();
 
-            services.AddQuartz(q =>
+            //Register Manager
+            services.AddSingleton<ClanManager>();
+            services.AddSingleton<UserManager>();
+            services.AddSingleton<ServerManager>();
+            services.AddSingleton<SecurityManager>();
+            services.AddSingleton<StreamManager>();
+            services.AddSingleton<ResourceManager>();
+            services.AddSingleton<GameSessionManager>();
+            services.AddSingleton<UberBeatManager>();
+
+            //Register Middleware
+            services.AddSingleton<JoinRoom>();
+
+            //Register Tables
+            services.AddSingleton<ClanTable>();
+            services.AddSingleton<UserTable>();
+            services.AddSingleton<UberBeatTable>();
+            services.AddSingleton<SecurityTable>();
+            services.AddSingleton<StreamTable>();
+
+            //Register Discord
+            services.AddSingleton<CoreDiscord>();
+
+            services.Configure(delegate (KestrelServerOptions options)
             {
-                q.UseMicrosoftDependencyInjectionJobFactory();
-                q.UseSimpleTypeLoader();
-                q.UseInMemoryStore();
-                q.UseDefaultThreadPool(tp =>
-                {
-                    tp.MaxConcurrency = 2;
-                });
-                q.ScheduleJob<SessionJob>(trigger => trigger
-                    .StartNow()
-                    .WithDailyTimeIntervalSchedule(x => x.WithInterval(1, IntervalUnit.Hour))
-                );
-            });
-            services.AddQuartzHostedService(options =>
-            {
-                // when shutting down we want jobs to complete gracefully
-                options.WaitForJobsToComplete = true;
+                options.AllowSynchronousIO = true;
+                options.Listen(IPAddress.Parse("0.0.0.0"), 5000);
             });
         }
 
@@ -82,14 +95,24 @@ namespace UberStrok.WebServices.AspNetCore
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseStaticFiles();
-            app.UseSoapEndpoint<AuthenticationWebService>("/AuthenticationWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
-            app.UseSoapEndpoint<ApplicationWebService>("/ApplicationWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
-            app.UseSoapEndpoint<ShopWebService>("/ShopWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
-            app.UseSoapEndpoint<UserWebService>("/UserWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
-            app.UseSoapEndpoint<ClanWebService>("/ClanWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
-            app.UseSoapEndpoint<PrivateMessageWebService>("/PrivateMessageWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
-            app.UseSoapEndpoint<RelationshipWebService>("/RelationshipWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "assets/images")),
+                RequestPath = new PathString("/images")
+            });
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+                RequestPath = new PathString("")
+            });
+            app.UseSoapEndpoint<AuthenticationWebService>("/2.0/AuthenticationWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+            app.UseSoapEndpoint<ApplicationWebService>("/2.0/ApplicationWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+            app.UseSoapEndpoint<ShopWebService>("/2.0/ShopWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+            app.UseSoapEndpoint<UserWebService>("/2.0/UserWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+            app.UseSoapEndpoint<ClanWebService>("/2.0/ClanWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+            app.UseSoapEndpoint<PrivateMessageWebService>("/2.0/PrivateMessageWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+            app.UseSoapEndpoint<RelationshipWebService>("/2.0/RelationshipWebService", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+            app.UseMiddleware<JoinRoom>();
         }
     }
 }

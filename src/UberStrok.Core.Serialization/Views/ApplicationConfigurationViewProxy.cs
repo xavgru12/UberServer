@@ -8,27 +8,31 @@ namespace UberStrok.Core.Serialization.Views
         public static ApplicationConfigurationView Deserialize(Stream bytes)
         {
             int mask = Int32Proxy.Deserialize(bytes);
-            var view = new ApplicationConfigurationView();
-            view.MaxLevel = Int32Proxy.Deserialize(bytes);
-            view.MaxXp = Int32Proxy.Deserialize(bytes);
-            view.PointsBaseLoser = Int32Proxy.Deserialize(bytes);
-            view.PointsBaseWinner = Int32Proxy.Deserialize(bytes);
-            view.PointsHeadshot = Int32Proxy.Deserialize(bytes);
-            view.PointsKill = Int32Proxy.Deserialize(bytes);
-            view.PointsNutshot = Int32Proxy.Deserialize(bytes);
-            view.PointsPerMinuteLoser = Int32Proxy.Deserialize(bytes);
-            view.PointsPerMinuteWinner = Int32Proxy.Deserialize(bytes);
-            view.PointsSmackdown = Int32Proxy.Deserialize(bytes);
-            view.XpBaseLoser = Int32Proxy.Deserialize(bytes);
-            view.XpBaseWinner = Int32Proxy.Deserialize(bytes);
-            view.XpHeadshot = Int32Proxy.Deserialize(bytes);
-            view.XpKill = Int32Proxy.Deserialize(bytes);
-            view.XpNutshot = Int32Proxy.Deserialize(bytes);
-            view.XpPerMinuteLoser = Int32Proxy.Deserialize(bytes);
-            view.XpPerMinuteWinner = Int32Proxy.Deserialize(bytes);
+            ApplicationConfigurationView view = new ApplicationConfigurationView
+            {
+                MaxLevel = Int32Proxy.Deserialize(bytes),
+                MaxXp = Int32Proxy.Deserialize(bytes),
+                PointsBaseLoser = Int32Proxy.Deserialize(bytes),
+                PointsBaseWinner = Int32Proxy.Deserialize(bytes),
+                PointsHeadshot = Int32Proxy.Deserialize(bytes),
+                PointsKill = Int32Proxy.Deserialize(bytes),
+                PointsNutshot = Int32Proxy.Deserialize(bytes),
+                PointsPerMinuteLoser = Int32Proxy.Deserialize(bytes),
+                PointsPerMinuteWinner = Int32Proxy.Deserialize(bytes),
+                PointsSmackdown = Int32Proxy.Deserialize(bytes),
+                XpBaseLoser = Int32Proxy.Deserialize(bytes),
+                XpBaseWinner = Int32Proxy.Deserialize(bytes),
+                XpHeadshot = Int32Proxy.Deserialize(bytes),
+                XpKill = Int32Proxy.Deserialize(bytes),
+                XpNutshot = Int32Proxy.Deserialize(bytes),
+                XpPerMinuteLoser = Int32Proxy.Deserialize(bytes),
+                XpPerMinuteWinner = Int32Proxy.Deserialize(bytes)
+            };
 
             if ((mask & 1) != 0)
+            {
                 view.XpRequiredPerLevel = DictionaryProxy<int, int>.Deserialize(bytes, Int32Proxy.Deserialize, Int32Proxy.Deserialize);
+            }
 
             view.XpSmackdown = Int32Proxy.Deserialize(bytes);
             return view;
@@ -37,7 +41,7 @@ namespace UberStrok.Core.Serialization.Views
         public static void Serialize(Stream stream, ApplicationConfigurationView instance)
         {
             int mask = 0;
-            using (var bytes = new MemoryStream())
+            using (MemoryStream bytes = new MemoryStream())
             {
                 Int32Proxy.Serialize(bytes, instance.MaxLevel);
                 Int32Proxy.Serialize(bytes, instance.MaxXp);
@@ -58,9 +62,13 @@ namespace UberStrok.Core.Serialization.Views
                 Int32Proxy.Serialize(bytes, instance.XpPerMinuteWinner);
 
                 if (instance.XpRequiredPerLevel != null)
+                {
                     DictionaryProxy<int, int>.Serialize(bytes, instance.XpRequiredPerLevel, Int32Proxy.Serialize, Int32Proxy.Serialize);
+                }
                 else
+                {
                     mask |= 1;
+                }
 
                 Int32Proxy.Serialize(bytes, instance.XpSmackdown);
                 Int32Proxy.Serialize(stream, ~mask);

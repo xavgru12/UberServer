@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using System.Threading.Tasks;
 
 namespace UberStrok.WebServices.Contracts
 {
@@ -6,13 +7,13 @@ namespace UberStrok.WebServices.Contracts
     public interface IUserWebServiceContract
     {
         [OperationContract]
-        byte[] ChangeMemberName(byte[] data);
+        Task<byte[]> ChangeMemberName(byte[] data);
 
         [OperationContract]
-        byte[] IsDuplicateMemberName(byte[] data);
+        Task<byte[]> IsDuplicateMemberName(byte[] data);
 
         [OperationContract]
-        byte[] GenerateNonDuplicateMemberNames(byte[] data);
+        Task<byte[]> GenerateNonDuplicatedMemberNames(byte[] data);
 
         [OperationContract]
         byte[] GetMemberWallet(byte[] data);
@@ -39,6 +40,12 @@ namespace UberStrok.WebServices.Contracts
         byte[] SetLoadout(byte[] data);
 
         [OperationContract]
+        void EndOfMatch(byte[] data);
+
+        [OperationContract]
+        byte[] SetWallet(byte[] data);
+
+        [OperationContract]
         byte[] GetMember(byte[] data);
 
         [OperationContract]
@@ -46,5 +53,9 @@ namespace UberStrok.WebServices.Contracts
 
         [OperationContract]
         byte[] GetMemberListSessionData(byte[] data);
+
+        [OperationContract]
+        byte[] GetAppConfig();
     }
+
 }

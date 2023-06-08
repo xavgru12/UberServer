@@ -47,12 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealtimeVersion.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UberStrok.Core.Common\UberStrok.Core.Common.csproj">
-      <Project>{F6AA8827-1031-4753-BE08-B0D7F3A98C75}</Project>
-      <Name>UberStrok.Core.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

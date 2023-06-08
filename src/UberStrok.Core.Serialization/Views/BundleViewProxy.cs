@@ -6,6 +6,63 @@ namespace UberStrok.Core.Serialization.Views
 {
     public static class BundleViewProxy
     {
+        public static BundleView Deserialize(Stream bytes)
+        {
+            int num = Int32Proxy.Deserialize(bytes);
+            BundleView bundleView = new BundleView();
+            if ((num & 1) != 0)
+            {
+                bundleView.AndroidStoreUniqueId = StringProxy.Deserialize(bytes);
+            }
+            bundleView.ApplicationId = Int32Proxy.Deserialize(bytes);
+            if ((num & 2) != 0)
+            {
+                bundleView.Availability = ListProxy<ChannelType>.Deserialize(bytes, new ListProxy<ChannelType>.Deserializer<ChannelType>(EnumProxy<ChannelType>.Deserialize));
+            }
+            if ((num & 4) != 0)
+            {
+                bundleView.BundleItemViews = ListProxy<BundleItemView>.Deserialize(bytes, new ListProxy<BundleItemView>.Deserializer<BundleItemView>(BundleItemViewProxy.Deserialize));
+            }
+            bundleView.Category = EnumProxy<BundleCategoryType>.Deserialize(bytes);
+            bundleView.Credits = Int32Proxy.Deserialize(bytes);
+            if ((num & 8) != 0)
+            {
+                bundleView.Description = StringProxy.Deserialize(bytes);
+            }
+            if ((num & 16) != 0)
+            {
+                bundleView.IconUrl = StringProxy.Deserialize(bytes);
+            }
+            bundleView.Id = Int32Proxy.Deserialize(bytes);
+            if ((num & 32) != 0)
+            {
+                bundleView.ImageUrl = StringProxy.Deserialize(bytes);
+            }
+            if ((num & 64) != 0)
+            {
+                bundleView.IosAppStoreUniqueId = StringProxy.Deserialize(bytes);
+            }
+            bundleView.IsDefault = BooleanProxy.Deserialize(bytes);
+            bundleView.IsOnSale = BooleanProxy.Deserialize(bytes);
+            bundleView.IsPromoted = BooleanProxy.Deserialize(bytes);
+            if ((num & 128) != 0)
+            {
+                bundleView.MacAppStoreUniqueId = StringProxy.Deserialize(bytes);
+            }
+            if ((num & 256) != 0)
+            {
+                bundleView.Name = StringProxy.Deserialize(bytes);
+            }
+            bundleView.Points = Int32Proxy.Deserialize(bytes);
+            if ((num & 512) != 0)
+            {
+                bundleView.PromotionTag = StringProxy.Deserialize(bytes);
+            }
+            bundleView.USDPrice = DecimalProxy.Deserialize(bytes);
+            bundleView.USDPromoPrice = DecimalProxy.Deserialize(bytes);
+            return bundleView;
+        }
+
         public static void Serialize(Stream stream, BundleView instance)
         {
             int num = 0;
@@ -104,63 +161,6 @@ namespace UberStrok.Core.Serialization.Views
                 Int32Proxy.Serialize(stream, ~num);
                 memoryStream.WriteTo(stream);
             }
-        }
-
-        public static BundleView Deserialize(Stream bytes)
-        {
-            int num = Int32Proxy.Deserialize(bytes);
-            BundleView bundleView = new BundleView();
-            if ((num & 1) != 0)
-            {
-                bundleView.AndroidStoreUniqueId = StringProxy.Deserialize(bytes);
-            }
-            bundleView.ApplicationId = Int32Proxy.Deserialize(bytes);
-            if ((num & 2) != 0)
-            {
-                bundleView.Availability = ListProxy<ChannelType>.Deserialize(bytes, new ListProxy<ChannelType>.Deserializer<ChannelType>(EnumProxy<ChannelType>.Deserialize));
-            }
-            if ((num & 4) != 0)
-            {
-                bundleView.BundleItemViews = ListProxy<BundleItemView>.Deserialize(bytes, new ListProxy<BundleItemView>.Deserializer<BundleItemView>(BundleItemViewProxy.Deserialize));
-            }
-            bundleView.Category = EnumProxy<BundleCategoryType>.Deserialize(bytes);
-            bundleView.Credits = Int32Proxy.Deserialize(bytes);
-            if ((num & 8) != 0)
-            {
-                bundleView.Description = StringProxy.Deserialize(bytes);
-            }
-            if ((num & 16) != 0)
-            {
-                bundleView.IconUrl = StringProxy.Deserialize(bytes);
-            }
-            bundleView.Id = Int32Proxy.Deserialize(bytes);
-            if ((num & 32) != 0)
-            {
-                bundleView.ImageUrl = StringProxy.Deserialize(bytes);
-            }
-            if ((num & 64) != 0)
-            {
-                bundleView.IosAppStoreUniqueId = StringProxy.Deserialize(bytes);
-            }
-            bundleView.IsDefault = BooleanProxy.Deserialize(bytes);
-            bundleView.IsOnSale = BooleanProxy.Deserialize(bytes);
-            bundleView.IsPromoted = BooleanProxy.Deserialize(bytes);
-            if ((num & 128) != 0)
-            {
-                bundleView.MacAppStoreUniqueId = StringProxy.Deserialize(bytes);
-            }
-            if ((num & 256) != 0)
-            {
-                bundleView.Name = StringProxy.Deserialize(bytes);
-            }
-            bundleView.Points = Int32Proxy.Deserialize(bytes);
-            if ((num & 512) != 0)
-            {
-                bundleView.PromotionTag = StringProxy.Deserialize(bytes);
-            }
-            bundleView.USDPrice = DecimalProxy.Deserialize(bytes);
-            bundleView.USDPromoPrice = DecimalProxy.Deserialize(bytes);
-            return bundleView;
         }
     }
 }

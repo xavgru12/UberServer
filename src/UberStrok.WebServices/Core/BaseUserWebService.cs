@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UberStrok.Core.Common;
 using UberStrok.Core.Serialization;
 using UberStrok.Core.Serialization.Views;
@@ -25,34 +26,6 @@ namespace UberStrok.WebServices.Core
         public abstract LoadoutView OnGetLoadout(string authToken);
         public abstract LoadoutView OnGetLoadoutServer(string serviceAuth, string authToken);
         public abstract List<ItemInventoryView> OnGetInventory(string authToken);
-
-        byte[] IUserWebServiceContract.ChangeMemberName(byte[] data)
-        {
-            try
-            {
-                throw new NotImplementedException();
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle ChangeMemberName request:");
-                Log.Error(ex);
-                return null;
-            }
-        }
-
-        byte[] IUserWebServiceContract.GenerateNonDuplicateMemberNames(byte[] data)
-        {
-            try
-            {
-                throw new NotImplementedException();
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle GenerateNonDuplicateMemberNames request:");
-                Log.Error(ex);
-                return null;
-            }
-        }
 
         byte[] IUserWebServiceContract.GetCurrencyDeposits(byte[] data)
         {
@@ -236,30 +209,6 @@ namespace UberStrok.WebServices.Core
             }
         }
 
-        byte[] IUserWebServiceContract.IsDuplicateMemberName(byte[] data)
-        {
-            try
-            {
-                using (var bytes = new MemoryStream(data))
-                {
-                    var username = StringProxy.Deserialize(bytes);
-
-                    var result = OnIsDuplicateMemberName(username);
-                    using (var outBytes = new MemoryStream())
-                    {
-                        BooleanProxy.Serialize(outBytes, result);
-                        return outBytes.ToArray();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle IsDuplicateMemberName request:");
-                Log.Error(ex);
-                return null;
-            }
-        }
-
         byte[] IUserWebServiceContract.SetLoadout(byte[] data)
         {
             try
@@ -283,6 +232,76 @@ namespace UberStrok.WebServices.Core
                 Log.Error(ex);
                 return null;
             }
+        }
+
+        public Task<byte[]> ChangeMemberName(byte[] data)
+        {
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Unable to handle ChangeMemberName request:");
+                Log.Error(ex);
+                return null;
+            }
+        }
+
+        public Task<byte[]> IsDuplicateMemberName(byte[] data)
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    using (var bytes = new MemoryStream(data))
+                    {
+                        var username = StringProxy.Deserialize(bytes);
+
+                        var result = OnIsDuplicateMemberName(username);
+                        using (var outBytes = new MemoryStream())
+                        {
+                            BooleanProxy.Serialize(outBytes, result);
+                            return outBytes.ToArray();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Unable to handle IsDuplicateMemberName request:");
+                    Log.Error(ex);
+                    return null;
+                }
+            });
+        }
+
+        public Task<byte[]> GenerateNonDuplicatedMemberNames(byte[] data)
+        {
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Unable to handle GenerateNonDuplicateMemberNames request:");
+                Log.Error(ex);
+                return null;
+            }
+        }
+
+        public void EndOfMatch(byte[] data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public byte[] SetWallet(byte[] data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public byte[] GetAppConfig()
+        {
+            throw new NotImplementedException();
         }
     }
 }

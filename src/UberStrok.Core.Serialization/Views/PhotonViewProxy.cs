@@ -8,15 +8,19 @@ namespace UberStrok.Core.Serialization.Views
     {
         public static PhotonView Deserialize(Stream bytes)
         {
-            var mask = Int32Proxy.Deserialize(bytes);
-            var view = new PhotonView();
+            int mask = Int32Proxy.Deserialize(bytes);
+            PhotonView view = new PhotonView();
             if ((mask & 1) != 0)
+            {
                 view.IP = StringProxy.Deserialize(bytes);
+            }
 
             view.MinLatency = Int32Proxy.Deserialize(bytes);
 
             if ((mask & 2) != 0)
+            {
                 view.Name = StringProxy.Deserialize(bytes);
+            }
 
             view.PhotonId = Int32Proxy.Deserialize(bytes);
             view.Port = Int32Proxy.Deserialize(bytes);
@@ -28,19 +32,27 @@ namespace UberStrok.Core.Serialization.Views
         public static void Serialize(Stream stream, PhotonView instance)
         {
             int mask = 0;
-            using (var bytes = new MemoryStream())
+            using (MemoryStream bytes = new MemoryStream())
             {
                 if (instance.IP != null)
+                {
                     StringProxy.Serialize(bytes, instance.IP);
+                }
                 else
+                {
                     mask |= 1;
+                }
 
                 Int32Proxy.Serialize(bytes, instance.MinLatency);
 
                 if (instance.Name != null)
+                {
                     StringProxy.Serialize(bytes, instance.Name);
+                }
                 else
+                {
                     mask |= 2;
+                }
 
                 Int32Proxy.Serialize(bytes, instance.PhotonId);
                 Int32Proxy.Serialize(bytes, instance.Port);

@@ -1,13 +1,20 @@
-﻿using UberStrok.Core.Views;
+﻿using System;
+using UberStrok.Core.Views;
 
 namespace UberStrok.Core
 {
-    public class QuickItem : Item<UberStrikeItemQuickView>
+    public class QuickItem
     {
+        private readonly UberStrikeItemQuickView _view;
+
         public QuickItem(UberStrikeItemQuickView view)
-            : base(view)
         {
-            /* Space */
+            _view = view ?? throw new ArgumentNullException(nameof(view));
+        }
+
+        public UberStrikeItemQuickView GetView()
+        {
+            return _view;
         }
 
         public void Reset()

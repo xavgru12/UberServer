@@ -27,17 +27,19 @@ namespace UberStrok.Core
         public void Load(List<ushort> respawnTimes)
         {
             if (respawnTimes == null)
+            {
                 throw new ArgumentNullException(nameof(respawnTimes));
+            }
 
-            var length = respawnTimes.Count;
+            int length = respawnTimes.Count;
 
             _respawnTimers.Capacity = length;
             Respawning.Capacity = length;
 
             for (int i = 0; i < length; i++)
             {
-                var interval = respawnTimes[i] * 1000;
-                var timer = new Timer(_loop, interval);
+                int interval = respawnTimes[i] * 1000;
+                Timer timer = new Timer(_loop, interval);
                 timer.Elapsed += OnRespawnTick;
 
                 _respawnTimers.Add(timer);
@@ -49,11 +51,15 @@ namespace UberStrok.Core
         public void PickUp(int pickupId, PickupItemType type, byte value)
         {
             if (pickupId < 0 || pickupId > _respawnTimers.Count - 1)
+            {
                 return;
+            }
 
             /* Check if the pickup is currently respawning. */
             if (Respawning.Contains(pickupId))
+            {
                 return;
+            }
 
             Respawning.Add(pickupId);
             _respawnTimers[pickupId].Restart();
@@ -78,8 +84,10 @@ namespace UberStrok.Core
 
         public void Tick()
         {
-            foreach (var timer in _respawnTimers)
-                timer.Tick();
+            foreach (Timer timer in _respawnTimers)
+            {
+                _ = timer.Tick();
+            }
 
             /*
             for (int i = 0; i < Respawning.Count; i++)

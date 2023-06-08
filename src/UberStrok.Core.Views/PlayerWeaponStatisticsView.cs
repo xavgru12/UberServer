@@ -11,35 +11,7 @@ namespace UberStrok.Core.Views
             // Space
         }
 
-        public PlayerWeaponStatisticsView(
-            int meleeTotalSplats,
-            int machineGunTotalSplats,
-            int shotgunTotalSplats,
-            int sniperTotalSplats,
-            int splattergunTotalSplats,
-            int cannonTotalSplats,
-            int launcherTotalSplats,
-            int meleeTotalShotsFired,
-            int meleeTotalShotsHit,
-            int meleeTotalDamageDone,
-            int machineGunTotalShotsFired,
-            int machineGunTotalShotsHit,
-            int machineGunTotalDamageDone,
-            int shotgunTotalShotsFired,
-            int shotgunTotalShotsHit,
-            int shotgunTotalDamageDone,
-            int sniperTotalShotsFired,
-            int sniperTotalShotsHit,
-            int sniperTotalDamageDone,
-            int splattergunTotalShotsFired,
-            int splattergunTotalShotsHit,
-            int splattergunTotalDamageDone,
-            int cannonTotalShotsFired,
-            int cannonTotalShotsHit,
-            int cannonTotalDamageDone,
-            int launcherTotalShotsFired,
-            int launcherTotalShotsHit,
-            int launcherTotalDamageDone)
+        public PlayerWeaponStatisticsView(int meleeTotalSplats, int machineGunTotalSplats, int shotgunTotalSplats, int sniperTotalSplats, int splattergunTotalSplats, int cannonTotalSplats, int launcherTotalSplats, int meleeTotalShotsFired, int meleeTotalShotsHit, int meleeTotalDamageDone, int machineGunTotalShotsFired, int machineGunTotalShotsHit, int machineGunTotalDamageDone, int shotgunTotalShotsFired, int shotgunTotalShotsHit, int shotgunTotalDamageDone, int sniperTotalShotsFired, int sniperTotalShotsHit, int sniperTotalDamageDone, int splattergunTotalShotsFired, int splattergunTotalShotsHit, int splattergunTotalDamageDone, int cannonTotalShotsFired, int cannonTotalShotsHit, int cannonTotalDamageDone, int launcherTotalShotsFired, int launcherTotalShotsHit, int launcherTotalDamageDone)
         {
             CannonTotalDamageDone = cannonTotalDamageDone;
             CannonTotalShotsFired = cannonTotalShotsFired;
@@ -73,36 +45,65 @@ namespace UberStrok.Core.Views
 
         public override string ToString()
         {
-            var builder = new StringBuilder().Append("[PlayerWeaponStatisticsView: ")
-                .Append("[CannonTotalDamageDone: ").Append(CannonTotalDamageDone)
-                .Append("][CannonTotalShotsFired: ").Append(CannonTotalShotsFired)
-                .Append("][CannonTotalShotsHit: ").Append(CannonTotalShotsHit)
-                .Append("][CannonTotalSplats: ").Append(CannonTotalSplats)
-                .Append("][LauncherTotalDamageDone: ").Append(LauncherTotalDamageDone)
-                .Append("][LauncherTotalShotsFired: ").Append(LauncherTotalShotsFired)
-                .Append("][LauncherTotalShotsHit: ").Append(LauncherTotalShotsHit)
-                .Append("][LauncherTotalSplats: ").Append(LauncherTotalSplats)
-                .Append("][MachineGunTotalDamageDone: ").Append(MachineGunTotalDamageDone)
-                .Append("][MachineGunTotalShotsFired: ").Append(MachineGunTotalShotsFired)
-                .Append("][MachineGunTotalShotsHit: ").Append(MachineGunTotalShotsHit)
-                .Append("][MachineGunTotalSplats: ").Append(MachineGunTotalSplats)
-                .Append("][MeleeTotalDamageDone: ").Append(MeleeTotalDamageDone)
-                .Append("][MeleeTotalShotsFired: ").Append(MeleeTotalShotsFired)
-                .Append("][MeleeTotalShotsHit: ").Append(MeleeTotalShotsHit)
-                .Append("][MeleeTotalSplats: ").Append(MeleeTotalSplats)
-                .Append("][ShotgunTotalDamageDone: ").Append(ShotgunTotalDamageDone)
-                .Append("][ShotgunTotalShotsFired: ").Append(ShotgunTotalShotsFired)
-                .Append("][ShotgunTotalShotsHit: ").Append(ShotgunTotalShotsHit)
-                .Append("][ShotgunTotalSplats: ").Append(ShotgunTotalSplats)
-                .Append("][SniperTotalDamageDone: ").Append(SniperTotalDamageDone)
-                .Append("][SniperTotalShotsFired: ").Append(SniperTotalShotsFired)
-                .Append("][SniperTotalShotsHit: ").Append(SniperTotalShotsHit)
-                .Append("][SniperTotalSplats: ").Append(SniperTotalSplats)
-                .Append("][SplattergunTotalDamageDone: ").Append(SplattergunTotalDamageDone)
-                .Append("][SplattergunTotalShotsFired: ").Append(SplattergunTotalShotsFired)
-                .Append("][SplattergunTotalShotsHit: ").Append(SplattergunTotalShotsHit)
-                .Append("][SplattergunTotalSplats: ").Append(SplattergunTotalSplats)
-            .Append("]]");
+            StringBuilder builder = new StringBuilder();
+            _ = builder.Append("[PlayerWeaponStatisticsView: ");
+            _ = builder.Append("[CannonTotalDamageDone: ");
+            _ = builder.Append(CannonTotalDamageDone);
+            _ = builder.Append("][CannonTotalShotsFired: ");
+            _ = builder.Append(CannonTotalShotsFired);
+            _ = builder.Append("][CannonTotalShotsHit: ");
+            _ = builder.Append(CannonTotalShotsHit);
+            _ = builder.Append("][CannonTotalSplats: ");
+            _ = builder.Append(CannonTotalSplats);
+            _ = builder.Append("][LauncherTotalDamageDone: ");
+            _ = builder.Append(LauncherTotalDamageDone);
+            _ = builder.Append("][LauncherTotalShotsFired: ");
+            _ = builder.Append(LauncherTotalShotsFired);
+            _ = builder.Append("][LauncherTotalShotsHit: ");
+            _ = builder.Append(LauncherTotalShotsHit);
+            _ = builder.Append("][LauncherTotalSplats: ");
+            _ = builder.Append(LauncherTotalSplats);
+            _ = builder.Append("][MachineGunTotalDamageDone: ");
+            _ = builder.Append(MachineGunTotalDamageDone);
+            _ = builder.Append("][MachineGunTotalShotsFired: ");
+            _ = builder.Append(MachineGunTotalShotsFired);
+            _ = builder.Append("][MachineGunTotalShotsHit: ");
+            _ = builder.Append(MachineGunTotalShotsHit);
+            _ = builder.Append("][MachineGunTotalSplats: ");
+            _ = builder.Append(MachineGunTotalSplats);
+            _ = builder.Append("][MeleeTotalDamageDone: ");
+            _ = builder.Append(MeleeTotalDamageDone);
+            _ = builder.Append("][MeleeTotalShotsFired: ");
+            _ = builder.Append(MeleeTotalShotsFired);
+            _ = builder.Append("][MeleeTotalShotsHit: ");
+            _ = builder.Append(MeleeTotalShotsHit);
+            _ = builder.Append("][MeleeTotalSplats: ");
+            _ = builder.Append(MeleeTotalSplats);
+            _ = builder.Append("][ShotgunTotalDamageDone: ");
+            _ = builder.Append(ShotgunTotalDamageDone);
+            _ = builder.Append("][ShotgunTotalShotsFired: ");
+            _ = builder.Append(ShotgunTotalShotsFired);
+            _ = builder.Append("][ShotgunTotalShotsHit: ");
+            _ = builder.Append(ShotgunTotalShotsHit);
+            _ = builder.Append("][ShotgunTotalSplats: ");
+            _ = builder.Append(ShotgunTotalSplats);
+            _ = builder.Append("][SniperTotalDamageDone: ");
+            _ = builder.Append(SniperTotalDamageDone);
+            _ = builder.Append("][SniperTotalShotsFired: ");
+            _ = builder.Append(SniperTotalShotsFired);
+            _ = builder.Append("][SniperTotalShotsHit: ");
+            _ = builder.Append(SniperTotalShotsHit);
+            _ = builder.Append("][SniperTotalSplats: ");
+            _ = builder.Append(SniperTotalSplats);
+            _ = builder.Append("][SplattergunTotalDamageDone: ");
+            _ = builder.Append(SplattergunTotalDamageDone);
+            _ = builder.Append("][SplattergunTotalShotsFired: ");
+            _ = builder.Append(SplattergunTotalShotsFired);
+            _ = builder.Append("][SplattergunTotalShotsHit: ");
+            _ = builder.Append(SplattergunTotalShotsHit);
+            _ = builder.Append("][SplattergunTotalSplats: ");
+            _ = builder.Append(SplattergunTotalSplats);
+            _ = builder.Append("]]");
             return builder.ToString();
         }
 

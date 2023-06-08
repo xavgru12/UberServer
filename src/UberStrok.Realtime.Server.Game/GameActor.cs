@@ -3,6 +3,7 @@ using System;
 using UberStrok.Core;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
+using UberStrok.Realtime.Server.Game.Helper;
 
 namespace UberStrok.Realtime.Server.Game
 {
@@ -143,6 +144,71 @@ namespace UberStrok.Realtime.Server.Game
         public string GetDebug()
         {
             return $"(actor <{Cmid}> \"{PlayerName}\":{PlayerId} state {State.Current} in {Room.GetDebug()})";
+        }
+
+        public void EndMatch(bool hasWon)
+        {
+            Peer.Events.Game.SendTeamWins(Room.Winner);
+            Peer.SendEndGame(Statistics.Total, Statistics.Best);
+        }
+
+        private int CalculateXp(bool hasWonMatch)
+        {
+            int num = 0;
+            if (Room.Players.Contains(this) && TimePlayed != 0f)
+            {
+                num = (int)Math.Ceiling(DurationPlayed / 1000f);
+            }
+            if (Statistics.Total.GetDamageDealt() > 0)
+            {
+                int num2;
+                int num3;
+                if (hasWonMatch)
+                {
+                    num2 = XpPointsUtil.Config.XpBaseWinner;
+                    num3 = XpPointsUtil.Config.XpPerMinuteWinner;
+                }
+                else
+                {
+                    num2 = XpPointsUtil.Config.XpBaseLoser;
+                    num3 = XpPointsUtil.Config.XpPerMinuteLoser;
+                }
+                int num4 = MathUtils.Max(0, Statistics.Total.GetKills()) * XpPointsUtil.Config.XpKill + MathUtils.Max(0, Statistics.Total.Nutshots) * XpPointsUtil.Config.XpNutshot + MathUtils.Max(0, Statistics.Total.Headshots) * XpPointsUtil.Config.XpHeadshot + MathUtils.Max(0, Statistics.Total.MeleeKills) * XpPointsUtil.Config.XpSmackdown;
+                int num5 = MathUtils.CeilToInt((float)(num / 60 * num3));
+                int num6 = MathUtils.CeilToInt((float)(num / 60 * num3) * CalculateBoost((ItemPropertyType)1));
+                return num2 + num4 + num5 + num6;
+            }
+            return 0;
+        }
+
+        private int CalculatePoints(bool hasWonMatch)
+        {
+            int num = 0;
+            if (Room.Players.Contains(this) && TimePlayed != 0f)
+            {
+                num = (int)Math.Ceiling(DurationPlayed / 1000f);
+            }
+            int num2;
+            int num3;
+            if (hasWonMatch)
+            {
+                num2 = XpPointsUtil.Config.PointsBaseWinner;
+                num3 = XpPointsUtil.Config.PointsPerMinuteWinner;
+            }
+            else
+            {
+                num2 = XpPointsUtil.Config.PointsBaseLoser;
+                num3 = XpPointsUtil.Config.PointsPerMinuteLoser;
+            }
+            int num4 = MathUtils.Max(0, Statistics.Total.GetKills()) * XpPointsUtil.Config.PointsKill + MathUtils.Max(0, Statistics.Total.Nutshots) * XpPointsUtil.Config.PointsNutshot + MathUtils.Max(0, Statistics.Total.Headshots) * XpPointsUtil.Config.PointsHeadshot + MathUtils.Max(0, Statistics.Total.MeleeKills) * XpPointsUtil.Config.PointsSmackdown;
+            int num5 = MathUtils.CeilToInt((float)(num / 60 * num3));
+            int num6 = MathUtils.CeilToInt((float)(num / 60 * num3) * CalculateBoost((ItemPropertyType)2));
+            return num2 + num4 + num5 + num6;
+        }
+
+        private float CalculateBoost(ItemPropertyType propType)
+        {
+            return 0f;
         }
     }
 }

@@ -5,42 +5,47 @@ namespace UberStrok.Core.Serialization.Views
 {
     public static class ContactGroupViewProxy
     {
-        public static void Serialize(Stream stream, ContactGroupView instance)
-        {
-            int mask = 0;
-            using (MemoryStream bytes = new MemoryStream())
-            {
-                if (instance.Contacts != null)
-                    ListProxy<PublicProfileView>.Serialize(bytes, instance.Contacts, PublicProfileViewProxy.Serialize);
-                else
-                    mask |= 1;
-
-                Int32Proxy.Serialize(bytes, instance.GroupId);
-
-                if (instance.GroupName != null)
-                    StringProxy.Serialize(bytes, instance.GroupName);
-                else
-                    mask |= 2;
-
-                Int32Proxy.Serialize(stream, ~mask);
-                bytes.WriteTo(stream);
-            }
-        }
-
         public static ContactGroupView Deserialize(Stream bytes)
         {
             int num = Int32Proxy.Deserialize(bytes);
-            var instance = new ContactGroupView();
-
+            ContactGroupView contactGroupView = new ContactGroupView();
             if ((num & 1) != 0)
-                instance.Contacts = ListProxy<PublicProfileView>.Deserialize(bytes, PublicProfileViewProxy.Deserialize);
-
-            instance.GroupId = Int32Proxy.Deserialize(bytes);
-
+            {
+                contactGroupView.Contacts = ListProxy<PublicProfileView>.Deserialize(bytes, new ListProxy<PublicProfileView>.Deserializer<PublicProfileView>(PublicProfileViewProxy.Deserialize));
+            }
+            contactGroupView.GroupId = Int32Proxy.Deserialize(bytes);
             if ((num & 2) != 0)
-                instance.GroupName = StringProxy.Deserialize(bytes);
+            {
+                contactGroupView.GroupName = StringProxy.Deserialize(bytes);
+            }
+            return contactGroupView;
+        }
 
-            return instance;
+        public static void Serialize(Stream stream, ContactGroupView instance)
+        {
+            int num = 0;
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                if (instance.Contacts != null)
+                {
+                    ListProxy<PublicProfileView>.Serialize(memoryStream, instance.Contacts, new ListProxy<PublicProfileView>.Serializer<PublicProfileView>(PublicProfileViewProxy.Serialize));
+                }
+                else
+                {
+                    num |= 1;
+                }
+                Int32Proxy.Serialize(memoryStream, instance.GroupId);
+                if (instance.GroupName != null)
+                {
+                    StringProxy.Serialize(memoryStream, instance.GroupName);
+                }
+                else
+                {
+                    num |= 2;
+                }
+                Int32Proxy.Serialize(stream, ~num);
+                memoryStream.WriteTo(stream);
+            }
         }
     }
 }

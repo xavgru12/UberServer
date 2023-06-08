@@ -20,13 +20,23 @@ namespace UberStrok.Core.Views
         {
             string str = "[Uberstrike member view: ";
             if (PlayerCardView != null)
-                str += this.PlayerCardView.ToString();
+            {
+                str += PlayerCardView.ToString();
+            }
             else
+            {
                 str += "null";
-            if (this.PlayerStatisticsView != null)
-                str += this.PlayerStatisticsView.ToString();
+            }
+
+            if (PlayerStatisticsView != null)
+            {
+                str += PlayerStatisticsView.ToString();
+            }
             else
+            {
                 str += "null";
+            }
+
             return str + "]";
         }
 

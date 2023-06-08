@@ -64,6 +64,10 @@ namespace UberStrok.Realtime.Server.Game
                 e.Player.State.Set(ActorState.Id.Playing);
                 Room.Spawn(e.Player);
             }
+            else
+            {
+                e.Player.Peer.Events.Game.SendSetPowerUpState(Room.PowerUps.Respawning);
+            }
         }
     }
 }

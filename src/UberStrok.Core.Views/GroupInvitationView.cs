@@ -9,31 +9,30 @@ namespace UberStrok.Core.Views
         {
         }
 
-
         public GroupInvitationView(int inviterCmid, int groupId, int inviteeCmid, string message)
         {
-            this.InviterCmid = inviterCmid;
-            this.InviterName = string.Empty;
-            this.GroupName = string.Empty;
-            this.GroupTag = string.Empty;
-            this.GroupId = groupId;
-            this.GroupInvitationId = 0;
-            this.InviteeCmid = inviteeCmid;
-            this.InviteeName = string.Empty;
-            this.Message = message;
+            InviterCmid = inviterCmid;
+            InviterName = string.Empty;
+            GroupName = string.Empty;
+            GroupTag = string.Empty;
+            GroupId = groupId;
+            GroupInvitationId = 0;
+            InviteeCmid = inviteeCmid;
+            InviteeName = string.Empty;
+            Message = message;
         }
 
         public GroupInvitationView(int inviterCmid, string inviterName, string groupName, string groupTag, int groupId, int groupInvitationId, int inviteeCmid, string inviteeName, string message)
         {
-            this.InviterCmid = inviterCmid;
-            this.InviterName = inviterName;
-            this.GroupName = groupName;
-            this.GroupTag = groupTag;
-            this.GroupId = groupId;
-            this.GroupInvitationId = groupInvitationId;
-            this.InviteeCmid = inviteeCmid;
-            this.InviteeName = inviteeName;
-            this.Message = message;
+            InviterCmid = inviterCmid;
+            InviterName = inviterName;
+            GroupName = groupName;
+            GroupTag = groupTag;
+            GroupId = groupId;
+            GroupInvitationId = groupInvitationId;
+            InviteeCmid = inviteeCmid;
+            InviteeName = inviteeName;
+            Message = message;
         }
 
         public string InviterName { get; set; }
@@ -59,9 +58,9 @@ namespace UberStrok.Core.Views
             string text = string.Concat(new object[]
             {
                 "[GroupInvitationDisplayView: [InviterCmid: ",
-                this.InviterCmid,
+                InviterCmid,
                 "][InviterName: ",
-                this.InviterName,
+                InviterName,
                 "]"
             });
             string text2 = text;
@@ -69,11 +68,11 @@ namespace UberStrok.Core.Views
             {
                 text2,
                 "[GroupName: ",
-                this.GroupName,
+                GroupName,
                 "][GroupTag: ",
-                this.GroupTag,
+                GroupTag,
                 "][GroupId: ",
-                this.GroupId,
+                GroupId,
                 "]"
             });
             text2 = text;
@@ -81,14 +80,14 @@ namespace UberStrok.Core.Views
             {
                 text2,
                 "[GroupInvitationId:",
-                this.GroupInvitationId,
+                GroupInvitationId,
                 "][InviteeCmid:",
-                this.InviteeCmid,
+                InviteeCmid,
                 "][InviteeName:",
-                this.InviteeName,
+                InviteeName,
                 "]"
             });
-            return text + "[Message:" + this.Message + "]]";
+            return text + "[Message:" + Message + "]]";
         }
     }
 }

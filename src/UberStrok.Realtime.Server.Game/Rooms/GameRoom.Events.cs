@@ -81,8 +81,16 @@ namespace UberStrok.Realtime.Server.Game
             {
                 /* Let other actors know that the player has left the room. */
                 foreach (var otherActor in Actors)
-                    otherActor.Peer.Events.Game.SendPlayerLeftGame(args.Player.Cmid);
-
+                {
+                    try
+                    {
+                        otherActor.Peer.Events.Game.SendPlayerLeftGame(args.Player.Cmid);
+                    }
+                    catch(Exception ex)
+                    {
+                        Log.Error(ex);
+                    }
+                }
                 args.Player.Peer.GetStats(out int rtt, out int rttVar, out int numFailures);
                 Log.Info($"{args.Player.GetDebug()} left game. RTT: {rtt} var<RTT>: {rttVar} NumFailures: {numFailures}");
                 PlayerLeft?.Invoke(this, args);

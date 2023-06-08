@@ -11,28 +11,28 @@ namespace UberStrok.Core.Views
 
         public GroupCreationView(string name, string description, string motto, string address, bool hasPicture, int applicationId, string authToken, string tag, string locale)
         {
-            this.Name = name;
-            this.Description = description;
-            this.Motto = motto;
-            this.Address = address;
-            this.HasPicture = hasPicture;
-            this.ApplicationId = applicationId;
-            this.AuthToken = authToken;
-            this.Tag = tag;
-            this.Locale = locale;
+            Name = name;
+            Description = description;
+            Motto = motto;
+            Address = address;
+            HasPicture = hasPicture;
+            ApplicationId = applicationId;
+            AuthToken = authToken;
+            Tag = tag;
+            Locale = locale;
         }
 
         public GroupCreationView(string name, string motto, int applicationId, string authToken, string tag, string locale)
         {
-            this.Name = name;
-            this.Description = string.Empty;
-            this.Motto = motto;
-            this.Address = string.Empty;
-            this.HasPicture = false;
-            this.ApplicationId = applicationId;
-            this.AuthToken = authToken;
-            this.Tag = tag;
-            this.Locale = locale;
+            Name = name;
+            Description = string.Empty;
+            Motto = motto;
+            Address = string.Empty;
+            HasPicture = false;
+            ApplicationId = applicationId;
+            AuthToken = authToken;
+            Tag = tag;
+            Locale = locale;
         }
 
         public string Name { get; set; }
@@ -58,11 +58,11 @@ namespace UberStrok.Core.Views
             string text = string.Concat(new string[]
             {
                 "[GroupCreationView: [name:",
-                this.Name,
+                Name,
                 "][description:",
-                this.Description,
+                Description,
                 "][Motto:",
-                this.Motto,
+                Motto,
                 "]"
             });
             string text2 = text;
@@ -70,13 +70,13 @@ namespace UberStrok.Core.Views
             {
                 text2,
                 "[Address:",
-                this.Address,
+                Address,
                 "][Has picture:",
-                this.HasPicture,
+                HasPicture,
                 "][Application Id:",
-                this.ApplicationId,
+                ApplicationId,
                 "][AuthToken:",
-                this.AuthToken,
+                AuthToken,
                 "]"
             });
             text2 = text;
@@ -84,9 +84,9 @@ namespace UberStrok.Core.Views
             {
                 text2,
                 "[Tag:",
-                this.Tag,
+                Tag,
                 "][Locale:",
-                this.Locale,
+                Locale,
                 "]"
             });
         }

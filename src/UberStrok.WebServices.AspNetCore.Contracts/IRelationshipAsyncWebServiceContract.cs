@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
 using System.Threading.Tasks;
 
-namespace UberStrok.WebServices.Contracts
+namespace UberStrok.WebServices.AspNetCore.Contracts
 {
     [ServiceContract]
     public interface IRelationshipAsyncWebServiceContract

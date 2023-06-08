@@ -5,11 +5,11 @@ using System.ServiceModel;
 
 namespace UberStrok.WebServices
 {
-    public class WebServiceManager
+    public class Startup
     {
-        public static readonly ILog Log = LogManager.GetLogger(typeof(WebServiceManager).Name);
+        public static readonly ILog Log = LogManager.GetLogger(typeof(Startup).Name);
 
-        public WebServiceManager()
+        public Startup()
         {
             Log.Info("Initializing web services...");
 

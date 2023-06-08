@@ -41,13 +41,15 @@
     <Compile Include="BaseWebServiceClient.cs" />
     <Compile Include="ModerationWebServiceClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelationshipWebServiceClient.cs" />
+    <Compile Include="ResourceWebServiceClient.cs" />
     <Compile Include="ShopWebServiceClient.cs" />
     <Compile Include="UserWebServiceClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UberStrok.Core.Common\UberStrok.Core.Common.csproj">
-      <Project>{F6AA8827-1031-4753-BE08-B0D7F3A98C75}</Project>
-      <Name>UberStrok.Core.Common</Name>
+    <ProjectReference Include="..\Uberstrok.Core.Common\Uberstrok.Core.Common.csproj">
+      <Project>{297C2155-5E47-4054-AB46-52F853AACEA3}</Project>
+      <Name>Uberstrok.Core.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\UberStrok.Core.Serialization\UberStrok.Core.Serialization.csproj">
       <Project>{31695DBE-D01C-4EA8-92CC-28541E9E0BC0}</Project>

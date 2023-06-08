@@ -5,6 +5,7 @@
         HeartbeatChallenge = 1,
         LoadData,
         LobbyEntered,
-        DisconnectAndDisablePhoton
+        DisconnectAndDisablePhoton,
+        SetLoadoutResult
     }
 }

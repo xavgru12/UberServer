@@ -1,5 +1,4 @@
 ﻿using Photon.SocketServer;
-using System;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
 
@@ -8,13 +7,16 @@ namespace UberStrok.Realtime.Server.Comm
     public class CommPeer : Peer
     {
         public LobbyRoom Room { get; set; }
+
         public CommActor Actor { get; set; }
+
         public CommPeerEvents Events { get; }
 
-        public CommPeer(InitRequest request) : base(request)
+        public CommPeer(InitRequest request)
+            : base(request)
         {
             Events = new CommPeerEvents(this);
-            Handlers.Add(new CommPeerOperationHandler());
+            base.Handlers.Add(new CommPeerOperationHandler());
         }
 
         public override void SendHeartbeat(string hash)
@@ -30,41 +32,22 @@ namespace UberStrok.Realtime.Server.Comm
 
         public override void Tick()
         {
-            try
-            {
-                base.Tick();
-                if (Actor.IsMuted)
-                {
-                    if (Actor.MuteEndTime < DateTime.UtcNow)
-                    {
-                        Events.Lobby.SendModerationMutePlayer(false);
-                        Actor.IsMuted = false;
-                    }
-                }
-            }
-            catch
-            {
-                HasError = true;
-            }
+            base.Tick();
+            LobbyRoom.CheckMute(Actor.Peer, false);
         }
 
         protected override void OnAuthenticate(UberstrikeUserView userView)
         {
-            var actorView = new CommActorInfoView
+            CommActorInfoView view = new CommActorInfoView
             {
                 AccessLevel = userView.CmuneMemberView.PublicProfile.AccessLevel,
-                Channel = ChannelType.Steam,
+                Channel = (ChannelType)(base.IsMac ? 7 : 4),
                 Cmid = userView.CmuneMemberView.PublicProfile.Cmid,
                 PlayerName = userView.CmuneMemberView.PublicProfile.Name,
-                ClanTag = userView.CmuneMemberView.PublicProfile.GroupTag,
+                ClanTag = userView.CmuneMemberView.PublicProfile.GroupTag
             };
-
-            Actor = new CommActor(this, actorView);
-        }
-
-        protected override void OnDisconnect(global::PhotonHostRuntimeInterfaces.DisconnectReason reasonCode, string reasonDetail)
-        {
-            HasError = true;
+            Actor = new CommActor(this, view);
         }
     }
+
 }

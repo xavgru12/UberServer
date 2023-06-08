@@ -53,6 +53,7 @@ namespace UberStrok.Core.Views
         public int LauncherShotsHit { get; set; }
         public int LauncherDamageDone { get; set; }
 
+
         public int GetKills()
         {
             return MeleeKills + MachineGunKills + ShotgunSplats + SniperKills +
@@ -79,11 +80,8 @@ namespace UberStrok.Core.Views
 
         public float GetAccuracy()
         {
-            var shots = GetShots();
-            if (shots == 0)
-                return 0f;
-
-            return GetHits() / shots;
+            int shots = GetShots();
+            return shots == 0 ? 0f : GetHits() / shots;
         }
     }
 }

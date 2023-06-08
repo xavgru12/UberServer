@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UberStrok.Core.Common;
 
 namespace UberStrok.Core.Views
 {
@@ -8,15 +7,14 @@ namespace UberStrok.Core.Views
     public class AccountCompletionResultView
     {
         public AccountCompletionResultView()
-            : this(default, new Dictionary<int, int>(), new List<string>())
         {
-            // Space
+            ItemsAttributed = new Dictionary<int, int>();
+            NonDuplicateNames = new List<string>();
         }
 
-        public AccountCompletionResultView(AccountCompletionResult result)
-            : this((int)result, new Dictionary<int, int>(), new List<string>())
+        public AccountCompletionResultView(int result) : this()
         {
-            // Space
+            Result = result;
         }
 
         public AccountCompletionResultView(int result, Dictionary<int, int> itemsAttributed, List<string> nonDuplicateNames)

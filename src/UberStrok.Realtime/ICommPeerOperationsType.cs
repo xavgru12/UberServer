@@ -3,6 +3,7 @@
     public enum ICommPeerOperationsType
     {
         AuthenticationRequest = 1,
-        SendHeartbeatResponse
+        SendHeartbeatResponse,
+        SetLoadoutRequest
     }
 }

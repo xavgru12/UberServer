@@ -10,41 +10,10 @@ namespace UberStrok.Core.Views
         public LoadoutView()
         {
             Type = AvatarType.LutzRavinoff;
-            SkinColor = string.Empty;
+            SkinColor = "#FFFFFF";
         }
 
-        public LoadoutView(
-            int loadoutId,
-            int backpack,
-            int boots,
-            int cmid,
-            int face,
-            int functionalItem1,
-            int functionalItem2,
-            int functionalItem3,
-            int gloves,
-            int head,
-            int lowerBody,
-            int meleeWeapon,
-            int quickItem1,
-            int quickItem2,
-            int quickItem3,
-            AvatarType type,
-            int upperBody,
-            int weapon1,
-            int weapon1Mod1,
-            int weapon1Mod2,
-            int weapon1Mod3,
-            int weapon2,
-            int weapon2Mod1,
-            int weapon2Mod2,
-            int weapon2Mod3,
-            int weapon3,
-            int weapon3Mod1,
-            int weapon3Mod2,
-            int weapon3Mod3,
-            int webbing,
-            string skinColor)
+        public LoadoutView(int loadoutId, int backpack, int boots, int cmid, int face, int functionalItem1, int functionalItem2, int functionalItem3, int gloves, int head, int lowerBody, int meleeWeapon, int quickItem1, int quickItem2, int quickItem3, AvatarType type, int upperBody, int weapon1, int weapon1Mod1, int weapon1Mod2, int weapon1Mod3, int weapon2, int weapon2Mod1, int weapon2Mod2, int weapon2Mod3, int weapon3, int weapon3Mod1, int weapon3Mod2, int weapon3Mod3, int webbing, string skinColor)
         {
             Backpack = backpack;
             Boots = boots;
@@ -81,39 +50,70 @@ namespace UberStrok.Core.Views
 
         public override string ToString()
         {
-            var builder = new StringBuilder().Append("[LoadoutView: [Backpack: ").Append(Backpack)
-                .Append("][Boots: ").Append(Boots)
-                .Append("][Cmid: ").Append(Cmid)
-                .Append("][Face: ").Append(Face)
-                .Append("][FunctionalItem1: ").Append(FunctionalItem1)
-                .Append("][FunctionalItem2: ").Append(FunctionalItem2)
-                .Append("][FunctionalItem3: ").Append(FunctionalItem3)
-                .Append("][Gloves: ").Append(Gloves)
-                .Append("][Head: ").Append(Head)
-                .Append("][LoadoutId: ").Append(LoadoutId)
-                .Append("][LowerBody: ").Append(LowerBody)
-                .Append("][MeleeWeapon: ").Append(MeleeWeapon)
-                .Append("][QuickItem1: ").Append(QuickItem1)
-                .Append("][QuickItem2: ").Append(QuickItem2)
-                .Append("][QuickItem3: ").Append(QuickItem3)
-                .Append("][Type: ").Append(Type)
-                .Append("][UpperBody: ").Append(UpperBody)
-                .Append("][Weapon1: ").Append(Weapon1)
-                .Append("][Weapon1Mod1: ").Append(Weapon1Mod1)
-                .Append("][Weapon1Mod2: ").Append(Weapon1Mod2)
-                .Append("][Weapon1Mod3: ").Append(Weapon1Mod3)
-                .Append("][Weapon2: ").Append(Weapon2)
-                .Append("][Weapon2Mod1: ").Append(Weapon2Mod1)
-                .Append("][Weapon2Mod2: ").Append(Weapon2Mod2)
-                .Append("][Weapon2Mod3: ").Append(Weapon2Mod3)
-                .Append("][Weapon3: ").Append(Weapon3)
-                .Append("][Weapon3Mod1: ").Append(Weapon3Mod1)
-                .Append("][Weapon3Mod2: ").Append(Weapon3Mod2)
-                .Append("][Weapon3Mod3: ").Append(Weapon3Mod3)
-                .Append("][Webbing: ").Append(Webbing)
-                .Append("][SkinColor: ").Append(SkinColor)
-            .Append("]]");
-
+            StringBuilder builder = new StringBuilder();
+            _ = builder.Append("[LoadoutView: [Backpack: ");
+            _ = builder.Append(Backpack);
+            _ = builder.Append("][Boots: ");
+            _ = builder.Append(Boots);
+            _ = builder.Append("][Cmid: ");
+            _ = builder.Append(Cmid);
+            _ = builder.Append("][Face: ");
+            _ = builder.Append(Face);
+            _ = builder.Append("][FunctionalItem1: ");
+            _ = builder.Append(FunctionalItem1);
+            _ = builder.Append("][FunctionalItem2: ");
+            _ = builder.Append(FunctionalItem2);
+            _ = builder.Append("][FunctionalItem3: ");
+            _ = builder.Append(FunctionalItem3);
+            _ = builder.Append("][Gloves: ");
+            _ = builder.Append(Gloves);
+            _ = builder.Append("][Head: ");
+            _ = builder.Append(Head);
+            _ = builder.Append("][LoadoutId: ");
+            _ = builder.Append(LoadoutId);
+            _ = builder.Append("][LowerBody: ");
+            _ = builder.Append(LowerBody);
+            _ = builder.Append("][MeleeWeapon: ");
+            _ = builder.Append(MeleeWeapon);
+            _ = builder.Append("][QuickItem1: ");
+            _ = builder.Append(QuickItem1);
+            _ = builder.Append("][QuickItem2: ");
+            _ = builder.Append(QuickItem2);
+            _ = builder.Append("][QuickItem3: ");
+            _ = builder.Append(QuickItem3);
+            _ = builder.Append("][Type: ");
+            _ = builder.Append(Type);
+            _ = builder.Append("][UpperBody: ");
+            _ = builder.Append(UpperBody);
+            _ = builder.Append("][Weapon1: ");
+            _ = builder.Append(Weapon1);
+            _ = builder.Append("][Weapon1Mod1: ");
+            _ = builder.Append(Weapon1Mod1);
+            _ = builder.Append("][Weapon1Mod2: ");
+            _ = builder.Append(Weapon1Mod2);
+            _ = builder.Append("][Weapon1Mod3: ");
+            _ = builder.Append(Weapon1Mod3);
+            _ = builder.Append("][Weapon2: ");
+            _ = builder.Append(Weapon2);
+            _ = builder.Append("][Weapon2Mod1: ");
+            _ = builder.Append(Weapon2Mod1);
+            _ = builder.Append("][Weapon2Mod2: ");
+            _ = builder.Append(Weapon2Mod2);
+            _ = builder.Append("][Weapon2Mod3: ");
+            _ = builder.Append(Weapon2Mod3);
+            _ = builder.Append("][Weapon3: ");
+            _ = builder.Append(Weapon3);
+            _ = builder.Append("][Weapon3Mod1: ");
+            _ = builder.Append(Weapon3Mod1);
+            _ = builder.Append("][Weapon3Mod2: ");
+            _ = builder.Append(Weapon3Mod2);
+            _ = builder.Append("][Weapon3Mod3: ");
+            _ = builder.Append(Weapon3Mod3);
+            _ = builder.Append("][Webbing: ");
+            _ = builder.Append(Webbing);
+            _ = builder.Append("][SkinColor: ");
+            _ = builder.Append(SkinColor);
+            _ = builder.Append("]]");
             return builder.ToString();
         }
 

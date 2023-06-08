@@ -29,11 +29,10 @@ namespace UberStrok.Realtime.Server.Game
         {
             Actor.Info.Health = 0;
             Actor.Info.ArmorPoints = 0;
-            Actor.Info.PlayerState |= PlayerStates.Dead;
 
             /* Reset current statistics view. */
             Actor.Statistics.Reset(hard: false);
-
+            Actor.Info.PlayerState |= PlayerStates.Dead;
             if (_teamElimination)
             {
                 Actor.Info.PlayerState |= PlayerStates.Spectator;

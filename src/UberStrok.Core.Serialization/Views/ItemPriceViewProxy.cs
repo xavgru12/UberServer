@@ -21,7 +21,7 @@ namespace UberStrok.Core.Serialization.Views
 
         public static void Serialize(Stream stream, ItemPriceView instance)
         {
-            using (var bytes = new MemoryStream())
+            using (MemoryStream bytes = new MemoryStream())
             {
                 Int32Proxy.Serialize(bytes, instance.Amount);
                 EnumProxy<UberStrikeCurrencyType>.Serialize(bytes, instance.Currency);

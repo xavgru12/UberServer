@@ -11,11 +11,11 @@ namespace UberStrok.Core.Views
 
         public ClanMemberView(string name, int cmid, GroupPosition position, DateTime joiningDate, DateTime lastLogin)
         {
-            this.Cmid = cmid;
-            this.Name = name;
-            this.Position = position;
-            this.JoiningDate = joiningDate;
-            this.Lastlogin = lastLogin;
+            Cmid = cmid;
+            Name = name;
+            Position = position;
+            JoiningDate = joiningDate;
+            Lastlogin = lastLogin;
         }
 
         public string Name { get; set; }
@@ -33,15 +33,15 @@ namespace UberStrok.Core.Views
             return string.Concat(new object[]
             {
                 "[Clan member: [Name: ",
-                this.Name,
+                Name,
                 "][Cmid: ",
-                this.Cmid,
+                Cmid,
                 "][Position: ",
-                this.Position,
+                Position,
                 "][JoiningDate: ",
-                this.JoiningDate,
+                JoiningDate,
                 "][Lastlogin: ",
-                this.Lastlogin,
+                Lastlogin,
                 "]]"
             });
         }

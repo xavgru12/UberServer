@@ -4,7 +4,7 @@ namespace UberStrok.Realtime.Server.Comm
 {
     public class BufferedAdministratorMessage
     {
-        private Dictionary<int, string> _bufferedmsgs;
+        private readonly Dictionary<int, string> _bufferedmsgs;
 
         public BufferedAdministratorMessage()
         {
@@ -18,22 +18,17 @@ namespace UberStrok.Realtime.Server.Comm
 
         public bool HasBufferedMessage(int cmid)
         {
-            return _bufferedmsgs.ContainsKey(cmid) ? true : false;
+            return _bufferedmsgs.ContainsKey(cmid);
         }
 
         public string GetBufferedMessages(int cmid)
         {
-            if (_bufferedmsgs.TryGetValue(cmid, out string message))
-            {
-                return message;
-            }
-
-            return null;
+            return _bufferedmsgs.TryGetValue(cmid, out string message) ? message : null;
         }
 
         public void DeleteBufferedMessage(int cmid)
         {
-            _bufferedmsgs.Remove(cmid);
+            _ = _bufferedmsgs.Remove(cmid);
         }
     }
 }

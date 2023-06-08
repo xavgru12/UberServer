@@ -9,7 +9,7 @@ namespace UberStrok.Core.Views
     {
         public string Description { get; set; }
         public string DisplayName { get; set; }
-        public bool IsBlueBox { get; set; }
+        public GameBoxType BoxType { get; set; }
         public int MapId { get; set; }
         public int MaxPlayers { get; set; }
         public int RecommendedItemId { get; set; }

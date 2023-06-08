@@ -16,7 +16,7 @@ namespace UberStrok.Core.Serialization.Views
 
         public static void Serialize(Stream stream, ConnectionAddressView instance)
         {
-            using (var bytes = new MemoryStream())
+            using (MemoryStream bytes = new MemoryStream())
             {
                 Int32Proxy.Serialize(bytes, instance.Ipv4);
                 UInt16Proxy.Serialize(bytes, instance.Port);

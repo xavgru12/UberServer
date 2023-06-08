@@ -8,9 +8,11 @@ namespace UberStrok.Core.Serialization.Views
         public static ClanRequestAcceptView Deserialize(Stream bytes)
         {
             int num = Int32Proxy.Deserialize(bytes);
-            ClanRequestAcceptView clanRequestAcceptView = new ClanRequestAcceptView();
-            clanRequestAcceptView.ActionResult = Int32Proxy.Deserialize(bytes);
-            clanRequestAcceptView.ClanRequestId = Int32Proxy.Deserialize(bytes);
+            ClanRequestAcceptView clanRequestAcceptView = new ClanRequestAcceptView
+            {
+                ActionResult = Int32Proxy.Deserialize(bytes),
+                ClanRequestId = Int32Proxy.Deserialize(bytes)
+            };
             if ((num & 1) != 0)
             {
                 clanRequestAcceptView.ClanView = ClanViewProxy.Deserialize(bytes);

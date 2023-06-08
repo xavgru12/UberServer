@@ -1,13 +1,20 @@
-﻿using UberStrok.Core.Views;
+﻿using System;
+using UberStrok.Core.Views;
 
 namespace UberStrok.Core
 {
-    public class Gear : Item<UberStrikeItemGearView>
+    public class Gear
     {
+        private readonly UberStrikeItemGearView _view;
+
         public Gear(UberStrikeItemGearView view)
-            : base(view)
         {
-            /* Space. */
+            _view = view ?? throw new ArgumentNullException(nameof(view));
+        }
+
+        public UberStrikeItemGearView GetView()
+        {
+            return _view;
         }
     }
 }

@@ -9,25 +9,34 @@ namespace UberStrok.Core.Serialization.Views
         public static LoadoutView Deserialize(Stream bytes)
         {
             int mask = Int32Proxy.Deserialize(bytes);
-            var view = new LoadoutView();
-            view.Backpack = Int32Proxy.Deserialize(bytes);
-            view.Boots = Int32Proxy.Deserialize(bytes);
-            view.Cmid = Int32Proxy.Deserialize(bytes);
-            view.Face = Int32Proxy.Deserialize(bytes);
-            view.FunctionalItem1 = Int32Proxy.Deserialize(bytes);
-            view.FunctionalItem2 = Int32Proxy.Deserialize(bytes);
-            view.FunctionalItem3 = Int32Proxy.Deserialize(bytes);
-            view.Gloves = Int32Proxy.Deserialize(bytes);
-            view.Head = Int32Proxy.Deserialize(bytes);
-            view.LoadoutId = Int32Proxy.Deserialize(bytes);
-            view.LowerBody = Int32Proxy.Deserialize(bytes);
-            view.MeleeWeapon = Int32Proxy.Deserialize(bytes);
-            view.QuickItem1 = Int32Proxy.Deserialize(bytes);
-            view.QuickItem2 = Int32Proxy.Deserialize(bytes);
-            view.QuickItem3 = Int32Proxy.Deserialize(bytes);
+            LoadoutView view = new LoadoutView
+            {
+                Backpack = Int32Proxy.Deserialize(bytes),
+                Boots = Int32Proxy.Deserialize(bytes),
+                Cmid = Int32Proxy.Deserialize(bytes),
+                Face = Int32Proxy.Deserialize(bytes),
+                FunctionalItem1 = Int32Proxy.Deserialize(bytes),
+                FunctionalItem2 = Int32Proxy.Deserialize(bytes),
+                FunctionalItem3 = Int32Proxy.Deserialize(bytes),
+                Gloves = Int32Proxy.Deserialize(bytes),
+                Head = Int32Proxy.Deserialize(bytes),
+                LoadoutId = Int32Proxy.Deserialize(bytes),
+                LowerBody = Int32Proxy.Deserialize(bytes),
+                MeleeWeapon = Int32Proxy.Deserialize(bytes),
+                QuickItem1 = Int32Proxy.Deserialize(bytes),
+                QuickItem2 = Int32Proxy.Deserialize(bytes),
+                QuickItem3 = Int32Proxy.Deserialize(bytes)
+            };
 
             if ((mask & 1) != 0)
+            {
                 view.SkinColor = StringProxy.Deserialize(bytes);
+            }
+
+            if (view.SkinColor[0] != '#')
+            {
+                view.SkinColor = $"#{view.SkinColor}";
+            }
 
             view.Type = EnumProxy<AvatarType>.Deserialize(bytes);
             view.UpperBody = Int32Proxy.Deserialize(bytes);
@@ -51,7 +60,7 @@ namespace UberStrok.Core.Serialization.Views
         public static void Serialize(Stream stream, LoadoutView instance)
         {
             int mask = 0;
-            using (var bytes = new MemoryStream())
+            using (MemoryStream bytes = new MemoryStream())
             {
                 Int32Proxy.Serialize(bytes, instance.Backpack);
                 Int32Proxy.Serialize(bytes, instance.Boots);
@@ -70,9 +79,13 @@ namespace UberStrok.Core.Serialization.Views
                 Int32Proxy.Serialize(bytes, instance.QuickItem3);
 
                 if (instance.SkinColor != null)
+                {
                     StringProxy.Serialize(bytes, instance.SkinColor);
+                }
                 else
+                {
                     mask |= 1;
+                }
 
                 EnumProxy<AvatarType>.Serialize(bytes, instance.Type);
                 Int32Proxy.Serialize(bytes, instance.UpperBody);

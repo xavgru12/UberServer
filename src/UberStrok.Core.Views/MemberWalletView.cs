@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace UberStrok.Core.Views
 {
@@ -8,20 +7,31 @@ namespace UberStrok.Core.Views
     {
         public MemberWalletView()
         {
-            CreditsExpiration = DateTime.Today;
-            PointsExpiration = DateTime.Today;
+            CreditsExpiration = DateTime.MaxValue;
+            PointsExpiration = DateTime.MaxValue;
         }
 
         public MemberWalletView(int cmid, int? credits, int? points, DateTime? creditsExpiration, DateTime? pointsExpiration)
         {
             if (!credits.HasValue)
+            {
                 credits = new int?(0);
+            }
+
             if (!points.HasValue)
+            {
                 points = new int?(0);
+            }
+
             if (!creditsExpiration.HasValue)
-                creditsExpiration = new DateTime?(DateTime.MinValue);
+            {
+                creditsExpiration = new DateTime?(DateTime.MaxValue);
+            }
+
             if (!pointsExpiration.HasValue)
-                pointsExpiration = new DateTime?(DateTime.MinValue);
+            {
+                pointsExpiration = new DateTime?(DateTime.MaxValue);
+            }
 
             SetMemberWallet(cmid, credits.Value, points.Value, creditsExpiration.Value, pointsExpiration.Value);
         }
@@ -42,14 +52,24 @@ namespace UberStrok.Core.Views
 
         public override string ToString()
         {
-            var builder = new StringBuilder().Append("[Wallet:")
-                .Append("[CMID:").Append(Cmid)
-                .Append("][Credits:").Append(Credits)
-                .Append("][Credits Expiration:").Append(CreditsExpiration)
-                .Append("][Points:").Append(Points)
-                .Append("][Points Expiration:").Append(PointsExpiration)
-                .Append("]]");
-            return builder.ToString();
+            string text = "[Wallet: ";
+            string text2 = text;
+            text = string.Concat(new object[]
+            {
+                text2,
+                "[CMID:",
+                Cmid,
+                "][Credits:",
+                Credits,
+                "][Credits Expiration:",
+                CreditsExpiration,
+                "][Points:",
+                Points,
+                "][Points Expiration:",
+                PointsExpiration,
+                "]"
+            });
+            return text + "]";
         }
 
         public int Cmid { get; set; }

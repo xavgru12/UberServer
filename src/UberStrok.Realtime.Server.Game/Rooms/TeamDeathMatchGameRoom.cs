@@ -62,6 +62,8 @@ namespace UberStrok.Realtime.Server.Game
 
         public sealed override bool CanDamage(GameActor victim, GameActor attacker)
         {
+            if (!IsMatchRunning)
+                return false;
             if (FriendlyFire)
                 return true;
             return victim == attacker || victim.Info.TeamID != attacker.Info.TeamID;
@@ -133,46 +135,44 @@ namespace UberStrok.Realtime.Server.Game
                     Winner = TeamID.RED;
 
                 if (BlueTeamScore >= GetView().KillLimit || RedTeamScore >= GetView().KillLimit)
-                    State.Set(RoomState.Id.End);
+                    State.Set(RoomState.Id.AfterRound);
             }
         }
         protected override void OnSwitchTeam(GameActor actor)
         {
-            if (State.Current == RoomState.Id.Running)
+            if (!base.IsMatchRunning || BlueTeamPlayer == RedTeamPlayer)
             {
-                if (this.BlueTeamPlayer != this.RedTeamPlayer)
-                {
-                    TeamID targetTeam = actor.Info.TeamID == TeamID.BLUE ? TeamID.RED : TeamID.BLUE;
-
-                    if (targetTeam == TeamID.RED && this.BlueTeamPlayer > this.RedTeamPlayer)
-                    {
-                        this.RedTeamPlayer++;
-                        this.BlueTeamPlayer--;
-                    }
-                    else if (targetTeam == TeamID.BLUE && this.RedTeamPlayer > this.BlueTeamPlayer)
-                    {
-                        this.BlueTeamPlayer++;
-                        this.RedTeamPlayer--;
-                    }
-                    else
-                        return;
-
-
-                    actor.Info.TeamID = targetTeam;
-
-
-                    OnPlayerKilled(new PlayerKilledEventArgs
-                    {
-                        Attacker = actor,
-                        Victim = actor,
-                        ItemClass = UberStrikeItemClass.WeaponMachinegun,
-                        Part = BodyPart.Body,
-                    });
-
-                    foreach (var player in Players)
-                        player.Peer.Events.Game.SendPlayerChangedTeam(actor.Cmid, targetTeam);
-                }
+                return;
             }
+            TeamID targetTeam = actor.Info.TeamID == TeamID.BLUE ? TeamID.RED : TeamID.BLUE;
+
+            if (targetTeam == TeamID.RED && this.BlueTeamPlayer > this.RedTeamPlayer)
+            {
+                this.RedTeamPlayer++;
+                this.BlueTeamPlayer--;
+            }
+            else if (targetTeam == TeamID.BLUE && this.RedTeamPlayer > this.BlueTeamPlayer)
+            {
+                this.BlueTeamPlayer++;
+                this.RedTeamPlayer--;
+            }
+            else
+                return;
+
+
+            actor.Info.TeamID = targetTeam;
+
+
+            OnPlayerKilled(new PlayerKilledEventArgs
+            {
+                Attacker = actor,
+                Victim = actor,
+                ItemClass = UberStrikeItemClass.WeaponMachinegun,
+                Part = BodyPart.Body,
+            });
+
+            foreach (var player in Players)
+                player.Peer.Events.Game.SendPlayerChangedTeam(actor.Cmid, targetTeam);
         }
     }
 }

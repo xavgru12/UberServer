@@ -1,54 +1,63 @@
-﻿using System.IO;
-using UberStrok.Core.Common;
+﻿using System;
+using System.IO;
 using UberStrok.Core.Views;
 
 namespace UberStrok.Core.Serialization.Views
 {
+    // Token: 0x0200001D RID: 29
     public static class ContactRequestViewProxy
     {
-        public static void Serialize(Stream stream, ContactRequestView instance)
-        {
-            int mask = 0;
-            using (var bytes = new MemoryStream())
-            {
-                Int32Proxy.Serialize(bytes, instance.InitiatorCmid);
-
-                if (instance.InitiatorMessage != null)
-                    StringProxy.Serialize(bytes, instance.InitiatorMessage);
-                else
-                    mask |= 1;
-
-                if (instance.InitiatorName != null)
-                    StringProxy.Serialize(bytes, instance.InitiatorName);
-                else
-                    mask |= 2;
-
-                Int32Proxy.Serialize(bytes, instance.ReceiverCmid);
-                Int32Proxy.Serialize(bytes, instance.RequestId);
-                DateTimeProxy.Serialize(bytes, instance.SentDate);
-                EnumProxy<ContactRequestStatus>.Serialize(bytes, instance.Status);
-                Int32Proxy.Serialize(stream, ~mask);
-                bytes.WriteTo(stream);
-            }
-        }
-
+        // Token: 0x06000037 RID: 55 RVA: 0x0000388C File Offset: 0x00001A8C
         public static ContactRequestView Deserialize(Stream bytes)
         {
-            int mask = Int32Proxy.Deserialize(bytes);
-            var instance = new ContactRequestView();
-            instance.InitiatorCmid = Int32Proxy.Deserialize(bytes);
+            int num = Int32Proxy.Deserialize(bytes);
+            ContactRequestView contactRequestView = new ContactRequestView();
+            contactRequestView.InitiatorCmid = Int32Proxy.Deserialize(bytes);
+            if ((num & 1) != 0)
+            {
+                contactRequestView.InitiatorMessage = StringProxy.Deserialize(bytes);
+            }
+            if ((num & 2) != 0)
+            {
+                contactRequestView.InitiatorName = StringProxy.Deserialize(bytes);
+            }
+            contactRequestView.ReceiverCmid = Int32Proxy.Deserialize(bytes);
+            contactRequestView.RequestId = Int32Proxy.Deserialize(bytes);
+            contactRequestView.SentDate = DateTimeProxy.Deserialize(bytes);
+            contactRequestView.Status = EnumProxy<ContactRequestStatus>.Deserialize(bytes);
+            return contactRequestView;
+        }
 
-            if ((mask & 1) != 0)
-                instance.InitiatorMessage = StringProxy.Deserialize(bytes);
-
-            if ((mask & 2) != 0)
-                instance.InitiatorName = StringProxy.Deserialize(bytes);
-
-            instance.ReceiverCmid = Int32Proxy.Deserialize(bytes);
-            instance.RequestId = Int32Proxy.Deserialize(bytes);
-            instance.SentDate = DateTimeProxy.Deserialize(bytes);
-            instance.Status = EnumProxy<ContactRequestStatus>.Deserialize(bytes);
-            return instance;
+        // Token: 0x06000038 RID: 56 RVA: 0x00003904 File Offset: 0x00001B04
+        public static void Serialize(Stream stream, ContactRequestView instance)
+        {
+            int num = 0;
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                Int32Proxy.Serialize(memoryStream, instance.InitiatorCmid);
+                if (instance.InitiatorMessage != null)
+                {
+                    StringProxy.Serialize(memoryStream, instance.InitiatorMessage);
+                }
+                else
+                {
+                    num |= 1;
+                }
+                if (instance.InitiatorName != null)
+                {
+                    StringProxy.Serialize(memoryStream, instance.InitiatorName);
+                }
+                else
+                {
+                    num |= 2;
+                }
+                Int32Proxy.Serialize(memoryStream, instance.ReceiverCmid);
+                Int32Proxy.Serialize(memoryStream, instance.RequestId);
+                DateTimeProxy.Serialize(memoryStream, instance.SentDate);
+                EnumProxy<ContactRequestStatus>.Serialize(memoryStream, instance.Status);
+                Int32Proxy.Serialize(stream, ~num);
+                memoryStream.WriteTo(stream);
+            }
         }
     }
 }

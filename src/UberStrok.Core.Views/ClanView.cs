@@ -8,7 +8,12 @@ namespace UberStrok.Core.Views
     {
         public ClanView()
         {
-            this.Members = new List<ClanMemberView>();
+            Members = new List<ClanMemberView>();
+        }
+
+        public ClanView(int groupId, int membersCount, string description, string name, string motto, string address, DateTime foundingDate, string picture, GroupType type, DateTime lastUpdated, string tag, int membersLimit, GroupColor colorStyle, GroupFontStyle fontStyle, int applicationId, int ownerCmid, string ownerName, List<ClanMemberView> members) : base(groupId, membersCount, description, name, motto, address, foundingDate, picture, type, lastUpdated, tag, membersLimit, colorStyle, fontStyle, applicationId, ownerCmid, ownerName)
+        {
+            Members = members;
         }
 
         public List<ClanMemberView> Members { get; set; }
@@ -17,7 +22,7 @@ namespace UberStrok.Core.Views
         {
             string text = "[Clan: " + base.ToString();
             text += "[Members:";
-            foreach (ClanMemberView clanMemberView in this.Members)
+            foreach (ClanMemberView clanMemberView in Members)
             {
                 text += clanMemberView.ToString();
             }

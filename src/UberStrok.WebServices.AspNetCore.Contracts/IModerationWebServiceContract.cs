@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel;
 
-namespace UberStrok.WebServices.Contracts
+namespace UberStrok.WebServices.AspNetCore.Contracts
 {
     [ServiceContract]
     public interface IModerationWebServiceContract

@@ -8,10 +8,12 @@ namespace UberStrok.Core.Serialization.Views
         public static ClanMemberView Deserialize(Stream bytes)
         {
             int num = Int32Proxy.Deserialize(bytes);
-            ClanMemberView clanMemberView = new ClanMemberView();
-            clanMemberView.Cmid = Int32Proxy.Deserialize(bytes);
-            clanMemberView.JoiningDate = DateTimeProxy.Deserialize(bytes);
-            clanMemberView.Lastlogin = DateTimeProxy.Deserialize(bytes);
+            ClanMemberView clanMemberView = new ClanMemberView
+            {
+                Cmid = Int32Proxy.Deserialize(bytes),
+                JoiningDate = DateTimeProxy.Deserialize(bytes),
+                Lastlogin = DateTimeProxy.Deserialize(bytes)
+            };
             if ((num & 1) != 0)
             {
                 clanMemberView.Name = StringProxy.Deserialize(bytes);

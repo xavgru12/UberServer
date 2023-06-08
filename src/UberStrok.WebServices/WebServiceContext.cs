@@ -4,7 +4,7 @@ namespace UberStrok.WebServices
 {
     public class WebServiceContext
     {
-        internal WebServiceContext(WebServiceManager ws)
+        internal WebServiceContext(Startup ws)
         {
             if (ws == null)
                 throw new ArgumentNullException(nameof(ws));
@@ -21,6 +21,6 @@ namespace UberStrok.WebServices
 
         public WebServiceConfiguration Configuration => _ws.Configuration;
 
-        private readonly WebServiceManager _ws;
+        private readonly Startup _ws;
     }
 }
