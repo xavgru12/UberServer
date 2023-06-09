@@ -19,8 +19,9 @@ namespace UberStrok.WebServices.Core
         {
             // Space
         }
-
         public abstract AccountCompletionResultView OnCompleteAccount(int cmid, string name, ChannelType channelType, string locale, string machineId);
+
+        public abstract MemberAuthenticationResultView OnLoginMemberEmail(string steamId, string authToken, string machineId);
         public abstract MemberAuthenticationResultView OnLoginSteam(string steamId, string authToken, string machineId);
 
         byte[] IAuthenticationWebServiceContract.CompleteAccount(byte[] data)
@@ -83,6 +84,23 @@ namespace UberStrok.WebServices.Core
         {
             try
             {
+                Console.WriteLine("New login, data in byte: ");
+                Console.WriteLine(string.Join(", ", data));
+                using (var bytes = new MemoryStream(data))
+                {
+                    var email = StringProxy.Deserialize(bytes);
+                    var password = StringProxy.Deserialize(bytes);
+                    var machineId = StringProxy.Deserialize(bytes);
+                    Console.WriteLine("byte deserialized: ");
+                    Console.WriteLine(email + " " + password + " " + machineId );
+                    var view = OnLoginMemberEmail(email, password, machineId);
+
+                    using (var outBytes = new MemoryStream())
+                    {
+                        MemberAuthenticationResultViewProxy.Serialize(outBytes, view);
+                        return outBytes.ToArray();
+                    }
+                }
                 throw new NotImplementedException();
             }
             catch (Exception ex)
