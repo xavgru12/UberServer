@@ -83,32 +83,40 @@ namespace UberStrok.WebServices.Core
 
         byte[] IAuthenticationWebServiceContract.LoginMemberEmail(byte[] data)
         {
-            try
-            {
-                Console.WriteLine("New login, data in byte: ");
-                Console.WriteLine(string.Join(", ", data));
-                using (var bytes = new MemoryStream(data))
-                {
-                    var email = StringProxy.Deserialize(bytes);
-                    var password = StringProxy.Deserialize(bytes);
-                    var machineId = StringProxy.Deserialize(bytes);
-                    Console.WriteLine("byte deserialized: ");
-                    Console.WriteLine(email + " " + password + " " + machineId );
-                    var view = OnLoginMemberEmail(email, password, machineId);
+            using (var bytes = new MemoryStream(data)) {
+					var emailAddress = StringProxy.Deserialize(bytes);
+					var password = StringProxy.Deserialize(bytes);
+					var channel = EnumProxy<ChannelType>.Deserialize(bytes);
+					var machineId = StringProxy.Deserialize(bytes);
 
-                    using (var outBytes = new MemoryStream())
-                    {
-                        MemberAuthenticationResultViewProxy.Serialize(outBytes, view);
-                        return outBytes.ToArray();
+					using (var outputStream = new MemoryStream()) {
+						MemberAuthenticationResultViewProxy.Serialize(outputStream, new MemberAuthenticationResultView { 
+							IsAccountComplete = true,
+							//IsTutorialComplete = true,
+							MemberAuthenticationResult = MemberAuthenticationResult.Ok,
+							MemberView = new MemberView {
+								PublicProfile = new PublicProfileView {
+									Cmid = 1,
+									Name = "test",
+									AccessLevel = MemberAccessLevel.Admin,
+									EmailAddressStatus = EmailAddressStatus.Verified
+								},
+								MemberWallet = new MemberWalletView {
+									Cmid = 1,
+									Credits = 1337,
+									CreditsExpiration = DateTime.Now,
+									Points = 1337,
+									PointsExpiration = DateTime.Now
+								}
+							},
+							PlayerStatisticsView = new PlayerStatisticsView { 
+								Cmid = 1,
+								Xp = 1000
+							}
+						});
+
+					return outputStream.ToArray();
                     }
-                }
-                throw new NotImplementedException();
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle LoginMemberEmail request:");
-                Log.Error(ex);
-                return null;
             }
         }
 
