@@ -68,29 +68,17 @@ namespace UberStrok.WebServices.Core
             }
         }
 
-        byte[] IUserWebServiceContract.GetInventory(byte[] data)
-        {
-            try
-            {
-                using (var bytes = new MemoryStream(data))
-                {
-                    var authToken = StringProxy.Deserialize(bytes);
+        byte[] IUserWebServiceContract.GetInventory(byte[] data){
+				using (var bytes = new MemoryStream(data)) {
+					var cmid = Int32Proxy.Deserialize(bytes);
 
-                    var view = OnGetInventory(authToken);
-                    using (var outBytes = new MemoryStream())
-                    {
-                        ListProxy<ItemInventoryView>.Serialize(outBytes, view, ItemInventoryViewProxy.Serialize);
-                        return outBytes.ToArray();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle GetInventory request:");
-                Log.Error(ex);
-                return null;
-            }
-        }
+					using (var outputStream = new MemoryStream()) {
+						ListProxy<ItemInventoryView>.Serialize(outputStream, new List<ItemInventoryView>(), ItemInventoryViewProxy.Serialize);
+
+						return outputStream.ToArray();
+					}
+				}
+		}
 
 
         byte[] IUserWebServiceContract.GetItemTransactions(byte[] data)
@@ -107,21 +95,18 @@ namespace UberStrok.WebServices.Core
             }
         }
 
-        byte[] IUserWebServiceContract.GetLoadout(byte[] data)
-        {
+        byte[] IUserWebServiceContract.GetLoadout(byte[] data){
             try
             {
-                using (var bytes = new MemoryStream(data))
-                {
-                    var authToken = StringProxy.Deserialize(bytes);
+				using (var bytes = new MemoryStream(data)) {
+					var cmid = Int32Proxy.Deserialize(bytes);
 
-                    LoadoutView view = OnGetLoadout(authToken);
-                    using (var outBytes = new MemoryStream())
-                    {
-                        LoadoutViewProxy.Serialize(outBytes, view);
-                        return outBytes.ToArray();
-                    }
-                }
+					using (var outputStream = new MemoryStream()) {
+						LoadoutViewProxy.Serialize(outputStream, new LoadoutView());
+
+						return outputStream.ToArray();
+					}
+				}
             }
             catch (Exception ex)
             {
@@ -129,7 +114,7 @@ namespace UberStrok.WebServices.Core
                 Log.Error(ex);
                 return null;
             }
-        }
+		}
 
         byte[] IUserWebServiceContract.GetLoadoutServer(byte[] data)
         {
@@ -156,21 +141,45 @@ namespace UberStrok.WebServices.Core
             }
         }
 
-        byte[] IUserWebServiceContract.GetMember(byte[] data)
-        {
-            try
-            {
-                using (var bytes = new MemoryStream(data))
-                {
-                    var authToken = StringProxy.Deserialize(bytes);
+		byte[] IUserWebServiceContract.GetMember(byte[] data){
+            try{
+		
+				using (var bytes = new MemoryStream(data)) {
+					var cmid = Int32Proxy.Deserialize(bytes);
 
-                    var view = OnGetMember(authToken);
-                    using (var outBytes = new MemoryStream())
-                    {
-                        UberstrikeUserViewProxy.Serialize(outBytes, view);
-                        return outBytes.ToArray();
-                    }
-                }
+					using (var outputStream = new MemoryStream()) {
+						UberstrikeUserViewProxy.Serialize(outputStream, new UberstrikeUserView {
+							CmuneMemberView = new MemberView {
+								PublicProfile = new PublicProfileView {
+									Cmid = 1,
+									Name = "xavgru",
+									AccessLevel = MemberAccessLevel.Admin,
+									EmailAddressStatus = EmailAddressStatus.Verified
+								},
+								MemberWallet = new MemberWalletView {
+									Cmid = 1,
+									Credits = 1337,
+									CreditsExpiration = DateTime.Now,
+									Points = 1337,
+									PointsExpiration = DateTime.Now
+								},
+								MemberItems = new List<int> {
+								},
+							},
+							UberstrikeMemberView = new UberstrikeMemberView {
+								PlayerCardView = new PlayerCardView {
+									Cmid = 1
+								},
+								PlayerStatisticsView = new PlayerStatisticsView {
+									Cmid = 1
+								}
+							}
+						});
+
+
+						return outputStream.ToArray();
+					}
+				}
             }
             catch (Exception ex)
             {
@@ -178,7 +187,8 @@ namespace UberStrok.WebServices.Core
                 Log.Error(ex);
                 return null;
             }
-        }
+			
+		}
 
         byte[] IUserWebServiceContract.GetMemberListSessionData(byte[] data)
         {

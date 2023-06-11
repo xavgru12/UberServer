@@ -1,6 +1,12 @@
-﻿using log4net;
+﻿using System.ServiceModel;
+using log4net;
 using System;
-using System.ServiceModel;
+using System.Collections.Generic;
+using System.IO;
+using UberStrok.Core.Common;
+using UberStrok.Core.Serialization;
+using UberStrok.Core.Serialization.Views;
+using UberStrok.Core.Views;
 using UberStrok.WebServices.Contracts;
 
 namespace UberStrok.WebServices.Core
@@ -38,19 +44,21 @@ namespace UberStrok.WebServices.Core
             return null;
         }
 
-        public byte[] GetContactsByGroups(byte[] data)
-        {
-            try
-            {
-                throw new NotImplementedException();
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle GetContactsByGroups request:");
-                Log.Error(ex);
-                return null;
-            }
-        }
+
+        public byte[] GetContactsByGroups(byte[] data) {
+            
+				using (var bytes = new MemoryStream(data)) {
+					var cmid = Int32Proxy.Deserialize(bytes);
+					var applicationId = Int32Proxy.Deserialize(bytes);
+
+					using (var outputStream = new MemoryStream()) {
+						ListProxy<ContactGroupView>.Serialize(outputStream, new List<ContactGroupView>(), ContactGroupViewProxy.Serialize);
+
+						return outputStream.ToArray();
+					}
+				}
+
+		}
 
         public byte[] SendContactRequest(byte[] data)
         {

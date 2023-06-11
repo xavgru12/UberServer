@@ -43,6 +43,7 @@
     <Compile Include="BundleItemView.cs" />
     <Compile Include="CommActorInfoView.cs" />
     <Compile Include="ConnectionAddressView.cs" />
+    <Compile Include="ContactGroupView.cs" />
     <Compile Include="DamageEventView.cs" />
     <Compile Include="EndOfMatchDataView.cs" />
     <Compile Include="GameActorInfoDeltaView.cs" />
