@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.ServiceModel;
+using System.Collections.Generic;
 using UberStrok.Core.Common;
 using UberStrok.Core.Serialization;
 using UberStrok.Core.Serialization.Views;
@@ -88,16 +89,18 @@ namespace UberStrok.WebServices.Core
 					var password = StringProxy.Deserialize(bytes);
 					var channel = EnumProxy<ChannelType>.Deserialize(bytes);
 					var machineId = StringProxy.Deserialize(bytes);
+                    Console.WriteLine("byte deserialized: ");
+                    Console.WriteLine(emailAddress + " " + password + " " + channel + " " + machineId);
 
 					using (var outputStream = new MemoryStream()) {
 						MemberAuthenticationResultViewProxy.Serialize(outputStream, new MemberAuthenticationResultView { 
 							IsAccountComplete = true,
-							//IsTutorialComplete = true,
+							IsTutorialComplete = true,
 							MemberAuthenticationResult = MemberAuthenticationResult.Ok,
 							MemberView = new MemberView {
 								PublicProfile = new PublicProfileView {
 									Cmid = 1,
-									Name = "test",
+									Name = "xavgru",
 									AccessLevel = MemberAccessLevel.Admin,
 									EmailAddressStatus = EmailAddressStatus.Verified
 								},
@@ -107,12 +110,24 @@ namespace UberStrok.WebServices.Core
 									CreditsExpiration = DateTime.Now,
 									Points = 1337,
 									PointsExpiration = DateTime.Now
+								},
+                                MemberItems = new List<int> {
 								}
 							},
 							PlayerStatisticsView = new PlayerStatisticsView { 
 								Cmid = 1,
 								Xp = 1000
-							}
+							},
+							ServerTime = DateTime.UtcNow,
+                            WeeklySpecial = new WeeklySpecialView {
+                                StartDate = DateTime.MinValue,
+                                EndDate = DateTime.MaxValue,
+                                Id = 0,
+                                ImageUrl = "http://via.placeholder.com/350x150",
+                                Text = "UberStrike 4.3.10 Beta",
+                                Title = "Team UberStrike",
+                                ItemId = 1003
+                            }   
 						});
 
 					return outputStream.ToArray();

@@ -92,6 +92,7 @@
     <Compile Include="Views\UberStrikeItemWeaponViewProxy.cs" />
     <Compile Include="Views\UberstrikeMemberViewProxy.cs" />
     <Compile Include="Views\UberstrikeUserViewProxy.cs" />
+    <Compile Include="Views\WeeklySpecialViewProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UberStrok.Core.Common\UberStrok.Core.Common.csproj">

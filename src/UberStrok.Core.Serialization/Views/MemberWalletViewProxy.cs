@@ -3,31 +3,42 @@ using UberStrok.Core.Views;
 
 namespace UberStrok.Core.Serialization.Views
 {
-    public static class MemberWalletViewProxy
-	{
-		public static MemberWalletView Deserialize(Stream bytes)
-		{
-			return new MemberWalletView
-			{
-				Cmid = Int32Proxy.Deserialize(bytes),
-				Credits = Int32Proxy.Deserialize(bytes),
-				CreditsExpiration = DateTimeProxy.Deserialize(bytes),
-				Points = Int32Proxy.Deserialize(bytes),
-				PointsExpiration = DateTimeProxy.Deserialize(bytes)
-			};
-		}
+  public static class MemberWalletViewProxy
+  {
+    public static void Serialize(Stream stream, MemberWalletView instance)
+    {
+      int num = 0;
+      if (instance != null)
+      {
+        using (MemoryStream bytes = new MemoryStream())
+        {
+          Int32Proxy.Serialize((Stream) bytes, instance.Cmid);
+          Int32Proxy.Serialize((Stream) bytes, instance.Credits);
+          DateTimeProxy.Serialize((Stream) bytes, instance.CreditsExpiration);
+          Int32Proxy.Serialize((Stream) bytes, instance.Points);
+          DateTimeProxy.Serialize((Stream) bytes, instance.PointsExpiration);
+          Int32Proxy.Serialize(stream, ~num);
+          bytes.WriteTo(stream);
+        }
+      }
+      else
+        Int32Proxy.Serialize(stream, 0);
+    }
 
-		public static void Serialize(Stream stream, MemberWalletView instance)
-		{
-			using (MemoryStream memoryStream = new MemoryStream())
-			{
-				Int32Proxy.Serialize(memoryStream, instance.Cmid);
-				Int32Proxy.Serialize(memoryStream, instance.Credits);
-				DateTimeProxy.Serialize(memoryStream, instance.CreditsExpiration);
-				Int32Proxy.Serialize(memoryStream, instance.Points);
-				DateTimeProxy.Serialize(memoryStream, instance.PointsExpiration);
-				memoryStream.WriteTo(stream);
-			}
-		}
-	}
+    public static MemberWalletView Deserialize(Stream bytes)
+    {
+      int num = Int32Proxy.Deserialize(bytes);
+      MemberWalletView memberWalletView = (MemberWalletView) null;
+      if (num != 0)
+      {
+        memberWalletView = new MemberWalletView();
+        memberWalletView.Cmid = Int32Proxy.Deserialize(bytes);
+        memberWalletView.Credits = Int32Proxy.Deserialize(bytes);
+        memberWalletView.CreditsExpiration = DateTimeProxy.Deserialize(bytes);
+        memberWalletView.Points = Int32Proxy.Deserialize(bytes);
+        memberWalletView.PointsExpiration = DateTimeProxy.Deserialize(bytes);
+      }
+      return memberWalletView;
+    }
+  }
 }

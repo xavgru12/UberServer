@@ -12,10 +12,10 @@ namespace UberStrok.WebServices.Client.Tests
             var authenticationServiceClient = new AuthenticationWebServiceClient("http://uberstrike/2.0");
 
             var loginResult = authenticationServiceClient.LoginSteam("test", "", "");
-            var member = userServiceClient.GetMember(loginResult.AuthToken);
+            //var member = userServiceClient.GetMember(loginResult.AuthToken);
 
-            Console.WriteLine(member.CmuneMemberView);
-            Console.WriteLine(member.UberstrikeMemberView);
+            //Console.WriteLine(member.CmuneMemberView);
+            //Console.WriteLine(member.UberstrikeMemberView);
             Console.ReadLine();
         }
     }

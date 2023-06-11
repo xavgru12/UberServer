@@ -91,7 +91,7 @@ namespace UberStrok.WebServices.Core
             var view = new MemberAuthenticationResultView
             {
                 MemberAuthenticationResult = result,
-                AuthToken = session.AuthToken,
+                //AuthToken = session.AuthToken,
                 IsAccountComplete = true,
                 ServerTime = DateTime.Now,
 
@@ -115,7 +115,7 @@ namespace UberStrok.WebServices.Core
                 return new MemberAuthenticationResultView
                 {
                     MemberAuthenticationResult = MemberAuthenticationResult.IsBanned,
-                    AuthToken = null,
+                    //AuthToken = null,
                     IsAccountComplete = true,
                     ServerTime = DateTime.Now,
 
@@ -138,7 +138,7 @@ namespace UberStrok.WebServices.Core
                     return new MemberAuthenticationResultView
                     {
                         MemberAuthenticationResult = MemberAuthenticationResult.IsIpBanned,
-                        AuthToken = null,
+                        //AuthToken = null,
                         IsAccountComplete = false,
                         ServerTime = DateTime.Now,
 
@@ -171,7 +171,7 @@ namespace UberStrok.WebServices.Core
                 return new MemberAuthenticationResultView
                 {
                     MemberAuthenticationResult = MemberAuthenticationResult.IsBanned,
-                    AuthToken = null,
+                    //AuthToken = null,
                     IsAccountComplete = true,
                     ServerTime = DateTime.Now,
 
@@ -191,7 +191,7 @@ namespace UberStrok.WebServices.Core
             var view = new MemberAuthenticationResultView
             {
                 MemberAuthenticationResult = result,
-                AuthToken = session.AuthToken,
+                //AuthToken = session.AuthToken,
                 IsAccountComplete = !incomplete,
                 ServerTime = DateTime.Now,
 

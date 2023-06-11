@@ -78,6 +78,7 @@
     <Compile Include="UberStrikeItemWeaponView.cs" />
     <Compile Include="UberstrikeMemberView.cs" />
     <Compile Include="UberstrikeUserView.cs" />
+    <Compile Include="WeeklySpecialView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UberStrok.Core.Common\UberStrok.Core.Common.csproj">

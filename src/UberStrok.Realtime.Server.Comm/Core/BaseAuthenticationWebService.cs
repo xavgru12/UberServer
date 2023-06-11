@@ -91,7 +91,7 @@ namespace UberStrok.WebServices.Core
 					using (var outputStream = new MemoryStream()) {
 						MemberAuthenticationResultViewProxy.Serialize(outputStream, new MemberAuthenticationResultView { 
 							IsAccountComplete = true,
-							//IsTutorialComplete = true,
+							IsTutorialComplete = true,
 							MemberAuthenticationResult = MemberAuthenticationResult.Ok,
 							MemberView = new MemberView {
 								PublicProfile = new PublicProfileView {
@@ -111,7 +111,17 @@ namespace UberStrok.WebServices.Core
 							PlayerStatisticsView = new PlayerStatisticsView { 
 								Cmid = 1,
 								Xp = 1000
-							}
+							},
+							ServerTime = DateTime.UtcNow,
+                            WeeklySpecial = new WeeklySpecialView {
+                                StartDate = DateTime.MinValue,
+                                 EndDate = DateTime.MaxValue,
+                                Id = 0,
+                                ImageUrl = "http://via.placeholder.com/350x150",
+                                Text = "UberStrike 4.3.10 Beta",
+                                Title = "Team UberStrike",
+                                ItemId = 1003
+                            }                         
 						});
 
 					return outputStream.ToArray();
