@@ -79,6 +79,7 @@
     <Compile Include="Views\PhotonServerLoadViewProxy.cs" />
     <Compile Include="Views\PhotonViewProxy.cs" />
     <Compile Include="Views\PlayerCardViewProxy.cs" />
+    <Compile Include="Views\PlayerLevelCapViewProxy.cs" />
     <Compile Include="Views\PlayerPersonalRecordStatisticsViewProxy.cs" />
     <Compile Include="Views\PlayerStatisticsViewProxy.cs" />
     <Compile Include="Views\PlayerWeaponStatisticsViewProxy.cs" />

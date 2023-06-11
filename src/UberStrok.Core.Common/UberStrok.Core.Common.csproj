@@ -57,6 +57,8 @@
     <Compile Include="GearSlotType.cs" />
     <Compile Include="ItemPropertyType.cs" />
     <Compile Include="ItemShopHighlightType.cs" />
+    <Compile Include="LocaleTypes.cs" />
+    <Compile Include="MapSettings.cs" />
     <Compile Include="MathUtils.cs" />
     <Compile Include="MemberAccessLevel.cs" />
     <Compile Include="MemberAuthenticationResult.cs" />

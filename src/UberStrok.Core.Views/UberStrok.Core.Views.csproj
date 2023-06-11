@@ -63,6 +63,7 @@
     <Compile Include="PhotonServerLoadView.cs" />
     <Compile Include="PhotonView.cs" />
     <Compile Include="PlayerCardView.cs" />
+    <Compile Include="PlayerLevelCapView.cs" />
     <Compile Include="PlayerPersonalRecordStatisticsView.cs" />
     <Compile Include="PlayerStatisticsView.cs" />
     <Compile Include="PlayerWeaponStatisticsView.cs" />

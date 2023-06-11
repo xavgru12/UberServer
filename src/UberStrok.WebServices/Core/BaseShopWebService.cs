@@ -109,16 +109,24 @@ namespace UberStrok.WebServices.Core
 
         byte[] IShopWebServiceContract.GetAllLuckyDraws_1(byte[] data)
         {
-            try
-            {
-                throw new NotImplementedException();
-            }
+			try {
+				using (var bytes = new MemoryStream(data)) {
+	
+
+					using (var outputStream = new MemoryStream()) {
+						throw new NotImplementedException();
+
+						//return outputStream.ToArray();
+					}
+				}
+			} 
             catch (Exception ex)
             {
-                Log.Error("Unable to handle GetAllLuckyDraws_1 request:");
+                Log.Error("Unable to handle GetAllLuckyDraws_2 request:");
                 Log.Error(ex);
                 return null;
             }
+
         }
 
         byte[] IShopWebServiceContract.GetAllLuckyDraws_2(byte[] data)
@@ -137,16 +145,24 @@ namespace UberStrok.WebServices.Core
 
         byte[] IShopWebServiceContract.GetAllMysteryBoxs_1(byte[] data)
         {
-            try
-            {
-                throw new NotImplementedException();
-            }
+			try {
+				using (var bytes = new MemoryStream(data)) {
+	
+
+					using (var outputStream = new MemoryStream()) {
+						throw new NotImplementedException();
+
+						//return outputStream.ToArray();
+					}
+				}
+			} 
             catch (Exception ex)
             {
                 Log.Error("Unable to handle GetAllMysteryBoxs_1 request:");
                 Log.Error(ex);
                 return null;
             }
+
         }
 
         byte[] IShopWebServiceContract.GetAllMysteryBoxs_2(byte[] data)

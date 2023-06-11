@@ -40,7 +40,7 @@ namespace UberStrok.WebServices.Core
             }
         }
 
-        byte[] IUserWebServiceContract.GenerateNonDuplicateMemberNames(byte[] data)
+        byte[] IUserWebServiceContract.GenerateNonDuplicatedMemberNames(byte[] data)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace UberStrok.WebServices.Core
             }
         }
 
-        byte[] IUserWebServiceContract.GetCurrentDeposits(byte[] data)
+        byte[] IUserWebServiceContract.GetCurrencyDeposits(byte[] data)
         {
             try
             {
@@ -116,30 +116,64 @@ namespace UberStrok.WebServices.Core
             }
 		}
 
-        byte[] IUserWebServiceContract.GetLoadoutServer(byte[] data)
-        {
-            try
-            {
-                using (var bytes = new MemoryStream(data))
-                {
-                    var serviceAuth = StringProxy.Deserialize(bytes);
-                    var authToken = StringProxy.Deserialize(bytes);
+        byte[] IUserWebServiceContract.SetScore(byte[] data) {
+			try {
+				using (var bytes = new MemoryStream(data)) {
 
-                    LoadoutView view = OnGetLoadoutServer(serviceAuth, authToken);
-                    using (var outBytes = new MemoryStream())
-                    {
-                        LoadoutViewProxy.Serialize(outBytes, view);
-                        return outBytes.ToArray();
-                    }
-                }
-            }
+					using (var outputStream = new MemoryStream()) {
+						throw new NotImplementedException();
+
+						//return outputStream.ToArray();
+					}
+				}
+			} 
             catch (Exception ex)
             {
-                Log.Error("Unable to handle GetLoadout request:");
+                Log.Error("Unable to handle SetScore request:");
                 Log.Error(ex);
                 return null;
             }
-        }
+
+		}
+
+        byte[] IUserWebServiceContract.GetXPEventsView(byte[] data) {
+			try {
+				using (var bytes = new MemoryStream(data)) {
+
+					using (var outputStream = new MemoryStream()) {
+						throw new NotImplementedException();
+
+						//return outputStream.ToArray();
+					}
+				}
+			} 
+            catch (Exception ex)
+            {
+                Log.Error("Unable to handle GetXPEventsView request:");
+                Log.Error(ex);
+                return null;
+            }
+		}
+
+        byte[] IUserWebServiceContract.GetLevelCapsView(byte[] data) {
+			try {
+				using (var bytes = new MemoryStream(data)) {
+
+
+					using (var outputStream = new MemoryStream()) {
+						ListProxy<PlayerLevelCapView>.Serialize(outputStream, new List<PlayerLevelCapView>(), PlayerLevelCapViewProxy.Serialize);
+
+						return outputStream.ToArray();
+					}
+				}
+			} 
+            catch (Exception ex)
+            {
+                Log.Error("Unable to handle GetMember request:");
+                Log.Error(ex);
+                return null;
+            }
+		}
 
 		byte[] IUserWebServiceContract.GetMember(byte[] data){
             try{
@@ -190,33 +224,6 @@ namespace UberStrok.WebServices.Core
 			
 		}
 
-        byte[] IUserWebServiceContract.GetMemberListSessionData(byte[] data)
-        {
-            try
-            {
-                throw new NotImplementedException();
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle GetMemberListSessionData request:");
-                Log.Error(ex);
-                return null;
-            }
-        }
-
-        byte[] IUserWebServiceContract.GetMemberSessionData(byte[] data)
-        {
-            try
-            {
-                throw new NotImplementedException();
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle GetMemberSessionData request:");
-                Log.Error(ex);
-                return null;
-            }
-        }
 
         byte[] IUserWebServiceContract.GetMemberWallet(byte[] data)
         {

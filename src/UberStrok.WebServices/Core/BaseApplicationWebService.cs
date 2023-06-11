@@ -77,27 +77,27 @@ namespace UberStrok.WebServices.Core
 
         byte[] IApplicationWebServiceContract.GetMaps(byte[] data)
         {
-            try
-            {
-                using (var bytes = new MemoryStream(data))
-                {
-                    var version = StringProxy.Deserialize(bytes);
-                    var definitionType = EnumProxy<DefinitionType>.Deserialize(bytes);
+			try {
+				using (var bytes = new MemoryStream(data)) {
+					var appVersion = StringProxy.Deserialize(bytes);
+					var locale = EnumProxy<LocaleType>.Deserialize(bytes);
+					var definition = EnumProxy<DefinitionType>.Deserialize(bytes);
 
-                    var view = OnGetMaps(version, definitionType);
-                    using (var outBytes = new MemoryStream())
-                    {
-                        ListProxy<MapView>.Serialize(outBytes, view, MapViewProxy.Serialize);
-                        return outBytes.ToArray();
-                    }
-                }
-            }
+					using (var outputStream = new MemoryStream()) {
+						ListProxy<MapView>.Serialize(outputStream, new List<MapView>(), MapViewProxy.Serialize);
+
+						return outputStream.ToArray();
+					}
+				}
+			} 
             catch (Exception ex)
             {
                 Log.Error("Unable to handle GetMaps request:");
                 Log.Error(ex);
                 return null;
             }
+
+			return null;
         }
 
         byte[] IApplicationWebServiceContract.SetMatchScore(byte[] data)
