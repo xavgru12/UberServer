@@ -223,6 +223,7 @@ namespace UberStrok.WebServices.Core
 
         byte[] IShopWebServiceContract.GetShop(byte[] data)
         {
+            Console.WriteLine("GetShop called");
             try
             {
                 var view = OnGetShop();

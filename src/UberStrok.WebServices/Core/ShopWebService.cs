@@ -35,6 +35,8 @@ namespace UberStrok.WebServices.Core
 
         public override UberStrikeItemShopClientView OnGetShop()
         {
+            System.Console.WriteLine(Context.Items.GetShop());
+            Utils.SerializeJsonAt("TestItems.json", Context.Items.GetShop());
             return Context.Items.GetShop();
         }
     }

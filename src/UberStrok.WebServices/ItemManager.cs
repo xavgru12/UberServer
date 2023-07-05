@@ -24,6 +24,7 @@ namespace UberStrok.WebServices
             _hotReload.Changed += _hotReload_Changed;
             _hotReload.IncludeSubdirectories = true;
             _hotReload.EnableRaisingEvents = true;
+            Console.WriteLine("constructor Item Manager called");
             _items = items;
         }
 

@@ -117,7 +117,7 @@ namespace UberStrok.WebServices.Core
                                 StartDate = DateTime.MinValue,
                                  EndDate = DateTime.MaxValue,
                                 Id = 0,
-                                ImageUrl = "http://via.placeholder.com/350x150",
+                                ImageUrl = "http://127.0.0.1:8080/WeeklySpecial/TheWarehouse.jpg",
                                 Text = "UberStrike 4.3.10 Beta",
                                 Title = "Team UberStrike",
                                 ItemId = 1003
