@@ -41,7 +41,7 @@ namespace UberStrok.Realtime.Server.Comm
             CommActorInfoView view = new CommActorInfoView
             {
                 AccessLevel = userView.CmuneMemberView.PublicProfile.AccessLevel,
-                Channel = (ChannelType)(base.IsMac ? 7 : 4),
+                Channel = ChannelType.WindowsStandalone,
                 Cmid = userView.CmuneMemberView.PublicProfile.Cmid,
                 PlayerName = userView.CmuneMemberView.PublicProfile.Name,
                 ClanTag = userView.CmuneMemberView.PublicProfile.GroupTag

@@ -4,79 +4,54 @@ using UberStrok.Core.Views;
 
 namespace UberStrok.Core.Serialization.Views
 {
-    public static class PublicProfileViewProxy
+  public static class PublicProfileViewProxy
+  {
+    public static void Serialize(Stream stream, PublicProfileView instance)
     {
-        public static PublicProfileView Deserialize(Stream bytes)
+      int num = 0;
+      if (instance != null)
+      {
+        using (MemoryStream bytes = new MemoryStream())
         {
-            int mask = Int32Proxy.Deserialize(bytes);
-            PublicProfileView view = new PublicProfileView
-            {
-                AccessLevel = EnumProxy<MemberAccessLevel>.Deserialize(bytes),
-                Cmid = Int32Proxy.Deserialize(bytes),
-                EmailAddressStatus = EnumProxy<EmailAddressStatus>.Deserialize(bytes)
-            };
-            if ((mask & 1) != 0)
-            {
-                view.FacebookId = StringProxy.Deserialize(bytes);
-            }
-
-            if ((mask & 2) != 0)
-            {
-                view.GroupTag = StringProxy.Deserialize(bytes);
-            }
-
-            view.IsChatDisabled = BooleanProxy.Deserialize(bytes);
-            view.LastLoginDate = DateTimeProxy.Deserialize(bytes);
-            if ((mask & 4) != 0)
-            {
-                view.Name = StringProxy.Deserialize(bytes);
-            }
-
-            return view;
+          EnumProxy<MemberAccessLevel>.Serialize((Stream) bytes, instance.AccessLevel);
+          Int32Proxy.Serialize((Stream) bytes, instance.Cmid);
+          EnumProxy<EmailAddressStatus>.Serialize((Stream) bytes, instance.EmailAddressStatus);
+          if (instance.GroupTag != null)
+            StringProxy.Serialize((Stream) bytes, instance.GroupTag);
+          else
+            num |= 1;
+          BooleanProxy.Serialize((Stream) bytes, instance.IsChatDisabled);
+          DateTimeProxy.Serialize((Stream) bytes, instance.LastLoginDate);
+          if (instance.Name != null)
+            StringProxy.Serialize((Stream) bytes, instance.Name);
+          else
+            num |= 2;
+          Int32Proxy.Serialize(stream, ~num);
+          bytes.WriteTo(stream);
         }
-
-        public static void Serialize(Stream stream, PublicProfileView instance)
-        {
-            int mask = 0;
-            using (MemoryStream bytes = new MemoryStream())
-            {
-                EnumProxy<MemberAccessLevel>.Serialize(bytes, instance.AccessLevel);
-                Int32Proxy.Serialize(bytes, instance.Cmid);
-                EnumProxy<EmailAddressStatus>.Serialize(bytes, instance.EmailAddressStatus);
-
-                if (instance.FacebookId != null)
-                {
-                    StringProxy.Serialize(bytes, instance.FacebookId);
-                }
-                else
-                {
-                    mask |= 1;
-                }
-
-                if (instance.GroupTag != null)
-                {
-                    StringProxy.Serialize(bytes, instance.GroupTag);
-                }
-                else
-                {
-                    mask |= 2;
-                }
-
-                BooleanProxy.Serialize(bytes, instance.IsChatDisabled);
-                DateTimeProxy.Serialize(bytes, instance.LastLoginDate);
-
-                if (instance.Name != null)
-                {
-                    StringProxy.Serialize(bytes, instance.Name);
-                }
-                else
-                {
-                    mask |= 4;
-                }
-
-                Int32Proxy.Serialize(stream, ~mask);
-                bytes.WriteTo(stream);
-            }
-        }
+      }
+      else
+        Int32Proxy.Serialize(stream, 0);
     }
+
+    public static PublicProfileView Deserialize(Stream bytes)
+    {
+      int num = Int32Proxy.Deserialize(bytes);
+      PublicProfileView publicProfileView = (PublicProfileView) null;
+      if (num != 0)
+      {
+        publicProfileView = new PublicProfileView();
+        publicProfileView.AccessLevel = EnumProxy<MemberAccessLevel>.Deserialize(bytes);
+        publicProfileView.Cmid = Int32Proxy.Deserialize(bytes);
+        publicProfileView.EmailAddressStatus = EnumProxy<EmailAddressStatus>.Deserialize(bytes);
+        if ((num & 1) != 0)
+          publicProfileView.GroupTag = StringProxy.Deserialize(bytes);
+        publicProfileView.IsChatDisabled = BooleanProxy.Deserialize(bytes);
+        publicProfileView.LastLoginDate = DateTimeProxy.Deserialize(bytes);
+        if ((num & 2) != 0)
+          publicProfileView.Name = StringProxy.Deserialize(bytes);
+      }
+      return publicProfileView;
+    }
+  }
 }

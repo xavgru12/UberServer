@@ -66,7 +66,8 @@ namespace UberStrok.Realtime.Server.Game
 
         protected override void OnCreateRoom(GamePeer peer, GameRoomDataView roomData, string password, string clientVersion, string authToken, string magicHash, bool isMac)
         {
-            if (clientVersion != GameApplication.Instance.Configuration.ServerGameVersion)
+            /* Check the client version. */
+            if (clientVersion != "4.3.10")
             {
                 ((PeerBase)peer).Disconnect();
                 Log.Error("Client version not match! " + clientVersion + " vs " +  GameApplication.Instance.Configuration.ServerGameVersion);
@@ -118,7 +119,8 @@ namespace UberStrok.Realtime.Server.Game
 
         protected override void OnJoinRoom(GamePeer peer, int roomId, string password, string clientVersion, string authToken, string magicHash, bool isMac)
         {
-            if (clientVersion != GameApplication.Instance.Configuration.ServerGameVersion)
+            /* Check the client version. */
+            if (clientVersion != "4.3.10")
             {
                 ((PeerBase)peer).Disconnect();
                 return;

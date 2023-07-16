@@ -39,7 +39,7 @@ namespace UberStrok.Realtime.Server.Game
             {
                 /* Retrieve loadout data from the web server. */
                 Log.Debug($"Retrieving Loadout from {Configuration.WebServices}");
-                LoadoutView = new UserWebServiceClient(Configuration.WebServices).GetLoadoutServer(Configuration.WebServicesAuth, AuthToken);
+                LoadoutView = new UserWebServiceClient(Configuration.WebServices).GetLoadout(AuthToken);
             }
 
             return LoadoutView;

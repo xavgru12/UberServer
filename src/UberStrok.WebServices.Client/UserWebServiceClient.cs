@@ -57,51 +57,6 @@ namespace UberStrok.WebServices.Client
                 }
             }
         }
-
-        public LoadoutView GetLoadoutServer(string serviceAuth, string authToken)
-        {
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                StringProxy.Serialize(memoryStream, serviceAuth);
-                StringProxy.Serialize(memoryStream, authToken);
-                using (MemoryStream bytes = new MemoryStream(base.Channel.GetLoadoutServer(memoryStream.ToArray())))
-                {
-                    return LoadoutViewProxy.Deserialize(bytes);
-                }
-            }
-        }
-
-        public ApplicationConfigurationView GetAppConfig()
-        {
-            using (new MemoryStream())
-            {
-                using (MemoryStream bytes = new MemoryStream(base.Channel.GetAppConfig()))
-                {
-                    return ApplicationConfigurationViewProxy.Deserialize(bytes);
-                }
-            }
-        }
-
-        public void SetWallet(string authToken, MemberWalletView walletView)
-        {
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                StringProxy.Serialize(memoryStream, authToken);
-                MemberWalletViewProxy.Serialize(memoryStream, walletView);
-                base.Channel.SetWallet(memoryStream.ToArray());
-            }
-        }
-
-        public void SendEndGame(string authToken, StatsCollectionView totalStats, StatsCollectionView bestStats)
-        {
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                StringProxy.Serialize(memoryStream, authToken);
-                StatsCollectionViewProxy.Serialize(memoryStream, totalStats);
-                StatsCollectionViewProxy.Serialize(memoryStream, bestStats);
-                base.Channel.EndOfMatch(memoryStream.ToArray());
-            }
-        }
     }
 
 }

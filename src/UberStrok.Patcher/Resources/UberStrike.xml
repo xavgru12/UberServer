@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<UberStrike>
+  <Application
+    BuildType="Dev"
+    DebugLevel="Debug"
+    Version="4.3.10"
+    WebServiceBaseUrl="http://127.0.0.1/"
+    ContentBaseUrl="http://127.0.0.1:8080/"
+    ChannelType="WindowsStandalone"
+    Language="en-US" />
+</UberStrike>

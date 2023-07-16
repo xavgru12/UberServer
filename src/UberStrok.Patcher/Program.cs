@@ -114,12 +114,11 @@ namespace UberStrok.Patcher
 
             var patches = new Patch[]
             {
-                new QuickSwitchPatch(),
+                //new QuickSwitchPatch(),
                 new WebServicesPatch(),
-                new HostPatch(),
-                new MouseSensitivePatch(),
-                new CreditPatch(),
-                new UIPatch()
+                //new HostPatch(),
+                //new MouseSensitivePatch(),
+                //new CreditPatch()
             };
 
             Console.WriteLine(" Patches ->");

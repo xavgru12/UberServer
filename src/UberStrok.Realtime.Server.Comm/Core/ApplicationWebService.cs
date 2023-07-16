@@ -26,7 +26,7 @@ namespace UberStrok.WebServices.Core
             Log.Info($"Authenticating client v{clientVersion} -> {channelType}.");
 
             // Check if they running on the appropriate version and channel.
-            if (clientVersion != "4.7.1" || channelType != ChannelType.Steam)
+            if (clientVersion != "4.3.10" || channelType != ChannelType.WindowsStandalone)
                 return null;
 
             var view = new AuthenticateApplicationView
@@ -47,7 +47,7 @@ namespace UberStrok.WebServices.Core
         protected override ApplicationConfigurationView OnGetConfigurationData(string clientVersion)
         {
             // Check if they running on the appropriate version.
-            if (clientVersion != "4.7.1")
+            if (clientVersion != "4.3.10")
                 return null;
 
             return _appConfig;
@@ -56,7 +56,7 @@ namespace UberStrok.WebServices.Core
         protected override List<MapView> OnGetMaps(string clientVersion, DefinitionType definitionType)
         {
             // Check if they running on the appropriate version and definitionType.
-            if (clientVersion != "4.7.1")
+            if (clientVersion != "4.3.10")
                 return null;
 
             return Context.Maps.GetAll();

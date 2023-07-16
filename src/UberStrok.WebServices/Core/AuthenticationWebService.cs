@@ -81,6 +81,31 @@ namespace UberStrok.WebServices.Core
             return view;
         }
 
+        public override MemberAuthenticationResultView OnLoginMemberEmail(string steamId, string authToken, string machineId){
+            Console.WriteLine("Entered OnLoginEmailMember");
+            var result = MemberAuthenticationResult.Ok;
+            var member = Context.Users.Db.LoadMember("76561197998448631");
+            var ip = ((RemoteEndpointMessageProperty)OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name]).Address;
+            var session = Context.Users.LogInUser(member, ip, machineId);
+            session.Hwd = machineId;
+            var view = new MemberAuthenticationResultView
+            {
+                MemberAuthenticationResult = result,
+                //AuthToken = session.AuthToken,
+                IsAccountComplete = true,
+                ServerTime = DateTime.Now,
+
+                MemberView = member,
+                PlayerStatisticsView = new PlayerStatisticsView
+                {
+                    Cmid = member.PublicProfile.Cmid,
+                    PersonalRecord = new PlayerPersonalRecordStatisticsView(),
+                    WeaponStatistics = new PlayerWeaponStatisticsView()
+                },
+            };
+            return view;
+        }
+
         public override MemberAuthenticationResultView OnLoginSteam(string steamId, string authToken, string machineId)
         {
             var ip = ((RemoteEndpointMessageProperty)OperationContext.Current.IncomingMessageProperties[RemoteEndpointMessageProperty.Name]).Address;
@@ -90,7 +115,7 @@ namespace UberStrok.WebServices.Core
                 return new MemberAuthenticationResultView
                 {
                     MemberAuthenticationResult = MemberAuthenticationResult.IsBanned,
-                    AuthToken = null,
+                    //AuthToken = null,
                     IsAccountComplete = true,
                     ServerTime = DateTime.Now,
 
@@ -113,7 +138,7 @@ namespace UberStrok.WebServices.Core
                     return new MemberAuthenticationResultView
                     {
                         MemberAuthenticationResult = MemberAuthenticationResult.IsIpBanned,
-                        AuthToken = null,
+                        //AuthToken = null,
                         IsAccountComplete = false,
                         ServerTime = DateTime.Now,
 
@@ -146,7 +171,7 @@ namespace UberStrok.WebServices.Core
                 return new MemberAuthenticationResultView
                 {
                     MemberAuthenticationResult = MemberAuthenticationResult.IsBanned,
-                    AuthToken = null,
+                    //AuthToken = null,
                     IsAccountComplete = true,
                     ServerTime = DateTime.Now,
 
@@ -166,7 +191,7 @@ namespace UberStrok.WebServices.Core
             var view = new MemberAuthenticationResultView
             {
                 MemberAuthenticationResult = result,
-                AuthToken = session.AuthToken,
+                //AuthToken = session.AuthToken,
                 IsAccountComplete = !incomplete,
                 ServerTime = DateTime.Now,
 

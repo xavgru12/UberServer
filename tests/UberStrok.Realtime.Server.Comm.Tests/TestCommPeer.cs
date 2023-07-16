@@ -40,7 +40,7 @@ namespace UberStrok.Realtime.Server.Comm.Tests
                 return false;
             }
 
-            _authToken = loginResult.AuthToken;
+            //_authToken = loginResult.AuthToken;
             _member = loginResult.MemberView;
 
             // Complete the account, so we can set the user name.

@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.ServiceModel;
+using System.Collections.Generic;
 using UberStrok.Core.Common;
 using UberStrok.Core.Serialization;
 using UberStrok.Core.Serialization.Views;
@@ -21,6 +22,8 @@ namespace UberStrok.WebServices.Core
         }
 
         public abstract AccountCompletionResultView OnCompleteAccount(int cmid, string name, ChannelType channelType, string locale, string machineId);
+
+        public abstract MemberAuthenticationResultView OnLoginMemberEmail(string steamId, string authToken, string machineId);
         public abstract MemberAuthenticationResultView OnLoginSteam(string steamId, string authToken, string machineId);
 
         byte[] IAuthenticationWebServiceContract.CompleteAccount(byte[] data)
@@ -81,15 +84,54 @@ namespace UberStrok.WebServices.Core
 
         byte[] IAuthenticationWebServiceContract.LoginMemberEmail(byte[] data)
         {
-            try
-            {
-                throw new NotImplementedException();
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Unable to handle LoginMemberEmail request:");
-                Log.Error(ex);
-                return null;
+            using (var bytes = new MemoryStream(data)) {
+					var emailAddress = StringProxy.Deserialize(bytes);
+					var password = StringProxy.Deserialize(bytes);
+					var channel = EnumProxy<ChannelType>.Deserialize(bytes);
+					var machineId = StringProxy.Deserialize(bytes);
+                    Console.WriteLine("byte deserialized: ");
+                    Console.WriteLine(emailAddress + " " + password + " " + channel + " " + machineId);
+
+					using (var outputStream = new MemoryStream()) {
+						MemberAuthenticationResultViewProxy.Serialize(outputStream, new MemberAuthenticationResultView { 
+							IsAccountComplete = true,
+							IsTutorialComplete = true,
+							MemberAuthenticationResult = MemberAuthenticationResult.Ok,
+							MemberView = new MemberView {
+								PublicProfile = new PublicProfileView {
+									Cmid = 1,
+									Name = "xavgru",
+									AccessLevel = MemberAccessLevel.Admin,
+									EmailAddressStatus = EmailAddressStatus.Verified
+								},
+								MemberWallet = new MemberWalletView {
+									Cmid = 1,
+									Credits = 1337,
+									CreditsExpiration = DateTime.Now,
+									Points = 1337,
+									PointsExpiration = DateTime.Now
+								},
+                                MemberItems = new List<int> {
+								}
+							},
+							PlayerStatisticsView = new PlayerStatisticsView { 
+								Cmid = 1,
+								Xp = 1000
+							},
+							ServerTime = DateTime.UtcNow,
+                            WeeklySpecial = new WeeklySpecialView {
+                                StartDate = DateTime.MinValue,
+                                EndDate = DateTime.MaxValue,
+                                Id = 0,
+                                ImageUrl = "http://127.0.0.1:8080/WeeklySpecial/TheWarehouse.jpg",
+                                Text = "UberStrike 4.3.10 Beta",
+                                Title = "Team UberStrike",
+                                ItemId = 1003
+                            }   
+						});
+
+					return outputStream.ToArray();
+                    }
             }
         }
 
