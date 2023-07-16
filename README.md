@@ -1,14 +1,74 @@
 ## Server Setup
 
+This version is using .NET 6 and MongoDB as database. Both installers are added to the release.
+
+### MongoDB setup
+
+Install it using the installer. Create a new database with user.    
+It is installed by default in C:\Program Files\MongoDB\Server\5.0\bin. Open this folder from command prompt and type: mongodb    
+mongodb command line should open, create a user:   
+
+db.createUser({   
+  user: "uber",    
+  pwd: "admin",     
+  roles: [    
+    { role: "userAdmin", db: "admin" },   
+    { role: "dbAdmin",   db: "admin" },     
+    { role: "readWrite", db: "admin" }    
+  ]    
+});    
+    
+Database name must be admin.    
+Open mongod.cfg and add:    
+security:    
+  authorization: "enabled"    
+
+Backup Database:     
+
+mongodump --host localhost:27017 --username uber --password admin --authenticationDatabase admin     
+
+Restore Database:    
+mongorestore --drop     
+
+Restart MongoDB:     
+net stop MongoDB     
+net start MongoDB     
+
+Access Database:    
+Open MongoDBCompass     
+
+filter user by CMID: { UserId : { $in: [1, 2, 232] }}   
+
+### Discord Bot Setup
+Go to discord developer portal.   
+Create new application -> create new Bot         
+Go to Oauth2:    
+set scopes: bot, application.commands    
+set bot permissions: Send Messages, Create Public Threads, create Private      Threads,     Manage Messages, Manage Threads     
+
+Generate token, invite Discord bot to the server.        
+In assets/configs discord.config, set token and channel ids from your discord server      
+To get a channel id: right click on a channel -> copy link, you will get something like this:     
+https://discord.com/channels/977629304894656606/1074770011199119521      
+Only take the last part: 1074770011199119521      
+Put this into the discord.config, for example:     
+lobbychannel:1074770011199119521     
+
+Discord token is a secret and is not to be published.
+
 ### Firewall Settings
 
 Go to Firewall Advanced Settings
 
-Inbound -> TCP -> Port 80 -> allow connections
+Inbound -> TCP -> Port 5000 -> allow connections
 
 Inbound -> UDP -> Port 5055 and 5056 -> allow connections
 
-Same settings need to be applied on both the Windows as well as in webhost settings
+Outbound -> TCP -> Port 5000 -> allow connections
+
+Outbound -> UDP -> Port 5055 and 5056 -> allow connections
+
+Same settings need to be applied on both the Windows as well as in webhost settings.
 
 ### Photon License
 
@@ -20,8 +80,9 @@ Get files from bin/Release.
 Get Webservice and copy to ServerSetup/Webservice   
 Get Realtime server:   
 Get from src\UberStrok.Realtime.Server.Comm and copy to ServerSetup/PhotonRealtimeServer/UberStrok.Realtime.Server.Comm   
-Get from src\UberStrok.Realtime.Server.Game and copy to ServerSetup/PhotonRealtimeServer/UberStrok.Realtime.Server.Game/bin
-copy ServerSetup to your server.   
+Get from src\UberStrok.Realtime.Server.Game and copy to ServerSetup/PhotonRealtimeServer/UberStrok.Realtime.Server.Game/bin 
+Paste your discord-config to ServerSetup/Webservices/assets/configs/discord.config.      
+Finally copy ServerSetup to your server.   
 
 ### Webservice configuration
 IP address is set to 127.0.0.1 per default for both Webservice and Realtime.
@@ -35,12 +96,13 @@ CommServer is the Webservice server.
 GameServer is the Realtime server.   
 
 in Realtime Server:    
-Edit Webservice.txt, default content is: http://127.0.0.1/   
+Edit uberstrok.realtime.server.json, default content is: "webservices": "http://127.0.0.1:5000/2.0/",         
 Locations:    
-PhotonRealtimeServer\UberStrok.Realtime.Server.Comm and    
-PhotonRealtimeServer\UberStrok.Realtime.Server.Game   
+PhotonRealtimeServer\UberStrok.Realtime.Server.Comm\bin and    
+PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin         
 
 ### Run Server
+Install dotnet 6.0 on server. Dotnet Installer is in the Github release.
 Start the Webservice by executing the .exe from Webservices.    
 
 Steps to start Realtime:   
@@ -48,7 +110,3 @@ Paste Photon License to: bin_Win64 or bin_Win32
 It might show .NET Framework 3.5 missing, which can be ignored.   
 Start PhotonController.exe.  
 The PhotonController will be started at your taskbar tray, rightclick and find UberStrok, click Start as application.   
-
-### Client Setup
-
-Compile UberStrok.Patcher, go to its bin/Release and execute.

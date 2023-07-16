@@ -7,7 +7,7 @@ namespace UberStrok.Core.Serialization.Views
     {
         public static void Serialize(Stream stream, PhotonServerLoadView instance)
         {
-            using (var bytes = new MemoryStream())
+            using (MemoryStream bytes = new MemoryStream())
             {
                 SingleProxy.Serialize(bytes, instance.MaxPlayerCount);
                 Int32Proxy.Serialize(bytes, instance.PeersConnected);

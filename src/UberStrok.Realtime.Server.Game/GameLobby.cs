@@ -58,7 +58,12 @@ namespace UberStrok.Realtime.Server.Game
         {
             if (_disposed)
                 return;
-
+            foreach (var peer in _peers)
+            {
+                peer.SendError("Uberstrike servers are being restarted, kindly restart the game");
+                peer.Disconnect();
+                peer.Dispose();
+            }
             _loopScheduler.Dispose();
             _disposed = true;
         }

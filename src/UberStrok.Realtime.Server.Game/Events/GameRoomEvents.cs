@@ -10,7 +10,7 @@ namespace UberStrok.Realtime.Server.Game
 {
     public class GameRoomEvents : EventSender
     {
-        public GameRoomEvents(GamePeer peer) 
+        public GameRoomEvents(GamePeer peer)
             : base(peer)
         {
             /* Space */
@@ -109,7 +109,7 @@ namespace UberStrok.Realtime.Server.Game
             }
         }
 
-        public void SendPlayerKilled(int shooter, int target, UberStrikeItemClass weaponClass, 
+        public void SendPlayerKilled(int shooter, int target, UberStrikeItemClass weaponClass,
                     ushort damage, BodyPart bodyPart, Vector3 direction)
         {
             using (var bytes = new MemoryStream())
@@ -320,6 +320,25 @@ namespace UberStrok.Realtime.Server.Game
             {
                 EnumProxy<TeamID>.Serialize(bytes, team);
                 SendEvent((byte)IGameRoomEventsType.TeamWins, bytes);
+            }
+        }
+
+        public void SendPlayerChangedTeam(int cmid, TeamID team)
+        {
+            using (var bytes = new MemoryStream())
+            {
+                Int32Proxy.Serialize(bytes, cmid);
+                EnumProxy<TeamID>.Serialize(bytes, team);
+
+                SendEvent((byte)IGameRoomEventsType.PlayerChangedTeam, bytes);
+            }
+        }
+
+        public void SendJoinedAsSpectator()
+        {
+            using (var bytes = new MemoryStream())
+            {
+                SendEvent((byte)IGameRoomEventsType.JoinedAsSpectator, bytes);
             }
         }
     }

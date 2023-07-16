@@ -30,6 +30,8 @@
 
         /* Calculate the time of when the next Elapsed should happen. */
         private void ResetNextElapsed()
-            => _nextElapsed = Loop.Time + Interval;
+        {
+            _nextElapsed = Loop.Time + Interval;
+        }
     }
 }

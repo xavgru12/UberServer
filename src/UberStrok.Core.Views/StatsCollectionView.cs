@@ -1,5 +1,4 @@
 ﻿using System;
-using UberStrok.Core.Common;
 
 namespace UberStrok.Core.Views
 {
@@ -18,7 +17,7 @@ namespace UberStrok.Core.Views
 
         public int ArmorPickedUp { get; set; }
         public int HealthPickedUp { get; set; }
-        
+
         public int MeleeKills { get; set; }
         public int MeleeShotsFired { get; set; }
         public int MeleeShotsHit { get; set; }
@@ -54,6 +53,7 @@ namespace UberStrok.Core.Views
         public int LauncherShotsHit { get; set; }
         public int LauncherDamageDone { get; set; }
 
+
         public int GetKills()
         {
             return MeleeKills + MachineGunKills + ShotgunSplats + SniperKills +
@@ -80,11 +80,8 @@ namespace UberStrok.Core.Views
 
         public float GetAccuracy()
         {
-            var shots = GetShots();
-            if (shots == 0)
-                return 0f;
-            
-            return GetHits() / shots;
+            int shots = GetShots();
+            return shots == 0 ? 0f : GetHits() / shots;
         }
     }
 }

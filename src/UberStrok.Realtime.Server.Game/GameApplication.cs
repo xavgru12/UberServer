@@ -28,7 +28,7 @@ namespace UberStrok.Realtime.Server.Game
 
         protected override void OnTearDown()
         {
-            if(Lobby != null)
+            if (Lobby != null)
                 Lobby.Dispose();
         }
 

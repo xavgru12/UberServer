@@ -37,7 +37,9 @@ namespace UberStrok.Core
         public int StopFire()
         {
             if (!_firing)
+            {
                 return 0;
+            }
 
             _firing = false;
             return (int)Math.Ceiling((DateTime.UtcNow - _fireTime).TotalMilliseconds / _view.RateOfFire);
@@ -46,9 +48,13 @@ namespace UberStrok.Core
         public void Hit()
         {
             if (CanHit)
+            {
                 _lastHit = DateTime.UtcNow;
+            }
             else
+            {
                 FalsePositive++;
+            }
         }
 
         public void Reset()
@@ -67,9 +73,12 @@ namespace UberStrok.Core
 
         private static int CalculateThreshold(int rof)
         {
-            int threshold = (int)Math.Round(-0.016f * rof + 20.8f);
+            int threshold = (int)Math.Round((-0.016f * rof) + 20.8f);
             if (threshold < 5)
+            {
                 threshold = 5;
+            }
+
             return threshold;
         }
     }

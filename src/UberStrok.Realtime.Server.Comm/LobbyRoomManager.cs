@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UberStrok.Realtime.Server.Comm
+﻿namespace UberStrok.Realtime.Server.Comm
 {
     public class LobbyRoomManager
     {
@@ -9,11 +7,6 @@ namespace UberStrok.Realtime.Server.Comm
         public LobbyRoomManager()
         {
             Global = new LobbyRoom();
-        }
-
-        public void Create()
-        {
-            throw new NotImplementedException();
         }
     }
 }

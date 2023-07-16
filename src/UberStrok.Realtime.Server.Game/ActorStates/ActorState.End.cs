@@ -5,7 +5,7 @@ namespace UberStrok.Realtime.Server.Game
 {
     public class EndActorState : ActorState
     {
-        public EndActorState(GameActor actor) 
+        public EndActorState(GameActor actor)
             : base(actor)
         {
             /* Space */
@@ -34,7 +34,6 @@ namespace UberStrok.Realtime.Server.Game
                 /* Play time is not actually in minutes but seconds. */
                 TimeInGameMinutes = playTime,
             };
-
             /* 
              * This sets the client's match and player state to `end of match`
              * state which is the equivalent of End state.
