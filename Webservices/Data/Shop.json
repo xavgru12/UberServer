@@ -1,0 +1,3400 @@
+﻿{
+  "QuickItems": [
+    {
+      "ID": 2666,
+      "ItemClass": 18,
+      "Name": "Spring Grenades",
+      "PrefabName": "SpringGrenadeeeee",
+      "Description": "Mjaaaauuuuuuuuuuuuuuuuu",
+      "LevelLock": 1,
+      "LevelRequired": 1,
+      "IsConsumable": true,
+      "ShopHighlightType": 2,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0
+        },
+        {
+          "Price": 2000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 2,
+          "PackType": 1
+        },
+        {
+          "Price": 3000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 3,
+          "PackType": 2
+        }
+      ],
+      "CustomProperties": {},
+      "UsesPerLife": 12,
+      "UsesPerRound": 1000,
+      "UsesPerGame": 1000,
+      "CoolDownTime": 2000,
+      "WarmUpTime": 0,
+      "MaxOwnableAmount": 1000,
+      "BehaviourType": 1
+    },
+    {
+      "ID": 2002,
+      "ItemClass": 18,
+      "Name": "HealthBot Charged",
+      "PrefabName": "HealthBuffCharge",
+      "Description": "Mjaaaau",
+      "LevelLock": 1,
+      "LevelRequired": 1,
+      "IsConsumable": true,
+      "ShopHighlightType": 2,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0
+        },
+        {
+          "Price": 2000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 2,
+          "PackType": 1
+        },
+        {
+          "Price": 3000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 3,
+          "PackType": 2
+        }
+      ],
+      "CustomProperties": {
+        "HealthPoints": "80"
+      },
+      "UsesPerLife": 10,
+      "UsesPerRound": 30,
+      "UsesPerGame": 64,
+      "CoolDownTime": 120000,
+      "WarmUpTime": 2000,
+      "MaxOwnableAmount": 30,
+      "BehaviourType": 2
+    },
+    {
+      "ID": 2003,
+      "ItemClass": 18,
+      "Name": "ArmorBot Charged",
+      "PrefabName": "ArmorBuff",
+      "Description": "Mjaaaau",
+      "LevelLock": 1,
+      "LevelRequired": 1,
+      "IsConsumable": true,
+      "ShopHighlightType": 2,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0
+        },
+        {
+          "Price": 2000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 2,
+          "PackType": 1
+        },
+        {
+          "Price": 3000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 3,
+          "PackType": 2
+        }
+      ],
+      "CustomProperties": {
+        "ArmorPoints": "50"
+      },
+      "UsesPerLife": 10,
+      "UsesPerRound": 30,
+      "UsesPerGame": 64,
+      "CoolDownTime": 120000,
+      "WarmUpTime": 2000,
+      "MaxOwnableAmount": 30,
+      "BehaviourType": 3
+    },
+    {
+      "ID": 2004,
+      "ItemClass": 19,
+      "Name": "Uber Grenades",
+      "PrefabName": "ExplosiveGrenade",
+      "Description": "Mjaaaau",
+      "LevelLock": 1,
+      "LevelRequired": 1,
+      "IsConsumable": true,
+      "ShopHighlightType": 2,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0
+        },
+        {
+          "Price": 2000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 2,
+          "PackType": 1
+        },
+        {
+          "Price": 3000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 3,
+          "PackType": 2
+        }
+      ],
+      "CustomProperties": {},
+      "UsesPerLife": 100,
+      "UsesPerRound": 1000,
+      "UsesPerGame": 1000,
+      "CoolDownTime": 100,
+      "WarmUpTime": 200,
+      "MaxOwnableAmount": 1000,
+      "BehaviourType": 5
+    },
+    {
+      "ID": 2008,
+      "ItemClass": 20,
+      "Name": "Ghetto Blaster",
+      "PrefabName": "Ghettoblaster",
+      "Description": "wtf",
+      "LevelLock": 1,
+      "LevelRequired": 1,
+      "IsConsumable": true,
+      "ShopHighlightType": 2,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0
+        },
+        {
+          "Price": 2000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 2,
+          "PackType": 1
+        },
+        {
+          "Price": 3000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 3,
+          "PackType": 2
+        }
+      ],
+      "CustomProperties": {
+        "Damage": "120",
+        "Bounciness": "0",
+        "Sticky": "true",
+        "LifeTime": "5",
+        "SplashRadius": "3"
+      },
+      "UsesPerLife": 100,
+      "UsesPerRound": 1000,
+      "UsesPerGame": 1000,
+      "CoolDownTime": 100,
+      "WarmUpTime": 200,
+      "MaxOwnableAmount": 1000,
+      "BehaviourType": 5
+    },
+    {
+      "ID": 2006,
+      "ItemClass": 18,
+      "Name": "Apple Grenades",
+      "PrefabName": "Apple",
+      "Description": "Mjaaaau",
+      "LevelLock": 1,
+      "LevelRequired": 1,
+      "IsConsumable": true,
+      "ShopHighlightType": 2,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0
+        },
+        {
+          "Price": 2000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 2,
+          "PackType": 1
+        },
+        {
+          "Price": 3000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 3,
+          "PackType": 2
+        }
+      ],
+      "CustomProperties": {},
+      "UsesPerLife": 100,
+      "UsesPerRound": 1000,
+      "UsesPerGame": 1000,
+      "CoolDownTime": 100,
+      "WarmUpTime": 200,
+      "MaxOwnableAmount": 1000,
+      "BehaviourType": 5
+    },
+    {
+      "ID": 2005,
+      "ItemClass": 18,
+      "Name": "AmmoBot Charged",
+      "PrefabName": "AmmoBuff",
+      "Description": "Mjaaaau",
+      "LevelLock": 1,
+      "LevelRequired": 1,
+      "IsConsumable": true,
+      "ShopHighlightType": 2,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0
+        },
+        {
+          "Price": 2000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 2,
+          "PackType": 1
+        },
+        {
+          "Price": 3000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 3,
+          "PackType": 2
+        }
+      ],
+      "CustomProperties": {
+        "AmmoPoints": "50"
+      },
+      "UsesPerLife": 10,
+      "UsesPerRound": 30,
+      "UsesPerGame": 64,
+      "CoolDownTime": 120000,
+      "WarmUpTime": 2000,
+      "MaxOwnableAmount": 30,
+      "BehaviourType": 4
+    }
+  ],
+  "FunctionalItems": [
+
+    {
+      "ItemClass": 21,
+      "ID": 1294,
+      "Name": "NameChange",
+      "PrefabName": "",
+      "Description": null,
+      "LevelLock": 0,
+      "LevelRequired": 0,
+      "IsConsumable": true,
+      "ShopHighlightType": 0,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+
+    },
+    {
+      "ItemClass": 21,
+      "ID": 1234,
+      "Name": "Clan License",
+      "PrefabName": "",
+      "Description": null,
+      "LevelLock": 0,
+      "LevelRequired": 0,
+      "IsConsumable": true,
+      "ShopHighlightType": 0,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+
+    },
+    {
+      "ItemClass": 21,
+      "ID": 1094,
+      "Name": "Privateer License",
+      "PrefabName": "",
+      "Description": null,
+      "LevelLock": 0,
+      "LevelRequired": 0,
+      "IsConsumable": true,
+      "ShopHighlightType": 0,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ItemClass": 21,
+      "ID": 1265,
+      "Name": "Mac App Store License",
+      "PrefabName": "",
+      "Description": null,
+      "LevelLock": 0,
+      "LevelRequired": 0,
+      "IsConsumable": true,
+      "ShopHighlightType": 0,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    }
+  ],
+  "GearItems": [
+    ///////////////// DEFAULT GEAR
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 13,
+      "ID": 1084,
+      "PrefabName": "LutzDefaultGearHead",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 15,
+      "ID": 1087,
+      "PrefabName": "LutzDefaultGearUpperBody",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 14,
+      "ID": 1085,
+      "PrefabName": "",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 17,
+      "ID": 1086,
+      "PrefabName": "LutzDefaultGearGloves",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 16,
+      "ID": 1088, // 1088
+      "PrefabName": "LutzDefaultGearLowerBody",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 12,
+      "ID": 1089,
+      "PrefabName": "LutzDefaultGearBoots",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    }, //////////////// END DEFAULT GEAR
+    {
+      "ArmorPoints": 50,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 25,
+      "ItemClass": 15,
+      "ID": 1099,
+      "Name": "Beta Hero",
+      "PrefabName": "BetaHero",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 60,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 20,
+      "ItemClass": 15,
+      "ID": 1394,
+      "Name": "Counter-Terrorist Jacket Russia",
+      "PrefabName": "CounterTerrorist_UB_Russia",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 60,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 20,
+      "ItemClass": 15,
+      "ID": 1392,
+      "Name": "Counter-Terrorist Jacket UK",
+      "PrefabName": "CounterTerrorist_UB_England",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 60,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 20,
+      "ItemClass": 15,
+      "ID": 1390,
+      "Name": "Counter-Terrorist Jacket France",
+      "PrefabName": "CounterTerrorist_UB_France",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 60,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 20,
+      "ItemClass": 15,
+      "ID": 1389,
+      "Name": "Counter-Terrorist Jacket Germany",
+      "PrefabName": "CounterTerrorist_UB_Germany",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 60,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 20,
+      "ItemClass": 15,
+      "ID": 1393,
+      "Name": "Counter-Terrorist Jacket USA",
+      "PrefabName": "CounterTerrorist_UB_Usa",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 14,
+      "ID": 1385,
+      "Name": "Counter-Terrorist Mask",
+      "PrefabName": "CounterTerrorist_Face",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 150,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 12,
+      "ID": 1388,
+      "Name": "Counter-Terrorist Boots",
+      "PrefabName": "CounterTerrorist_Boots",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 150,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 17,
+      "ID": 1387,
+      "Name": "Counter-Terrorist Gloves",
+      "PrefabName": "CounterTerrorist_Gloves",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 150,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 13,
+      "ID": 1383,
+      "Name": "Counter-Terrorist Helmet",
+      "PrefabName": "CounterTerrorist_Hat",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 300,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 12,
+      "ID": 1272,
+      "Name": "Black Corps Boots",
+      "PrefabName": "BlackCorpsBoots",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 150,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 13,
+      "ID": 1275,
+      "Name": "Black Corps Helmet",
+      "PrefabName": "BlackCorpsHead",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 225,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 14,
+      "ID": 1273,
+      "Name": "Black Corps Balaclava",
+      "PrefabName": "BlackCorpsFace",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 225,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 17,
+      "ID": 1274,
+      "Name": "Black Corps Gloves",
+      "PrefabName": "BlackCorpsGloves",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 150,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 40,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 20,
+      "ItemClass": 15,
+      "ID": 1277,
+      "Name": "Black Corps Body Armor",
+      "PrefabName": "BlackCorpsUpperbody",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1100,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 40,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 20,
+      "ItemClass": 16,
+      "ID": 1276,
+      "Name": "Black Corps Leg Armor",
+      "PrefabName": "BlackCorpsLowerbody",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1110,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 0,
+      "ItemClass": 13,
+      "ID": 1280,
+      "Name": "Dome Piece of Sergio Sanchez",
+      "PrefabName": "Cap",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 150,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "CustomProperties": {},
+      "ShopHighlightType": 1
+    },
+    {
+      "ArmorPoints": 300,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 100,
+      "ItemClass": 15,
+      "ID": 1098,
+      "Name": "Admin Shirt",
+      "PrefabName": "Admin",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 60,
+      "ArmorWeight": 1,
+      "ArmorAbsorptionPercent": 20,
+      "ItemClass": 16,
+      "ID": 1395,
+      "Name": "Counter-Terrorist Tactical Pants",
+      "PrefabName": "CounterTerrorist_LB",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 100,
+      "ArmorWeight": 1,
+      "ItemClass": 15,
+      "ID": 1255,
+      "Name": "Global Moderator Shirt",
+      "PrefabName": "GlobalModeratorTShirt",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 100,
+      "ArmorWeight": 1,
+      "ItemClass": 15,
+      "ID": 1440,
+      "Name": "QA Shirt",
+      "PrefabName": "QAShirt",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorAbsorptionPercent": 0,
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ItemClass": 13,
+      "ID": 1600,
+      "Name": "Witch Hat",
+      "PrefabName": "HalloweenWitchHat-Head",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 22750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorAbsorptionPercent": 0,
+      "ArmorPoints": 20,
+      "ArmorWeight": 1,
+      "ItemClass": 23,
+      "ID": 1310,
+      "Name": "Julia Ninja Holo",
+      "PrefabName": "JuliaNinjaHolo",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 22750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorAbsorptionPercent": 0,
+      "ArmorPoints": 0,
+      "ArmorWeight": 1,
+      "ItemClass": 23,
+      "ID": 1240,
+      "Name": "Julia Holo",
+      "PrefabName": "JuliaHolo",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 22750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorAbsorptionPercent": 0,
+      "ArmorPoints": 20,
+      "ArmorWeight": 1,
+      "ItemClass": 23,
+      "ID": 1289,
+      "Name": "Cyber Zombie Lutz",
+      "PrefabName": "CyborgZombieHolo",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 22750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorAbsorptionPercent": 0,
+      "ArmorPoints": 5,
+      "ArmorWeight": 1,
+      "ItemClass": 23,
+      "ID": 1290,
+      "Name": "Zombie Lutz",
+      "PrefabName": "HumanZombieHolo",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 22750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ItemClass": 15,
+      "ID": 1100,
+      "Name": "Green Shirt",
+      "PrefabName": "DefaultShirt",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 0,
+      "ArmorWeight": 0,
+      "ItemClass": 14,
+      "ID": 1195,
+      "Name": "Flag Mask Europe",
+      "PrefabName": "FlagMask_Europe",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 26500,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    },
+    {
+      "ArmorPoints": 100,
+      "ArmorWeight": 1,
+      "ItemClass": 15,
+      "ID": 1261,
+      "Name": "Arctic Dreads Upper",
+      "PrefabName": "ArcticDreadsUpperbody",
+      "Description": null,
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 0,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "CustomProperties": {}
+    }
+  ],
+  "WeaponItems": [ //////////////// HANDGUNS START
+    {
+      "ItemClass": 2,
+      "ID": 1010,
+      "Name": "Executioner",
+      "PrefabName": "Executioner",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1650,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 550,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 11550,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3850,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 4250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 6,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 60,
+      "MaxAmmo": 50,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 476, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 7,
+      "SplashRadius": 0,
+      "StartAmmo": 25
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1164,
+      "Name": "Godfather's Hand Cannon",
+      "PrefabName": "GoldPistol",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1650,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 550,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 11550,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3850,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 4250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 18,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 18,
+      "MaxAmmo": 50,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 125, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 8,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 30
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1237,
+      "Name": "Spiteful Stinger",
+      "PrefabName": "SpitefulSkewer",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1650,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 550,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 11550,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3850,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 4250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 60,
+      "MaxAmmo": 40,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 714, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 20
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1001,
+      "Name": "Handgun",
+      "PrefabName": "HandGun",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1650,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 550,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 11550,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3850,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 4250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "0"
+      },
+      "AccuracySpread": 18,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 125,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 149, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 8,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 80
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1367,
+      "Name": "USP .45 Silenced Classic",
+      "PrefabName": "USP_Base",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 400,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 2800,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 1,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 75,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 130, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 40
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1363,
+      "Name": "USP .45 Classic",
+      "PrefabName": "USP_BaseNoSilencer",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 400,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 2800,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 1,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 75,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 130, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 40
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1365,
+      "Name": "USP .45 Black",
+      "PrefabName": "USP_BlackNoSilencer",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 400,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 2800,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 1,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 100,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 130, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 60
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1365,
+      "Name": "USP .45 Black",
+      "PrefabName": "USP_BlackNoSilencer",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 400,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 2800,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 1,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 100,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 130, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 60
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1368,
+      "Name": "USP .45 Silenced Camo",
+      "PrefabName": "USP_Camo",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 400,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 2800,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 1,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 100,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 130, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 80
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1364,
+      "Name": "USP .45 Camo",
+      "PrefabName": "USP_CamoNoSilencer",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 400,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 2800,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 1,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 100,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 130, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 80
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1382,
+      "Name": "USP .45 Silenced Tiger",
+      "PrefabName": "USP_Pimp",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 400,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 2800,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 1,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 100,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 130, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 80
+    },
+    {
+      "ItemClass": 2,
+      "ID": 1366,
+      "Name": "USP .45 Tiger",
+      "PrefabName": "USP_PimpNoSilencer",
+      "Description": "Really nice looking handgun.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 400,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 2800,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 1,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 100,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 130, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 6,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 80
+    },
+    { /////////////////////////// SNIPERS START
+      "ItemClass": 5,
+      "ID": 1004,
+      "Name": "Sniper Rifle",
+      "PrefabName": "SniperRifle",
+      "Description": "Most favourite sniper rifle in the game!",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1450,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 80,
+      "MaxAmmo": 40,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1250, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 20
+    },
+    {
+      "ItemClass": 5,
+      "ID": 1016,
+      "Name": "Ordinator Rifle",
+      "PrefabName": "OrdinatorRifle",
+      "Description": "The Ordinator Rifle's low damage is offset by the fact that it's the fastest firing sniper available.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1450,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 60,
+      "MaxAmmo": 90,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 769, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 30
+    },
+    {
+      "ItemClass": 5,
+      "ID": 1301,
+      "Name": "Vanquisher Dragon Edition",
+      "PrefabName": "Vanquisher_NewYearEdition",
+      "Description": "DRAGON EDITION: The name of this rifle is deserved, as it is one of the few weapons cabaple of eliminating an unarmored opponent in a single shot.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 5250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 22750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 110,
+      "MaxAmmo": 55,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 25
+    },
+    {
+      "ItemClass": 5,
+      "ID": 1331,
+      "Name": "Vanquisher Kongregate Edition",
+      "PrefabName": "Vanquisher_Kongregate",
+      "Description": "KONGREGATE EDITION: The name of this rifle is deserved, as it is one of the few weapons cabaple of eliminating an unarmored opponent in a single shot.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 5250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 22750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 110,
+      "MaxAmmo": 55,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 25
+    },
+    {
+      "ItemClass": 5,
+      "ID": 1018,
+      "Name": "Vanquisher",
+      "PrefabName": "Vanquisher",
+      "Description": "The name of this rifle is deserved, as it is one of the few weapons cabaple of eliminating an unarmored opponent in a single shot.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 550,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 3080,
+          "Currency": 1,
+          "Discount": 20,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 5600,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 110,
+      "MaxAmmo": 50,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 20
+    },
+    {
+      "ItemClass": 5,
+      "ID": 1244,
+      "Name": "Dark Vanquisher",
+      "PrefabName": "DarkVanquisher",
+      "Description": "The Dark Vanquisher packs the punch of regular Vanquisher, but has a scope with a higher zoom factor.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 600,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 4200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 6500,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 120,
+      "MaxAmmo": 50,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1666, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 20
+    },
+    {
+      "ItemClass": 5,
+      "ID": 1147,
+      "Name": "Particle Lance",
+      "PrefabName": "ParticleLance",
+      "Description": "Aestethic.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1000,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 600,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 7000,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 4200,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 6500,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 105,
+      "MaxAmmo": 40,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 20
+    },
+    {
+      "ItemClass": 5,
+      "ID": 1316,
+      "Name": "Particle Lance Dragon Edition",
+      "PrefabName": "ParticleLance-DE",
+      "Description": "Aestethic.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 5250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 22375,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 105,
+      "MaxAmmo": 40,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 30
+    },
+    {
+      "ItemClass": 5,
+      "ID": 1356,
+      "Name": "AWP Black Edition",
+      "PrefabName": "AWP_Black",
+      "Description": "Purpose designed for ultimate accuracy and power - The AWP is a worthy addition to any player's arsenal.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 725,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 5075,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 22750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 135,
+      "MaxAmmo": 40,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 2000, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5,
+      "SplashRadius": 0,
+      "StartAmmo": 30
+    },
+    { /////////////       SPLATTERGUNS START
+      "ItemClass": 7,
+      "ID": 1006,
+      "Name": "SplatterGun",
+      "PrefabName": "SplatterGun",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 725,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 14,
+      "MaxAmmo": 200,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 50,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 110,
+      "RecoilKickback": 4,
+      "RecoilMovement": 2,
+      "SplashRadius": 50,
+      "StartAmmo": 60
+    },
+    {
+      "ItemClass": 7,
+      "ID": 1022,
+      "Name": "Mad Splatter",
+      "PrefabName": "MadSplatter",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 725,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 16,
+      "MaxAmmo": 300,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 50,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 90,
+      "RecoilKickback": 4,
+      "RecoilMovement": 2,
+      "SplashRadius": 100,
+      "StartAmmo": 80
+    },
+    {
+      "ItemClass": 7,
+      "ID": 1021,
+      "Name": "Vandalizer",
+      "PrefabName": "Vandalizer",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 725,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 15,
+      "MaxAmmo": 200,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 50,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 110,
+      "RecoilKickback": 4,
+      "RecoilMovement": 2,
+      "SplashRadius": 40,
+      "StartAmmo": 70
+    },
+    { ////////// LAUNCHERS START
+      "ItemClass": 8,
+      "ID": 1007,
+      "Name": "Grenade Launcher",
+      "PrefabName": "Launcher",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 725,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 70,
+      "MaxAmmo": 30,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 3000, // 1000 = 1s
+      "ProjectileSpeed": 20,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1000,
+      "RecoilKickback": 6,
+      "RecoilMovement": 3,
+      "SplashRadius": 400,
+      "StartAmmo": 15
+    },
+    {
+      "ItemClass": 8,
+      "ID": 1262,
+      "Name": "iLauncher",
+      "PrefabName": "iLauncher",
+      "Description": "The iLauncher is an apple launcher exclusive to players using the UberStrike App from Mac App Store.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 725,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 70,
+      "MaxAmmo": 30,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 3000, // 1000 = 1s
+      "ProjectileSpeed": 20,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1000,
+      "RecoilKickback": 6,
+      "RecoilMovement": 3,
+      "SplashRadius": 400,
+      "StartAmmo": 15
+    },
+    { ////////////////////////////////   MELEE START
+      "ItemClass": 1,
+      "ID": 1000,
+      "Name": "The Splatbat",
+      "PrefabName": "TheSplatbat",
+      "Description": "Fortnite is gay.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 85,
+      "MaxAmmo": 0,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 0,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 909, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 0,
+      "StartAmmo": 0
+    },
+    {
+      "ItemClass": 1,
+      "ID": 1312,
+      "Name": "Mythic Edge Dragon Edition",
+      "PrefabName": "MythicEdge-DE",
+      "Description": "Mmmmmmm",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 475,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 1995,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 6500,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 120,
+      "MaxAmmo": 0,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 0,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1000, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 0,
+      "StartAmmo": 0
+    },
+    { ////////////////////////////////////// CANNONS START
+      "ItemClass": 6,
+      "ID": 1243,
+      "Name": "Force Cannon Plus",
+      "PrefabName": "ForceCannonPlus",
+      "Description": "Mmmmmmm",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 500,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 550, // Force of rocket jump
+      "DamagePerProjectile": 90,
+      "MaxAmmo": 25,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 1500,
+      "ProjectileSpeed": 70,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 350, // 100 = 1m, 1000 = 10m
+      "StartAmmo": 10
+    },
+    {
+      "ItemClass": 6,
+      "ID": 1005,
+      "Name": "Cannon",
+      "PrefabName": "Cannon",
+      "Description": "Basic cannon.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 500,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 280, // Force of rocket jump
+      "DamagePerProjectile": 65,
+      "MaxAmmo": 25,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 1500,
+      "ProjectileSpeed": 50,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1000, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 250, // 100 = 1m, 1000 = 10m
+      "StartAmmo": 10
+    },
+    {
+      "ItemClass": 6,
+      "ID": 1020,
+      "Name": "Force Cannon",
+      "PrefabName": "ForceCannon",
+      "Description": "Mmmmmmm",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 1650,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 550,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 11550,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 2310,
+          "Currency": 1,
+          "Discount": 40,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 300, // Force of rocket jump
+      "DamagePerProjectile": 75,
+      "MaxAmmo": 10,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 1500,
+      "ProjectileSpeed": 70,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 350, // 100 = 1m, 1000 = 10m
+      "StartAmmo": 10
+    },
+    {
+      "ItemClass": 6,
+      "ID": 1299,
+      "Name": "Ultima Cannon",
+      "PrefabName": "UltimaCannon",
+      "Description": "Jumping machine",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 525,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 350,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 3675,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 2450,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 3250,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 500, // Force of rocket jump = 70
+      "DamagePerProjectile": 20,
+      "MaxAmmo": 25,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 1500,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 769, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 250, // 100 = 1m, 1000 = 10m
+      "StartAmmo": 10
+    },
+    {
+      "ItemClass": 6,
+      "ID": 1145,
+      "Name": "Enigma Cannon",
+      "PrefabName": "EnigmaCannon",
+      "Description": "asf",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 500,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 200, // Force of rocket jump = 70
+      "DamagePerProjectile": 100,
+      "MaxAmmo": 10,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 1500,
+      "ProjectileSpeed": 50,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 250, // 100 = 1m, 1000 = 10m
+      "StartAmmo": 10
+    },
+    {
+      "ItemClass": 6,
+      "ID": 1315,
+      "Name": "Enigma Cannon Dragon Edition",
+      "PrefabName": "EnigmaCannon-DE",
+      "Description": "DRAGON EDITION: The highly experimental Engima Cannon creates distortion waves that will confound anyone shooting from a distance.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 3150,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 22375,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 200, // Force of rocket jump = 70
+      "DamagePerProjectile": 100,
+      "MaxAmmo": 10,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 1500,
+      "ProjectileSpeed": 50,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 250, // 100 = 1m, 1000 = 10m
+      "StartAmmo": 10
+    },
+    {
+      "ItemClass": 6,
+      "ID": 1311,
+      "Name": "Enigma Cannon Valentine Edition",
+      "PrefabName": "EnigmaCannon_Valentine",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 750,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 3150,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 22375,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": -1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 0,
+      "DamageKnockback": 200, // Force of rocket jump = 70
+      "DamagePerProjectile": 100,
+      "MaxAmmo": 10,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 1500,
+      "ProjectileSpeed": 50,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 1428, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 0,
+      "RecoilMovement": 0,
+      "SplashRadius": 250, // 100 = 1m, 1000 = 10m
+      "StartAmmo": 10
+    },
+    { ///////////////////////////////////  MACHINEGUNS START
+      "ItemClass": 3,
+      "ID": 1002,
+      "Name": "The MachineGun",
+      "PrefabName": "MachineGun",
+      "Description": "Mmmmmmm",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 18, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 15,
+      "MaxAmmo": 150,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 115, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 4,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 100
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1453,
+      "Name": "AK-47",
+      "PrefabName": "AK47",
+      "Description": "Mjau mjau",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 2400,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 21, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 60,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 125, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 4,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 40
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1478,
+      "Name": "AK-47 Black Edition",
+      "PrefabName": "AK47_Black",
+      "Description": "Mjau mjau",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 2400,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 21, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 80,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 125, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 4,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 60
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1479,
+      "Name": "AK-47 Camo Edition",
+      "PrefabName": "AK47_Camo",
+      "Description": "Mjau mjau",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 2400,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 21, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 80,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 125, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 4,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 60
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1480,
+      "Name": "AK-47 Tiger Edition",
+      "PrefabName": "AK47_Tiger",
+      "Description": "Mjau mjau",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 2400,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 21, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 25,
+      "MaxAmmo": 80,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 125, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 4,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 60
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1485,
+      "Name": "M4A1 Standard",
+      "PrefabName": "M4_Standard",
+      "Description": "Mjau mjau",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 5600,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 2
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 18, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 22,
+      "MaxAmmo": 80,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 110, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 4,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 60
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1507,
+      "Name": "M4A1 Silenced Standard",
+      "PrefabName": "M4_Standard_S",
+      "Description": "Mjau mjau",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 5600,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 2
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {
+        "CriticalStrikeBonus": "50"
+      },
+      "AccuracySpread": 18, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 22,
+      "MaxAmmo": 80,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 110, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 4,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 60
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1359,
+      "Name": "UZI Black",
+      "PrefabName": "UZI_Base",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 725,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 5075,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 22375,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 24, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 18,
+      "MaxAmmo": 120,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 70, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5, // x / 100
+      "SplashRadius": 0, // x / 100, npr: 2.5m = 250 / 100
+      "StartAmmo": 80
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1361,
+      "Name": "The Golden Gun",
+      "PrefabName": "UZI_Pimp",
+      "Description": "",
+      "LevelLock": 3,
+      "IsConsumable": false,
+      "Prices": [],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 24, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 100,
+      "MaxAmmo": 120,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 70, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5, // x / 100
+      "SplashRadius": 0, // x / 100, npr: 2.5m = 250 / 100
+      "StartAmmo": 120
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1362,
+      "Name": "UZI Tiger Edition",
+      "PrefabName": "UZI_Tiger",
+      "Description": "",
+      "LevelLock": 3,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 500,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 24, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 18,
+      "MaxAmmo": 120,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 70, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 5, // x / 100
+      "SplashRadius": 0, // x / 100, npr: 2.5m = 250 / 100
+      "StartAmmo": 120
+    },
+    {
+      "ItemClass": 3,
+      "ID": 1360,
+      "Name": "UZI Camo Edition",
+      "PrefabName": "UZI_Camo",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 500,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 24, //postotak
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 18,
+      "MaxAmmo": 120,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 1,
+      "RateOfFire": 70, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 400, // x / 100
+      "SplashRadius": 0, // x / 100, npr: 2.5m = 250 / 100
+      "StartAmmo": 120
+    },
+    { //////////////////////////////////   SHOTGUNS START
+      "ItemClass": 4,
+      "ID": 1374,
+      "Name": "SPAS-12 Classic Edition",
+      "PrefabName": "Automatic_Shotgun_Roughed",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 500,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 55, //ne kuzin na koju foru ovo racuna
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 7,
+      "MaxAmmo": 40,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 0,
+      "ProjectilesPerShot": 13,
+      "RateOfFire": 300, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s, 300 je 3.3/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 10,
+      "SplashRadius": 0,
+      "StartAmmo": 25
+    },
+    {
+      "ItemClass": 4,
+      "ID": 1377,
+      "Name": "SPAS-12 Black Edition",
+      "PrefabName": "Automatic_Shotgun_Black",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 725,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 1
+        },
+        {
+          "Price": 5075,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 2
+        },
+        {
+          "Price": 22375,
+          "Currency": 1,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 0,
+      "CustomProperties": {},
+      "AccuracySpread": 55, //ne kuzin na koju foru ovo racuna
+      "DamageKnockback": 0,
+      "DamagePerProjectile": 7,
+      "MaxAmmo": 50,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 100,
+      "ProjectilesPerShot": 13,
+      "RateOfFire": 300, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s, 300 je 3.3/s
+      "RecoilKickback": 10,
+      "RecoilMovement": 4,
+      "SplashRadius": 0,
+      "StartAmmo": 35
+    },
+    {
+      "ItemClass": 4,
+      "ID": 1003,
+      "Name": "Shotgun",
+      "PrefabName": "ShotGun",
+      "Description": "",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 500,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 3,
+      "AccuracySpread": 48, //ne kuzin na koju foru ovo racuna
+      "DamageKnockback": 160,
+      "DamagePerProjectile": 9,
+      "MaxAmmo": 50,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 0,
+      "ProjectilesPerShot": 11,
+      "RateOfFire": 1000, // 100 = 10/s, manji broj=veci rof, 200 je 5/s, 1000 je 1/s, 300 je 3.3/s
+      "RecoilKickback": 15,
+      "RecoilMovement": 10,
+      "SplashRadius": 100,
+      "StartAmmo": 20
+    },
+    {
+      "ItemClass": 4,
+      "ID": 1013,
+      "Name": "Snotgun",
+      "PrefabName": "SnotGun",
+      "Description": "Coat your enemies in snot with this foul, phlegm-flinging device.",
+      "LevelLock": 0,
+      "IsConsumable": false,
+      "Prices": [
+        {
+          "Price": 500,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5
+        }
+      ],
+      "ShopHighlightType": 3,
+      "AccuracySpread": 48,
+      "DamageKnockback": 160,
+      "DamagePerProjectile": 12,
+      "MaxAmmo": 50,
+      "MissileBounciness": 0,
+      "MissileForceImpulse": 0,
+      "MissileTimeToDetonate": 0,
+      "ProjectileSpeed": 0,
+      "ProjectilesPerShot": 11,
+      "RateOfFire": 1111,
+      "RecoilKickback": 15,
+      "RecoilMovement": 10,
+      "SplashRadius": 100,
+      "StartAmmo": 20
+    }
+  ],
+  "QuickUseItems": [],
+  "WeaponModItems": []
+}

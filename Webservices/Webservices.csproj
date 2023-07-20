@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Xaver\Documents\Uber\localServer\patrik\photon\deploy\Webservice-akash\Webservices.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{827E5B6E-9291-42CC-9B8E-6E99C7147303}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Webservices</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.15.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Webservices</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>lib\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>lib\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>lib\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="UberStrike.UnitySdk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationWebService.cs" />
+    <Compile Include="IApplicationWebServiceContract.cs" />
+    <Compile Include="AuthenticationWebService.cs" />
+    <Compile Include="AuthenticationView.cs" />
+    <Compile Include="IAuthenticationWebServiceContract.cs" />
+    <Compile Include="ClanWebService.cs" />
+    <Compile Include="IClanWebServiceContract.cs" />
+    <Compile Include="IPrivateMessageWebServiceContract.cs" />
+    <Compile Include="PrivateMessageWebService.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="IRelationshipWebServiceContract.cs" />
+    <Compile Include="RelationshipWebService.cs" />
+    <Compile Include="IShopWebServiceContract.cs" />
+    <Compile Include="ShopWebService.cs" />
+    <Compile Include="IUserWebServiceContract.cs" />
+    <Compile Include="UserWebService.cs" />
+    <Compile Include="Manager\ClanManager.cs" />
+    <Compile Include="Manager\Configuration.cs" />
+    <Compile Include="Manager\ConfigurationManager.cs" />
+    <Compile Include="Manager\UserManager.cs" />
+    <Compile Include="Helper\ClanHelper.cs" />
+    <Compile Include="Helper\ClanMemberHelper.cs" />
+    <Compile Include="Helper\DataManager.cs" />
+    <Compile Include="Database\MongoDatabase`1.cs" />
+    <Compile Include="Database\MongoDocument.cs" />
+    <Compile Include="Database\Items\ClanDocument.cs" />
+    <Compile Include="Database\Items\UserDocument.cs" />
+    <Compile Include="Database\Items\Stream\ContactRequestStream.cs" />
+    <Compile Include="Database\Items\Stream\GroupInvitationStream.cs" />
+    <Compile Include="Database\Items\Stream\StreamDocument.cs" />
+    <Compile Include="Database\Items\Stream\StreamType.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\ApplicationConfiguration.json" />
+    <EmbeddedResource Include="Data\Maps.json" />
+    <EmbeddedResource Include="Data\PhotonServers.json" />
+    <EmbeddedResource Include="Data\Shop.json" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
