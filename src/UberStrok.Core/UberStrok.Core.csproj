@@ -1,9 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UberStrok.Core.Views\UberStrok.Core.Views.csproj" />
-    <ProjectReference Include="..\UberStrok.WebServices.Client\UberStrok.WebServices.Client.csproj" />
-  </ItemGroup>
-</Project>
