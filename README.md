@@ -5,9 +5,16 @@ This version is using .NET 3 and MongoDB as database. Both installers are added 
 ### MongoDB setup
 
 Install it using the installer. Create a new database with user.    
-It is installed by default in C:\Program Files\MongoDB\Server\5.0\bin. Open this folder from command prompt and type: mongodb    
-mongodb command line should open, create a user:   
-
+It is installed by default in C:\Program Files\MongoDB\Server\5.0\bin. Open this folder from command prompt and type: 
+```bash 
+mongo
+```
+Change to the database admin. This step is crucial and the name has to be admin:
+```bash 
+use admin
+```
+Create a new user:   
+```bash 
 db.createUser({   
   user: "uber",    
   pwd: "admin",     
@@ -17,27 +24,38 @@ db.createUser({
     { role: "readWrite", db: "admin" }    
   ]    
 });    
-    
-Database name must be admin.    
-Open mongod.cfg and add:    
+```
+  
+Open mongod.cfg and add:  
+```bash   
 security:    
   authorization: "enabled"    
+```
 
+#### More MongoDB commands
 Backup Database:     
-
+```bash 
 mongodump --host localhost:27017 --username uber --password admin --authenticationDatabase admin     
+```
 
-Restore Database:    
+Restore Database:
+```bash     
 mongorestore --drop     
+```
 
-Restart MongoDB:     
+Restart MongoDB:
+```bash      
 net stop MongoDB     
 net start MongoDB     
+```
 
 Access Database:    
 Open MongoDBCompass     
 
-filter user by CMID: { UserId : { $in: [1, 2, 232] }}    
+filter user by CMID:
+```bash   
+{ UserId : { $in: [1, 2, 232] }}    
+```
 
 ### Discord Bot Setup
 Go to discord developer portal.   
