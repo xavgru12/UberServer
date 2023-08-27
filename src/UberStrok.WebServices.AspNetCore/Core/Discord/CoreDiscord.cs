@@ -189,25 +189,25 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
 
         public async Task SendChannel([Remainder] string message)
         {
-            SocketTextChannel channel = client.GetChannel(lobbychannel) as SocketTextChannel;
+            SocketTextChannel channel = await client.GetChannelAsync(lobbychannel) as SocketTextChannel;
             _ = await channel.SendMessageAsync(message);
         }
 
         public async Task SendLoginLog([Remainder] string message)
         {
-            SocketTextChannel channel = client.GetChannel(userloginchannel) as SocketTextChannel;
+            SocketTextChannel channel = await client.GetChannelAsync(userloginchannel) as SocketTextChannel;
             _ = await channel.SendMessageAsync(message);
         }
 
         public async Task SendPublicLoginLog([Remainder] string message)
         {
-            SocketTextChannel channel = client.GetChannel(publicloginchannel) as SocketTextChannel;
+            SocketTextChannel channel = await client.GetChannelAsync(publicloginchannel) as SocketTextChannel;
             _ = await channel.SendMessageAsync(message);
         }
 
         public async Task SendGameChannel([Remainder] string message)
         {
-            SocketTextChannel channel = client.GetChannel(lobbychannel) as SocketTextChannel;
+            SocketTextChannel channel = await client.GetChannelAsync(lobbychannel) as SocketTextChannel;
             _ = await channel.SendMessageAsync(message);
         }
 
