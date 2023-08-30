@@ -276,7 +276,7 @@ namespace UberStrok.WebServices.AspNetCore.WebService
                 {
                     if (!resourceManager.IsNameOffensive(username))
                     {
-                        if (await userManager.IsNameUsed(username))
+                        if (!await userManager.IsNameUsed(username))
                         {
                             ItemInventoryView itemInventory = session.Document.Inventory.SingleOrDefault((t) => t.ItemId == 1294);
                             if (itemInventory != null)
