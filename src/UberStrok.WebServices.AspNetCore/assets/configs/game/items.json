@@ -15,7 +15,7 @@
           "Discount": 0,
           "Amount": 0,
           "PackType": 0,
-          "Duration": 0
+          "Duration": 5
         }
       ]
     },
@@ -34,7 +34,7 @@
           "Discount": 0,
           "Amount": 1,
           "PackType": 0,
-          "Duration": 0
+          "Duration": 5
         }
       ]
     }
