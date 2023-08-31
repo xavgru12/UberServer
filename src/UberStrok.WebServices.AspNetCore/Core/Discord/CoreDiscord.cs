@@ -189,25 +189,25 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
 
         public async Task SendChannel([Remainder] string message)
         {
-            SocketTextChannel channel = client.GetChannel(lobbychannel) as SocketTextChannel;
+            SocketTextChannel channel = await client.GetChannelAsync(lobbychannel) as SocketTextChannel;
             _ = await channel.SendMessageAsync(message);
         }
 
         public async Task SendLoginLog([Remainder] string message)
         {
-            SocketTextChannel channel = client.GetChannel(userloginchannel) as SocketTextChannel;
+            SocketTextChannel channel = await client.GetChannelAsync(userloginchannel) as SocketTextChannel;
             _ = await channel.SendMessageAsync(message);
         }
 
         public async Task SendPublicLoginLog([Remainder] string message)
         {
-            SocketTextChannel channel = client.GetChannel(publicloginchannel) as SocketTextChannel;
+            SocketTextChannel channel = await client.GetChannelAsync(publicloginchannel) as SocketTextChannel;
             _ = await channel.SendMessageAsync(message);
         }
 
         public async Task SendGameChannel([Remainder] string message)
         {
-            SocketTextChannel channel = client.GetChannel(lobbychannel) as SocketTextChannel;
+            SocketTextChannel channel = await client.GetChannelAsync(lobbychannel) as SocketTextChannel;
             _ = await channel.SendMessageAsync(message);
         }
 
@@ -217,9 +217,11 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
             {
                 int cmid = 0;
                 int duration = -1;
+                string arg = args[0].Replace(prefix, "");
+                
                 if (args.Length > 1)
                 {
-                    if(!int.TryParse(args[1], out cmid))
+                    if(arg != "search" && !int.TryParse(args[1], out cmid))
                     {
                         return "Please input valid CMID before using this command";
                     }
@@ -231,7 +233,7 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
                         return "Please input valid Duration before using this command";
                     }
                 }
-                string arg = args[0].Replace(prefix, "");
+
                 string message = string.Join(' ', args);
                 string retstring5;
                 switch (arg)
