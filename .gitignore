@@ -30,5 +30,7 @@ photon/
 
 Photon-OnPremise-Server-SDK_v4-0-29-11263/**/obj/
 
+!ServerSetup/**/*.log
+
 # VIM
 *.swp
