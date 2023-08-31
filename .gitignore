@@ -28,5 +28,7 @@ libs/uberstrike/*.dll
 # Photon SDK
 photon/
 
+Photon-OnPremise-Server-SDK_v4-0-29-11263/**/obj/
+
 # VIM
 *.swp

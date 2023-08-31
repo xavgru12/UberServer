@@ -29,7 +29,7 @@
       "IsConsumable": false,
       "Prices": [
         {
-          "Price": 10000,
+          "Price": 0,
           "Currency": 1,
           "Discount": 0,
           "Amount": 1,
