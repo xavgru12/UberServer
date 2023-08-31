@@ -221,14 +221,14 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
                 
                 if (args.Length > 1)
                 {
-                    if(arg != "search" && !int.TryParse(args[1], out cmid))
+                    if(arg != "search" && arg != "msg" && !int.TryParse(args[1], out cmid))
                     {
                         return "Please input valid CMID before using this command";
                     }
                 }
                 if (args.Length > 2)
                 {
-                    if (!int.TryParse(args[2], out duration))
+                    if (arg != "msg" && !int.TryParse(args[2], out duration))
                     {
                         return "Please input valid Duration before using this command";
                     }
