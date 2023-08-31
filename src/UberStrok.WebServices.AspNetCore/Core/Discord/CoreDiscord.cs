@@ -296,12 +296,12 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
                             "?modules <CMID>" +                 Environment.NewLine+
                             "?windows <CMID>" +                 Environment.NewLine+
                             "?hwid <CMID>" +                    Environment.NewLine+
-                            "?leaderboardkill"+                 Environment.NewLine+
-                            "?leaderboardxp"+                   Environment.NewLine+
-                            "?players"+                         Environment.NewLine+
-                            "?banned (lists banned players)" +  Environment.NewLine +
-                            "?search <String>" +                Environment.NewLine +
-                            "?alts <CMID>," +                   Environment.NewLine +
+                            "?leaderboardkill" +                Environment.NewLine+
+                            "?leaderboardxp" +                  Environment.NewLine+
+                            "?players" +                        Environment.NewLine+
+                            "?banned (lists banned players)" +  Environment.NewLine+
+                            "?search <String>" +                Environment.NewLine+
+                            "?alts <CMID>" +                    Environment.NewLine+
                             "?msg <CMID>/all <String>";
                     case "leaderboardkill":
                     case "leaderboardxp":
