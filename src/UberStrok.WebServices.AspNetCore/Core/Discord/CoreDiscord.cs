@@ -287,6 +287,22 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
                             return string.Join("|@@|@|", Trim(retstring5, 1900).ToList());
                         }
                         return "```" + retstring5 + "```";
+                    case "help":
+                        return "commands:" +                    Environment.NewLine+
+                            "?ban <CMID> and ?unban <CMID>" +   Environment.NewLine+
+                            "?kick <CMID>" +                    Environment.NewLine+
+                            "?mute <CMID> and ?unmute <CMID>" + Environment.NewLine+
+                            "?processes <CMID>" +               Environment.NewLine+
+                            "?modules <CMID>" +                 Environment.NewLine+
+                            "?windows <CMID>" +                 Environment.NewLine+
+                            "?hwid <CMID>" +                    Environment.NewLine+
+                            "?leaderboardkill"+                 Environment.NewLine+
+                            "?leaderboardxp"+                   Environment.NewLine+
+                            "?players"+                         Environment.NewLine+
+                            "?banned (lists banned players)" +  Environment.NewLine +
+                            "?search <String>" +                Environment.NewLine +
+                            "?alts <CMID>," +                   Environment.NewLine +
+                            "?msg <CMID>/all <String>";
                     case "leaderboardkill":
                     case "leaderboardxp":
                     case "leaderboardkdr":
