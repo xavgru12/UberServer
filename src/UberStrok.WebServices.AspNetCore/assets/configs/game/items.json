@@ -16,6 +16,15 @@
           "Amount": 0,
           "PackType": 0,
           "Duration": 5
+        },
+		{
+          "Price": 100800,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
         }
       ]
     },
@@ -29,12 +38,21 @@
       "IsConsumable": false,
       "Prices": [
         {
-          "Price": 0,
+          "Price": 10001,
           "Currency": 1,
           "Discount": 0,
           "Amount": 1,
           "PackType": 0,
           "Duration": 5
+        },
+		{
+          "Price": 20000,
+          "Currency": 2,
+          "Discount": 0,
+          "Amount": 1,
+          "PackType": 0,
+          "Duration": 5,
+          "IsConsumable": true
         }
       ]
     }
