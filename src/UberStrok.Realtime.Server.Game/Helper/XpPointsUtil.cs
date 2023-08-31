@@ -17,7 +17,10 @@ namespace UberStrok.Realtime.Server.Game.Helper
 
         public static void Init()
         {
-            Config = new UserWebServiceClient(Application.Instance.Configuration.WebServices).GetAppConfig();
+            if(Config == null)
+            {
+                Config = new UserWebServiceClient(Application.Instance.Configuration.WebServices).GetAppConfig();
+            }
         }
 
         public static void GetXpRangeForLevel(int level, out int minXp, out int maxXp)

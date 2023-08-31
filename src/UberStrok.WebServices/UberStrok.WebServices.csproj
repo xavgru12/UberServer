@@ -10,7 +10,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="log4net">
-      <HintPath>..\..\..\Uberstrok\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\log4net.dll</HintPath>
+      <HintPath>..\..\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\Newtonsoft\Newtonsoft.Json.6.0.8\lib\netcore45\Newtonsoft.Json.dll</HintPath>
