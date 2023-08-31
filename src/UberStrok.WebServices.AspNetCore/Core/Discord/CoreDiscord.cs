@@ -217,9 +217,11 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
             {
                 int cmid = 0;
                 int duration = -1;
+                string arg = args[0].Replace(prefix, "");
+                
                 if (args.Length > 1)
                 {
-                    if(!int.TryParse(args[1], out cmid))
+                    if(arg != "search" && !int.TryParse(args[1], out cmid))
                     {
                         return "Please input valid CMID before using this command";
                     }
@@ -231,7 +233,7 @@ namespace UberStrok.WebServices.AspNetCore.Core.Discord
                         return "Please input valid Duration before using this command";
                     }
                 }
-                string arg = args[0].Replace(prefix, "");
+
                 string message = string.Join(' ', args);
                 string retstring5;
                 switch (arg)
