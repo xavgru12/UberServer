@@ -5,7 +5,7 @@
     },
     "GameServers": [
         {
-            "Name": "Testserver 4.8.6",
+            "Name": "Testserver 4.8.7",
             "IP": "192.168.2.15",
             "Region": 1,
             "Port": 5056,
