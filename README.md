@@ -43,6 +43,8 @@ security:
 ```
 
 #### backup a database
+Make sure you have access rights to the folder where mongo is installed: C:\Program Files\MongoDB\Server\5.0\bin (eg witout needing to type password in for creating folders/files)
+
 Use mongodump which is part of mongosh tools:
 ```bash 
 mongodump --host localhost:27017 --username uber --password admin --authenticationDatabase admin  
