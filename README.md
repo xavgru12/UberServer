@@ -4,10 +4,22 @@ This version is using .NET 6 and MongoDB as database. Both installers are added 
 
 ### MongoDB setup
 
-Install it using the installer. Create a new database with user.    
-It is installed by default in C:\Program Files\MongoDB\Server\5.0\bin. Open this folder from command prompt and type: mongodb    
-mongodb command line should open, create a user:   
+Install it using the installer. Create a new database with user. Install mongosh tools as well. Both of it is added in every release.
+It is installed by default in C:\Program Files\MongoDB\Server\5.0\bin. Open this folder from command prompt and type:  
 
+#### initialize a database
+
+enter mongo CLI
+```bash 
+mongo
+```
+Change to the database admin. This step is crucial and the name has to be admin
+```bash 
+use admin
+```
+
+Create a user
+```bash
 db.createUser({   
   user: "uber",    
   pwd: "admin",     
@@ -16,25 +28,43 @@ db.createUser({
     { role: "dbAdmin",   db: "admin" },     
     { role: "readWrite", db: "admin" }    
   ]    
-});    
-    
-Database name must be admin.    
-Open mongod.cfg and add:    
+}); 
+```
+
+You might need to add root for using Backup and Restore commands
+```bash
+db.grantRolesToUser('uber', [{ role: 'root', db: 'admin' }])
+```
+
+Set security setting by opening mongod.cfg and add:  
+```bash   
 security:    
-  authorization: "enabled"    
+  authorization: "enabled"
+```
 
-Backup Database:     
+#### backup a database
+Make sure you have access rights to the folder where mongo is installed: C:\Program Files\MongoDB\Server\5.0\bin (eg witout needing to type password in for creating folders/files)
 
-mongodump --host localhost:27017 --username uber --password admin --authenticationDatabase admin     
+Use mongodump which is part of mongosh tools:
+```bash 
+mongodump --host localhost:27017 --username uber --password admin --authenticationDatabase admin  
+```
+A folder called /dump is created.
 
-Restore Database:    
-mongorestore --drop     
+#### restore a database
+Use mongorestore which is part of mongosh tools. This command will look for the folder /dump and restore it:
+```bash 
+mongorestore --drop   
+```
 
-Restart MongoDB:     
+#### restart MongoDB   
+
+  
+```bash   
 net stop MongoDB     
 net start MongoDB     
-
-Access Database:    
+```
+#### Access Database:    
 Open MongoDBCompass     
 
 filter user by CMID: { UserId : { $in: [1, 2, 232] }}   
