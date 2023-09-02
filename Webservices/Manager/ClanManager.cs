@@ -77,31 +77,17 @@ namespace Webservices.Manager
 
     internal static Task<bool> IsClanNameUsed(string name)
     {
-      // ISSUE: object of a compiler-generated type is created
-      // ISSUE: variable of a compiler-generated type
-      ClanManager.\u003C\u003Ec__DisplayClass4_0 cDisplayClass40 = new ClanManager.\u003C\u003Ec__DisplayClass4_0();
-      // ISSUE: reference to a compiler-generated field
-      cDisplayClass40.name = name;
-      ParameterExpression parameterExpression;
-      // ISSUE: method reference
-      // ISSUE: field reference
-      // ISSUE: method reference
-      return Task.FromResult<bool>(ClanManager.sm_database.Collection.AsQueryable<ClanDocument>().Where<ClanDocument>(Expression.Lambda<Func<ClanDocument, bool>>((Expression) Expression.Equal((Expression) Expression.Call(f.Clan.Name, (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.ToLower)), Array.Empty<Expression>()), (Expression) Expression.Call((Expression) Expression.Field((Expression) Expression.Constant((object) cDisplayClass40, typeof (ClanManager.\u003C\u003Ec__DisplayClass4_0)), FieldInfo.GetFieldFromHandle(__fieldref (ClanManager.\u003C\u003Ec__DisplayClass4_0.name))), (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.ToLower)), Array.Empty<Expression>())), parameterExpression)).Count<ClanDocument>() != 0);
-    }
+            // ISSUE: object of a compiler-generated type is created
+            // ISSUE: variable of a compiler-generated type
+            return Task.FromResult(((IQueryable<ClanDocument>)IMongoCollectionExtensions.AsQueryable<ClanDocument>(sm_database.Collection, (AggregateOptions)null)).Where((ClanDocument f) => (f.Clan).Name.ToLower() == name.ToLower()).Count() != 0);
+        }
 
     internal static Task<bool> IsClanTagUsed(string tag)
     {
-      // ISSUE: object of a compiler-generated type is created
-      // ISSUE: variable of a compiler-generated type
-      ClanManager.\u003C\u003Ec__DisplayClass5_0 cDisplayClass50 = new ClanManager.\u003C\u003Ec__DisplayClass5_0();
-      // ISSUE: reference to a compiler-generated field
-      cDisplayClass50.tag = tag;
-      ParameterExpression parameterExpression;
-      // ISSUE: method reference
-      // ISSUE: field reference
-      // ISSUE: method reference
-      return Task.FromResult<bool>(ClanManager.sm_database.Collection.AsQueryable<ClanDocument>().Where<ClanDocument>(Expression.Lambda<Func<ClanDocument, bool>>((Expression) Expression.Equal((Expression) Expression.Call(f.Clan.Tag, (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.ToLower)), Array.Empty<Expression>()), (Expression) Expression.Call((Expression) Expression.Field((Expression) Expression.Constant((object) cDisplayClass50, typeof (ClanManager.\u003C\u003Ec__DisplayClass5_0)), FieldInfo.GetFieldFromHandle(__fieldref (ClanManager.\u003C\u003Ec__DisplayClass5_0.tag))), (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.ToLower)), Array.Empty<Expression>())), parameterExpression)).Count<ClanDocument>() != 0);
-    }
+            // ISSUE: object of a compiler-generated type is created
+            // ISSUE: variable of a compiler-generated type
+            return Task.FromResult(((IQueryable<ClanDocument>)IMongoCollectionExtensions.AsQueryable<ClanDocument>(sm_database.Collection, (AggregateOptions)null)).Where((ClanDocument f) => (f.Clan).Tag.ToLower() == tag.ToLower()).Count() != 0);
+        }
 
     internal static Task Save(ClanDocument document) => (Task) ClanManager.sm_database.Collection.ReplaceOneAsync<ClanDocument>((Expression<Func<ClanDocument, bool>>) (f => f.Id == document.Id), document);
 
