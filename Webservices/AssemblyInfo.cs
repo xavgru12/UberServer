@@ -3,7 +3,6 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: Extension]
 [assembly: AssemblyTitle("Uberkill WebServer")]
 [assembly: AssemblyDescription("An UberStrike Server emulator")]
 [assembly: AssemblyConfiguration("")]

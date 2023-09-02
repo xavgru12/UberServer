@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cmune.Core.Models">
+      <HintPath>..\References\Cmune.Core.Models.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>lib\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -46,6 +49,12 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="UberStrike.Core.Models">
+      <HintPath>..\References\UberStrike.Core.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="UberStrike.Core.Serialization">
+      <HintPath>..\References\UberStrike.Core.Serialization.dll</HintPath>
+    </Reference>
     <Reference Include="UberStrike.UnitySdk" />
   </ItemGroup>
   <ItemGroup>
