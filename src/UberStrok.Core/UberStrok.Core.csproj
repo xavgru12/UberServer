@@ -1,9 +1,95 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{32C19193-C316-4E15-92BD-1030485FAFC1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UberStrok.Core</RootNamespace>
+    <AssemblyName>UberStrok.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\UberStrok.Core.Views\UberStrok.Core.Views.csproj" />
     <ProjectReference Include="..\UberStrok.WebServices.Client\UberStrok.WebServices.Client.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseTimer.cs" />
+    <Compile Include="Countdown.cs" />
+    <Compile Include="FixedTimer.cs" />
+    <Compile Include="Gear.cs" />
+    <Compile Include="GearManager.cs" />
+    <Compile Include="ILoop.cs" />
+    <Compile Include="ILoopScheduler.cs" />
+    <Compile Include="ITimer.cs" />
+    <Compile Include="LoadoutManager.cs" />
+    <Compile Include="Loop.cs" />
+    <Compile Include="LoopScheduler.cs" />
+    <Compile Include="BalancingLoopScheduler.cs" />
+    <Compile Include="PingManager.cs" />
+    <Compile Include="PowerUpManager.cs" />
+    <Compile Include="ProjectileManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickItem.cs" />
+    <Compile Include="QuickItemManager.cs" />
+    <Compile Include="ShopManager.cs" />
+    <Compile Include="SpawnManager.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="StateMachine.cs" />
+    <Compile Include="StatisticsManager.cs" />
+    <Compile Include="Timer.cs" />
+    <Compile Include="TrustManager.cs" />
+    <Compile Include="Weapon.cs" />
+    <Compile Include="WeaponManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UberStrok.Core.Common\UberStrok.Core.Common.csproj">
+      <Project>{F6AA8827-1031-4753-BE08-B0D7F3A98C75}</Project>
+      <Name>UberStrok.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UberStrok.Core.Views\UberStrok.Core.Views.csproj">
+      <Project>{3BAAA4FD-1AF2-4C32-B059-ABF0E111693D}</Project>
+      <Name>UberStrok.Core.Views</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UberStrok.WebServices.Client\UberStrok.WebServices.Client.csproj">
+      <Project>{F9FA508B-417F-4863-B19D-B7CF3D771B0F}</Project>
+      <Name>UberStrok.WebServices.Client</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
+      <Version>1.0.3</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

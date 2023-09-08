@@ -50,11 +50,11 @@ namespace UberStrok.WebServices.Client
         {
             using (MemoryStream memoryStream = new MemoryStream())
             {
-                StringProxy.Serialize(memoryStream, authToken);
-                using (MemoryStream bytes = new MemoryStream(base.Channel.GetLoadout(memoryStream.ToArray())))
-                {
-                    return LoadoutViewProxy.Deserialize(bytes);
-                }
+                StringProxy.Serialize(bytes, authToken);
+
+                var data = Channel.GetLoadout(bytes.ToArray());
+                using (var inBytes = new MemoryStream(data))
+                    return LoadoutViewProxy.Deserialize(inBytes);
             }
         }
     }

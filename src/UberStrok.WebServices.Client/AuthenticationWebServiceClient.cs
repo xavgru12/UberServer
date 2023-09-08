@@ -61,5 +61,21 @@ namespace UberStrok.WebServices.Client
                     return MemberAuthenticationResultViewProxy.Deserialize(inBytes);
             }
         }
+
+        public MemberAuthenticationResultView LoginMemberEmail(string email, string password, ChannelType channel, string machineId)
+        {
+            using (var bytes = new MemoryStream())
+            {
+                StringProxy.Serialize(bytes, email);
+				StringProxy.Serialize(bytes, password);
+				EnumProxy<ChannelType>.Serialize(bytes, channel);
+				StringProxy.Serialize(bytes, machineId);
+
+                var result = Channel.LoginMemberEmail(bytes.ToArray());
+
+                using (var inBytes = new MemoryStream(result))
+                    return MemberAuthenticationResultViewProxy.Deserialize(inBytes);
+            }
+        }
     }
 }
