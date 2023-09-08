@@ -10,7 +10,7 @@ namespace UberStrok.Realtime.Server.Game
     {
         private readonly Countdown _disconnectCountdown;
 
-        public OverviewActorState(GameActor actor) 
+        public OverviewActorState(GameActor actor)
             : base(actor)
         {
             _disconnectCountdown = new Countdown(Room.Loop, 60 * 3, 0);

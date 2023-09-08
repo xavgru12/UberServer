@@ -8,13 +8,11 @@ namespace UberStrok.Realtime.Server.Game
     public sealed class TeamDeathMatchGameRoom : GameRoom
     {
         public bool FriendlyFire { get; set; }
-        public int BlueTeamScore { get; private set; }
-        public int RedTeamScore { get; private set; }
 
         public int BlueTeamPlayer { get; private set; }
         public int RedTeamPlayer { get; private set; }
 
-        public TeamDeathMatchGameRoom(GameRoomDataView data, ILoopScheduler scheduler) 
+        public TeamDeathMatchGameRoom(GameRoomDataView data, ILoopScheduler scheduler)
             : base(data, scheduler)
         {
             if (data.GameMode != GameModeType.TeamDeathMatch)
@@ -64,6 +62,8 @@ namespace UberStrok.Realtime.Server.Game
 
         public sealed override bool CanDamage(GameActor victim, GameActor attacker)
         {
+            if (!IsMatchRunning)
+                return false;
             if (FriendlyFire)
                 return true;
             return victim == attacker || victim.Info.TeamID != attacker.Info.TeamID;
@@ -105,7 +105,11 @@ namespace UberStrok.Realtime.Server.Game
         protected sealed override void OnPlayerKilled(PlayerKilledEventArgs args)
         {
             base.OnPlayerKilled(args);
-
+            if (State.Current == RoomState.Id.WaitingForPlayers)
+            {
+                OnRespawnRequest(args.Victim);
+                return;
+            }
             /* If player killed himself, don't update round score. */
             if (args.Attacker != args.Victim)
             {
@@ -131,8 +135,44 @@ namespace UberStrok.Realtime.Server.Game
                     Winner = TeamID.RED;
 
                 if (BlueTeamScore >= GetView().KillLimit || RedTeamScore >= GetView().KillLimit)
-                    State.Set(RoomState.Id.End);
+                    State.Set(RoomState.Id.AfterRound);
             }
+        }
+        protected override void OnSwitchTeam(GameActor actor)
+        {
+            if (!base.IsMatchRunning || BlueTeamPlayer == RedTeamPlayer)
+            {
+                return;
+            }
+            TeamID targetTeam = actor.Info.TeamID == TeamID.BLUE ? TeamID.RED : TeamID.BLUE;
+
+            if (targetTeam == TeamID.RED && this.BlueTeamPlayer > this.RedTeamPlayer)
+            {
+                this.RedTeamPlayer++;
+                this.BlueTeamPlayer--;
+            }
+            else if (targetTeam == TeamID.BLUE && this.RedTeamPlayer > this.BlueTeamPlayer)
+            {
+                this.BlueTeamPlayer++;
+                this.RedTeamPlayer--;
+            }
+            else
+                return;
+
+
+            actor.Info.TeamID = targetTeam;
+
+
+            OnPlayerKilled(new PlayerKilledEventArgs
+            {
+                Attacker = actor,
+                Victim = actor,
+                ItemClass = UberStrikeItemClass.WeaponMachinegun,
+                Part = BodyPart.Body,
+            });
+
+            foreach (var player in Players)
+                player.Peer.Events.Game.SendPlayerChangedTeam(actor.Cmid, targetTeam);
         }
     }
 }

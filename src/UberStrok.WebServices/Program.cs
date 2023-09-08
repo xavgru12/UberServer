@@ -18,19 +18,19 @@ namespace UberStrok.WebServices
             9. GetMember
          */
 
-        public static WebServiceManager Manager { get; set; }
+        public static Startup Manager { get; set; }
 
         public static int Main(string[] args)
         {
             try
             {
 
-                Manager = new WebServiceManager();
+                Manager = new Startup();
                 Manager.Start();
             }
             catch (Exception ex)
             {
-                WebServiceManager.Log.Fatal($"Reason: {ex.Message}");
+                Startup.Log.Fatal($"Reason: {ex.Message}");
 
                 Console.WriteLine(ex);
                 Console.WriteLine();

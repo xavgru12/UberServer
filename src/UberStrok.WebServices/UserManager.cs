@@ -71,7 +71,7 @@ namespace UberStrok.WebServices
 
             var memberInventories = new List<ItemInventoryView>();
             var shop = _ctx.Items.GetShop();
-            foreach(var w in shop.WeaponItems)
+            foreach (var w in shop.WeaponItems)
             {
                 memberInventories.Add(new ItemInventoryView(w.ID, null, -1, cmid));
             }
@@ -228,7 +228,7 @@ namespace UberStrok.WebServices
 
         public bool IsDumbAss(string ip, string machineId)
         {
-            if(ip == null || machineId == null)
+            if (ip == null || machineId == null)
             {
                 return true;
             }
@@ -238,16 +238,16 @@ namespace UberStrok.WebServices
                 checkIp = false;
             }
             int weight = 0;
-            foreach(var kv in _sessions)
+            foreach (var kv in _sessions)
             {
                 if (checkIp)
                 {
-                    if(kv.Value.Ip == ip)
+                    if (kv.Value.Ip == ip)
                     {
                         weight++;
                     }
                 }
-                if(kv.Value.Hwd == machineId)
+                if (kv.Value.Hwd == machineId)
                 {
                     weight++;
                 }

@@ -30,16 +30,34 @@ namespace UberStrok.WebServices.Client
             }
         }
 
-        public MemberAuthenticationResultView LoginSteam(string steamId, string authToken, string machineId)
+        public MemberAuthenticationResultView LoginSteam(string steamId, string authToken, string machineId, string version)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                StringProxy.Serialize(memoryStream, version);
+                StringProxy.Serialize(memoryStream, steamId);
+                StringProxy.Serialize(memoryStream, authToken);
+                StringProxy.Serialize(memoryStream, machineId);
+                StringProxy.Serialize(memoryStream, "192.168.0.105");
+                using (MemoryStream bytes = new MemoryStream(base.Channel.LoginSteam(memoryStream.ToArray())))
+                {
+                    return MemberAuthenticationResultViewProxy.Deserialize(bytes);
+                }
+            }
+        }
+
+        public MemberAuthenticationResultView LoginMemberEmail(string email, string password, ChannelType channel, string machineId)
         {
             using (var bytes = new MemoryStream())
             {
-                StringProxy.Serialize(bytes, steamId);
-                StringProxy.Serialize(bytes, authToken);
-                StringProxy.Serialize(bytes, machineId);
+                StringProxy.Serialize(bytes, email);
+				StringProxy.Serialize(bytes, password);
+				EnumProxy<ChannelType>.Serialize(bytes, channel);
+				StringProxy.Serialize(bytes, machineId);
 
-                var data = Channel.LoginSteam(bytes.ToArray());
-                using (var inBytes = new MemoryStream(data))
+                var result = Channel.LoginMemberEmail(bytes.ToArray());
+
+                using (var inBytes = new MemoryStream(result))
                     return MemberAuthenticationResultViewProxy.Deserialize(inBytes);
             }
         }
