@@ -79,7 +79,7 @@ namespace UberStrok.Realtime.Server.Game
                     actor.Info.ArmorPoints = (byte)MathUtils.Clamp(actor.Info.ArmorPoints + value, 0, 200);
                     actor.Statistics.RecordArmorPickedUp();
                     break;
-            } 
+            }
         }
 
         public void Tick()
@@ -96,7 +96,7 @@ namespace UberStrok.Realtime.Server.Game
                     _respawnTimes[_respawning[i]] = TimeSpan.FromSeconds(0);
                     foreach (var otherActor in _room.Actors)
                         otherActor.Peer.Events.Game.SendPowerUpPicked(_respawning[i], 0);
-                    
+
                     Log.Debug($"Respawned power-up with ID: {_respawning[i]}");
                     _respawning.RemoveAt(i);
                 }

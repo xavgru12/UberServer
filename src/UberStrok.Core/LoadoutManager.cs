@@ -19,9 +19,14 @@ namespace UberStrok.Core
         public void Update(ShopManager shop, LoadoutView loadout)
         {
             if (shop == null)
+            {
                 throw new ArgumentNullException(nameof(shop));
+            }
+
             if (loadout == null)
+            {
                 throw new ArgumentNullException(nameof(loadout));
+            }
 
             Gear.Update(shop, loadout);
             Weapons.Update(shop, loadout);

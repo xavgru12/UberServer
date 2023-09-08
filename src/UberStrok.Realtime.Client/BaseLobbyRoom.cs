@@ -30,6 +30,13 @@ namespace UberStrok.Realtime.Client
                 case ILobbyRoomEventsType.LobbyChatMessage:
                     LobbyChatMessage(data);
                     break;
+                case ILobbyRoomEventsType.PrivateChatMessage:
+                    PrivateChatMessage(data);
+                    break;
+
+                case ILobbyRoomEventsType.ClanChatMessage:
+                    ClanChatMessage(data);
+                    break;
             }
         }
 
@@ -43,7 +50,7 @@ namespace UberStrok.Realtime.Client
         }
 
         private void LobbyChatMessage(byte[] data)
-        { 
+        {
             using (var bytes = new MemoryStream(data))
             {
                 var cmid = Int32Proxy.Deserialize(bytes);
@@ -54,8 +61,34 @@ namespace UberStrok.Realtime.Client
             }
         }
 
+        private void PrivateChatMessage(byte[] data)
+        {
+            using (var bytes = new MemoryStream(data))
+            {
+                var cmid = Int32Proxy.Deserialize(bytes);
+                var name = StringProxy.Deserialize(bytes);
+                var message = StringProxy.Deserialize(bytes);
+
+                OnPrivateChatMessage(cmid, name, message);
+            }
+        }
+
+        private void ClanChatMessage(byte[] data)
+        {
+            using (var bytes = new MemoryStream(data))
+            {
+                var cmid = Int32Proxy.Deserialize(bytes);
+                var name = StringProxy.Deserialize(bytes);
+                var message = StringProxy.Deserialize(bytes);
+
+                OnClanChatMessage(cmid, name, message);
+            }
+        }
+
         public abstract void OnFullPlayerListUpdate(List<CommActorInfoView> players);
 
         public abstract void OnLobbyChatMessage(int cmid, string name, string message);
+        public abstract void OnPrivateChatMessage(int cmid, string name, string message);
+        public abstract void OnClanChatMessage(int cmid, string name, string message);
     }
 }

@@ -22,7 +22,9 @@
         public override bool Tick()
         {
             if (!IsEnabled)
+            {
                 return false;
+            }
 
             /* Check if Tick() was called in the same ILoop.Tick() call. */
             if (_tickTime != Loop.Time)

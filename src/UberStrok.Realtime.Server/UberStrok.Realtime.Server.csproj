@@ -31,24 +31,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\log4net.dll</HintPath>
+      <HintPath>..\..\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Photon.SocketServer">
       <HintPath>..\..\Photon-OnPremise-Server-Plugin-SDK_v4-0-29-11263\lib\Photon.SocketServer.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="PhotonHostRuntimeInterfaces">
       <HintPath>..\..\Photon-OnPremise-Server-SDK_v4-0-29-11263\lib\PhotonHostRuntimeInterfaces.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
@@ -62,9 +64,9 @@
     <Compile Include="IRoom.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UberStrok.Core.Common\UberStrok.Core.Common.csproj">
-      <Project>{F6AA8827-1031-4753-BE08-B0D7F3A98C75}</Project>
-      <Name>UberStrok.Core.Common</Name>
+    <ProjectReference Include="..\Uberstrok.Core.Common\Uberstrok.Core.Common.csproj">
+      <Project>{297C2155-5E47-4054-AB46-52F853AACEA3}</Project>
+      <Name>Uberstrok.Core.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\UberStrok.Core.Views\UberStrok.Core.Views.csproj">
       <Project>{3BAAA4FD-1AF2-4C32-B059-ABF0E111693D}</Project>
@@ -78,6 +80,9 @@
       <Project>{F9FA508B-417F-4863-B19D-B7CF3D771B0F}</Project>
       <Name>UberStrok.WebServices.Client</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

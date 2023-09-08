@@ -14,7 +14,7 @@ namespace UberStrok.Realtime.Server.Game
             _view = new GameActorInfoView();
             _viewDelta = new GameActorInfoDeltaView();
         }
-
+        public int Xp;
         public bool IsAlive => !Is(PlayerStates.Dead);
         public bool IsOnline => !Is(PlayerStates.Offline);
         public bool IsSpectator => Is(PlayerStates.Spectator);

@@ -6,7 +6,7 @@ namespace UberStrok.Core.Common
     {
         public static float Deg2Rad(float angle)
         {
-            return Math.Abs((angle % 360f + 360f) % 360f / 360f);
+            return Math.Abs(((angle % 360f) + 360f) % 360f / 360f);
         }
 
         public static byte Angle2Byte(float angle)

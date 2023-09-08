@@ -7,12 +7,14 @@ using UberStrok.Core.Common;
 
 namespace UberStrok.Realtime.Server.Game
 {
-    public abstract partial class GameRoom :  BaseGameRoomOperationHandler
+    public abstract partial class GameRoom : BaseGameRoomOperationHandler
     {
         /* 
          * Enqueue the work on the loop so processing of operations are serial
          * and synchronous.
          */
+        public bool IsMatchRunning => State.Current == RoomState.Id.Running;
+        public bool IsWaitingForPlayers => State.Current == RoomState.Id.WaitingForPlayers;
         protected sealed override void Enqueue(Action action)
         {
             Loop.Enqueue(action);
@@ -55,8 +57,18 @@ namespace UberStrok.Realtime.Server.Game
             }
         }
 
+        protected sealed override void OnJoinAsSpectator(GameActor actor)
+        {
+            if (actor == null)
+                return;
+            actor.PlayerId = _nextPlayer++;
+            actor.State.Set(ActorState.Id.Spectator);
+        }
+
         protected sealed override void OnChatMessage(GameActor actor, string message, byte context)
         {
+            if (actor == null)
+                throw new ArgumentNullException(nameof(actor));
             var cmid = actor.Cmid;
             var playerName = actor.Info.PlayerName;
             var accessLevel = actor.Info.AccessLevel;
@@ -64,7 +76,8 @@ namespace UberStrok.Realtime.Server.Game
 
             if (accessLevel >= MemberAccessLevel.Moderator && message == "?end")
                 State.Set(RoomState.Id.End);
-
+            if (accessLevel >= MemberAccessLevel.Moderator && message == "?start")
+                State.Set(RoomState.Id.Countdown);
             foreach (var otherActor in Actors)
             {
                 if (otherActor.Cmid != cmid)
@@ -83,9 +96,9 @@ namespace UberStrok.Realtime.Server.Game
         protected sealed override void OnPowerUpPicked(GameActor actor, int pickupId, PickupItemType type, byte value)
         {
             PowerUps.PickUp(
-                actor, 
+                actor,
                 pickupId,
-                type, 
+                type,
                 value
             );
         }
@@ -142,7 +155,6 @@ namespace UberStrok.Realtime.Server.Game
             if (actor.Projectiles.FalsePositive >= 10)
             {
                 ReportLog.Warn($"[Weapon] OnExplosionDamage False positive reached {actor.Cmid}");
-                actor.Peer.Disconnect();
             }
             else
             {
@@ -162,15 +174,18 @@ namespace UberStrok.Realtime.Server.Game
                             Part = BodyPart.Body,
                             Direction = -direction
                         });
-
-                        break;
                     }
                 }
             }
         }
 
-        protected sealed override void OnDirectHitDamage(GameActor actor, int target, byte bodyPart, byte bullets)
+        protected sealed override void OnDirectHitDamage(GameActor actor, int target, byte bodyPart, byte bullets, byte weaponSlot)
         {
+            if (!IsMatchRunning)
+            {
+                return;
+            }
+
             GameActor attacker = actor;
 
             int currentWeaponSlot = attacker.Info.CurrentWeaponSlot;
@@ -194,7 +209,6 @@ namespace UberStrok.Realtime.Server.Game
             if (weapon.FalsePositive >= weapon.FalsePositiveThreshold)
             {
                 ReportLog.Warn($"[Weapon] OnDirectHitDamage FalsePositive reached {actor.Cmid}");
-                actor.Peer.Disconnect();
             }
             else
             {
@@ -206,7 +220,7 @@ namespace UberStrok.Realtime.Server.Game
                 if (bonus > 0 && (part == BodyPart.Head || part == BodyPart.Nuts))
                     intDamage += (int)Math.Truncate(bonus / 100f * intDamage);
 
-                var damage = (short)Math.Min(intDamage, short.MaxValue);
+                var damage = (short)Math.Min(intDamage, 300);
 
                 foreach (var victim in Players)
                 {
@@ -238,6 +252,7 @@ namespace UberStrok.Realtime.Server.Game
             {
                 Log.Warn($"Negative damage: {damage}; Disconnecting.");
                 actor.Peer.Disconnect();
+                Leave(actor.Peer);
             }
             else
             {
@@ -267,9 +282,12 @@ namespace UberStrok.Realtime.Server.Game
                 var damage = (ushort)actor.Info.Health;
 
                 actor.Info.Health = 0;
-                actor.Info.Deaths++;
-                actor.Info.Kills--;
-                actor.Statistics.RecordSuicide();
+                if(State.Current == RoomState.Id.Running)
+                {
+                    actor.Info.Deaths++;
+                    actor.Info.Kills--;
+                    actor.Statistics.RecordSuicide();
+                }
 
                 OnPlayerKilled(new PlayerKilledEventArgs
                 {
@@ -305,7 +323,6 @@ namespace UberStrok.Realtime.Server.Game
             if (weapon.FalsePositive >= weapon.FalsePositiveThreshold)
             {
                 ReportLog.Warn($"[Weapon] OnEmitProjectile FalsePositive reached {actor.Cmid}");
-                actor.Peer.Disconnect();
                 return;
             }
 
@@ -315,6 +332,7 @@ namespace UberStrok.Realtime.Server.Game
             {
                 ReportLog.Warn($"[Projectiles] OnEmitProjectile FalsePositive reached {actor.Cmid}");
                 actor.Peer.Disconnect();
+                Leave(actor.Peer);
             }
             else
             {
@@ -344,6 +362,7 @@ namespace UberStrok.Realtime.Server.Game
             {
                 ReportLog.Warn($"[Projectiles] OnRemoveProjectile FalsePositive reached {actor.Cmid}");
                 actor.Peer.Disconnect();
+                Leave(actor.Peer);
             }
             else
             {
@@ -378,8 +397,13 @@ namespace UberStrok.Realtime.Server.Game
 
         protected sealed override void OnSingleBulletFire(GameActor actor)
         {
+            if (State.Current != RoomState.Id.Running)
+                return;
+
             var weapon = actor.Loadout.Weapons[actor.Info.CurrentWeaponID];
-            
+
+            if (weapon == null)
+                return;
             /* Send single bullet fire to all peers. */
             foreach (var otherActors in Actors)
                 otherActors.Peer.Events.Game.SendSingleBulletFire(actor.Cmid);
@@ -401,7 +425,7 @@ namespace UberStrok.Realtime.Server.Game
         protected sealed override void OnIsFiring(GameActor actor, bool on)
         {
             var weapon = actor.Loadout.Weapons[actor.Info.CurrentWeaponID];
-            if(weapon != null)
+            if (weapon != null)
             {
                 var state = actor.Info.PlayerState;
 

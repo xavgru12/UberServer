@@ -1,10 +1,10 @@
 ﻿namespace UberStrok.Core.Common
 {
     public enum ItemShopHighlightType
-	{
-		None,
-		Featured,
-		Popular,
-		New
-	}
+    {
+        None,
+        Featured,
+        Popular,
+        New
+    }
 }
