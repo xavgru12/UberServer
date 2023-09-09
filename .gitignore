@@ -1,1 +1,36 @@
 *.cache
+# Logging files
+*.log
+# Packages
+*.zip
+
+# Visual Studio
+.vs/
+TestResults/
+
+# Logging files.
+*.log
+
+# Cleaner tool.
+bfg.jar
+
+# NuGet
+packages/
+
+# Build files
+Webservices/**/bin/
+Webservices/**/obj/
+
+
+# Libraries
+libs/uberstrike/*.dll
+
+# Photon SDK
+photon/
+
+Photon-OnPremise-Server-SDK_v4-0-29-11263/**/obj/
+
+!ServerSetup/**/*.log
+
+# VIM
+*.swp

@@ -1,0 +1,8 @@
+{
+  "Host": "localhost",
+  "Port": 27017,
+  "Username": "uber",
+  "Password": "admin",
+  "DbName": "admin",
+  "Hash": ""
+}

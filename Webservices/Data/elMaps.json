@@ -1,0 +1,72 @@
+[
+    {
+    "MapId": 8,
+    "DisplayName": "CuberStrike",
+    "Description": "test",
+    "SceneName": "LevelCuberStrike",
+    "FileName": "Map-08-0546978c9331e2c4bfe4234c363ca802-HD.unity3d",
+    "IsBlueBox": true,
+    "RecommendedItemId": 0,
+    "SupportedGameModes": 0,
+    "MaxPlayers": 32,
+    "Settings": {
+      "TeamDeathMatch": {
+        "KillsMin": 10,
+        "KillsMax": 100,
+        "KillsCurrent": 10,
+        "PlayersMin": 2,
+        "PlayersMax": 16,
+        "PlayersCurrent": 2,
+        "TimeMin": 100,
+        "TimeMax": 1000,
+        "TimeCurrent": 100
+      },
+      "DeathMatch": {
+        "KillsMin": 10,
+        "KillsMax": 100,
+        "KillsCurrent": 10,
+        "PlayersMin": 2,
+        "PlayersMax": 16,
+        "PlayersCurrent": 2,
+        "TimeMin": 100,
+        "TimeMax": 1000,
+        "TimeCurrent": 100
+      }
+    }
+  },
+  {
+    "MapId": 13,
+    "DisplayName": "The Bunker",
+    "Description": "test",
+    "SceneName": "LevelTheWareHouse2",
+    "FileName": "Map-13-c4e67d33f1dcc18ab3d4693292da2ffa-HD.unity3d",
+    "IsBlueBox": false,
+    "RecommendedItemId": 0,
+    "SupportedGameModes": 0,
+    "MaxPlayers": 32,
+    "Settings": {
+      "TeamDeathMatch": {
+        "KillsMin": 10,
+        "KillsMax": 100,
+        "KillsCurrent": 10,
+        "PlayersMin": 2,
+        "PlayersMax": 16,
+        "PlayersCurrent": 2,
+        "TimeMin": 100,
+        "TimeMax": 1000,
+        "TimeCurrent": 100
+      },
+      "DeathMatch": {
+        "KillsMin": 10,
+        "KillsMax": 100,
+        "KillsCurrent": 10,
+        "PlayersMin": 2,
+        "PlayersMax": 16,
+        "PlayersCurrent": 2,
+        "TimeMin": 100,
+        "TimeMax": 1000,
+        "TimeCurrent": 100
+      }
+    }
+  }
+]
