@@ -17,14 +17,16 @@ namespace UberStrok.Core.Common
         public float y;
         public float z;
 
-        public float Magnitude => (float)Math.Sqrt((x * x) + (y * y) + (z * z));
+        public float Magnitude => (float)Math.Sqrt(x * x + y * y + z * z);
 
         public Vector3 Normalized
         {
             get
             {
                 float magnitude = Magnitude;
-                return magnitude > 1E-05f ? this / magnitude : new Vector3(0, 0, 0);
+                if (magnitude > 1E-05f)
+                    return this / magnitude;
+                return new Vector3(0, 0, 0);
             }
         }
 
@@ -35,7 +37,7 @@ namespace UberStrok.Core.Common
 
         public static float Dot(Vector3 a, Vector3 b)
         {
-            return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
+            return a.x * b.x + a.y * b.y + a.z * b.z;
         }
 
         public static Vector3 operator /(Vector3 a, float d)

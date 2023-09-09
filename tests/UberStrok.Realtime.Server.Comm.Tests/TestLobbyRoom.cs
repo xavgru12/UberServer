@@ -12,11 +12,6 @@ namespace UberStrok.Realtime.Server.Comm.Tests
             // Space
         }
 
-        public override void OnClanChatMessage(int cmid, string name, string message)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void OnFullPlayerListUpdate(List<CommActorInfoView> players)
         {
             Console.WriteLine("-----------------");
@@ -32,11 +27,6 @@ namespace UberStrok.Realtime.Server.Comm.Tests
 
             if (!name.StartsWith("Realtime.Comm.Tests"))
                 Operations.SendChatToAll($"Yooo mah bitch {name}");
-        }
-
-        public override void OnPrivateChatMessage(int cmid, string name, string message)
-        {
-            throw new NotImplementedException();
         }
     }
 }

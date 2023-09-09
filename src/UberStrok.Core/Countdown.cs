@@ -22,9 +22,7 @@ namespace UberStrok.Core
         public Countdown(ILoop loop, int startCount, int endCount)
         {
             if (startCount <= endCount)
-            {
                 throw new ArgumentOutOfRangeException();
-            }
 
             StartCount = startCount;
             EndCount = endCount;
@@ -43,9 +41,7 @@ namespace UberStrok.Core
         }
 
         public void Stop()
-        {
-            _timer.Stop();
-        }
+            => _timer.Stop();
 
         public void Reset()
         {
@@ -62,9 +58,7 @@ namespace UberStrok.Core
         public void Tick()
         {
             while (_timer.Tick())
-            {
                 DoCountdown();
-            }
         }
 
         private void DoCountdown()

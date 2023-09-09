@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,7 +16,6 @@ namespace UberStrok.Patcher
             Console.WriteLine("https://steamdb.info/app/291210/");
             Console.ReadLine();
             var sw = Stopwatch.StartNew();
-            Console.WriteLine(" Thanks to Anonymous from UberKill providing us MODs");
             Console.WriteLine(" Searching for Steam installation...");
 
             var steamPath = default(string);
@@ -40,12 +40,12 @@ namespace UberStrok.Patcher
             Console.WriteLine(" -----------------------------------");
             Console.WriteLine(" Searching for UberStrike installation...");
 
-            SteamApp uberStrikeApp;
+            var uberStrikeApp = default(SteamApp);
             if (!Steam.Apps.TryGetValue(UBERSTRIKE_STEAMAPP_ID, out uberStrikeApp))
             {
                 Console.Error.WriteLine(" Unable to find UberStrike manifest.");
             }
-            string uberStrikePath;
+            var uberStrikePath = default(string);
             try
             {
                 uberStrikePath = uberStrikeApp.Path;
@@ -59,35 +59,12 @@ namespace UberStrok.Patcher
             if (!Directory.Exists(uberStrikePath))
             {
                 Console.Error.WriteLine(" Unable to find UberStrike installation directory.");
-
+                
             }
-            var defaultColor = Console.ForegroundColor;
+
             Console.WriteLine(" -----------------------------------");
             Console.WriteLine(" Path -> " + uberStrikePath);
-            Console.WriteLine(" -----------------------------------");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Input the url of Uberstrok server. Ignore this and direct press \"Enter\" if you already set this before (the .uberstrok file)");
-            Console.ForegroundColor = defaultColor;
-            var url = Console.ReadLine();
-            if (string.IsNullOrEmpty(url))
-            {
-                url = "http://localhost:999";
-                if (File.Exists(uberStrikePath + "\\UberStrike_Data\\.uberstrok"))
-                {
-                    url = File.ReadAllText(uberStrikePath + "\\UberStrike_Data\\.uberstrok");
-                }
-            }
-            if (!url.StartsWith("http://"))
-            {
-                url = "http://" + url;
-            }
-            if (!url.EndsWith("/"))
-            {
-                url += "/";
-            }
-            File.WriteAllText(uberStrikePath + "\\UberStrike_Data\\.uberstrok", url);
-            Console.WriteLine("Binded uberstrike to service...");
-            Console.WriteLine(" -----------------------------------");
+
             var uberStrike = new UberStrike(uberStrikePath);
 
             Console.WriteLine(" Backups ->");
@@ -98,15 +75,9 @@ namespace UberStrok.Patcher
             {
                 var fileName = Path.GetFileName(dll);
                 var dst = Path.Combine(uberStrike.ManagedPath, "backup", fileName);
-                try
-                {
-                    //don't overwrite if exist
-                    File.Copy(dll, dst);
-                }
-                catch
-                {
 
-                }
+                File.Copy(dll, dst, true);
+
                 Console.WriteLine(new string(' ', " Games ->".Length) + fileName + " -> " + "backup/" + fileName);
             }
 
@@ -146,31 +117,9 @@ namespace UberStrok.Patcher
             Console.WriteLine(" Writing new assemblies...");
             try { uberStrike.Save("patched"); }
             catch { Console.Error.WriteLine("Failed to write."); }
-            uberStrike.Dispose();
-            Console.WriteLine(" Copying new assemblies...");
-            try
+            if(!File.Exists(uberStrikePath + "\\UberStrike_Data\\.uberstrok"))
             {
-                foreach (var file in Directory.GetFiles(uberStrike.ManagedPath, "*.dll"))
-                {
-                    if (file.EndsWith("Assembly-CSharp.dll"))
-                    {
-                        File.Copy("patched\\Assembly-CSharp.dll", file, true);
-                    }
-                    else if (file.EndsWith("Assembly-CSharp-firstpass.dll"))
-                    {
-                        File.Copy("patched\\Assembly-CSharp-firstpass.dll", file, true);
-                    }
-                    else if (file.EndsWith("UnityEngine.dll"))
-                    {
-                        File.Copy("patched\\UnityEngine.dll", file, true);
-                    }
-                }
-                Directory.Delete("patched", true);
-            }
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Error.WriteLine("Failed to copy, please copy manually. Error: " + ex.Message);
+                File.WriteAllText(uberStrikePath + "\\UberStrike_Data\\.uberstrok", "http://uberstrike/2.0/");
             }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("done");

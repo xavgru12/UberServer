@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace UberStrok.Core
 {
@@ -30,13 +31,13 @@ namespace UberStrok.Core
 
         public void Emit(int projectileId)
         {
-            _ = _projectiles.Add(projectileId);
+            _projectiles.Add(projectileId);
             _numEmitted++;
         }
 
         public void Destroy(int projectileId)
         {
-            _ = _projectiles.Remove(projectileId);
+            _projectiles.Remove(projectileId);
         }
 
         public void Reset()

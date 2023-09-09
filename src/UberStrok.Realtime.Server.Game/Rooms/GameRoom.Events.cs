@@ -31,19 +31,16 @@ namespace UberStrok.Realtime.Server.Game
             args.Victim.State.Set(ActorState.Id.Killed);
 
             /* Let all actors know that the player has died. */
-            if (State.Current == RoomState.Id.Running)
+            foreach (var otherActor in Actors)
             {
-                foreach (var otherActor in Actors)
-                {
-                    otherActor.Peer.Events.Game.SendPlayerKilled(
-                        args.Attacker.Cmid,
-                        args.Victim.Cmid,
-                        args.ItemClass,
-                        args.Damage,
-                        args.Part,
-                        args.Direction
-                    );
-                }
+                otherActor.Peer.Events.Game.SendPlayerKilled(
+                    args.Attacker.Cmid, 
+                    args.Victim.Cmid, 
+                    args.ItemClass, 
+                    args.Damage, 
+                    args.Part, 
+                    args.Direction
+                );
             }
 
             Log.Info($"{args.Victim.GetDebug()} was killed by {args.Attacker.GetDebug()}.");
@@ -66,7 +63,7 @@ namespace UberStrok.Realtime.Server.Game
                 Debug.Assert(otherActor.Movement.PlayerId == otherActor.PlayerId);
 
                 otherActor.Peer.Events.Game.SendPlayerJoinedGame(
-                    args.Player.Info.GetView(),
+                    args.Player.Info.GetView(), 
                     args.Player.Movement
                 );
             }
@@ -81,16 +78,8 @@ namespace UberStrok.Realtime.Server.Game
             {
                 /* Let other actors know that the player has left the room. */
                 foreach (var otherActor in Actors)
-                {
-                    try
-                    {
-                        otherActor.Peer.Events.Game.SendPlayerLeftGame(args.Player.Cmid);
-                    }
-                    catch(Exception ex)
-                    {
-                        Log.Error(ex);
-                    }
-                }
+                    otherActor.Peer.Events.Game.SendPlayerLeftGame(args.Player.Cmid);
+
                 args.Player.Peer.GetStats(out int rtt, out int rttVar, out int numFailures);
                 Log.Info($"{args.Player.GetDebug()} left game. RTT: {rtt} var<RTT>: {rttVar} NumFailures: {numFailures}");
                 PlayerLeft?.Invoke(this, args);

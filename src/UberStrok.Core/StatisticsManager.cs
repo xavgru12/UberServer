@@ -8,7 +8,7 @@ namespace UberStrok.Core
     public class StatisticsManager
     {
         private UberStrikeItemClass _lastKillClass;
-        private static readonly Dictionary<string, PropertyInfo> _properties;
+        private readonly static Dictionary<string, PropertyInfo> _properties;
 
         static StatisticsManager()
         {
@@ -68,9 +68,7 @@ namespace UberStrok.Core
         public void RecordKill(UberStrikeItemClass itemClass, int count = 1)
         {
             if ((CurrentConsecutiveKills += count) > MostConsecutiveKills)
-            {
                 MostConsecutiveKills = CurrentConsecutiveKills;
-            }
 
             switch (itemClass)
             {
@@ -86,10 +84,7 @@ namespace UberStrok.Core
                 case UberStrikeItemClass.WeaponSniperRifle:
                     RecordStats(nameof(StatsCollectionView.SniperKills), count);
                     if (_lastKillClass == UberStrikeItemClass.WeaponSniperRifle)
-                    {
                         RecordStats(nameof(StatsCollectionView.ConsecutiveSnipes), count);
-                    }
-
                     break;
                 case UberStrikeItemClass.WeaponSplattergun:
                     RecordStats(nameof(StatsCollectionView.SplattergunKills), count);
@@ -100,6 +95,7 @@ namespace UberStrok.Core
                 case UberStrikeItemClass.WeaponLauncher:
                     RecordStats(nameof(StatsCollectionView.LauncherKills), count);
                     break;
+
                 default:
                     /* Skip assignment to _lastKillClass. */
                     Current.ConsecutiveSnipes = 0;
@@ -107,9 +103,7 @@ namespace UberStrok.Core
             }
 
             if (itemClass != UberStrikeItemClass.WeaponSniperRifle)
-            {
                 Current.ConsecutiveSnipes = 0;
-            }
 
             _lastKillClass = itemClass;
         }
@@ -226,13 +220,11 @@ namespace UberStrok.Core
              * If (Current.property > Best.property)
              *      Best.property = Current.property;
              */
-            _ = AddStats(Total, statsProperty, count);
+            AddStats(Total, statsProperty, count);
 
             int current = AddStats(Current, statsProperty, count);
             if (current > GetStats(Best, statsProperty))
-            {
                 SetStats(Best, statsProperty, current);
-            }
         }
 
         private void SetStats(StatsCollectionView stats, string propertyName, int value)
@@ -255,7 +247,7 @@ namespace UberStrok.Core
         private void SetStats(StatsCollectionView stats, PropertyInfo property, int value)
         {
             /* stats.property = value; */
-            _ = property.SetMethod.Invoke(stats, new object[] { value });
+            property.SetMethod.Invoke(stats, new object[] { value });
         }
 
         private int AddStats(StatsCollectionView stats, PropertyInfo property, int count)

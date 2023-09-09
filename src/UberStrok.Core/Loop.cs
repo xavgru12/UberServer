@@ -5,10 +5,9 @@ using System.Threading;
 
 namespace UberStrok.Core
 {
-
     public class Loop : ILoop
     {
-        private readonly Stopwatch _stopwatch;
+        private Stopwatch _stopwatch;
 
         private readonly Action _handler;
         private readonly Action<Exception> _exceptionHandler;
@@ -16,7 +15,6 @@ namespace UberStrok.Core
 
         public float Time { get; private set; }
         public float DeltaTime { get; private set; }
-
 
         public Loop(Action handler, Action<Exception> exceptionHandler)
         {
@@ -37,14 +35,13 @@ namespace UberStrok.Core
 
         public void Teardown()
         {
+            /* Space. */
         }
 
         public void Enqueue(Action action)
         {
             if (action == null)
-            {
                 throw new ArgumentNullException(nameof(action));
-            }
 
             _workQueue.Enqueue(action);
         }
@@ -56,14 +53,13 @@ namespace UberStrok.Core
             DoTime();
         }
 
+        /* Execute all the actions enqueued. */
         private void DoActions()
         {
             while (!_workQueue.IsEmpty)
             {
                 if (!_workQueue.TryDequeue(out Action action))
-                {
                     continue;
-                }
 
                 try { action(); }
                 catch (ThreadAbortException) { throw; }
@@ -71,17 +67,18 @@ namespace UberStrok.Core
             }
         }
 
+        /* Do time calculations. */
         private void DoTime()
         {
             _stopwatch.Stop();
-            float elapsed = (float)_stopwatch.Elapsed.TotalMilliseconds;
+            var elapsed = (float)_stopwatch.Elapsed.TotalMilliseconds;
             _stopwatch.Restart();
 
             Time += elapsed;
             DeltaTime = elapsed;
-
         }
 
+        /* Call the handler. */
         private void DoUpdate()
         {
             /*

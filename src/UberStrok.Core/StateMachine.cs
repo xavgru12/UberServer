@@ -17,24 +17,21 @@ namespace UberStrok.Core
             _registeredStates = new Dictionary<T, State>();
         }
 
-        public T Current => _states.Count > 0 ? _states.Peek() : default;
+        public T Current => _states.Count > 0 ? _states.Peek() : default(T);
 
         public void Register(T stateId, State state)
         {
             if (_registeredStates.ContainsKey(stateId))
-            {
                 throw new Exception("Already contains a state handler for the specified state ID.");
-            }
 
             _registeredStates.Add(stateId, state);
         }
 
         public void Set(T stateId)
         {
-            if (!_registeredStates.TryGetValue(stateId, out State state))
-            {
+            var state = default(State);
+            if (!_registeredStates.TryGetValue(stateId, out state))
                 throw new Exception("No state handler registered for the specified state ID.");
-            }
 
             if (!Current.Equals(stateId))
             {
@@ -51,12 +48,12 @@ namespace UberStrok.Core
         {
             _current?.OnExit();
 
-            _ = _states.Pop();
+            _states.Pop();
 
             if (_states.Count > 0)
             {
-                T stateId = _states.Peek();
-                bool exists = _registeredStates.TryGetValue(stateId, out State state);
+                var stateId = _states.Peek();
+                var exists = _registeredStates.TryGetValue(stateId, out State state);
 
                 Debug.Assert(exists);
 
@@ -72,9 +69,7 @@ namespace UberStrok.Core
         public void Reset()
         {
             while (_states.Count > 0)
-            {
                 Previous();
-            }
         }
 
         public void Tick()

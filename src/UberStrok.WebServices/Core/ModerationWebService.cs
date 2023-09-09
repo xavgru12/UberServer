@@ -1,5 +1,5 @@
-﻿using log4net;
-using UberStrok.Core.Common;
+﻿using UberStrok.Core.Common;
+using log4net;
 
 namespace UberStrok.WebServices.Core
 {

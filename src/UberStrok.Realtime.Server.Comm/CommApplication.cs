@@ -1,5 +1,4 @@
 ﻿using Photon.SocketServer;
-using System.Diagnostics;
 
 namespace UberStrok.Realtime.Server.Comm
 {
@@ -12,11 +11,11 @@ namespace UberStrok.Realtime.Server.Comm
         protected override void OnSetup()
         {
             Rooms = new LobbyRoomManager();
-            _ = Debugger.Launch();
         }
 
         protected override void OnTearDown()
         {
+            /* Space */
         }
 
         protected override Peer OnCreatePeer(InitRequest initRequest)
@@ -24,5 +23,4 @@ namespace UberStrok.Realtime.Server.Comm
             return new CommPeer(initRequest);
         }
     }
-
 }

@@ -12,7 +12,7 @@ namespace UberStrok.Core.Views
 
         public ConnectionAddressView(string connection)
         {
-            string[] ipPort = connection.Split(':');
+            var ipPort = connection.Split(':');
 
             Ipv4 = ToInteger(ipPort[0]);
             Port = ushort.Parse(ipPort[1]);
@@ -27,13 +27,11 @@ namespace UberStrok.Core.Views
         public static int ToInteger(string ipAddress)
         {
             int ipV4 = 0;
-            string[] segments = ipAddress.Split('.');
+            var segments = ipAddress.Split('.');
             if (segments.Length == 4)
             {
                 for (int i = 0; i < segments.Length; i++)
-                {
-                    ipV4 |= int.Parse(segments[i]) << ((3 - i) * 8);
-                }
+                    ipV4 |= int.Parse(segments[i]) << (3 - i) * 8;
             }
 
             return ipV4;
@@ -43,14 +41,14 @@ namespace UberStrok.Core.Views
         {
             return string.Format("{0}.{1}.{2}.{3}", new object[]
             {
-                (ipv4 >> 24) & 255,
-                (ipv4 >> 16) & 255,
-                (ipv4 >> 8) & 255,
+                ipv4 >> 24 & 255,
+                ipv4 >> 16 & 255,
+                ipv4 >> 8 & 255,
                 ipv4 & 255
             });
         }
 
-        public string ConnectionString => string.Format("{0}:{1}", ToString(Ipv4), Port);
+        public string ConnectionString => string.Format("{0}:{1}", ToString(this.Ipv4), this.Port);
         public string IpAddress => ToString(Ipv4);
 
         public int Ipv4 { get; set; }

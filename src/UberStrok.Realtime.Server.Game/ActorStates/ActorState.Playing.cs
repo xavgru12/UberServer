@@ -14,8 +14,7 @@ namespace UberStrok.Realtime.Server.Game
 
         public override void OnEnter()
         {
-            if (!Room.IsTeamElimination || Actor.TimePlayed == 0)
-                Actor.TimePlayed = Room.Loop.Time;
+            Actor.TimePlayed = Room.Loop.Time;
 
             /* 
              * This sets the client's match and player state to `match running`

@@ -10,7 +10,7 @@ namespace UberStrok.Realtime.Server.Game
     {
         public GameRoomEvents Game { get; }
 
-        public GamePeerEvents(GamePeer peer)
+        public GamePeerEvents(GamePeer peer) 
             : base(peer)
         {
             Game = new GameRoomEvents(peer);
@@ -51,12 +51,11 @@ namespace UberStrok.Realtime.Server.Game
             }
         }
 
-        public void SendRoomEntered(GameRoomDataView view, bool reJoin)
+        public void SendRoomEntered(GameRoomDataView view)
         {
             using (var bytes = new MemoryStream())
             {
                 GameRoomDataViewProxy.Serialize(bytes, view);
-                BooleanProxy.Serialize(bytes, reJoin);
                 SendEvent((byte)IGamePeerEventsType.RoomEntered, bytes);
             }
         }

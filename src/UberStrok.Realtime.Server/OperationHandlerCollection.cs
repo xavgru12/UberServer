@@ -2,53 +2,51 @@
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using UberStrok.Realtime.Server;
 
-public class OperationHandlerCollection : IEnumerable<OperationHandler>, IEnumerable
+namespace UberStrok.Realtime.Server
 {
-    private readonly ConcurrentDictionary<byte, OperationHandler> _opHandlers;
-
-    public OperationHandler this[byte id]
+    public class OperationHandlerCollection : IEnumerable<OperationHandler>
     {
-        get
+        private readonly ConcurrentDictionary<byte, OperationHandler> _opHandlers;
+
+        public OperationHandler this[byte id]
         {
-            _opHandlers.TryGetValue(id, out var value);
-            return value;
+            get
+            {
+                _opHandlers.TryGetValue(id, out OperationHandler handler);
+                return handler;
+            }
         }
-    }
 
-    public int Count => _opHandlers.Count;
+        public int Count { get => _opHandlers.Count; }
 
-    public OperationHandlerCollection()
-    {
-        _opHandlers = new ConcurrentDictionary<byte, OperationHandler>();
-    }
-
-    public void Add(OperationHandler handler)
-    {
-        if (handler == null)
+        public OperationHandlerCollection()
         {
-            throw new ArgumentNullException("handler");
+            _opHandlers = new ConcurrentDictionary<byte, OperationHandler>();
         }
-        if (!_opHandlers.TryAdd(handler.Id, handler))
+
+        public void Add(OperationHandler handler)
         {
-            throw new InvalidOperationException("Already contains an OperationHandler with the same ID");
+            if (handler == null)
+                throw new ArgumentNullException(nameof(handler));
+
+            if (!_opHandlers.TryAdd(handler.Id, handler))
+                throw new InvalidOperationException("Already contains an OperationHandler with the same ID");
         }
-    }
 
-    public bool Remove(byte id)
-    {
-        OperationHandler value;
-        return _opHandlers.TryRemove(id, out value);
-    }
+        public bool Remove(byte id)
+        {
+            return _opHandlers.TryRemove(id, out OperationHandler handler);
+        }
 
-    public IEnumerator<OperationHandler> GetEnumerator()
-    {
-        return _opHandlers.Values.GetEnumerator();
-    }
+        public IEnumerator<OperationHandler> GetEnumerator()
+        {
+            return _opHandlers.Values.GetEnumerator();
+        }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return _opHandlers.Values.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _opHandlers.Values.GetEnumerator();
+        }
     }
 }

@@ -16,37 +16,13 @@ namespace UberStrok.Core
         public void Load(string webServices, string authToken)
         {
             if (webServices == null)
-            {
                 throw new ArgumentNullException(nameof(webServices));
-            }
-
             if (authToken == null)
-            {
                 throw new ArgumentNullException(nameof(authToken));
-            }
 
-            /* Retrieve shop data from the web server. */
-            ShopWebServiceClient client = new ShopWebServiceClient(webServices);
-            UberStrikeItemShopClientView shopView = client.GetShop();
-
-            FunctionalItems = LoadDictionary(shopView.FunctionalItems);
-            GearItems = LoadDictionary(shopView.GearItems);
-            QuickItems = LoadDictionary(shopView.QuickItems);
-            WeaponItems = LoadDictionary(shopView.WeaponItems);
-
-            IsLoaded = true;
-        }
-
-        public void Load(string webServices)
-        {
-            if (webServices == null)
-            {
-                throw new ArgumentNullException(nameof(webServices));
-            }
-
-            /* Retrieve shop data from the web server. */
-            ShopWebServiceClient client = new ShopWebServiceClient(webServices);
-            UberStrikeItemShopClientView shopView = client.GetShop();
+            /* Retrieve loadout data from the web server. */
+            var client = new ShopWebServiceClient(webServices);
+            var shopView = client.GetShop();
 
             FunctionalItems = LoadDictionary(shopView.FunctionalItems);
             GearItems = LoadDictionary(shopView.GearItems);
@@ -58,12 +34,9 @@ namespace UberStrok.Core
 
         private Dictionary<int, TUberStrikeItem> LoadDictionary<TUberStrikeItem>(List<TUberStrikeItem> list) where TUberStrikeItem : BaseUberStrikeItemView
         {
-            Dictionary<int, TUberStrikeItem> dict = new Dictionary<int, TUberStrikeItem>(list.Count);
-            foreach (TUberStrikeItem item in list)
-            {
-                if(!dict.ContainsKey(item.ID))
-                    dict.Add(item.ID, item);
-            }
+            var dict = new Dictionary<int, TUberStrikeItem>(list.Count);
+            foreach (var item in list)
+                dict.Add(item.ID, item);
 
             return dict;
         }

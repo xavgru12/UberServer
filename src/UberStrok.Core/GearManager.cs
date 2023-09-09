@@ -14,7 +14,7 @@ namespace UberStrok.Core
         {
             get
             {
-                _ = _itemId2Gear.TryGetValue(id, out Gear gear);
+                _itemId2Gear.TryGetValue(id, out Gear gear);
                 return gear;
             }
         }
@@ -27,11 +27,9 @@ namespace UberStrok.Core
 
         public List<int> GetAsList()
         {
-            List<int> list = new List<int>();
-            foreach (Gear gear in _gear)
-            {
+            var list = new List<int>();
+            foreach (var gear in _gear)
                 list.Add(gear != null ? gear.GetView().ID : 0);
-            }
 
             return list;
         }
@@ -39,19 +37,12 @@ namespace UberStrok.Core
         public void Update(ShopManager shop, LoadoutView loadout)
         {
             if (shop == null)
-            {
                 throw new ArgumentNullException(nameof(shop));
-            }
-
             if (loadout == null)
-            {
                 throw new ArgumentNullException(nameof(loadout));
-            }
 
             Gear GetGear(int id)
-            {
-                return id != 0 ? new Gear(shop.GearItems[id]) : null;
-            }
+                => id != 0 ? new Gear(shop.GearItems[id]) : null;
 
             Array.Clear(_gear, 0, _gear.Length);
 
@@ -64,24 +55,20 @@ namespace UberStrok.Core
             _gear[6] = GetGear(loadout.Boots);
 
             _itemId2Gear.Clear();
-            foreach (Gear gear in _gear)
+            foreach (var gear in _gear)
             {
                 if (gear != null)
-                {
                     _itemId2Gear.Add(gear.GetView().ID, gear);
-                }
             }
         }
 
         public byte GetArmorCapacity()
         {
             int armorCapacity = 0;
-            foreach (Gear gear in _gear)
+            foreach (var gear in _gear)
             {
                 if (gear != null)
-                {
                     armorCapacity += gear.GetView().ArmorPoints;
-                }
             }
 
             /* Clamp armor capacity to 200. */
@@ -90,12 +77,10 @@ namespace UberStrok.Core
 
         public IEnumerator<Gear> GetEnumerator()
         {
-            foreach (Gear gear in _gear)
+            foreach (var gear in _gear)
             {
                 if (gear != null)
-                {
                     yield return gear;
-                }
             }
         }
 

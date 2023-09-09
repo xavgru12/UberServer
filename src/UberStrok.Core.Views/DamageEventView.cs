@@ -15,9 +15,7 @@ namespace UberStrok.Core.Views
         public void Clear()
         {
             if (Damage == null)
-            {
                 Damage = new Dictionary<byte, byte>();
-            }
 
             BodyPartFlag = 0;
             Damage.Clear();
@@ -26,13 +24,11 @@ namespace UberStrok.Core.Views
         public void Add(byte angle, short damage, BodyPart bodyPart, DamageEffectType damageEffectFlag, float damageEffectValue)
         {
             if (Damage == null)
-            {
                 Damage = new Dictionary<byte, byte>();
-            }
 
             if (Damage.ContainsKey(angle))
             {
-                byte oldDamage = Damage[angle];
+                var oldDamage = Damage[angle];
                 Damage[angle] = (byte)(oldDamage + damage);
             }
             else

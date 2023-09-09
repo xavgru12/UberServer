@@ -63,30 +63,28 @@ namespace UberStrok.Patcher {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] sharedassets0 {
+        internal static byte[] steam_api {
             get {
-                object obj = ResourceManager.GetObject("sharedassets0", resourceCulture);
+                object obj = ResourceManager.GetObject("steam_api", resourceCulture);
                 return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Zeichenfolge, die [Settings]
+        ///AppID = 00000
+        ///API = 3.27.76.74
+        ///PlayerName = AAAAA
+        ///Language = english
+        ///SaveType = 0
+        ///[DLC]
+        ///[UPLAY]
+        ///[Option]
+        ///UseSavesBackup=0 ähnelt.
         /// </summary>
-        internal static byte[] sharedassets1 {
+        internal static string valve {
             get {
-                object obj = ResourceManager.GetObject("sharedassets1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
-        /// </summary>
-        internal static byte[] sharedassets2 {
-            get {
-                object obj = ResourceManager.GetObject("sharedassets2", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("valve", resourceCulture);
             }
         }
     }

@@ -2,7 +2,7 @@
 {
     public sealed class WaitingForPlayersRoomState : RoomState
     {
-        public WaitingForPlayersRoomState(GameRoom room)
+        public WaitingForPlayersRoomState(GameRoom room) 
             : base(room)
         {
             /* Space */
@@ -18,21 +18,16 @@
             Room.PlayerJoined -= OnPlayerJoined;
         }
 
-        public override void OnTick()
-        {
-            /* 
-             * If we got more than 1 player we start the countdown;
-             */
-            if (Room.CanStart())
-                Room.State.Set(Id.Countdown);
-        }
-
         private void OnPlayerJoined(object sender, PlayerJoinedEventArgs e)
         {
             /* 
-             * Set the player in the `waiting for players` state.
+             * If we got more than 1 player we start the countdown; else set
+             * the player in the `waiting for players` state.
              */
-            e.Player.State.Set(ActorState.Id.WaitingForPlayers);
+            if (Room.CanStart())
+                Room.State.Set(Id.Countdown);
+            else
+                e.Player.State.Set(ActorState.Id.WaitingForPlayers);
         }
     }
 }

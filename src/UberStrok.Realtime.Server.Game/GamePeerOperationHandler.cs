@@ -1,8 +1,9 @@
 ﻿using log4net;
-using Photon.SocketServer;
 using System;
 using System.Collections.Generic;
-using UberStrok.Core;
+using System.Diagnostics;
+using System.Linq;
+using System.Windows.Forms;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
 
@@ -64,51 +65,54 @@ namespace UberStrok.Realtime.Server.Game
             peer.Events.SendServerLoadData(_loadView);
         }
 
-        protected override void OnCreateRoom(GamePeer peer, GameRoomDataView roomData, string password, string clientVersion, string authToken, string magicHash, bool isMac)
+        protected override void OnCreateRoom(GamePeer peer, GameRoomDataView roomData, string password, string clientVersion, string authToken, string magicHash)
         {
             /* Check the client version. */
             if (clientVersion != "4.3.10")
             {
-                ((PeerBase)peer).Disconnect();
-                Log.Error("Client version not match! " + clientVersion + " vs " +  GameApplication.Instance.Configuration.ServerGameVersion);
+                peer.Disconnect();
                 return;
             }
+
             try
             {
-                peer.IsMac = isMac;
                 if (!peer.Authenticate(authToken, magicHash))
                 {
                     peer.SendError();
                     return;
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to authenticate user. Try restarting UberStrike.");
-                throw;
+                MessageBox.Show(ex.ToString());
             }
-            GameRoom gameRoom;
+
+            GameRoom room;
             try
             {
                 string webServices = GameApplication.Instance.Configuration.WebServices;
-                gameRoom = GameApplication.Instance.Rooms.Create(roomData, password);
-                gameRoom.Shop.Load(webServices, authToken);
+
+                room = GameApplication.Instance.Rooms.Create(roomData, password);
+                room.Shop.Load(webServices, authToken);
             }
             catch (NotSupportedException)
             {
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "UberStrok does not support the selected game mode.");
                 return;
             }
-            catch
+            catch(Exception ex)
             {
-                peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to create game room.");
+                peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to create game room. Exception: " + ex.Message);
                 throw;
             }
-            gameRoom.GetView().GameFlags = roomData.GameFlags;
-            try
-            {
-                gameRoom.Join(peer);
-            }
+
+            Debug.Assert(room != null);
+
+            /* Set quick-switch flag. */
+            room.GetView().GameFlags |= 4;
+
+            try { room.Join(peer); }
             catch
             {
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to join room.");
@@ -116,18 +120,17 @@ namespace UberStrok.Realtime.Server.Game
             }
         }
 
-
-        protected override void OnJoinRoom(GamePeer peer, int roomId, string password, string clientVersion, string authToken, string magicHash, bool isMac)
+        protected override void OnJoinRoom(GamePeer peer, int roomId, string password, string clientVersion, string authToken, string magicHash)
         {
             /* Check the client version. */
             if (clientVersion != "4.3.10")
             {
-                ((PeerBase)peer).Disconnect();
+                peer.Disconnect();
                 return;
             }
+
             try
             {
-                peer.IsMac = isMac;
                 if (!peer.Authenticate(authToken, magicHash))
                 {
                     peer.SendError();
@@ -139,25 +142,37 @@ namespace UberStrok.Realtime.Server.Game
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to authenticate user. Try restarting UberStrike.");
                 throw;
             }
-            GameRoom gameRoom = GameApplication.Instance.Rooms.Get(roomId);
-            if (gameRoom == null)
+
+            GameRoom room = GameApplication.Instance.Rooms.Get(roomId);
+            if (room == null)
             {
                 peer.Events.SendRoomEnterFailed(string.Empty, 0, "Room does not exist anymore.");
-                return;
             }
-            if (NeedPassword(gameRoom, peer.GetUser(false)) && !CheckPassword(gameRoom, password))
+            else
             {
-                peer.Events.SendRequestPasswordForRoom(((RoomDataView)gameRoom.GetView()).Server.ConnectionString, gameRoom.RoomId);
-                return;
-            }
-            try
-            {
-                gameRoom.Join(peer);
-            }
-            catch
-            {
-                peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to join room.");
-                throw;
+                /* Request password if the room is password protected & check password.*/
+                if (NeedPassword(room, peer.GetUser(false)) && !CheckPassword(room, password))
+                {
+                    peer.Events.SendRequestPasswordForRoom(room.GetView().Server.ConnectionString, room.RoomId);
+                }
+                else
+                {
+                    var samePlayer = room.Players.Where(x => x.PlayerId == peer.Actor.PlayerId);
+                    if (samePlayer.Count() > 0)
+                    {
+                        //there is bugged player!
+                        foreach(var p in samePlayer)
+                        {
+                            room.Leave(p.Peer);
+                        }
+                    }
+                    try { room.Join(peer); }
+                    catch
+                    {
+                        peer.Events.SendRoomEnterFailed(string.Empty, 0, "Failed to join room.");
+                        throw;
+                    }
+                }
             }
         }
 
@@ -191,31 +206,33 @@ namespace UberStrok.Realtime.Server.Game
 
         protected override void OnUpdateKeyState(GamePeer peer, byte state)
         {
-
+            if (peer.Actor != null)
+                peer.Actor.Movement.KeyState = state;
         }
 
         protected override void OnUpdateLoadout(GamePeer peer)
         {
-            GameActor actor = peer.Actor;
-            if (actor == null)
+            var actor = peer.Actor;
+            if (actor != null)
             {
-                base.Log.Error("Peer attempted to update loadout but was not associated with any Actor.");
-                return;
-            }
-            try
-            {
-                ShopManager shop = actor.Room.Shop;
-                LoadoutView loadout = peer.GetLoadout(true);
-                actor.Loadout.Update(shop, loadout);
-                actor.Info.Gear = actor.Loadout.Gear.GetAsList();
-                actor.Info.Weapons = actor.Loadout.Weapons.GetAsList();
-                actor.Info.QuickItems = actor.Loadout.QuickItems.GetAsList();
-                actor.Info.ArmorPointCapacity = actor.Loadout.Gear.GetArmorCapacity();
-            }
-            catch
-            {
-                peer.Disconnect();
-                throw;
+                try
+                {
+                    var shop = actor.Room.Shop;
+                    var loadout = peer.GetLoadout(retrieve: true);
+
+                    actor.Loadout.Update(shop, loadout);
+
+                    actor.Info.Gear = actor.Loadout.Gear.GetAsList();
+                    actor.Info.Weapons = actor.Loadout.Weapons.GetAsList();
+                    actor.Info.QuickItems = actor.Loadout.QuickItems.GetAsList();
+
+                    actor.Info.ArmorPointCapacity = actor.Loadout.Gear.GetArmorCapacity();
+                }
+                catch
+                {
+                    peer.Disconnect();
+                    throw;
+                }
             }
         }
 

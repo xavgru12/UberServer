@@ -14,7 +14,7 @@ namespace UberStrok.Core
         {
             get
             {
-                _ = _itemId2QuickItem.TryGetValue(id, out QuickItem quickItem);
+                _itemId2QuickItem.TryGetValue(id, out QuickItem quickItem);
                 return quickItem;
             }
         }
@@ -27,11 +27,9 @@ namespace UberStrok.Core
 
         public List<int> GetAsList()
         {
-            List<int> list = new List<int>();
-            foreach (QuickItem quickItem in _quickItems)
-            {
+            var list = new List<int>();
+            foreach (var quickItem in _quickItems)
                 list.Add(quickItem != null ? quickItem.GetView().ID : 0);
-            }
 
             return list;
         }
@@ -39,19 +37,12 @@ namespace UberStrok.Core
         public void Update(ShopManager shop, LoadoutView loadout)
         {
             if (shop == null)
-            {
                 throw new ArgumentNullException(nameof(shop));
-            }
-
             if (loadout == null)
-            {
                 throw new ArgumentNullException(nameof(loadout));
-            }
 
             QuickItem GetQuickItem(int id)
-            {
-                return id != 0 ? new QuickItem(shop.QuickItems[id]) : null;
-            }
+                => id != 0 ? new QuickItem(shop.QuickItems[id]) : null;
 
             Array.Clear(_quickItems, 0, _quickItems.Length);
 
@@ -60,31 +51,25 @@ namespace UberStrok.Core
             _quickItems[2] = GetQuickItem(loadout.QuickItem3);
 
             _itemId2QuickItem.Clear();
-            foreach (QuickItem quickItem in _quickItems)
+            foreach (var quickItem in _quickItems)
             {
                 if (quickItem != null)
-                {
                     _itemId2QuickItem.Add(quickItem.GetView().ID, quickItem);
-                }
             }
         }
 
         public void Reset()
         {
-            foreach (QuickItem quickItem in _quickItems)
-            {
+            foreach (var quickItem in _quickItems)
                 quickItem?.Reset();
-            }
         }
 
         public IEnumerator<QuickItem> GetEnumerator()
         {
-            foreach (QuickItem quickItem in _quickItems)
+            foreach (var quickItem in _quickItems)
             {
                 if (quickItem != null)
-                {
                     yield return quickItem;
-                }
             }
         }
 

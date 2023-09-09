@@ -35,7 +35,7 @@ namespace UberStrok.WebServices.Core
                 EncryptionPassPhrase = string.Empty, // Same?
 
                 IsEnabled = true,
-                WarnPlayer = true,
+                WarnPlayer = false,
 
                 // Let the client know where the Comm servers and game servers are.
                 CommServer = Context.Servers.CommServer,

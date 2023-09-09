@@ -32,9 +32,7 @@ namespace UberStrok.Core
         public LoopScheduler(float tickRate)
         {
             if (tickRate <= 0)
-            {
                 throw new ArgumentOutOfRangeException(nameof(tickRate), "Tick rate cannot be less or equal to 0.");
-            }
 
             _pauseHandle = new ManualResetEventSlim(true);
 
@@ -54,35 +52,25 @@ namespace UberStrok.Core
             ThrowIfDisposed();
 
             if (loop == null)
-            {
                 throw new ArgumentNullException(nameof(loop));
-            }
 
             /* Setup loop for scheduling. */
             loop.Setup();
 
             bool wasPaused = IsPaused;
             if (!wasPaused)
-            {
                 PauseInternal();
-            }
 
             lock (_loops)
             {
                 if (!_loops.Contains(loop))
-                {
                     _loops.Add(loop);
-                }
                 else
-                {
                     throw new InvalidOperationException("Already scheduling the specified ILoop instance.");
-                }
             }
 
             if (!wasPaused)
-            {
                 ResumeInternal();
-            }
         }
 
         public bool Unschedule(ILoop loop)
@@ -90,9 +78,7 @@ namespace UberStrok.Core
             ThrowIfDisposed();
 
             if (loop == null)
-            {
                 throw new ArgumentNullException(nameof(loop));
-            }
 
             bool result = false;
 
@@ -101,19 +87,13 @@ namespace UberStrok.Core
 
             bool wasPaused = IsPaused;
             if (!wasPaused)
-            {
                 PauseInternal();
-            }
 
             lock (_loops)
-            {
                 result = _loops.Remove(loop);
-            }
 
             if (!wasPaused)
-            {
                 ResumeInternal();
-            }
 
             return result;
         }
@@ -123,9 +103,7 @@ namespace UberStrok.Core
             ThrowIfDisposed();
 
             if (_started)
-            {
                 throw new InvalidOperationException("LoopScheduler already started.");
-            }
 
             _started = true;
             _thread.Start();
@@ -136,9 +114,7 @@ namespace UberStrok.Core
             ThrowIfDisposed();
 
             if (!_started)
-            {
                 throw new InvalidOperationException("LoopScheduler not started.");
-            }
 
             Dispose();
         }
@@ -176,9 +152,7 @@ namespace UberStrok.Core
                     _stopwatch.Start();
 
                     for (int i = 0; i < _loops.Count; i++)
-                    {
                         _loops[i].Tick();
-                    }
 
                     _loadTick++;
 
@@ -190,7 +164,7 @@ namespace UberStrok.Core
                      */
                     _stopwatch.Stop();
 
-                    float elapsed = (float)_stopwatch.Elapsed.TotalMilliseconds;
+                    var elapsed = (float)_stopwatch.Elapsed.TotalMilliseconds;
 
                     _stopwatch.Restart();
                     _lag += elapsed;
@@ -223,9 +197,7 @@ namespace UberStrok.Core
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed)
-            {
                 return;
-            }
 
             if (disposing)
             {
@@ -239,14 +211,10 @@ namespace UberStrok.Core
                 ResumeInternal();
 
                 if (!_thread.Join(Math.Min((int)(TickInterval * 3), 300)))
-                {
                     _thread.Abort();
-                }
 
-                foreach (ILoop loop in _loops)
-                {
+                foreach (var loop in _loops)
                     loop.Teardown();
-                }
 
                 _loops.Clear();
                 _pauseHandle.Dispose();
@@ -257,23 +225,17 @@ namespace UberStrok.Core
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void PauseInternal()
-        {
-            _pauseHandle.Reset();
-        }
+            => _pauseHandle.Reset();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ResumeInternal()
-        {
-            _pauseHandle.Set();
-        }
+            => _pauseHandle.Set();
 
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void ThrowIfDisposed()
         {
             if (_disposed)
-            {
                 throw new ObjectDisposedException(null);
-            }
         }
     }
 }

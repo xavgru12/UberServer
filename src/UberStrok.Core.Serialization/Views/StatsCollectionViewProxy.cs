@@ -52,7 +52,7 @@ namespace UberStrok.Core.Serialization.Views
 
         public static void Serialize(Stream stream, StatsCollectionView instance)
         {
-            using (MemoryStream bytes = new MemoryStream())
+            using (var bytes = new MemoryStream())
             {
                 Int32Proxy.Serialize(bytes, instance.ArmorPickedUp);
                 Int32Proxy.Serialize(bytes, instance.CannonDamageDone);

@@ -41,14 +41,10 @@ namespace UberStrok.Core
         }
 
         public void Start()
-        {
-            IsEnabled = true;
-        }
+            => IsEnabled = true;
 
         public void Stop()
-        {
-            IsEnabled = false;
-        }
+            => IsEnabled = false;
 
         public void Restart()
         {
@@ -69,9 +65,7 @@ namespace UberStrok.Core
         private static void ThrowInterval(float value, string paramName)
         {
             if (value <= 0)
-            {
                 throw new ArgumentOutOfRangeException(paramName, "Interval cannot be less or equal to 0.");
-            }
         }
     }
 }

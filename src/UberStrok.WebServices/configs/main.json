@@ -1,13 +1,12 @@
 ﻿{
-	"locked": true,
-	"service_base": "http://uberstrike/2.0",
-	"wallet": {
-		"starting_points": 999999,
-		"starting_credits": 999999
-	},
-	"loadout": {
-		"starting_items": [
-			1,
+    "service_base": "http://0.0.0.0/",
+    "wallet": {
+        "starting_points": 999999,
+        "starting_credits": 999999
+    },
+    "loadout": {
+        "starting_items": [
+            1,
 			2,
 			3,
 			4,
@@ -18,7 +17,7 @@
 			9,
 			10,
 			11,
-			12,
+            12,
 			13,
 			14,
 			15,
@@ -107,6 +106,6 @@
 			98,
 			99,
 			100
-		]
-	}
+        ]
+    }
 }

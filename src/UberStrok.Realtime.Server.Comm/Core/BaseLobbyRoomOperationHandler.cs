@@ -12,66 +12,36 @@ namespace UberStrok.Realtime.Server.Comm
         public override byte Id => 0;
 
         protected abstract void OnFullPlayerListUpdate(CommPeer peer);
-
         protected abstract void OnUpdatePlayerRoom(CommPeer peer, GameRoomView room);
-
         protected abstract void OnResetPlayerRoom(CommPeer peer);
-
         protected abstract void OnUpdateFriendsList(CommPeer peer, int cmid);
-
         protected abstract void OnUpdateClanData(CommPeer peer, int cmid);
-
         protected abstract void OnUpdateInboxMessages(CommPeer peer, int cmid, int messageId);
-
         protected abstract void OnUpdateInboxRequests(CommPeer peer, int cmid);
-
         protected abstract void OnUpdateClanMembers(CommPeer peer, List<int> clanMembers);
-
         protected abstract void OnGetPlayersWithMatchingName(CommPeer peer, string search);
-
         protected abstract void OnChatMessageToAll(CommPeer peer, string message);
-
         protected abstract void OnChatMessageToPlayer(CommPeer peer, int cmid, string message);
-
         protected abstract void OnChatMessageToClan(CommPeer peer, List<int> clanMembers, string message);
-
         protected abstract void OnModerationMutePlayer(CommPeer peer, int durationInMinutes, int mutedCmid, bool disableChat);
-
         protected abstract void OnModerationPermanentBan(CommPeer peer, int cmid);
-
         protected abstract void OnModerationBanPlayer(CommPeer peer, int cmid);
-
         protected abstract void OnModerationKickGame(CommPeer peer, int cmid);
-
         protected abstract void OnModerationUnbanPlayer(CommPeer peer, int cmid);
-
         protected abstract void OnModerationCustomMessage(CommPeer peer, int cmid, string message);
-
         protected abstract void OnSpeedhackDetection(CommPeer peer);
-
         protected abstract void OnSpeedhackDetectionNew(CommPeer peer, List<float> timeDifferences);
-
         protected abstract void OnPlayersReported(CommPeer peer, List<int> cmids, int type, string details, string logs);
-
         protected abstract void OnUpdateNaughtyList(CommPeer peer);
-
         protected abstract void OnClearModeratorFlags(CommPeer peer, int cmid);
-
         protected abstract void OnSetContactList(CommPeer peer, List<int> cmids);
-
         protected abstract void OnUpdateAllActors(CommPeer peer);
-
         protected abstract void OnUpdateContacts(CommPeer peer);
-
-        protected abstract void OnModulesSignatureRequest(CommPeer peer, string umodules);
-
-        protected abstract void OnUberBeatAuthenticate(CommPeer peer, string HWID);
-
-        protected abstract void OnUberBeatReport(CommPeer peer, string report);
 
         public override void OnOperationRequest(CommPeer peer, byte opCode, MemoryStream bytes)
         {
-            switch ((ILobbyRoomOperationsType)opCode)
+            var operation = (ILobbyRoomOperationsType)(opCode);
+            switch (operation)
             {
                 case ILobbyRoomOperationsType.FullPlayerListUpdate:
                     FullPlayerListUpdate(peer, bytes);
@@ -151,36 +121,9 @@ namespace UberStrok.Realtime.Server.Comm
                 case ILobbyRoomOperationsType.UpdateContacts:
                     UpdateContacts(peer, bytes);
                     break;
-                case ILobbyRoomOperationsType.RequestModules:
-                    ModulesSignatureResult(peer, bytes);
-                    break;
-                case ILobbyRoomOperationsType.UberBeatAuthenticate:
-                    UberBeatAuthenticate(peer, bytes);
-                    break;
-                case ILobbyRoomOperationsType.UberBeatReport:
-                    UberBeatReport(peer, bytes);
-                    break;
                 default:
                     throw new NotSupportedException();
             }
-        }
-
-        private void UberBeatAuthenticate(CommPeer peer, MemoryStream bytes)
-        {
-            string hWID = StringProxy.Deserialize(bytes);
-            OnUberBeatAuthenticate(peer, hWID);
-        }
-
-        private void UberBeatReport(CommPeer peer, MemoryStream bytes)
-        {
-            string report = StringProxy.Deserialize(bytes);
-            OnUberBeatReport(peer, report);
-        }
-
-        private void ModulesSignatureResult(CommPeer peer, MemoryStream bytes)
-        {
-            string umodules = StringProxy.Deserialize(bytes);
-            OnModulesSignatureRequest(peer, umodules);
         }
 
         private void FullPlayerListUpdate(CommPeer peer, MemoryStream bytes)
@@ -190,7 +133,7 @@ namespace UberStrok.Realtime.Server.Comm
 
         private void UpdatePlayerRoom(CommPeer peer, MemoryStream bytes)
         {
-            GameRoomView room = GameRoomViewProxy.Deserialize(bytes);
+            var room = GameRoomViewProxy.Deserialize(bytes);
             OnUpdatePlayerRoom(peer, room);
         }
 
@@ -201,97 +144,97 @@ namespace UberStrok.Realtime.Server.Comm
 
         private void UpdateFriendsList(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
             OnUpdateFriendsList(peer, cmid);
         }
 
         private void UpdateClanData(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
             OnUpdateClanData(peer, cmid);
         }
 
         private void UpdateInboxMessages(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
-            int messageId = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
+            var messageId = Int32Proxy.Deserialize(bytes);
             OnUpdateInboxMessages(peer, cmid, messageId);
         }
 
         private void UpdateInboxRequests(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
             OnUpdateInboxRequests(peer, cmid);
         }
 
         private void UpdateClanMembers(CommPeer peer, MemoryStream bytes)
         {
-            List<int> clanMembers = ListProxy<int>.Deserialize(bytes, Int32Proxy.Deserialize);
+            var clanMembers = ListProxy<int>.Deserialize(bytes, Int32Proxy.Deserialize);
             OnUpdateClanMembers(peer, clanMembers);
         }
 
         private void GetPlayersWithMatchingName(CommPeer peer, MemoryStream bytes)
         {
-            string search = StringProxy.Deserialize(bytes);
+            var search = StringProxy.Deserialize(bytes);
             OnGetPlayersWithMatchingName(peer, search);
         }
 
         private void ChatMessageToAll(CommPeer peer, MemoryStream bytes)
         {
-            string message = StringProxy.Deserialize(bytes);
+            var message = StringProxy.Deserialize(bytes);
             OnChatMessageToAll(peer, message);
         }
 
         private void ChatMessageToPlayer(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
-            string message = StringProxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
+            var message = StringProxy.Deserialize(bytes);
             OnChatMessageToPlayer(peer, cmid, message);
         }
 
         private void ChatMessageToClan(CommPeer peer, MemoryStream bytes)
         {
-            List<int> clanMembers = ListProxy<int>.Deserialize(bytes, Int32Proxy.Deserialize);
-            string message = StringProxy.Deserialize(bytes);
+            var clanMembers = ListProxy<int>.Deserialize(bytes, Int32Proxy.Deserialize);
+            var message = StringProxy.Deserialize(bytes);
             OnChatMessageToClan(peer, clanMembers, message);
         }
 
         private void ModerationMutePlayer(CommPeer peer, MemoryStream bytes)
         {
-            int durationInMinutes = Int32Proxy.Deserialize(bytes);
-            int mutedCmid = Int32Proxy.Deserialize(bytes);
-            bool disableChat = BooleanProxy.Deserialize(bytes);
+            var durationInMinutes = Int32Proxy.Deserialize(bytes);
+            var mutedCmid = Int32Proxy.Deserialize(bytes);
+            var disableChat = BooleanProxy.Deserialize(bytes);
             OnModerationMutePlayer(peer, durationInMinutes, mutedCmid, disableChat);
         }
 
         private void ModerationPermanentBan(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
             OnModerationPermanentBan(peer, cmid);
         }
 
         private void ModerationBanPlayer(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
             OnModerationBanPlayer(peer, cmid);
         }
 
         private void ModerationKickGame(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
             OnModerationKickGame(peer, cmid);
         }
 
         private void ModerationUnbanPlayer(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
             OnModerationUnbanPlayer(peer, cmid);
         }
 
         private void ModerationCustomMessage(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
-            string message = StringProxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
+            var message = StringProxy.Deserialize(bytes);
             OnModerationCustomMessage(peer, cmid, message);
         }
 
@@ -302,16 +245,16 @@ namespace UberStrok.Realtime.Server.Comm
 
         private void SpeedhackDetectionNew(CommPeer peer, MemoryStream bytes)
         {
-            List<float> timeDifferences = ListProxy<float>.Deserialize(bytes, SingleProxy.Deserialize);
+            var timeDifferences = ListProxy<float>.Deserialize(bytes, SingleProxy.Deserialize);
             OnSpeedhackDetectionNew(peer, timeDifferences);
         }
 
         private void PlayersReported(CommPeer peer, MemoryStream bytes)
         {
-            List<int> cmids = ListProxy<int>.Deserialize(bytes, Int32Proxy.Deserialize);
-            int type = Int32Proxy.Deserialize(bytes);
-            string details = StringProxy.Deserialize(bytes);
-            string logs = StringProxy.Deserialize(bytes);
+            var cmids = ListProxy<int>.Deserialize(bytes, Int32Proxy.Deserialize);
+            var type = Int32Proxy.Deserialize(bytes);
+            var details = StringProxy.Deserialize(bytes);
+            var logs = StringProxy.Deserialize(bytes);
             OnPlayersReported(peer, cmids, type, details, logs);
         }
 
@@ -322,13 +265,13 @@ namespace UberStrok.Realtime.Server.Comm
 
         private void ClearModeratorFlags(CommPeer peer, MemoryStream bytes)
         {
-            int cmid = Int32Proxy.Deserialize(bytes);
+            var cmid = Int32Proxy.Deserialize(bytes);
             OnClearModeratorFlags(peer, cmid);
         }
 
         private void SetContactList(CommPeer peer, MemoryStream bytes)
         {
-            List<int> cmids = ListProxy<int>.Deserialize(bytes, Int32Proxy.Deserialize);
+            var cmids = ListProxy<int>.Deserialize(bytes, Int32Proxy.Deserialize);
             OnSetContactList(peer, cmids);
         }
 

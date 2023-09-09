@@ -1,110 +1,114 @@
-﻿
-
-// UberStrok.Realtime.Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// UberStrok.Realtime.Server.Application
-using System;
-using System.IO;
-using log4net;
+﻿using log4net;
 using log4net.Config;
-using log4net.Util;
 using Newtonsoft.Json;
 using Photon.SocketServer;
-using UberStrok.Realtime.Server;
+using System;
+using System.IO;
 
-public abstract class Application : ApplicationBase
+namespace UberStrok.Realtime.Server
 {
-    public static Application Instance => (Application)(object)ApplicationBase.Instance;
-
-    protected ILog Log { get; }
-
-    public ApplicationConfiguration Configuration { get; private set; }
-
-    private PeerConfiguration PeerConfiguration { get; set; }
-
-    protected Application()
+    public abstract class Application : ApplicationBase
     {
-        AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
-        Log = LogManager.GetLogger(((object)this).GetType().Name);
-    }
+        public static new Application Instance => (Application)ApplicationBase.Instance;
 
-    protected abstract void OnSetup();
+        protected ILog Log { get; }
+        public ApplicationConfiguration Configuration { get; private set; }
+        private PeerConfiguration PeerConfiguration { get; set; }
 
-    protected abstract void OnTearDown();
-
-    protected abstract Peer OnCreatePeer(InitRequest initRequest);
-
-    private void SetupLog4net()
-    {
-        ((ContextPropertiesBase)GlobalContext.Properties)["Photon:ApplicationLogPath"] = Path.Combine(((ApplicationBase)this).ApplicationPath, "log");
-        FileInfo fileInfo = new FileInfo(Path.Combine(((ApplicationBase)this).BinaryPath, "log4net.config"));
-        if (fileInfo.Exists)
+        protected Application()
         {
-            XmlConfigurator.ConfigureAndWatch(fileInfo);
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
+            Log = LogManager.GetLogger(GetType().Name);
         }
-    }
 
-    private void SetupConfigs()
-    {
-        string text = Path.Combine(((ApplicationBase)this).BinaryPath, "uberstrok.realtime.server.json");
-        Log.Info((object)("Loading configuration at " + text));
-        if (!File.Exists(text))
+        protected abstract void OnSetup();
+        protected abstract void OnTearDown();
+        protected abstract Peer OnCreatePeer(InitRequest initRequest);
+
+        private void SetupLog4net()
         {
-            Configuration = ApplicationConfiguration.Default;
-            Log.Info((object)"uberstrok.realtime.server.json not found, using default configuration.");
+            /* Add a the log path to the properties so we can use them in log4net.config. */
+            GlobalContext.Properties["Photon:ApplicationLogPath"] = Path.Combine(ApplicationPath, "log");
+            /* Configure log4net to use the log4net.config file. */
+            var configFile = new FileInfo(Path.Combine(BinaryPath, "log4net.config"));
+            if (configFile.Exists)
+                XmlConfigurator.ConfigureAndWatch(configFile);
         }
-        else
+
+        private void SetupConfigs()
         {
-            try
+            var path = Path.Combine(BinaryPath, "uberstrok.realtime.server.json");
+
+            Log.Info($"Loading configuration at {path}");
+            if (!File.Exists(path))
             {
-                string text2 = File.ReadAllText(text);
-                Configuration = JsonConvert.DeserializeObject<ApplicationConfiguration>(text2);
-                Configuration.Check();
-                Log.Info((object)"uberstrok.realtime.server.json loaded ->");
-                Log.Info((object)$"\tCompositeHashes({Configuration.CompositeHashBytes.Count})");
-                Log.Info((object)$"\tJunkHashes({Configuration.JunkHashBytes.Count})");
-                Log.Info((object)$"\tHeartbeatTimeout = {Configuration.HeartbeatTimeout}");
-                Log.Info((object)$"\tHeartbeatInterval = {Configuration.HeartbeatInterval}");
+                Configuration = ApplicationConfiguration.Default;
+                Log.Info("uberstrok.realtime.server.json not found, using default configuration.");
             }
-            catch (Exception ex)
+            else
             {
-                Log.Fatal((object)"Failed to load or parse uberstrok.realtime.server.json", ex);
-                throw;
+                try
+                {
+                    var json = File.ReadAllText(path);
+                    Configuration = JsonConvert.DeserializeObject<ApplicationConfiguration>(json);
+                    Configuration.Check();
+
+                    Log.Info("uberstrok.realtime.server.json loaded ->");
+                    Log.Info($"\tCompositeHashes({Configuration.CompositeHashBytes.Count})");
+                    Log.Info($"\tJunkHashes({Configuration.JunkHashBytes.Count})");
+                    Log.Info($"\tHeartbeatTimeout = {Configuration.HeartbeatTimeout}");
+                    Log.Info($"\tHeartbeatInterval = {Configuration.HeartbeatInterval}");
+                }
+                catch (Exception ex)
+                {
+                    Log.Fatal("Failed to load or parse uberstrok.realtime.server.json", ex);
+                    throw;
+                }
             }
+
+            PeerConfiguration = new PeerConfiguration
+            (
+                Configuration.WebServices,
+                Configuration.WebServicesAuth,
+                Configuration.HeartbeatTimeout,
+                Configuration.HeartbeatInterval,
+                Configuration.CompositeHashBytes,
+                Configuration.JunkHashBytes
+            );
         }
-        PeerConfiguration = new PeerConfiguration(Configuration.WebServices, Configuration.WebServicesAuth, Configuration.ServerGameVersion, Configuration.HeartbeatTimeout, Configuration.HeartbeatInterval, Configuration.CompositeHashBytes, Configuration.JunkHashBytes);
-    }
 
-    protected sealed override void Setup()
-    {
-        SetupLog4net();
-        SetupConfigs();
-        OnSetup();
-        Log.Info((object)("Setup " + ((object)this).GetType().Name + "... Complete"));
-    }
-
-    protected sealed override void TearDown()
-    {
-        OnTearDown();
-        Log.Info((object)("TearDown " + ((object)this).GetType().Name + "... Complete"));
-    }
-
-    protected sealed override PeerBase CreatePeer(InitRequest initRequest)
-    {
-        Log.Info((object)$"Accepted new connection at {initRequest.RemoteIP}:{initRequest.RemotePort}.");
-        initRequest.UserData = PeerConfiguration;
-        return (PeerBase)(object)OnCreatePeer(initRequest);
-    }
-
-    private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
-    {
-        Exception ex = e.ExceptionObject as Exception;
-        if (e.IsTerminating)
+        protected sealed override void Setup()
         {
-            Log.Fatal((object)"Unhandled exception", ex);
+            SetupLog4net();
+            SetupConfigs();
+
+            OnSetup();
+
+            Log.Info($"Setup {GetType().Name}... Complete");
         }
-        else
+
+        protected sealed override void TearDown()
         {
-            Log.Error((object)"Unhandled exception", ex);
+            OnTearDown();
+
+            Log.Info($"TearDown {GetType().Name}... Complete");
+        }
+
+        protected sealed override PeerBase CreatePeer(InitRequest initRequest)
+        {
+            Log.Info($"Accepted new connection at {initRequest.RemoteIP}:{initRequest.RemotePort}.");
+
+            initRequest.UserData = PeerConfiguration;
+            return OnCreatePeer(initRequest);
+        }
+
+        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var exception = e.ExceptionObject as Exception;
+            if (e.IsTerminating)
+                Log.Fatal("Unhandled exception", exception);
+            else
+                Log.Error("Unhandled exception", exception);
         }
     }
 }

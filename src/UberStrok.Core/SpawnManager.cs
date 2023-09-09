@@ -19,29 +19,19 @@ namespace UberStrok.Core
             _points = new Dictionary<TeamID, List<SpawnPoint>>();
         }
 
-        public bool IsLoaded(TeamID team)
-        {
-            return _points.ContainsKey(team);
-        }
+        public bool IsLoaded(TeamID team) => _points.ContainsKey(team);
 
         public void Load(TeamID team, List<Vector3> positions, List<byte> rotations)
         {
             if (positions == null)
-            {
                 throw new ArgumentNullException(nameof(positions));
-            }
-
             if (rotations == null)
-            {
                 throw new ArgumentNullException(nameof(rotations));
-            }
-
+            
             int length = positions.Count;
-            List<SpawnPoint> spawns = new List<SpawnPoint>(length);
+            var spawns = new List<SpawnPoint>(length);
             for (int i = 0; i < length; i++)
-            {
                 spawns.Add(new SpawnPoint(positions[i], rotations[i]));
-            }
 
             _points[team] = spawns;
             _indices[team] = _rand.Next(_points.Count);
@@ -51,17 +41,13 @@ namespace UberStrok.Core
         {
             /* Incase stuff goes loose. */
             if (!_indices.ContainsKey(team) || !_points.ContainsKey(team))
-            {
-                return default;
-            }
+                return default(SpawnPoint);
 
-            SpawnPoint point = _points[team][_indices[team]++];
-            int index = _indices[team];
+            var point = _points[team][_indices[team]++];
+            var index = _indices[team];
 
             if (index % _points[team].Count == 0)
-            {
                 _indices[team] = _rand.Next(_points.Count);
-            }
 
             return point;
         }

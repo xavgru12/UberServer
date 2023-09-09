@@ -6,10 +6,10 @@ using UberStrok.Core.Views;
 
 namespace UberStrok.WebServices
 {
-    public class OldMapManager
+    public class MapManager
     {
-        private readonly ILog Log = LogManager.GetLogger(typeof(OldMapManager).Name);
-        public OldMapManager(WebServiceContext ctx)
+        private readonly ILog Log = LogManager.GetLogger(typeof(MapManager).Name);
+        public MapManager(WebServiceContext ctx)
         {
             if (ctx == null)
                 throw new ArgumentNullException(nameof(ctx));

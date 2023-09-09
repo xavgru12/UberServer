@@ -2,12 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Uberstrok.Core.Common;
 using UberStrok.Core;
 using UberStrok.Core.Common;
 using UberStrok.Core.Views;
@@ -46,9 +40,7 @@ namespace UberStrok.Realtime.Server.Game
         {
             lock (_sync)
             {
-                if (!_rooms.TryGetValue(roomId, out GameRoom room))
-                    return null;
-                if(room.Actors.Count == 0) 
+                if (_rooms.TryGetValue(roomId, out GameRoom room) && room.Actors.Count == 0)
                     return null;
                 return room;
             }
@@ -77,9 +69,7 @@ namespace UberStrok.Realtime.Server.Game
                     case GameModeType.TeamDeathMatch:
                         room = new TeamDeathMatchGameRoom(data, _loopScheduler);
                         break;
-                    case GameModeType.EliminationMode:
-                        room = new TeamEliminationGameRoom(data, _loopScheduler);
-                        break;
+
                     default:
                         throw new NotSupportedException();
                 }
@@ -100,44 +90,10 @@ namespace UberStrok.Realtime.Server.Game
 
                 Log.Info($"Created {room.GetDebug()}");
             }
-            if (string.IsNullOrEmpty(data.Guid))
-            {
-                data.Guid = Guid.NewGuid().ToString();
-            }
-            if (!File.Exists("globalurl.txt"))
-            {
-                File.WriteAllText("globalurl.txt", "https://localhost:5000/");
-            }
-            Log.Info("Room ID: " + data.Guid);
-            var webUrl = "A "+data.GameMode.ToString() + " room had created in game! Join now with " + new Uri(new Uri(File.ReadAllText("globalurl.txt")), "join?roomId=" + AES.EncryptAndEncode(data.Guid)).AbsoluteUri;
-            Log.Info("Sending generated Url to web service..." + webUrl);
-            _ = SendMessageUDP(webUrl);
+
             return room;
         }
-        public Task SendMessageUDP(string message)
-        {
-            return Task.Run(() =>
-            {
-                try
-                {
-                    using (UdpClient udpClient = new UdpClient())
-                    {
-                        if (!File.Exists("udphost.txt"))
-                        {
-                            File.WriteAllText("udphost.txt", "127.0.0.1");
-                        }
-                        udpClient.Connect(File.ReadAllText("udphost.txt"), 5070);
-                        byte[] bytes = Encoding.UTF8.GetBytes("game:" + message);
-                        _ = udpClient.Send(bytes, bytes.Length);
-                    }
-                }
-                catch(Exception ex)
-                {
-                    Log.Error("Connect failed to target for udp: " + File.ReadAllText("udphost.txt") + ":5070" + "\nException:" + ex.ToString());
-                }
-            });
 
-        }
         public void Tick()
         {
             lock (_sync)
@@ -147,8 +103,9 @@ namespace UberStrok.Realtime.Server.Game
                     var room = kv.Value;
                     var view = room.GetView();
 
-                    if (room.Loop.Time > 15000f && room.Actors.Count == 0 && !room.GetView().IsPermanentGame)
+                    if (!view.IsPermanentGame && room.Actors.Count == 0 && room.Loop.Time >= 15 * 1000)
                     {
+                        Log.Info("Removing empty room " + room.RoomId);
                         _removedRooms.Add(room.RoomId);
                     }
                     else if (room.Updated)
@@ -157,12 +114,9 @@ namespace UberStrok.Realtime.Server.Game
                         room.Updated = false;
                     }
                 }
-                if (_removedRooms.Count > 0 || _updatedRooms.Count > 0)
-                {
-                    foreach (var peer in GameApplication.Instance.Lobby.Peers)
-                        peer.Events.SendGameListUpdate(_updatedRooms, _removedRooms);
-                }
 
+                foreach (var peer in GameApplication.Instance.Lobby.Peers)
+                    peer.Events.SendGameListUpdate(_updatedRooms, _removedRooms);
 
                 foreach (var roomId in _removedRooms)
                 {
@@ -194,11 +148,10 @@ namespace UberStrok.Realtime.Server.Game
             {
                 foreach (var kv in _rooms)
                 {
-                    GameRoom value = kv.Value;
-                    if (value.Actors.Count != 0)
-                    {
-                        yield return value;
-                    }
+                    var room = kv.Value;
+                    /* Filter out empty rooms. */
+                    if (room.Actors.Count != 0)
+                        yield return room;
                 }
             }
         }

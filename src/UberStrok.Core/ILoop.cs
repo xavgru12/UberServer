@@ -1,4 +1,6 @@
-﻿namespace UberStrok.Core
+﻿using System;
+
+namespace UberStrok.Core
 {
     public interface ILoop
     {

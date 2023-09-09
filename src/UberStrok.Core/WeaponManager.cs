@@ -17,7 +17,7 @@ namespace UberStrok.Core
         {
             get
             {
-                _ = _itemId2Weapon.TryGetValue(id, out Weapon weapon);
+                _itemId2Weapon.TryGetValue(id, out Weapon weapon);
                 return weapon;
             }
         }
@@ -30,11 +30,9 @@ namespace UberStrok.Core
 
         public List<int> GetAsList()
         {
-            List<int> list = new List<int>();
-            foreach (Weapon weapon in _weapons)
-            {
+            var list = new List<int>();
+            foreach (var weapon in _weapons)
                 list.Add(weapon != null ? weapon.GetView().ID : 0);
-            }
 
             return list;
         }
@@ -42,19 +40,12 @@ namespace UberStrok.Core
         public void Update(ShopManager shop, LoadoutView loadout)
         {
             if (shop == null)
-            {
                 throw new ArgumentNullException(nameof(shop));
-            }
-
             if (loadout == null)
-            {
                 throw new ArgumentNullException(nameof(loadout));
-            }
 
             Weapon GetWeapon(int id)
-            {
-                return id != 0 ? new Weapon(shop.WeaponItems[id]) : null;
-            }
+                => id != 0 ? new Weapon(shop.WeaponItems[id]) : null;
 
             Array.Clear(_weapons, 0, _weapons.Length);
 
@@ -64,31 +55,25 @@ namespace UberStrok.Core
             _weapons[3] = GetWeapon(loadout.Weapon3);
 
             _itemId2Weapon.Clear();
-            foreach (Weapon weapon in _weapons)
+            foreach (var weapon in _weapons)
             {
                 if (weapon != null)
-                {
                     _itemId2Weapon.Add(weapon.GetView().ID, weapon);
-                }
             }
         }
 
         public void Reset()
         {
-            foreach (Weapon weapon in _weapons)
-            {
+            foreach (var weapon in _weapons)
                 weapon?.Reset();
-            }
         }
 
         public IEnumerator<Weapon> GetEnumerator()
         {
-            foreach (Weapon weapon in _weapons)
+            foreach (var weapon in _weapons)
             {
                 if (weapon != null)
-                {
                     yield return weapon;
-                }
             }
         }
 
