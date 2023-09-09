@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using Webservices.Database;
 using Webservices.Database.Items;
@@ -65,17 +66,8 @@ namespace Webservices.Manager
 
     internal static Task<bool> IsNameUsed(string name)
     {
-      // ISSUE: object of a compiler-generated type is created
-      // ISSUE: variable of a compiler-generated type
-      UserManager.\u003C\u003Ec__DisplayClass3_0 cDisplayClass30 = new UserManager.\u003C\u003Ec__DisplayClass3_0();
-      // ISSUE: reference to a compiler-generated field
-      cDisplayClass30.name = name;
-      ParameterExpression parameterExpression;
-      // ISSUE: method reference
-      // ISSUE: field reference
-      // ISSUE: method reference
-      return Task.FromResult<bool>(UserManager.sm_database.Collection.AsQueryable<UserDocument>().Where<UserDocument>(Expression.Lambda<Func<UserDocument, bool>>((Expression) Expression.Equal((Expression) Expression.Call(f.Member.PublicProfile.Name, (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.ToLower)), Array.Empty<Expression>()), (Expression) Expression.Call((Expression) Expression.Field((Expression) Expression.Constant((object) cDisplayClass30, typeof (UserManager.\u003C\u003Ec__DisplayClass3_0)), FieldInfo.GetFieldFromHandle(__fieldref (UserManager.\u003C\u003Ec__DisplayClass3_0.name))), (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.ToLower)), Array.Empty<Expression>())), parameterExpression)).Count<UserDocument>() != 0);
-    }
+            return Task.FromResult(((IQueryable<UserDocument>)IMongoCollectionExtensions.AsQueryable<UserDocument>(sm_database.Collection, (AggregateOptions)null)).Where((UserDocument f) => f.Member.PublicProfile.Name.ToLower() == name.ToLower()).Count() != 0);
+        }
 
     internal static Task<UserDocument> GetUser(int id) => UserManager.sm_database.Collection.Find<UserDocument>(Builders<UserDocument>.Filter.Eq<int>((Expression<Func<UserDocument, int>>) (f => f.UserId), id)).FirstOrDefaultAsync<UserDocument, UserDocument>();
 
@@ -118,31 +110,9 @@ namespace Webservices.Manager
 
     internal static Task<List<UserDocument>> FindUser(string name)
     {
-      // ISSUE: object of a compiler-generated type is created
-      // ISSUE: variable of a compiler-generated type
-      UserManager.\u003C\u003Ec__DisplayClass10_0 cDisplayClass100 = new UserManager.\u003C\u003Ec__DisplayClass10_0();
-      // ISSUE: reference to a compiler-generated field
-      cDisplayClass100.name = name;
-      FilterDefinitionBuilder<UserDocument> filter1 = Builders<UserDocument>.Filter;
-      IMongoCollection<UserDocument> collection = UserManager.sm_database.Collection;
-      ParameterExpression parameterExpression1 = Expression.Parameter(typeof (UserDocument), "x");
-      // ISSUE: method reference
-      MethodInfo methodFromHandle = (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (Enumerable.Any));
-      // ISSUE: method reference
-      Expression[] expressionArray = new Expression[2]
-      {
-        (Expression) Expression.Property((Expression) parameterExpression1, (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (UserDocument.get_Names))),
-        null
-      };
-      ParameterExpression parameterExpression2;
-      // ISSUE: method reference
-      // ISSUE: method reference
-      // ISSUE: field reference
-      // ISSUE: method reference
-      expressionArray[1] = (Expression) Expression.Lambda<Func<string, bool>>((Expression) Expression.Call((Expression) Expression.Call(t, (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.ToLower)), Array.Empty<Expression>()), (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.Contains)), (Expression) Expression.Call((Expression) Expression.Field((Expression) Expression.Constant((object) cDisplayClass100, typeof (UserManager.\u003C\u003Ec__DisplayClass10_0)), FieldInfo.GetFieldFromHandle(__fieldref (UserManager.\u003C\u003Ec__DisplayClass10_0.name))), (MethodInfo) MethodBase.GetMethodFromHandle(__methodref (string.ToLower)), Array.Empty<Expression>())), parameterExpression2);
-      Expression<Func<UserDocument, bool>> filter2 = Expression.Lambda<Func<UserDocument, bool>>((Expression) Expression.Call((Expression) null, methodFromHandle, expressionArray), parameterExpression1);
-      return collection.Find<UserDocument>(filter2).ToListAsync<UserDocument>();
-    }
+            FilterDefinitionBuilder<UserDocument> filter = Builders<UserDocument>.Filter;
+            return IAsyncCursorSourceExtensions.ToListAsync<UserDocument>((IAsyncCursorSource<UserDocument>)(object)IMongoCollectionExtensions.Find<UserDocument>(sm_database.Collection, (Expression<Func<UserDocument, bool>>)((UserDocument x) => x.Names.Any((string t) => t.ToLower().Contains(name.ToLower()))), (FindOptions)null), default(CancellationToken));
+        }
 
     internal static Task Save(UserDocument document)
     {

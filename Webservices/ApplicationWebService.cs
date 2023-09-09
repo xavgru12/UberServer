@@ -22,7 +22,7 @@ namespace Webservices
   public class ApplicationWebService : IApplicationWebServiceContract
   {
     private List<MapView> mapData;
-    private const string IP_ADDRESS_EU = "163.172.110.23";
+    private const string IP_ADDRESS_EU = "127.0.0.1";
     private Random random = new Random();
 
     public ApplicationWebService()
@@ -69,7 +69,7 @@ namespace Webservices
           {
             new PhotonView()
             {
-              IP = "163.172.110.23",
+              IP = "127.0.0.1",
               MinLatency = 0,
               Name = "[FR] Paris",
               Port = 5058,
@@ -80,7 +80,7 @@ namespace Webservices
           },
           CommServer = new PhotonView()
           {
-            IP = "163.172.110.23",
+            IP = "127.0.0.1",
             MinLatency = 0,
             Name = "CommServer",
             Port = 5057,
@@ -182,7 +182,7 @@ namespace Webservices
     {
       using (MemoryStream bytes = new MemoryStream())
       {
-        StringProxy.Serialize((Stream) bytes, "163.172.110.23");
+        StringProxy.Serialize((Stream) bytes, "127.0.0.1");
         return bytes.ToArray();
       }
     }
@@ -200,7 +200,7 @@ namespace Webservices
     {
       PhotonView photonView1 = new PhotonView()
       {
-        IP = "163.172.110.23",
+        IP = "127.0.0.1",
         MinLatency = 0,
         Name = "CommServer",
         Port = 5055,
@@ -210,7 +210,7 @@ namespace Webservices
       };
       PhotonView photonView2 = new PhotonView()
       {
-        IP = "163.172.110.23",
+        IP = "127.0.0.1",
         MinLatency = 0,
         Name = "[EU] Croatia",
         Port = 5056,
