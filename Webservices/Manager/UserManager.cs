@@ -66,8 +66,6 @@ namespace Webservices.Manager
 
     internal static Task<bool> IsNameUsed(string name)
     {
-            // ISSUE: object of a compiler-generated type is created
-            // ISSUE: variable of a compiler-generated type
             return Task.FromResult(((IQueryable<UserDocument>)IMongoCollectionExtensions.AsQueryable<UserDocument>(sm_database.Collection, (AggregateOptions)null)).Where((UserDocument f) => f.Member.PublicProfile.Name.ToLower() == name.ToLower()).Count() != 0);
         }
 

@@ -77,15 +77,11 @@ namespace Webservices.Manager
 
     internal static Task<bool> IsClanNameUsed(string name)
     {
-            // ISSUE: object of a compiler-generated type is created
-            // ISSUE: variable of a compiler-generated type
             return Task.FromResult(((IQueryable<ClanDocument>)IMongoCollectionExtensions.AsQueryable<ClanDocument>(sm_database.Collection, (AggregateOptions)null)).Where((ClanDocument f) => (f.Clan).Name.ToLower() == name.ToLower()).Count() != 0);
         }
 
     internal static Task<bool> IsClanTagUsed(string tag)
     {
-            // ISSUE: object of a compiler-generated type is created
-            // ISSUE: variable of a compiler-generated type
             return Task.FromResult(((IQueryable<ClanDocument>)IMongoCollectionExtensions.AsQueryable<ClanDocument>(sm_database.Collection, (AggregateOptions)null)).Where((ClanDocument f) => (f.Clan).Tag.ToLower() == tag.ToLower()).Count() != 0);
         }
 
