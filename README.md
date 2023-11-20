@@ -141,7 +141,7 @@ It might show .NET Framework 3.5 missing, which can be ignored.
 Start PhotonController.exe.  
 The PhotonController will be started at your taskbar tray, rightclick and find UberStrok, click Start as application.   
 
-#Steps for Realtime not starting (PhotonLicense.dll Blocked).
+### Steps for Realtime not starting (PhotonLicense.dll Blocked).
 Link: https://stackoverflow.com/questions/34400546/could-not-load-file-or-assembly-operation-is-not-supported-exception-from-hres
 Check the PhotonCLR.log file to get the error code that cause the service to shutdown.
 if you see this error (HRESULT: 0x80131515) it means that the PhotonLicensing.dll is blocked.
