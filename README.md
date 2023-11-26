@@ -140,3 +140,16 @@ Paste Photon License to: bin_Win64 or bin_Win32
 It might show .NET Framework 3.5 missing, which can be ignored.   
 Start PhotonController.exe.  
 The PhotonController will be started at your taskbar tray, rightclick and find UberStrok, click Start as application.   
+
+### Steps for Realtime not starting (PhotonLicense.dll Blocked).
+Link: https://stackoverflow.com/questions/34400546/could-not-load-file-or-assembly-operation-is-not-supported-exception-from-hres \
+Check the PhotonCLR.log file to get the error code that causes the service to shutdown.\
+If you see this error (HRESULT: 0x80131515) it means that the PhotonLicensing.dll is blocked. \
+File locations:
+- PhotonRealTimeServer/bin_Win64 or 
+- PhotonRealTimeServer/bin_Win32 \
+
+Right click the PhotonLicensing.dll and open the file properties.
+There will be a security flag noting that the file came from another computer and might be blocked to protect your computer.
+Select the unblock option and Apply the change.
+Realtime servers should start fine now.
