@@ -1,4 +1,3 @@
-*.cache
 # Logging files
 *.log
 # Packages
@@ -18,9 +17,10 @@ bfg.jar
 packages/
 
 # Build files
-Webservices/**/bin/
-Webservices/**/obj/
-
+src/**/bin/
+tests/**/bin/
+src/**/obj/
+tests/**/obj/
 
 # Libraries
 libs/uberstrike/*.dll
