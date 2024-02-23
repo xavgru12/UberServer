@@ -1,0 +1,47 @@
+[INFO] 09:39:29 GameApplication - Loading configuration at C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin\uberstrok.realtime.server.json
+[INFO] 09:39:29 GameApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 09:39:29 GameApplication - 	CompositeHashes(0)
+[INFO] 09:39:29 GameApplication - 	JunkHashes(0)
+[INFO] 09:39:29 GameApplication - 	HeartbeatTimeout = 5
+[INFO] 09:39:29 GameApplication - 	HeartbeatInterval = 5
+[INFO] 09:39:29 GameApplication - Setup GameApplication... Complete
+[INFO] 09:42:54 GameApplication - Accepted new connection at 127.0.0.1:57850.
+[INFO] 09:42:55 GameApplication - Accepted new connection at 127.0.0.1:57851.
+[ERROR] 09:43:05 GamePeerOperationHandler - Peer attempted to update loadout but was not associated with any Actor.
+[INFO] 09:43:05 GamePeer - Authenticating AAAAJwAAAABlxD+i:35f4c85cf2d8b5d28e8b1c7f6f4a36767d68e4ec23541193c2015ce8565fd786 at 127.0.0.1:57851
+[DEBUG] 09:43:05 GamePeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 09:43:05 GamePeer - Retrieving Loadout from http://127.0.0.1:5000/2.0/
+[INFO] 09:43:05 TeamDeathMatchGameRoom - (room "$ Taplioware $":0 0/10 state WaitingForPlayers) has been reset.
+[INFO] 09:43:05 GameRoomManager - Created (room "$ Taplioware $":0 0/10 state WaitingForPlayers)
+[INFO] 09:43:05 GameRoomManager - Room ID: 5c601d11-6a9b-4187-8831-2dee14f0be4d
+[INFO] 09:43:05 GameRoomManager - Sending generated Url to web service...A TeamDeathMatch room had created in game! Join now with https://localhost:5000/join?roomId=24AEE8CEDA56B945B29C6AD1C2507087AF119B5D13263784E8CB3F9AECBB2940897032FE60C44A1281864B50E5AB34C8
+[INFO] 09:43:05 GameActor - (actor <39> "$ Taplioware $":0 state None in (room "$ Taplioware $":0 0/10 state WaitingForPlayers)) has been reset with armor capacity 100.
+[INFO] 09:43:05 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state Overview in (room "$ Taplioware $":0 0/10 state WaitingForPlayers)) joined.
+[INFO] 09:43:14 GameActor - (actor <39> "$ Taplioware $":0 state None in (room "$ Taplioware $":0 0/10 state WaitingForPlayers)) has been reset with armor capacity 100.
+[INFO] 09:43:14 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state None in (room "$ Taplioware $":0 1/10 state WaitingForPlayers)) joined game in team BLUE.
+[INFO] 09:43:42 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state WaitingForPlayers in (room "$ Taplioware $":0 0/10 state WaitingForPlayers)) left game. RTT: 7 var<RTT>: 7 NumFailures: 0
+[INFO] 09:43:42 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state WaitingForPlayers in (room "$ Taplioware $":0 0/10 state WaitingForPlayers)) left.
+[INFO] 09:43:42 GameRoomManager - Removed (room "$ Taplioware $":0 0/10 state WaitingForPlayers)
+[INFO] 09:54:05 GameApplication - Accepted new connection at 127.0.0.1:65468.
+[INFO] 09:54:06 GameApplication - Accepted new connection at 127.0.0.1:65469.
+[INFO] 09:57:07 GameApplication - Accepted new connection at 127.0.0.1:63088.
+[INFO] 09:57:07 GameApplication - Accepted new connection at 127.0.0.1:63089.
+[ERROR] 09:57:16 GamePeerOperationHandler - Peer attempted to update loadout but was not associated with any Actor.
+[INFO] 09:57:16 GamePeer - Authenticating AAAAJwAAAABlxD+j:de19d4b5bb4315005cc17b80304b637dbb445aad441d591b467408b4faecbcc7 at 127.0.0.1:63089
+[DEBUG] 09:57:16 GamePeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 09:57:16 GamePeer - Retrieving Loadout from http://127.0.0.1:5000/2.0/
+[INFO] 09:57:16 TeamDeathMatchGameRoom - (room "$ Taplioware $":0 0/10 state WaitingForPlayers) has been reset.
+[INFO] 09:57:16 GameRoomManager - Created (room "$ Taplioware $":1 0/10 state WaitingForPlayers)
+[INFO] 09:57:16 GameRoomManager - Room ID: 33353926-1132-4fce-9f0a-ce9b36fecad6
+[INFO] 09:57:16 GameRoomManager - Sending generated Url to web service...A TeamDeathMatch room had created in game! Join now with https://localhost:5000/join?roomId=EBA2CCA5C6138F7DC7A45CAB74A2D1A2CCBA70D9BAE63E4F9805D5B7661B215338215E87E6A981CAA903B126FD5CF92F
+[INFO] 09:57:16 GameActor - (actor <39> "$ Taplioware $":0 state None in (room "$ Taplioware $":1 0/10 state WaitingForPlayers)) has been reset with armor capacity 100.
+[INFO] 09:57:16 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state Overview in (room "$ Taplioware $":1 0/10 state WaitingForPlayers)) joined.
+[INFO] 09:57:19 GameActor - (actor <39> "$ Taplioware $":0 state None in (room "$ Taplioware $":1 0/10 state WaitingForPlayers)) has been reset with armor capacity 100.
+[INFO] 09:57:19 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state None in (room "$ Taplioware $":1 1/10 state WaitingForPlayers)) joined game in team BLUE.
+[DEBUG] 09:57:23 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state Countdown in (room "$ Taplioware $":1 1/10 state Countdown)) spawned at (27.18394,17.182,-85.78404):0.
+[DEBUG] 09:58:02 PowerUpManager - Respawned power-up with ID: 6
+[DEBUG] 09:58:14 PowerUpManager - Respawned power-up with ID: 1
+[INFO] 09:58:33 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state Playing in (room "$ Taplioware $":1 0/10 state Running)) left game. RTT: -1 var<RTT>: -1 NumFailures: -1
+[INFO] 09:58:33 TeamDeathMatchGameRoom - (actor <39> "$ Taplioware $":0 state Playing in (room "$ Taplioware $":1 0/10 state End)) left.
+[INFO] 09:58:33 GameRoomManager - Removed (room "$ Taplioware $":1 0/10 state End)
+[INFO] 09:58:52 GameApplication - TearDown GameApplication... Complete

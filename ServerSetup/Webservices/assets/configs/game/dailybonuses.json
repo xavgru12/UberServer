@@ -1,0 +1,19 @@
+{
+  "ID": 1,
+  "BonusView": [
+    {
+      "Streak": 0,
+      "RewardClass": -1,
+      "Label": "100 points",
+      "Amount": 100,
+      "Duration": -1
+    },
+    {
+      "Streak": 1,
+      "RewardClass": 68,
+      "Label": "4 days",
+      "Amount": -1,
+      "Duration": 1
+    }
+  ]
+}

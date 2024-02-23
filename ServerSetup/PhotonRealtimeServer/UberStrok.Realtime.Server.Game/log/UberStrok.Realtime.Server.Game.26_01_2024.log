@@ -1,0 +1,31 @@
+[INFO] 02:29:38 GameApplication - Loading configuration at C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin\uberstrok.realtime.server.json
+[INFO] 02:29:38 GameApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 02:29:38 GameApplication - 	CompositeHashes(0)
+[INFO] 02:29:38 GameApplication - 	JunkHashes(0)
+[INFO] 02:29:38 GameApplication - 	HeartbeatTimeout = 5
+[INFO] 02:29:38 GameApplication - 	HeartbeatInterval = 5
+[INFO] 02:29:38 GameApplication - Setup GameApplication... Complete
+[INFO] 02:34:27 GameApplication - Loading configuration at C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin\uberstrok.realtime.server.json
+[INFO] 02:34:27 GameApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 02:34:27 GameApplication - 	CompositeHashes(0)
+[INFO] 02:34:27 GameApplication - 	JunkHashes(0)
+[INFO] 02:34:27 GameApplication - 	HeartbeatTimeout = 5
+[INFO] 02:34:27 GameApplication - 	HeartbeatInterval = 5
+[INFO] 02:34:27 GameApplication - Setup GameApplication... Complete
+[INFO] 03:09:40 GameApplication - TearDown GameApplication... Complete
+[INFO] 03:23:09 GameApplication - Loading configuration at C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin\uberstrok.realtime.server.json
+[INFO] 03:23:09 GameApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 03:23:09 GameApplication - 	CompositeHashes(0)
+[INFO] 03:23:09 GameApplication - 	JunkHashes(0)
+[INFO] 03:23:09 GameApplication - 	HeartbeatTimeout = 5
+[INFO] 03:23:09 GameApplication - 	HeartbeatInterval = 5
+[INFO] 03:23:09 GameApplication - Setup GameApplication... Complete
+[INFO] 03:28:28 GameApplication - TearDown GameApplication... Complete
+[INFO] 03:29:02 GameApplication - Loading configuration at C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin\uberstrok.realtime.server.json
+[INFO] 03:29:02 GameApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 03:29:02 GameApplication - 	CompositeHashes(0)
+[INFO] 03:29:02 GameApplication - 	JunkHashes(0)
+[INFO] 03:29:02 GameApplication - 	HeartbeatTimeout = 5
+[INFO] 03:29:02 GameApplication - 	HeartbeatInterval = 5
+[INFO] 03:29:02 GameApplication - Setup GameApplication... Complete
+[INFO] 05:04:15 GameApplication - TearDown GameApplication... Complete

@@ -1,0 +1,71 @@
+[INFO] 07:06:57 CommApplication - Loading configuration at C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Comm\bin\uberstrok.realtime.server.json
+[INFO] 07:06:58 CommApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 07:06:58 CommApplication - 	CompositeHashes(0)
+[INFO] 07:06:58 CommApplication - 	JunkHashes(0)
+[INFO] 07:06:58 CommApplication - 	HeartbeatTimeout = 5
+[INFO] 07:06:58 CommApplication - 	HeartbeatInterval = 5
+[DEBUG] 07:06:58 SocketCommunicaion - Starting web socket.
+[DEBUG] 07:06:58 SocketCommunicaion - Web Socket Initialised
+[INFO] 07:06:59 CommApplication - Setup CommApplication... Complete
+[INFO] 07:07:36 CommApplication - Accepted new connection at 127.0.0.1:61891.
+[INFO] 07:07:36 CommPeer - Authenticating AAAAJwAAAABlwsnH:a4d3cd5c1fb5cce13fdecce411a8ad3844d060d199e4810880a2fab9800364a2 at 127.0.0.1:61891
+[DEBUG] 07:07:36 CommPeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 07:07:36 LobbyRoom - CommPeer joined the room 39
+[ERROR] 07:07:36 CommPeer - Error while handling request on CommPeerOperationHandler -> :1
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\UberBeatDB\Mute.txt'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding)
+   at System.IO.File.InternalReadAllLines(String path, Encoding encoding)
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.CheckMute(CommPeer peer, Boolean nottick) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 83
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.Join(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 61
+   at UberStrok.Realtime.Server.Comm.CommPeerOperationHandler.OnAuthenticationRequest(CommPeer peer, String authToken, String magicHash, Boolean isMac) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\CommPeerOperationHandler.cs:line 27
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.AuthenticationRequest(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 44
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 25
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[DEBUG] 07:09:00 LobbyRoom - Command executed by User Viz:?msg 39
+[ERROR] 07:09:06 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 657
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[DEBUG] 07:09:18 LobbyRoom - Command executed by User Viz:?msg 39 Yes
+[INFO] 07:09:39 CommApplication - TearDown CommApplication... Complete
+[INFO] 07:09:39 LobbyRoom - 39 Disconnected ManagedDisconnect -> 
+[DEBUG] 07:09:39 LobbyRoom - CommPeer left the room 39
+[INFO] 09:55:42 CommApplication - Loading configuration at C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Comm\bin\uberstrok.realtime.server.json
+[INFO] 09:55:42 CommApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 09:55:42 CommApplication - 	CompositeHashes(0)
+[INFO] 09:55:42 CommApplication - 	JunkHashes(0)
+[INFO] 09:55:42 CommApplication - 	HeartbeatTimeout = 5
+[INFO] 09:55:42 CommApplication - 	HeartbeatInterval = 5
+[DEBUG] 09:55:43 SocketCommunicaion - Starting web socket.
+[DEBUG] 09:55:43 SocketCommunicaion - Web Socket Initialised
+[INFO] 09:55:45 CommApplication - Setup CommApplication... Complete
+[INFO] 09:56:31 CommApplication - Accepted new connection at 127.0.0.1:59351.
+[INFO] 09:56:31 CommPeer - Authenticating AAAAJwAAAABlwvFe:221f87a335dce234c860e2554e6c7ce9a1fdfdbd564614aa535e24a5d2c82e92 at 127.0.0.1:59351
+[DEBUG] 09:56:31 CommPeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 09:56:31 LobbyRoom - CommPeer joined the room 39
+[ERROR] 09:56:31 CommPeer - Error while handling request on CommPeerOperationHandler -> :1
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\UberBeatDB\Mute.txt'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding)
+   at System.IO.File.InternalReadAllLines(String path, Encoding encoding)
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.CheckMute(CommPeer peer, Boolean nottick) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 83
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.Join(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 61
+   at UberStrok.Realtime.Server.Comm.CommPeerOperationHandler.OnAuthenticationRequest(CommPeer peer, String authToken, String magicHash, Boolean isMac) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\CommPeerOperationHandler.cs:line 27
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.AuthenticationRequest(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 44
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 25
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7 - Copy\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[INFO] 09:58:50 CommApplication - TearDown CommApplication... Complete
+[INFO] 09:58:50 LobbyRoom - 39 Disconnected ManagedDisconnect -> 
+[DEBUG] 09:58:50 LobbyRoom - CommPeer left the room 39

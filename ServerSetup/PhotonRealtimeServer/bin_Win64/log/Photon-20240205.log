@@ -1,0 +1,12 @@
+27472: 21:14:04.310 - ---
+27472: 21:14:04.310 - Service: "Photon Socket Server" starting
+27472: 21:14:04.310 - Config File: C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\bin_Win64\PhotonServer.config
+27472: 21:14:04.311 - Will produce at most: 10 crash dumps
+27472: 21:14:04.311 - Service shutting down
+27472: 21:14:04.313 - Service shut down complete
+48880: 23:02:33.590 - ---
+48880: 23:02:33.590 - Service: "Photon Socket Server" starting
+48880: 23:02:33.590 - Config File: C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\bin_Win64\PhotonServer.config
+48880: 23:02:33.591 - Will produce at most: 10 crash dumps
+48880: 23:02:33.591 - Service shutting down
+48880: 23:02:33.592 - Service shut down complete

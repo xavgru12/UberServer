@@ -1,0 +1,12 @@
+6984: 19:09:39.675 - ---
+6984: 19:09:39.675 - Service: "Photon Socket Server" starting
+6984: 19:09:39.675 - Config File: C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\bin_Win64\PhotonServer.config
+6984: 19:09:39.676 - Will produce at most: 10 crash dumps
+6984: 19:09:39.676 - Service shutting down
+6984: 19:09:39.677 - Service shut down complete
+31056: 21:58:50.589 - ---
+31056: 21:58:50.589 - Service: "Photon Socket Server" starting
+31056: 21:58:50.589 - Config File: C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\bin_Win64\PhotonServer.config
+31056: 21:58:50.590 - Will produce at most: 10 crash dumps
+31056: 21:58:50.590 - Service shutting down
+31056: 21:58:50.593 - Service shut down complete

@@ -1,0 +1,32 @@
+[INFO] 07:48:52 UberStrok.WebServices.AspNetCore.Core.Discord.UDPListener - Detected own IP as 67.238.141.240
+[INFO] 07:48:52 UberStrok.WebServices.AspNetCore.Core.Discord.UDPListener - UDP Listener Started.
+[INFO] 07:48:52 Microsoft.Hosting.Lifetime - Now listening on: http://0.0.0.0:5000
+[INFO] 07:48:52 Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+[INFO] 07:48:52 Microsoft.Hosting.Lifetime - Hosting environment: Production
+[INFO] 07:48:52 Microsoft.Hosting.Lifetime - Content root path: C:\Users\Gerar\Desktop\ServerSetup - Copy\Webservices
+[INFO] 07:49:08 SoapCore.SoapEndpointMiddleware - Request for operation IApplicationAsyncWebServiceContract.AuthenticateApplication received
+[INFO] 07:49:08 UberStrok.WebServices.AspNetCore.WebService.ApplicationWebService - Authenticating client v4.8.6 -> Steam.
+[INFO] 07:49:10 SoapCore.SoapEndpointMiddleware - Request for operation IAuthenticationAsyncWebServiceContract.LoginSteam received
+[INFO] 07:49:10 SoapCore.SoapEndpointMiddleware - Request for operation IRelationshipAsyncWebServiceContract.GetContactsByGroups received
+[INFO] 07:49:10 UberStrok.WebServices.AspNetCore.Core.Discord.CoreDiscord - UberStrike TestBot:User with CMID 39, Name: Venom Phoenix, SteamID 76561198202225702 and HWID:
+MAC:9C:6B:00:12:F9:4E
+HDD:00000000000000000026B77852972015.
+BIOS:1438442-93
+MOTHERBOARD:M80-G2024202169
+UNITY:99a17bc5c681b4c2d7c7431156113191bb1459a4has logged in.
+[INFO] 07:49:10 SoapCore.SoapEndpointMiddleware - Request for operation IApplicationAsyncWebServiceContract.GetConfigurationData received
+[INFO] 07:49:10 SoapCore.SoapEndpointMiddleware - Request for operation IApplicationAsyncWebServiceContract.GetMaps received
+[INFO] 07:49:10 SoapCore.SoapEndpointMiddleware - Request for operation IShopAsyncWebServiceContract.GetShop received
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IUserAsyncWebServiceContract.GetInventory received
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IUserAsyncWebServiceContract.GetLoadout received
+[INFO] 07:49:11 UberStrok.WebServices.AspNetCore.Core.Discord.CoreDiscord - UberStrike TestBot:User with Name: Venom Phoenix
+has logged in.
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IUserAsyncWebServiceContract.GetMember received
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IClanAsyncWebServiceContract.GetMyClanId received
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IClanAsyncWebServiceContract.GetOwnClan received
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IRelationshipAsyncWebServiceContract.GetContactRequests received
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IPrivateMessageAsyncWebServiceContract.GetAllMessageThreadsForUser received
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IClanAsyncWebServiceContract.GetPendingGroupInvitations received
+[INFO] 07:49:11 SoapCore.SoapEndpointMiddleware - Request for operation IShopAsyncWebServiceContract.GetBundles received
+[INFO] 07:49:12 SoapCore.SoapEndpointMiddleware - Request for operation IClanAsyncWebServiceContract.GetAllGroupInvitations received
+[INFO] 07:49:12 SoapCore.SoapEndpointMiddleware - Request for operation IUserAsyncWebServiceContract.GetMember received

@@ -1,0 +1,16 @@
+﻿{
+    "CommServer": {
+        "IP": "127.0.0.1",
+        "Port": 5055
+    },
+    "GameServers": [
+        {
+            "Name": "Testserver 4.8.7",
+            "IP": "127.0.0.1",
+            "Region": 1,
+            "Port": 5056,
+            "UsageType": 1,
+            "MinLatency": 500
+        }
+    ]
+}

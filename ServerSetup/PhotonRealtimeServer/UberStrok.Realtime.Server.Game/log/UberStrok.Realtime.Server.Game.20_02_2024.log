@@ -1,0 +1,8 @@
+[INFO] 07:48:44 GameApplication - Loading configuration at C:\Users\Gerar\Desktop\ServerSetup - Copy\PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin\uberstrok.realtime.server.json
+[INFO] 07:48:44 GameApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 07:48:44 GameApplication - 	CompositeHashes(0)
+[INFO] 07:48:44 GameApplication - 	JunkHashes(0)
+[INFO] 07:48:44 GameApplication - 	HeartbeatTimeout = 5
+[INFO] 07:48:44 GameApplication - 	HeartbeatInterval = 5
+[INFO] 07:48:44 GameApplication - Setup GameApplication... Complete
+[INFO] 07:51:56 GameApplication - TearDown GameApplication... Complete

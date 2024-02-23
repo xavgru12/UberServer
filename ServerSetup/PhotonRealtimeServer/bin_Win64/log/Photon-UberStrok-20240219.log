@@ -1,0 +1,179 @@
+25164: 19:48:38.329 - ---
+25164: 19:48:38.329 - Service: "Photon Socket Server" starting
+25164: 19:48:38.329 - Config File: C:\Users\Gerar\Desktop\ServerSetup - Copy\PhotonRealtimeServer\bin_Win64\PhotonServer.config
+25164: 19:48:38.331 - Will produce at most: 10 crash dumps
+25164: 19:48:38.331 - Action: run as exe
+25164: 19:48:38.331 - Server Starting...
+25164: 19:48:38.331 -    Tick count: 432605437 (wraps in: 44.7033 days)
+25164: 19:48:38.331 - Tick count 64: 432605437
+25164: 19:48:38.331 - Photon Version: 4.0.28.2962
+25164: 19:48:38.331 - PID: 12052
+25164: 19:48:38.331 - Config File: C:\Users\Gerar\Desktop\ServerSetup - Copy\PhotonRealtimeServer\bin_Win64\PhotonServer.config
+25164: 19:48:38.332 - Will NOT log unimportant exceptions
+25164: 19:48:38.335 - Not using performance counters as they are not currently installed. Run the service with /InstallCounters to install them.
+25164: 19:48:38.335 - Shutdown timeout enabled: 30000ms
+25164: 19:48:38.335 - Starting I/O thread pool with 2 threads
+25164: 19:48:38.336 - Using Standard allocator
+25164: 19:48:38.336 - Max message size: 512000
+25164: 19:48:38.336 - Starting business logic thread pool with the following settings
+25164: 19:48:38.336 - InitialThreads: 4 threads
+25164: 19:48:38.336 - MinThreads: 4 threads
+25164: 19:48:38.336 - Thread pool is fixed size
+25164: 19:48:38.336 - Starting ENet thread pool with the following settings
+25164: 19:48:38.336 - InitialThreads: 2 threads
+25164: 19:48:38.336 - MinThreads: 2 threads
+25164: 19:48:38.336 - Thread pool is fixed size
+25164: 19:48:38.336 - OnlyDispatchTimers: False
+25164: 19:48:38.337 - S2S: flow control: Max pending writes: 50
+25164: 19:48:38.337 - S2S: flow control: Max queued buffers: 200
+25164: 19:48:38.337 - S2S: flow control: Max pending writes MUX: 500
+25164: 19:48:38.337 - S2S: flow control: Max queued buffers MUX: 2000
+25164: 19:48:38.337 - S2S: MaxInboundMessageSize: 512000
+25164: 19:48:38.337 - S2S: MaxOutboundMessageSize: 512000
+25164: 19:48:38.337 - S2S: No inactivity timeout
+25164: 19:48:38.339 - WebSocket S2S: MaxInboundMessageSize: 512000
+25164: 19:48:38.339 - WebSocket S2S: MaxOutboundMessageSize: 512000
+25164: 19:48:38.339 - WebSocket S2S: No inactivity timeout
+25164: 19:48:38.339 - Max Reliable Data In Transit (awaiting ACKs) per peer : 16384 bytes
+25164: 19:48:38.339 - Per peer bandwidth limit
+25164: 19:48:38.339 - Transmit Rate Limit: 256 KB/Sec
+25164: 19:48:38.339 - Limit period: 200ms
+25164: 19:48:38.339 - Limit per period: 52428 bytes
+25164: 19:48:38.339 - Max queued data for transmission per peer: 163840 bytes
+25164: 19:48:38.339 - Minimum retransmit timeout: 200
+25164: 19:48:38.339 - No Maximum retransmit timeout
+25164: 19:48:38.339 - Minimum ENet timeout: 5000ms
+25164: 19:48:38.339 - Maximum ENet timeout: 30000ms
+25164: 19:48:38.339 - Max Inbound Reliable Data Queued (awaiting resends of earlier sequence numbers) per peer : 163840 bytes
+25164: 19:48:38.339 - No RTT ACK adjustment timeout
+25164: 19:48:38.339 - Outbound ENet: MaxInboundMessageSize: 512000
+25164: 19:48:38.339 - Outbound ENet: MaxOutboundMessageSize: 512000
+25164: 19:48:38.342 - GetRuntime - About to load CLR - versions available:
+25164: 19:48:38.342 - v2.0.50727
+25164: 19:48:38.342 - v4.0.30319
+25164: 19:48:38.342 - Configuration requests: "v2.0.50727"
+25164: 19:48:38.342 - About to load version: "v2.0.50727"
+25164: 19:48:38.376 - About to load runtime: PhotonHostRuntime.PhotonDomainManager from PhotonHostRuntime, Culture=neutral, PublicKeyToken=02C301B61B060C4D
+25164: 19:48:38.376 - CLRBaseDirectory set to "C:\Users\Gerar\Desktop\ServerSetup - Copy\PhotonRealtimeServer"
+25164: 19:48:38.376 - Optimising event broadcast for 20 or more peers
+25164: 19:48:38.377 - Start: About to load CLR - versions available:
+25164: 19:48:38.377 - v2.0.50727
+25164: 19:48:38.377 - v4.0.30319
+25164: 19:48:38.377 - No preference in configuration file, will load latest.
+25164: 19:48:38.377 - About to load version: "v4.0.30319"
+25164: 19:48:38.377 - Loaded version: "v4.0.30319"
+25164: 19:48:38.451 - Photon host runtime loaded
+25164: 19:48:39.768 - LICENSE: No license file was found. Starting with Bootstrap License.
+25164: 19:48:39.768 - License is valid.
+25164: 19:48:39.768 - Licensed for 20 concurrent connections.
+25164: 19:48:39.768 - ENet: Max Reliable Data In Transit (awaiting ACKs) per peer : 16384 bytes
+25164: 19:48:39.768 - ENet: Per peer bandwidth limit
+25164: 19:48:39.768 - ENet: Transmit Rate Limit: 256 KB/Sec
+25164: 19:48:39.768 - ENet: Limit period: 200ms
+25164: 19:48:39.768 - ENet: Limit per period: 52428 bytes
+25164: 19:48:39.768 - ENet: Max queued data for transmission per peer: 163840 bytes
+25164: 19:48:39.768 - ENet: Minimum retransmit timeout: 200
+25164: 19:48:39.768 - No Maximum retransmit timeout
+25164: 19:48:39.768 - ENet: Minimum timeout: 5000ms
+25164: 19:48:39.768 - ENet: Maximum timeout: 30000ms
+25164: 19:48:39.768 - ENet: Max Inbound Reliable Data Queued (awaiting resends of earlier sequence numbers) per peer : 163840 bytes
+25164: 19:48:39.768 - No RTT ACK adjustment timeout
+25164: 19:48:39.768 - About to load application: UberStrok.Realtime.Server.Comm from UberStrok.Realtime.Server.Comm
+25164: 19:48:39.768 - Auto restart is enabled for application, existing connections will be terminated during restart
+25164: 19:48:39.768 - Application will restart 1000ms after the last change detected
+25164: 19:48:39.768 - Application will restart if files matching the following are changed: "dll;config"
+25164: 19:48:39.768 - Application will NOT restart if files matching the following are changed: "log4net.config"
+25164: 19:48:40.583 - Taking reference on default app domain
+25164: 19:48:41.613 - Application: "UberStrok.Realtime.Server.Comm" started in app domain: 2
+25164: 19:48:41.613 - About to load application: UberStrok.Realtime.Server.Game from UberStrok.Realtime.Server.Game
+25164: 19:48:41.613 - Auto restart is enabled for application, existing connections will be terminated during restart
+25164: 19:48:41.613 - Application will restart 1000ms after the last change detected
+25164: 19:48:41.613 - Application will restart if files matching the following are changed: "dll;config"
+25164: 19:48:41.613 - Application will NOT restart if files matching the following are changed: "log4net.config"
+25164: 19:48:42.142 - Taking reference on default app domain
+25164: 19:48:42.242 - Application: "UberStrok.Realtime.Server.Game" started in app domain: 3
+25164: 19:48:42.242 - Forcing all applications ids to: "UberStrok.Realtime.Server.Comm"
+25164: 19:48:42.242 - MaxInboundMessageSize: 512000
+25164: 19:48:42.242 - MaxOutboundMessageSize: 512000
+25164: 19:48:42.242 - UDP address specified as: "0.0.0.0" adding listener to each available IPv4 address
+25164: 19:48:42.243 - Adding UDP listener on: 192.168.0.31: 5055 with a listen backlog of: 500
+25164: 19:48:42.243 - Adding UDP listener on: 127.0.0.1: 5055 with a listen backlog of: 500
+25164: 19:48:42.243 - Forcing all applications ids to: "UberStrok.Realtime.Server.Game"
+25164: 19:48:42.243 - MaxInboundMessageSize: 512000
+25164: 19:48:42.243 - MaxOutboundMessageSize: 512000
+25164: 19:48:42.243 - UDP address specified as: "0.0.0.0" adding listener to each available IPv4 address
+25164: 19:48:42.243 - Adding UDP listener on: 192.168.0.31: 5056 with a listen backlog of: 500
+25164: 19:48:42.243 - Adding UDP listener on: 127.0.0.1: 5056 with a listen backlog of: 500
+25164: 19:48:42.251 - Service is running...
+25164: 19:51:56.923 - Service is stopped...
+25164: 19:51:56.923 - Server shutting down...
+25164: 19:51:56.923 - Shutdown monitoring enabled, 30000ms before process abort
+25164: 19:51:56.923 - Notifying CLR applications of shutdown...
+25164: 19:51:56.923 - RequestApplicationStop: 2
+25164: 19:51:56.924 - RequestApplicationStop: 3
+25164: 19:51:56.924 - RequestStop: defalt app domain
+25164: 19:51:56.925 - Shutting down WebSocket Outbound Connection Manager...
+25164: 19:51:56.925 - Shutting down TCP Outbound Connection Manager...
+25164: 19:51:56.925 - Shutting down ENet Outbound Connection Manager...
+25164: 19:51:56.925 - Disconnecting all outbound peers...
+25164: 19:51:56.925 - Shutting down ENet host...
+25164: 19:51:56.925 - Disconnecting all peers...
+25164: 19:51:56.925 - CUDPSocketServer::OnError() - CUDPSocketServer::OnSendToCompletionError(): An operation was attempted on something that is not a socket.
+25164: 19:51:56.925 - 1 disconnected
+25164: 19:51:56.925 - Shutting down socket servers...
+25164: 19:51:56.925 - Shutting down ENet thread pool...
+25164: 19:51:56.925 - Shutting down TCP inactivity timers...
+25164: 19:51:56.925 - ENet Host - Resetting all peers...
+25164: 19:51:56.925 - WaitingForShutdownToComplete: UDP:127.0.0.1:5055
+25164: 19:51:56.925 - OnShutdownCompleted: UDP:127.0.0.1:5055
+25164: 19:51:56.925 - WaitingForShutdownToComplete: UDP:127.0.0.1:5056
+25164: 19:51:56.925 - OnShutdownCompleted: UDP:127.0.0.1:5056
+25164: 19:51:56.925 - WaitingForShutdownToComplete: UDP:192.168.0.31:5055
+25164: 19:51:56.925 - OnShutdownCompleted: UDP:192.168.0.31:5055
+25164: 19:51:56.925 - WaitingForShutdownToComplete: UDP:192.168.0.31:5056
+25164: 19:51:56.925 - OnShutdownCompleted: UDP:192.168.0.31:5056
+25164: 19:51:56.925 - Shutting down CLR applications...
+29384: 19:51:56.926 - CManagedHost::OnDefaultAction() - OPR_AppDomainUnload - eUnloadAppDomain
+14120: 19:51:56.930 - Unloading Domain: ApplicationName = 'UberStrok.Realtime.Server.Comm', DomainId='2'
+25164: 19:51:56.975 - Shutting down business logic thread pool...
+25164: 19:51:56.976 - Shutting down I/O thread pool...
+25164: 19:51:56.976 - Destroying servers
+25164: 19:51:56.976 - Destroying WebSocket Outbound Connection Manager
+25164: 19:51:56.976 - Destroying TCP Outbound Connection Manager
+25164: 19:51:56.976 - Destroying TCP inactivity timer
+25164: 19:51:56.977 - Destroying ENet timer wheel
+25164: 19:51:56.977 - Destroying ENet host
+25164: 19:51:56.977 - Destroying ENet outbound host
+25164: 19:51:56.977 - Destroying HTTP inactivity timer
+25164: 19:51:56.977 - Destroying HTTP host
+25164: 19:51:56.977 - Destroying HTTP Chunk host
+25164: 19:51:56.977 - Flushing ENET buffer allocator...
+25164: 19:51:56.978 - Flushing TCP buffer handle allocator...
+25164: 19:51:56.978 - Flushing stream socket allocator...
+25164: 19:51:56.978 - Flushing inbound datagram socket allocator...
+25164: 19:51:56.980 - Flushing outbound datagram socket allocator...
+25164: 19:51:56.980 - Destroying CLR dispatcher
+25164: 19:51:56.980 - Destroying CLR applications
+25164: 19:51:56.981 - ~CCLRApplicationCollection() - Waiting up to 10 seconds for the CLR to release all of our objects
+25164: 19:52:06.985 - ~CCLRApplicationCollection() - CLR failed to release all COM objects. Photon peers and application sinks may have leaked
+25164: 19:52:06.985 - ~CManagedHost() - Release default app domain
+25164: 19:52:06.985 - CManagedHost::OnDomainUnload() - 1
+25164: 19:52:06.985 - ~CManagedHost() - Waiting up to 10 seconds for CLR shutdown...
+25164: 19:52:06.985 - ~CManagedHost
+25164: 19:52:06.985 - Destroying ENet thread pool
+25164: 19:52:06.985 - Destroying Business logic thread pool
+25164: 19:52:06.985 - Destroying I/O thread pool
+25164: 19:52:06.985 - Destroying ENet buffer allocator
+25164: 19:52:06.985 - Destroying TCP buffer allocator
+25164: 19:52:06.985 - Destroying TCP socket allocator
+25164: 19:52:06.985 - Destroying ENet inbound socket allocator
+25164: 19:52:06.985 - Destroying ENet outbound socket allocator
+25164: 19:52:06.985 - Destroying shared datagram flow control data
+25164: 19:52:06.985 - 
+25164: 19:52:06.985 - WARNING: ***************************************************************
+25164: 19:52:06.985 - WARNING: CPhotonPeer leaks detected
+25164: 19:52:06.985 - WARNING: ***************************************************************
+25164: 19:52:06.985 - 
+25164: 19:52:06.985 - Shutdown complete...
+25164: 19:52:06.986 - Service shutting down: leaks detected. Errorcode: 106
+25164: 19:52:06.988 - Service shut down complete

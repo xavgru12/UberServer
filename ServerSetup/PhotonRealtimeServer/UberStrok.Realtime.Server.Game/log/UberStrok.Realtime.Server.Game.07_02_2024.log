@@ -1,0 +1,62 @@
+[INFO] 07:06:59 GameApplication - Loading configuration at C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin\uberstrok.realtime.server.json
+[INFO] 07:06:59 GameApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 07:06:59 GameApplication - 	CompositeHashes(0)
+[INFO] 07:06:59 GameApplication - 	JunkHashes(0)
+[INFO] 07:06:59 GameApplication - 	HeartbeatTimeout = 5
+[INFO] 07:06:59 GameApplication - 	HeartbeatInterval = 5
+[INFO] 07:06:59 GameApplication - Setup GameApplication... Complete
+[INFO] 07:07:40 GameApplication - Accepted new connection at 127.0.0.1:64513.
+[INFO] 07:07:43 GameApplication - Accepted new connection at 127.0.0.1:64389.
+[ERROR] 07:07:48 GamePeerOperationHandler - Peer attempted to update loadout but was not associated with any Actor.
+[INFO] 07:07:48 GamePeer - Authenticating AAAAJwAAAABlwsnH:a4d3cd5c1fb5cce13fdecce411a8ad3844d060d199e4810880a2fab9800364a2 at 127.0.0.1:64389
+[DEBUG] 07:07:48 GamePeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 07:07:48 GamePeer - Retrieving Loadout from http://127.0.0.1:5000/2.0/
+[INFO] 07:07:48 TeamDeathMatchGameRoom - (room "Viz":0 0/10 state WaitingForPlayers) has been reset.
+[INFO] 07:07:48 GameRoomManager - Created (room "Viz":0 0/10 state WaitingForPlayers)
+[INFO] 07:07:48 GameRoomManager - Room ID: ea9b85b9-8062-4428-b0c5-866ae77566e3
+[INFO] 07:07:48 GameRoomManager - Sending generated Url to web service...A TeamDeathMatch room had created in game! Join now with https://localhost:5000/join?roomId=8779C3764A455611148A7BA74A51D09F3F8CFDABADD9CD71F984CB823421906529C720D9493EE1946878FB31DE3BF0AA
+[INFO] 07:07:48 GameActor - (actor <39> "Viz":0 state None in (room "Viz":0 0/10 state WaitingForPlayers)) has been reset with armor capacity 0.
+[INFO] 07:07:48 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Overview in (room "Viz":0 0/10 state WaitingForPlayers)) joined.
+[INFO] 07:07:52 GameActor - (actor <39> "Viz":0 state None in (room "Viz":0 0/10 state WaitingForPlayers)) has been reset with armor capacity 0.
+[INFO] 07:07:52 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state None in (room "Viz":0 1/10 state WaitingForPlayers)) joined game in team BLUE.
+[DEBUG] 07:08:01 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Countdown in (room "Viz":0 1/10 state Countdown)) spawned at (27.18394,17.182,-85.78404):0.
+[INFO] 07:08:12 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Killed in (room "Viz":0 1/10 state Running)) was killed by (actor <39> "Viz":0 state Killed in (room "Viz":0 1/10 state Running)).
+[DEBUG] 07:08:18 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Playing in (room "Viz":0 1/10 state Running)) spawned at (17.33992,4.071484,-39.22461):0.
+[DEBUG] 07:08:29 PowerUpManager - Respawned power-up with ID: 30
+[INFO] 07:09:04 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Playing in (room "Viz":0 0/10 state Running)) left game. RTT: 7 var<RTT>: 7 NumFailures: 0
+[INFO] 07:09:04 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Playing in (room "Viz":0 0/10 state End)) left.
+[INFO] 07:09:04 GameRoomManager - Removed (room "Viz":0 0/10 state End)
+[INFO] 07:09:22 GameApplication - Accepted new connection at 127.0.0.1:57551.
+[INFO] 07:09:24 GameApplication - Accepted new connection at 127.0.0.1:57552.
+[INFO] 07:09:39 GameApplication - TearDown GameApplication... Complete
+[INFO] 09:55:45 GameApplication - Loading configuration at C:\Users\Gerar\Desktop\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Game\bin\uberstrok.realtime.server.json
+[INFO] 09:55:45 GameApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 09:55:45 GameApplication - 	CompositeHashes(0)
+[INFO] 09:55:45 GameApplication - 	JunkHashes(0)
+[INFO] 09:55:45 GameApplication - 	HeartbeatTimeout = 5
+[INFO] 09:55:45 GameApplication - 	HeartbeatInterval = 5
+[INFO] 09:55:45 GameApplication - Setup GameApplication... Complete
+[INFO] 09:56:31 GameApplication - Accepted new connection at 127.0.0.1:59352.
+[INFO] 09:56:32 GameApplication - Accepted new connection at 127.0.0.1:59353.
+[ERROR] 09:56:38 GamePeerOperationHandler - Peer attempted to update loadout but was not associated with any Actor.
+[INFO] 09:56:38 GamePeer - Authenticating AAAAJwAAAABlwvFe:221f87a335dce234c860e2554e6c7ce9a1fdfdbd564614aa535e24a5d2c82e92 at 127.0.0.1:59353
+[DEBUG] 09:56:38 GamePeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 09:56:38 GamePeer - Retrieving Loadout from http://127.0.0.1:5000/2.0/
+[INFO] 09:56:38 TeamDeathMatchGameRoom - (room "Viz":0 0/10 state WaitingForPlayers) has been reset.
+[INFO] 09:56:38 GameRoomManager - Created (room "Viz":0 0/10 state WaitingForPlayers)
+[INFO] 09:56:38 GameRoomManager - Room ID: 0a2121c9-f14c-4d18-b9d7-719e7c34b8a6
+[INFO] 09:56:38 GameRoomManager - Sending generated Url to web service...A TeamDeathMatch room had created in game! Join now with https://localhost:5000/join?roomId=0C4CA71E3FB52832DA882FFFED43E9B0FC52FC833CC69907697FC7CB8F4CC4335F550C704BDCB375F1E76DE8A1BB4ECE
+[INFO] 09:56:38 GameActor - (actor <39> "Viz":0 state None in (room "Viz":0 0/10 state WaitingForPlayers)) has been reset with armor capacity 0.
+[INFO] 09:56:38 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Overview in (room "Viz":0 0/10 state WaitingForPlayers)) joined.
+[INFO] 09:56:42 GameActor - (actor <39> "Viz":0 state None in (room "Viz":0 0/10 state WaitingForPlayers)) has been reset with armor capacity 0.
+[INFO] 09:56:42 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state None in (room "Viz":0 1/10 state WaitingForPlayers)) joined game in team BLUE.
+[DEBUG] 09:56:45 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Countdown in (room "Viz":0 1/10 state Countdown)) spawned at (-27.82993,4.071484,-35.8446):0.
+[DEBUG] 09:57:58 PowerUpManager - Respawned power-up with ID: 1
+[DEBUG] 09:58:03 PowerUpManager - Respawned power-up with ID: 5
+[DEBUG] 09:58:08 PowerUpManager - Respawned power-up with ID: 0
+[INFO] 09:58:31 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Killed in (room "Viz":0 1/10 state Running)) was killed by (actor <39> "Viz":0 state Killed in (room "Viz":0 1/10 state Running)).
+[DEBUG] 09:58:31 PowerUpManager - Respawned power-up with ID: 11
+[INFO] 09:58:34 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Killed in (room "Viz":0 0/10 state Running)) left game. RTT: 7 var<RTT>: 7 NumFailures: 0
+[INFO] 09:58:34 TeamDeathMatchGameRoom - (actor <39> "Viz":0 state Killed in (room "Viz":0 0/10 state End)) left.
+[INFO] 09:58:34 GameRoomManager - Removed (room "Viz":0 0/10 state End)
+[INFO] 09:58:50 GameApplication - TearDown GameApplication... Complete

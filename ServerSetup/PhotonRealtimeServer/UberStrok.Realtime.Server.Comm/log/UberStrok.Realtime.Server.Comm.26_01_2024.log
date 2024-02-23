@@ -1,0 +1,506 @@
+[INFO] 02:29:33 CommApplication - Loading configuration at C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Comm\bin\uberstrok.realtime.server.json
+[INFO] 02:29:33 CommApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 02:29:33 CommApplication - 	CompositeHashes(0)
+[INFO] 02:29:33 CommApplication - 	JunkHashes(0)
+[INFO] 02:29:33 CommApplication - 	HeartbeatTimeout = 5
+[INFO] 02:29:33 CommApplication - 	HeartbeatInterval = 5
+[DEBUG] 02:29:33 SocketCommunicaion - Starting web socket.
+[DEBUG] 02:29:33 SocketCommunicaion - Web Socket Initialised
+[INFO] 02:29:38 CommApplication - Setup CommApplication... Complete
+[INFO] 02:31:54 CommApplication - Accepted new connection at 127.0.0.1:52215.
+[INFO] 02:31:54 CommPeer - Authenticating AAAAJwAAAABls1/p:2062ae33cb3d3a635ff35ea121dde5d27be1468f22df6e9923d68dc45e4f3590 at 127.0.0.1:52215
+[DEBUG] 02:31:54 CommPeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 02:31:55 LobbyRoom - CommPeer joined the room 39
+[ERROR] 02:31:55 CommPeer - Error while handling request on CommPeerOperationHandler -> :1
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\UberBeatDB\Database.json'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalWriteAllText(String path, String contents, Encoding encoding, Boolean checkHost)
+   at UberStrok.Realtime.Server.Comm.UberBeat.UberBeatManager..ctor() in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\UberBeat\UberBeatManager.cs:line 44
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.CheckMute(CommPeer peer, Boolean nottick) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 80
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.Join(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 59
+   at UberStrok.Realtime.Server.Comm.CommPeerOperationHandler.OnAuthenticationRequest(CommPeer peer, String authToken, String magicHash, Boolean isMac) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\CommPeerOperationHandler.cs:line 27
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.AuthenticationRequest(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 44
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 25
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[DEBUG] 02:32:14 LobbyRoom - Command executed by User Cryophoenix:?ban 39
+[INFO] 02:32:48 LobbyRoom - 39 Disconnected TimeoutDisconnect -> 
+00000000004E5330 Sent: 133249968 now: 133277421 (diff: 27453 >= max: 30000) new rtt timeout: 3200 since last touch:28468
+Disc: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133277421 Sent: 133249968 Diff: 27453 Resends: 9
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133273359 Timeout: 3200 Resend: 9
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133269296 Timeout: 3200 Resend: 8
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133265234 Timeout: 3200 Resend: 7
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133261156 Timeout: 3200 Resend: 6
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133257093 Timeout: 3200 Resend: 5
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133253031 Timeout: 3200 Resend: 4
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133251406 Timeout: 1600 Resend: 3
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133250593 Timeout: 800 Resend: 2
+Resend: Seq: 19 CH: 255 RTT: 27 VAR: 42 Now: 133250187 Timeout: 400 Resend: 1
+   ACK: Seq: 18 CH: 255 RTT: 27 VAR: 42 Now: 133248937 Sent: 133248937 Diff: 0
+   ACK: Seq: 17 CH: 255 RTT: 30 VAR: 47 Now: 133247906 Sent: 133247906 Diff: 0
+   ACK: Seq: 16 CH: 255 RTT: 34 VAR: 53 Now: 133246140 Sent: 133246140 Diff: 0
+   ACK: Seq: 15 CH: 255 RTT: 38 VAR: 60 Now: 133245109 Sent: 133245109 Diff: 0
+   ACK: Seq: 4 CH: 0 RTT: 43 VAR: 68 Now: 133243078 Sent: 133243078 Diff: 0
+   ACK: Seq: 14 CH: 255 RTT: 49 VAR: 77 Now: 133242890 Sent: 133242890 Diff: 0
+   ACK: Seq: 13 CH: 255 RTT: 55 VAR: 86 Now: 133240984 Sent: 133240984 Diff: 0
+   ACK: Seq: 12 CH: 255 RTT: 62 VAR: 97 Now: 133239968 Sent: 133239968 Diff: 0
+   ACK: Seq: 11 CH: 255 RTT: 70 VAR: 109 Now: 133238921 Sent: 133238921 Diff: 0
+   ACK: Seq: 10 CH: 255 RTT: 80 VAR: 122 Now: 133237890 Sent: 133237890 Diff: 0
+   ACK: Seq: 9 CH: 255 RTT: 91 VAR: 136 Now: 133235984 Sent: 133235984 Diff: 0
+   ACK: Seq: 8 CH: 255 RTT: 104 VAR: 152 Now: 133234953 Sent: 133234953 Diff: 0
+   ACK: Seq: 7 CH: 255 RTT: 118 VAR: 167 Now: 133233921 Sent: 133233921 Diff: 0
+   ACK: Seq: 6 CH: 255 RTT: 134 VAR: 183 Now: 133232890 Sent: 133232890 Diff: 0
+   ACK: Seq: 5 CH: 255 RTT: 153 VAR: 199 Now: 133231734 Sent: 133231734 Diff: 0
+   ACK: Seq: 4 CH: 255 RTT: 174 VAR: 214 Now: 133230703 Sent: 133230703 Diff: 0
+   ACK: Seq: 3 CH: 255 RTT: 198 VAR: 228 Now: 133229671 Sent: 133229671 Diff: 0
+   ACK: Seq: 3 CH: 0 RTT: 226 VAR: 238 Now: 133227640 Sent: 133227640 Diff: 0
+   ACK: Seq: 2 CH: 255 RTT: 258 VAR: 242 Now: 133226062 Sent: 133226062 Diff: 0
+   ACK: Seq: 1 CH: 255 RTT: 294 VAR: 237 Now: 133225015 Sent: 133225015 Diff: 0
+   ACK: Seq: 2 CH: 0 RTT: 336 VAR: 218 Now: 133224000 Sent: 133224000 Diff: 0
+   ACK: Seq: 1 CH: 0 RTT: 384 VAR: 178 Now: 133223593 Sent: 133223593 Diff: 0
+   ACK: Seq: 0 CH: 255 RTT: 438 VAR: 109 Now: 133223562 Sent: 133223562 Diff: 0
+  Init: RTT: 500
+[DEBUG] 02:32:48 LobbyRoom - CommPeer left the room 39
+[INFO] 02:33:45 CommApplication - TearDown CommApplication... Complete
+[INFO] 02:34:25 CommApplication - Loading configuration at C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Comm\bin\uberstrok.realtime.server.json
+[INFO] 02:34:25 CommApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 02:34:25 CommApplication - 	CompositeHashes(0)
+[INFO] 02:34:25 CommApplication - 	JunkHashes(0)
+[INFO] 02:34:25 CommApplication - 	HeartbeatTimeout = 5
+[INFO] 02:34:25 CommApplication - 	HeartbeatInterval = 5
+[DEBUG] 02:34:25 SocketCommunicaion - Starting web socket.
+[DEBUG] 02:34:25 SocketCommunicaion - Web Socket Initialised
+[INFO] 02:34:27 CommApplication - Setup CommApplication... Complete
+[INFO] 02:34:27 CommApplication - Accepted new connection at 127.0.0.1:65369.
+[INFO] 02:34:27 CommPeer - Authenticating AAAAJwAAAABls1/q:9e7c7a75d630dc86e9de9cf8c3ec3856937ed3554a5c1589d8f78a1886ca5917 at 127.0.0.1:65369
+[DEBUG] 02:34:27 CommPeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 02:34:27 LobbyRoom - CommPeer joined the room 39
+[ERROR] 02:34:27 CommPeer - Error while handling request on CommPeerOperationHandler -> :1
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\UberBeatDB\Database.json'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalWriteAllText(String path, String contents, Encoding encoding, Boolean checkHost)
+   at UberStrok.Realtime.Server.Comm.UberBeat.UberBeatManager..ctor() in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\UberBeat\UberBeatManager.cs:line 44
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.CheckMute(CommPeer peer, Boolean nottick) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 80
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.Join(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 59
+   at UberStrok.Realtime.Server.Comm.CommPeerOperationHandler.OnAuthenticationRequest(CommPeer peer, String authToken, String magicHash, Boolean isMac) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\CommPeerOperationHandler.cs:line 27
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.AuthenticationRequest(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 44
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 25
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[INFO] 02:34:46 CommApplication - Accepted new connection at 127.0.0.1:58922.
+[INFO] 02:34:46 CommPeer - Authenticating AAAAJwAAAABls1/r:e0bbbc8afbdea19f70981fd7acb0e1bd124781f69619b2bc2c2425c3939ada87 at 127.0.0.1:58922
+[DEBUG] 02:34:46 CommPeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 02:34:46 LobbyRoom - CommPeer left the room 39
+[DEBUG] 02:34:46 LobbyRoom - CommPeer joined the room 39
+[ERROR] 02:34:46 CommPeer - Error while handling request on CommPeerOperationHandler -> :1
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\UberBeatDB\Database.json'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalWriteAllText(String path, String contents, Encoding encoding, Boolean checkHost)
+   at UberStrok.Realtime.Server.Comm.UberBeat.UberBeatManager..ctor() in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\UberBeat\UberBeatManager.cs:line 44
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.CheckMute(CommPeer peer, Boolean nottick) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 80
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.Join(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 59
+   at UberStrok.Realtime.Server.Comm.CommPeerOperationHandler.OnAuthenticationRequest(CommPeer peer, String authToken, String magicHash, Boolean isMac) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\CommPeerOperationHandler.cs:line 27
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.AuthenticationRequest(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 44
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 25
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[DEBUG] 02:34:58 LobbyRoom - Command executed by User Cryophoenix:?ban 39
+[ERROR] 02:34:59 LobbyRoom - Failed to ban user.
+System.ServiceModel.EndpointNotFoundException: There was no endpoint listening at http://moderationwebserviceclient/Testing/ModerationWebService that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. ---> System.Net.WebException: The remote name could not be resolved: 'moderationwebserviceclient'
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at UberStrok.WebServices.Contracts.IModerationWebServiceContract.BanCmid(Byte[] data)
+   at UberStrok.WebServices.Client.ModerationWebServiceClient.BanCmid(String authToken, Int32 cmid) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.WebServices.Client\ModerationWebServiceClient.cs:line 47
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.DoBan(CommPeer peer, Int32 cmid) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 649
+[ERROR] 02:35:15 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 641
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[ERROR] 02:35:45 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 641
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[INFO] 02:36:40 LobbyRoom - 39 Disconnected TimeoutDisconnect -> 
+000000000C7782C0 Sent: 133481578 now: 133509031 (diff: 27453 >= max: 30000) new rtt timeout: 3200 since last touch:28469
+Disc: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133509031 Sent: 133481578 Diff: 27453 Resends: 9
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133504968 Timeout: 3200 Resend: 9
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133500906 Timeout: 3200 Resend: 8
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133496828 Timeout: 3200 Resend: 7
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133492750 Timeout: 3200 Resend: 6
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133488687 Timeout: 3200 Resend: 5
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133484625 Timeout: 3200 Resend: 4
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133483015 Timeout: 1600 Resend: 3
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133482203 Timeout: 800 Resend: 2
+Resend: Seq: 67 CH: 255 RTT: 7 VAR: 7 Now: 133481796 Timeout: 400 Resend: 1
+   ACK: Seq: 66 CH: 255 RTT: 7 VAR: 7 Now: 133480546 Sent: 133480546 Diff: 0
+   ACK: Seq: 65 CH: 255 RTT: 7 VAR: 7 Now: 133479500 Sent: 133479500 Diff: 0
+   ACK: Seq: 64 CH: 255 RTT: 7 VAR: 7 Now: 133477609 Sent: 133477609 Diff: 0
+   ACK: Seq: 63 CH: 255 RTT: 7 VAR: 7 Now: 133476578 Sent: 133476578 Diff: 0
+   ACK: Seq: 62 CH: 255 RTT: 7 VAR: 7 Now: 133475546 Sent: 133475546 Diff: 0
+   ACK: Seq: 61 CH: 255 RTT: 7 VAR: 7 Now: 133474500 Sent: 133474500 Diff: 0
+   ACK: Seq: 60 CH: 255 RTT: 7 VAR: 7 Now: 133472609 Sent: 133472609 Diff: 0
+   ACK: Seq: 59 CH: 255 RTT: 7 VAR: 7 Now: 133471578 Sent: 133471578 Diff: 0
+   ACK: Seq: 58 CH: 255 RTT: 7 VAR: 7 Now: 133470546 Sent: 133470546 Diff: 0
+   ACK: Seq: 57 CH: 255 RTT: 7 VAR: 7 Now: 133469500 Sent: 133469500 Diff: 0
+   ACK: Seq: 56 CH: 255 RTT: 7 VAR: 7 Now: 133467609 Sent: 133467609 Diff: 0
+   ACK: Seq: 55 CH: 255 RTT: 7 VAR: 7 Now: 133466578 Sent: 133466578 Diff: 0
+   ACK: Seq: 54 CH: 255 RTT: 7 VAR: 7 Now: 133465546 Sent: 133465546 Diff: 0
+   ACK: Seq: 53 CH: 255 RTT: 7 VAR: 7 Now: 133464500 Sent: 133464500 Diff: 0
+   ACK: Seq: 52 CH: 255 RTT: 7 VAR: 7 Now: 133462609 Sent: 133462609 Diff: 0
+   ACK: Seq: 51 CH: 255 RTT: 7 VAR: 7 Now: 133460546 Sent: 133460546 Diff: 0
+   ACK: Seq: 50 CH: 255 RTT: 7 VAR: 7 Now: 133459515 Sent: 133459515 Diff: 0
+   ACK: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 133458093 Sent: 133458093 Diff: 0
+   ACK: Seq: 48 CH: 255 RTT: 7 VAR: 7 Now: 133457062 Sent: 133457062 Diff: 0
+   ACK: Seq: 47 CH: 255 RTT: 7 VAR: 7 Now: 133456015 Sent: 133456015 Diff: 0
+   ACK: Seq: 46 CH: 255 RTT: 7 VAR: 7 Now: 133454500 Sent: 133454500 Diff: 0
+   ACK: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 133452609 Sent: 133452609 Diff: 0
+   ACK: Seq: 44 CH: 255 RTT: 7 VAR: 7 Now: 133451578 Sent: 133451578 Diff: 0
+   ACK: Seq: 43 CH: 255 RTT: 7 VAR: 7 Now: 133450546 Sent: 133450546 Diff: 0
+   ACK: Seq: 42 CH: 255 RTT: 7 VAR: 7 Now: 133449500 Sent: 133449500 Diff: 0
+   ACK: Seq: 41 CH: 255 RTT: 7 VAR: 7 Now: 133447609 Sent: 133447609 Diff: 0
+   ACK: Seq: 40 CH: 255 RTT: 7 VAR: 7 Now: 133446578 Sent: 133446578 Diff: 0
+   ACK: Seq: 39 CH: 255 RTT: 7 VAR: 7 Now: 133445546 Sent: 133445546 Diff: 0
+   ACK: Seq: 38 CH: 255 RTT: 7 VAR: 7 Now: 133444500 Sent: 133444500 Diff: 0
+   ACK: Seq: 37 CH: 255 RTT: 8 VAR: 8 Now: 133442625 Sent: 133442609 Diff: 16
+   ACK: Seq: 36 CH: 255 RTT: 7 VAR: 7 Now: 133441578 Sent: 133441578 Diff: 0
+   ACK: Seq: 35 CH: 255 RTT: 7 VAR: 7 Now: 133440546 Sent: 133440546 Diff: 0
+   ACK: Seq: 34 CH: 255 RTT: 7 VAR: 7 Now: 133439500 Sent: 133439500 Diff: 0
+   ACK: Seq: 33 CH: 255 RTT: 7 VAR: 8 Now: 133437609 Sent: 133437609 Diff: 0
+   ACK: Seq: 32 CH: 255 RTT: 7 VAR: 9 Now: 133436578 Sent: 133436578 Diff: 0
+   ACK: Seq: 31 CH: 255 RTT: 7 VAR: 10 Now: 133435546 Sent: 133435546 Diff: 0
+   ACK: Seq: 30 CH: 255 RTT: 8 VAR: 12 Now: 133434500 Sent: 133434500 Diff: 0
+   ACK: Seq: 29 CH: 255 RTT: 9 VAR: 13 Now: 133432593 Sent: 133432593 Diff: 0
+   ACK: Seq: 28 CH: 255 RTT: 10 VAR: 14 Now: 133431578 Sent: 133431578 Diff: 0
+   ACK: Seq: 27 CH: 255 RTT: 11 VAR: 16 Now: 133430531 Sent: 133430531 Diff: 0
+[DEBUG] 02:36:40 LobbyRoom - CommPeer left the room 39
+[INFO] 03:09:40 CommApplication - TearDown CommApplication... Complete
+[INFO] 03:23:06 CommApplication - Loading configuration at C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Comm\bin\uberstrok.realtime.server.json
+[INFO] 03:23:06 CommApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 03:23:06 CommApplication - 	CompositeHashes(0)
+[INFO] 03:23:06 CommApplication - 	JunkHashes(0)
+[INFO] 03:23:06 CommApplication - 	HeartbeatTimeout = 5
+[INFO] 03:23:06 CommApplication - 	HeartbeatInterval = 5
+[DEBUG] 03:23:06 SocketCommunicaion - Starting web socket.
+[DEBUG] 03:23:06 SocketCommunicaion - Web Socket Initialised
+[INFO] 03:23:09 CommApplication - Setup CommApplication... Complete
+[INFO] 03:23:26 CommApplication - Accepted new connection at 127.0.0.1:58548.
+[INFO] 03:23:26 CommPeer - Authenticating AAAAJwAAAABls2v8:30120d1b917479841f98073fd586f51728c7d9adff293cae5b1c769874bb2296 at 127.0.0.1:58548
+[DEBUG] 03:23:26 CommPeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 03:23:26 LobbyRoom - CommPeer joined the room 39
+[ERROR] 03:23:26 CommPeer - Error while handling request on CommPeerOperationHandler -> :1
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\UberBeatDB\Database.json'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalWriteAllText(String path, String contents, Encoding encoding, Boolean checkHost)
+   at UberStrok.Realtime.Server.Comm.UberBeat.UberBeatManager..ctor() in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\UberBeat\UberBeatManager.cs:line 44
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.CheckMute(CommPeer peer, Boolean nottick) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 80
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.Join(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 59
+   at UberStrok.Realtime.Server.Comm.CommPeerOperationHandler.OnAuthenticationRequest(CommPeer peer, String authToken, String magicHash, Boolean isMac) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\CommPeerOperationHandler.cs:line 27
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.AuthenticationRequest(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 44
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 25
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[DEBUG] 03:23:34 LobbyRoom - Command executed by User Cryophoenix:?ban 39
+[ERROR] 03:23:34 LobbyRoom - Unhandled exception while handling command.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.DoBan(CommPeer peer, Int32 cmid) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 671
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnChatMessageToAll(CommPeer peer, String message) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 119
+[ERROR] 03:23:54 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 646
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[ERROR] 03:24:24 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 646
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[INFO] 03:24:57 LobbyRoom - 39 Disconnected TimeoutDisconnect -> 
+000000000C6EFC40 Sent: 136379109 now: 136406546 (diff: 27437 >= max: 30000) new rtt timeout: 3200 since last touch:28453
+Disc: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136406546 Sent: 136379109 Diff: 27437 Resends: 9
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136402484 Timeout: 3200 Resend: 9
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136398421 Timeout: 3200 Resend: 8
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136394359 Timeout: 3200 Resend: 7
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136390281 Timeout: 3200 Resend: 6
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136386218 Timeout: 3200 Resend: 5
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136382156 Timeout: 3200 Resend: 4
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136380546 Timeout: 1600 Resend: 3
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136379734 Timeout: 800 Resend: 2
+Resend: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 136379328 Timeout: 400 Resend: 1
+   ACK: Seq: 48 CH: 255 RTT: 7 VAR: 7 Now: 136378015 Sent: 136378015 Diff: 0
+   ACK: Seq: 47 CH: 255 RTT: 7 VAR: 7 Now: 136376968 Sent: 136376968 Diff: 0
+   ACK: Seq: 46 CH: 255 RTT: 7 VAR: 7 Now: 136375937 Sent: 136375937 Diff: 0
+   ACK: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136374125 Sent: 136374125 Diff: 0
+   ACK: Seq: 44 CH: 255 RTT: 7 VAR: 7 Now: 136372234 Sent: 136372234 Diff: 0
+   ACK: Seq: 43 CH: 255 RTT: 7 VAR: 7 Now: 136371203 Sent: 136371203 Diff: 0
+   ACK: Seq: 42 CH: 255 RTT: 7 VAR: 7 Now: 136370171 Sent: 136370171 Diff: 0
+   ACK: Seq: 41 CH: 255 RTT: 7 VAR: 7 Now: 136369125 Sent: 136369125 Diff: 0
+   ACK: Seq: 40 CH: 255 RTT: 7 VAR: 7 Now: 136367218 Sent: 136367218 Diff: 0
+   ACK: Seq: 39 CH: 255 RTT: 7 VAR: 7 Now: 136366187 Sent: 136366187 Diff: 0
+   ACK: Seq: 38 CH: 255 RTT: 7 VAR: 7 Now: 136365156 Sent: 136365156 Diff: 0
+   ACK: Seq: 37 CH: 255 RTT: 7 VAR: 7 Now: 136364109 Sent: 136364109 Diff: 0
+   ACK: Seq: 36 CH: 255 RTT: 7 VAR: 7 Now: 136362218 Sent: 136362218 Diff: 0
+   ACK: Seq: 35 CH: 255 RTT: 7 VAR: 7 Now: 136361187 Sent: 136361187 Diff: 0
+   ACK: Seq: 34 CH: 255 RTT: 7 VAR: 7 Now: 136360156 Sent: 136360156 Diff: 0
+   ACK: Seq: 33 CH: 255 RTT: 7 VAR: 7 Now: 136359109 Sent: 136359109 Diff: 0
+   ACK: Seq: 32 CH: 255 RTT: 7 VAR: 8 Now: 136357218 Sent: 136357218 Diff: 0
+   ACK: Seq: 31 CH: 255 RTT: 7 VAR: 9 Now: 136356187 Sent: 136356187 Diff: 0
+   ACK: Seq: 30 CH: 255 RTT: 7 VAR: 10 Now: 136355156 Sent: 136355156 Diff: 0
+   ACK: Seq: 29 CH: 255 RTT: 8 VAR: 12 Now: 136354109 Sent: 136354109 Diff: 0
+   ACK: Seq: 28 CH: 255 RTT: 9 VAR: 13 Now: 136352203 Sent: 136352203 Diff: 0
+   ACK: Seq: 27 CH: 255 RTT: 10 VAR: 14 Now: 136351171 Sent: 136351171 Diff: 0
+   ACK: Seq: 26 CH: 255 RTT: 11 VAR: 16 Now: 136350140 Sent: 136350140 Diff: 0
+   ACK: Seq: 25 CH: 255 RTT: 12 VAR: 18 Now: 136349109 Sent: 136349109 Diff: 0
+   ACK: Seq: 24 CH: 255 RTT: 13 VAR: 20 Now: 136348015 Sent: 136348015 Diff: 0
+   ACK: Seq: 23 CH: 255 RTT: 14 VAR: 22 Now: 136346968 Sent: 136346968 Diff: 0
+   ACK: Seq: 22 CH: 255 RTT: 16 VAR: 25 Now: 136345937 Sent: 136345937 Diff: 0
+   ACK: Seq: 21 CH: 255 RTT: 18 VAR: 28 Now: 136344109 Sent: 136344109 Diff: 0
+   ACK: Seq: 20 CH: 255 RTT: 20 VAR: 32 Now: 136342203 Sent: 136342203 Diff: 0
+   ACK: Seq: 19 CH: 255 RTT: 22 VAR: 35 Now: 136341171 Sent: 136341171 Diff: 0
+   ACK: Seq: 18 CH: 255 RTT: 25 VAR: 39 Now: 136340140 Sent: 136340140 Diff: 0
+   ACK: Seq: 17 CH: 255 RTT: 28 VAR: 44 Now: 136339109 Sent: 136339109 Diff: 0
+   ACK: Seq: 16 CH: 255 RTT: 31 VAR: 49 Now: 136337203 Sent: 136337203 Diff: 0
+   ACK: Seq: 15 CH: 255 RTT: 35 VAR: 56 Now: 136336171 Sent: 136336171 Diff: 0
+   ACK: Seq: 14 CH: 255 RTT: 39 VAR: 63 Now: 136335140 Sent: 136335140 Diff: 0
+   ACK: Seq: 13 CH: 255 RTT: 44 VAR: 72 Now: 136334109 Sent: 136334109 Diff: 0
+   ACK: Seq: 12 CH: 255 RTT: 50 VAR: 81 Now: 136332203 Sent: 136332203 Diff: 0
+   ACK: Seq: 11 CH: 255 RTT: 57 VAR: 91 Now: 136331171 Sent: 136331171 Diff: 0
+   ACK: Seq: 10 CH: 255 RTT: 65 VAR: 102 Now: 136330140 Sent: 136330140 Diff: 0
+   ACK: Seq: 9 CH: 255 RTT: 74 VAR: 114 Now: 136329109 Sent: 136329109 Diff: 0
+[DEBUG] 03:24:57 LobbyRoom - CommPeer left the room 39
+[INFO] 03:28:28 CommApplication - TearDown CommApplication... Complete
+[INFO] 03:29:00 CommApplication - Loading configuration at C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\ServerSetup\PhotonRealtimeServer\UberStrok.Realtime.Server.Comm\bin\uberstrok.realtime.server.json
+[INFO] 03:29:00 CommApplication - uberstrok.realtime.server.json loaded ->
+[INFO] 03:29:00 CommApplication - 	CompositeHashes(0)
+[INFO] 03:29:00 CommApplication - 	JunkHashes(0)
+[INFO] 03:29:00 CommApplication - 	HeartbeatTimeout = 5
+[INFO] 03:29:00 CommApplication - 	HeartbeatInterval = 5
+[DEBUG] 03:29:01 SocketCommunicaion - Starting web socket.
+[DEBUG] 03:29:01 SocketCommunicaion - Web Socket Initialised
+[INFO] 03:29:02 CommApplication - Setup CommApplication... Complete
+[INFO] 03:29:20 CommApplication - Accepted new connection at 127.0.0.1:53108.
+[INFO] 03:29:20 CommPeer - Authenticating AAAAJwAAAABls2v9:27b2cf32c458a8828e15f8e78fcaad8a9f8222f270acc61dade2fbd1a5a06a36 at 127.0.0.1:53108
+[DEBUG] 03:29:20 CommPeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 03:29:20 LobbyRoom - CommPeer joined the room 39
+[ERROR] 03:29:20 CommPeer - Error while handling request on CommPeerOperationHandler -> :1
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\UberBeatDB\Database.json'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalWriteAllText(String path, String contents, Encoding encoding, Boolean checkHost)
+   at UberStrok.Realtime.Server.Comm.UberBeat.UberBeatManager..ctor() in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\UberBeat\UberBeatManager.cs:line 44
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.CheckMute(CommPeer peer, Boolean nottick) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 80
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.Join(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 59
+   at UberStrok.Realtime.Server.Comm.CommPeerOperationHandler.OnAuthenticationRequest(CommPeer peer, String authToken, String magicHash, Boolean isMac) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\CommPeerOperationHandler.cs:line 27
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.AuthenticationRequest(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 44
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 25
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[DEBUG] 03:29:25 LobbyRoom - Command executed by User Cryophoenix:?ban 39
+[ERROR] 03:29:49 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 646
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[DEBUG] 03:30:00 LobbyRoom - Command executed by User Cryophoenix:?unban 39
+[ERROR] 03:30:08 CommPeer - Error while handling request on LobbyRoom -> :25
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateAllActors(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 637
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateAllActors(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 337
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 149
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[ERROR] 03:30:19 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 646
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[INFO] 03:30:49 LobbyRoom - 39 Disconnected TimeoutDisconnect -> 
+000000000D0E1E00 Sent: 136730625 now: 136758125 (diff: 27500 >= max: 30000) new rtt timeout: 3200 since last touch:28516
+Disc: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136758125 Sent: 136730625 Diff: 27500 Resends: 9
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136754062 Timeout: 3200 Resend: 9
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136750000 Timeout: 3200 Resend: 8
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136745906 Timeout: 3200 Resend: 7
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136741843 Timeout: 3200 Resend: 6
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136737781 Timeout: 3200 Resend: 5
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136733703 Timeout: 3200 Resend: 4
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136732078 Timeout: 1600 Resend: 3
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136731265 Timeout: 800 Resend: 2
+Resend: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 136730843 Timeout: 400 Resend: 1
+   ACK: Seq: 44 CH: 255 RTT: 7 VAR: 7 Now: 136729062 Sent: 136729062 Diff: 0
+   ACK: Seq: 43 CH: 255 RTT: 7 VAR: 7 Now: 136727156 Sent: 136727156 Diff: 0
+   ACK: Seq: 42 CH: 255 RTT: 7 VAR: 7 Now: 136726140 Sent: 136726140 Diff: 0
+   ACK: Seq: 41 CH: 255 RTT: 7 VAR: 7 Now: 136725093 Sent: 136725093 Diff: 0
+   ACK: Seq: 40 CH: 255 RTT: 7 VAR: 7 Now: 136724062 Sent: 136724062 Diff: 0
+   ACK: Seq: 39 CH: 255 RTT: 7 VAR: 7 Now: 136722859 Sent: 136722859 Diff: 0
+   ACK: Seq: 38 CH: 255 RTT: 7 VAR: 7 Now: 136721812 Sent: 136721812 Diff: 0
+   ACK: Seq: 37 CH: 255 RTT: 7 VAR: 7 Now: 136720781 Sent: 136720781 Diff: 0
+   ACK: Seq: 36 CH: 255 RTT: 7 VAR: 7 Now: 136719734 Sent: 136719734 Diff: 0
+   ACK: Seq: 35 CH: 255 RTT: 7 VAR: 7 Now: 136718187 Sent: 136718187 Diff: 0
+   ACK: Seq: 34 CH: 255 RTT: 7 VAR: 7 Now: 136717171 Sent: 136717171 Diff: 0
+   ACK: Seq: 33 CH: 255 RTT: 7 VAR: 7 Now: 136716140 Sent: 136716140 Diff: 0
+   ACK: Seq: 32 CH: 255 RTT: 7 VAR: 8 Now: 136715109 Sent: 136715109 Diff: 0
+   ACK: Seq: 31 CH: 255 RTT: 7 VAR: 9 Now: 136714062 Sent: 136714062 Diff: 0
+   ACK: Seq: 30 CH: 255 RTT: 7 VAR: 10 Now: 136712484 Sent: 136712484 Diff: 0
+   ACK: Seq: 29 CH: 255 RTT: 8 VAR: 12 Now: 136711437 Sent: 136711437 Diff: 0
+   ACK: Seq: 5 CH: 0 RTT: 9 VAR: 13 Now: 136709406 Sent: 136709406 Diff: 0
+   ACK: Seq: 28 CH: 255 RTT: 10 VAR: 14 Now: 136709062 Sent: 136709062 Diff: 0
+   ACK: Seq: 27 CH: 255 RTT: 11 VAR: 16 Now: 136707171 Sent: 136707171 Diff: 0
+   ACK: Seq: 26 CH: 255 RTT: 12 VAR: 18 Now: 136706140 Sent: 136706140 Diff: 0
+   ACK: Seq: 25 CH: 255 RTT: 13 VAR: 19 Now: 136705109 Sent: 136705109 Diff: 0
+   ACK: Seq: 24 CH: 255 RTT: 14 VAR: 21 Now: 136704093 Sent: 136704093 Diff: 0
+   ACK: Seq: 23 CH: 255 RTT: 16 VAR: 24 Now: 136702687 Sent: 136702687 Diff: 0
+   ACK: Seq: 22 CH: 255 RTT: 18 VAR: 26 Now: 136701656 Sent: 136701656 Diff: 0
+   ACK: Seq: 21 CH: 255 RTT: 20 VAR: 29 Now: 136700609 Sent: 136700609 Diff: 0
+   ACK: Seq: 20 CH: 255 RTT: 22 VAR: 32 Now: 136699078 Sent: 136699078 Diff: 0
+   ACK: Seq: 19 CH: 255 RTT: 25 VAR: 36 Now: 136697156 Sent: 136697156 Diff: 0
+   ACK: Seq: 18 CH: 255 RTT: 28 VAR: 40 Now: 136696125 Sent: 136696125 Diff: 0
+   ACK: Seq: 17 CH: 255 RTT: 32 VAR: 44 Now: 136694078 Sent: 136694062 Diff: 16
+   ACK: Seq: 16 CH: 255 RTT: 34 VAR: 53 Now: 136692156 Sent: 136692156 Diff: 0
+   ACK: Seq: 15 CH: 255 RTT: 38 VAR: 60 Now: 136691125 Sent: 136691125 Diff: 0
+   ACK: Seq: 14 CH: 255 RTT: 43 VAR: 68 Now: 136690093 Sent: 136690093 Diff: 0
+   ACK: Seq: 13 CH: 255 RTT: 49 VAR: 77 Now: 136687156 Sent: 136687156 Diff: 0
+   ACK: Seq: 12 CH: 255 RTT: 56 VAR: 86 Now: 136686140 Sent: 136686140 Diff: 0
+   ACK: Seq: 11 CH: 255 RTT: 63 VAR: 95 Now: 136685093 Sent: 136685093 Diff: 0
+   ACK: Seq: 10 CH: 255 RTT: 72 VAR: 106 Now: 136684078 Sent: 136684062 Diff: 16
+   ACK: Seq: 9 CH: 255 RTT: 80 VAR: 122 Now: 136682156 Sent: 136682156 Diff: 0
+   ACK: Seq: 8 CH: 255 RTT: 91 VAR: 136 Now: 136681125 Sent: 136681125 Diff: 0
+   ACK: Seq: 7 CH: 255 RTT: 104 VAR: 152 Now: 136680093 Sent: 136680093 Diff: 0
+   ACK: Seq: 6 CH: 255 RTT: 118 VAR: 167 Now: 136679062 Sent: 136679062 Diff: 0
+[DEBUG] 03:30:49 LobbyRoom - CommPeer left the room 39
+[INFO] 03:56:53 CommApplication - Accepted new connection at 127.0.0.1:58197.
+[INFO] 03:56:53 CommPeer - Authenticating AAAAJwAAAABls2v+:2ea3a9f3257d973ae066a578b0ded8ba56c9e0ec258c6ca8429fea73c90ac8e4 at 127.0.0.1:58197
+[DEBUG] 03:56:53 CommPeer - Retrieving User from http://127.0.0.1:5000/2.0/
+[DEBUG] 03:56:53 LobbyRoom - CommPeer joined the room 39
+[ERROR] 03:56:53 CommPeer - Error while handling request on CommPeerOperationHandler -> :1
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\UberBeatDB\Database.json'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalWriteAllText(String path, String contents, Encoding encoding, Boolean checkHost)
+   at UberStrok.Realtime.Server.Comm.UberBeat.UberBeatManager..ctor() in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\UberBeat\UberBeatManager.cs:line 44
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.CheckMute(CommPeer peer, Boolean nottick) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 80
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.Join(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.cs:line 59
+   at UberStrok.Realtime.Server.Comm.CommPeerOperationHandler.OnAuthenticationRequest(CommPeer peer, String authToken, String magicHash, Boolean isMac) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\CommPeerOperationHandler.cs:line 27
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.AuthenticationRequest(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 44
+   at UberStrok.Realtime.Server.Comm.BaseCommPeerOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseCommPeerOperationHandler.cs:line 25
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[DEBUG] 03:57:12 LobbyRoom - Command executed by User Cryophoenix:?ban 39
+[ERROR] 03:57:22 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 646
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[ERROR] 03:57:52 CommPeer - Error while handling request on LobbyRoom -> :26
+System.NotImplementedException: The method or operation is not implemented.
+   at UberStrok.Realtime.Server.Comm.LobbyRoom.OnUpdateContacts(CommPeer peer) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\LobbyRoom.Handler.cs:line 646
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.UpdateContacts(CommPeer peer, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 342
+   at UberStrok.Realtime.Server.Comm.BaseLobbyRoomOperationHandler.OnOperationRequest(CommPeer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server.Comm\Core\BaseLobbyRoomOperationHandler.cs:line 152
+   at OperationHandler`1.OnOperationRequest(Peer peer, Byte opCode, MemoryStream bytes) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\OperationHandler.cs:line 44
+   at Peer.OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters) in C:\Users\Gerar\Desktop\LocalHostUberStrikeServer\UberServer-4.8.7\src\UberStrok.Realtime.Server\Peer.cs:line 233
+[INFO] 03:58:43 LobbyRoom - 39 Disconnected TimeoutDisconnect -> 
+000000000D1AC960 Sent: 138405375 now: 138432843 (diff: 27468 >= max: 30000) new rtt timeout: 3200 since last touch:28484
+Disc: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138432843 Sent: 138405375 Diff: 27468 Resends: 9
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138428765 Timeout: 3200 Resend: 9
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138424703 Timeout: 3200 Resend: 8
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138420640 Timeout: 3200 Resend: 7
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138416578 Timeout: 3200 Resend: 6
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138412515 Timeout: 3200 Resend: 5
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138408453 Timeout: 3200 Resend: 4
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138406828 Timeout: 1600 Resend: 3
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138406015 Timeout: 800 Resend: 2
+Resend: Seq: 63 CH: 255 RTT: 8 VAR: 8 Now: 138405593 Timeout: 400 Resend: 1
+   ACK: Seq: 62 CH: 255 RTT: 8 VAR: 8 Now: 138404359 Sent: 138404343 Diff: 16
+   ACK: Seq: 61 CH: 255 RTT: 7 VAR: 7 Now: 138403312 Sent: 138403312 Diff: 0
+   ACK: Seq: 60 CH: 255 RTT: 7 VAR: 7 Now: 138402265 Sent: 138402265 Diff: 0
+   ACK: Seq: 59 CH: 255 RTT: 7 VAR: 7 Now: 138400375 Sent: 138400375 Diff: 0
+   ACK: Seq: 58 CH: 255 RTT: 7 VAR: 7 Now: 138399343 Sent: 138399343 Diff: 0
+   ACK: Seq: 57 CH: 255 RTT: 7 VAR: 7 Now: 138398312 Sent: 138398312 Diff: 0
+   ACK: Seq: 56 CH: 255 RTT: 7 VAR: 7 Now: 138397265 Sent: 138397265 Diff: 0
+   ACK: Seq: 55 CH: 255 RTT: 7 VAR: 7 Now: 138395359 Sent: 138395359 Diff: 0
+   ACK: Seq: 54 CH: 255 RTT: 7 VAR: 7 Now: 138394328 Sent: 138394328 Diff: 0
+   ACK: Seq: 53 CH: 255 RTT: 7 VAR: 7 Now: 138393296 Sent: 138393296 Diff: 0
+   ACK: Seq: 52 CH: 255 RTT: 7 VAR: 7 Now: 138392250 Sent: 138392250 Diff: 0
+   ACK: Seq: 51 CH: 255 RTT: 7 VAR: 7 Now: 138390390 Sent: 138390390 Diff: 0
+   ACK: Seq: 50 CH: 255 RTT: 7 VAR: 7 Now: 138389343 Sent: 138389343 Diff: 0
+   ACK: Seq: 49 CH: 255 RTT: 7 VAR: 7 Now: 138388312 Sent: 138388312 Diff: 0
+   ACK: Seq: 48 CH: 255 RTT: 7 VAR: 7 Now: 138387265 Sent: 138387265 Diff: 0
+   ACK: Seq: 47 CH: 255 RTT: 7 VAR: 7 Now: 138385796 Sent: 138385796 Diff: 0
+   ACK: Seq: 46 CH: 255 RTT: 7 VAR: 7 Now: 138384765 Sent: 138384765 Diff: 0
+   ACK: Seq: 45 CH: 255 RTT: 7 VAR: 7 Now: 138383718 Sent: 138383718 Diff: 0
+   ACK: Seq: 44 CH: 255 RTT: 7 VAR: 7 Now: 138382250 Sent: 138382250 Diff: 0
+   ACK: Seq: 43 CH: 255 RTT: 7 VAR: 7 Now: 138380359 Sent: 138380359 Diff: 0
+   ACK: Seq: 42 CH: 255 RTT: 7 VAR: 7 Now: 138379328 Sent: 138379328 Diff: 0
+   ACK: Seq: 41 CH: 255 RTT: 7 VAR: 7 Now: 138378296 Sent: 138378296 Diff: 0
+   ACK: Seq: 40 CH: 255 RTT: 7 VAR: 7 Now: 138377265 Sent: 138377265 Diff: 0
+   ACK: Seq: 39 CH: 255 RTT: 7 VAR: 7 Now: 138375359 Sent: 138375359 Diff: 0
+   ACK: Seq: 38 CH: 255 RTT: 7 VAR: 7 Now: 138374343 Sent: 138374343 Diff: 0
+   ACK: Seq: 37 CH: 255 RTT: 7 VAR: 7 Now: 138373296 Sent: 138373296 Diff: 0
+   ACK: Seq: 36 CH: 255 RTT: 7 VAR: 7 Now: 138372265 Sent: 138372265 Diff: 0
+   ACK: Seq: 35 CH: 255 RTT: 7 VAR: 7 Now: 138370359 Sent: 138370359 Diff: 0
+   ACK: Seq: 34 CH: 255 RTT: 7 VAR: 7 Now: 138369328 Sent: 138369328 Diff: 0
+   ACK: Seq: 33 CH: 255 RTT: 7 VAR: 8 Now: 138368296 Sent: 138368296 Diff: 0
+   ACK: Seq: 32 CH: 255 RTT: 7 VAR: 9 Now: 138367250 Sent: 138367250 Diff: 0
+   ACK: Seq: 31 CH: 255 RTT: 7 VAR: 10 Now: 138365359 Sent: 138365359 Diff: 0
+   ACK: Seq: 30 CH: 255 RTT: 8 VAR: 12 Now: 138364328 Sent: 138364328 Diff: 0
+   ACK: Seq: 29 CH: 255 RTT: 9 VAR: 13 Now: 138363296 Sent: 138363296 Diff: 0
+   ACK: Seq: 28 CH: 255 RTT: 10 VAR: 14 Now: 138362250 Sent: 138362250 Diff: 0
+   ACK: Seq: 27 CH: 255 RTT: 11 VAR: 16 Now: 138360343 Sent: 138360343 Diff: 0
+   ACK: Seq: 26 CH: 255 RTT: 12 VAR: 18 Now: 138358281 Sent: 138358281 Diff: 0
+   ACK: Seq: 25 CH: 255 RTT: 13 VAR: 19 Now: 138357250 Sent: 138357250 Diff: 0
+   ACK: Seq: 24 CH: 255 RTT: 14 VAR: 21 Now: 138355765 Sent: 138355765 Diff: 0
+   ACK: Seq: 23 CH: 255 RTT: 15 VAR: 24 Now: 138354734 Sent: 138354734 Diff: 0
+[DEBUG] 03:58:43 LobbyRoom - CommPeer left the room 39
+[INFO] 05:04:15 CommApplication - TearDown CommApplication... Complete
