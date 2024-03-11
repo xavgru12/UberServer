@@ -73,7 +73,47 @@ namespace UberStrok.Realtime.Server.Comm
 
         public static void CheckMute(CommPeer peer, bool nottick = true)
         {
-            
+            if (!peer.Actor.IsMuted && !nottick)
+            {
+                return;
+            }
+            UberBeatManager ubm = new UberBeatManager();
+            string[] array = File.ReadAllLines(ubm.MuteData);
+            foreach (string text in array)
+            {
+                if (!text.StartsWith(peer.Actor.Cmid + "="))
+                {
+                    continue;
+                }
+                string[] array2 = text.Split('=');
+                try
+                {
+                    DateTime dateTime = DateTime.Parse(array2[1]);
+                    if (dateTime > DateTime.UtcNow)
+                    {
+                        peer.Actor.MuteEndTime = dateTime;
+                        peer.Actor.IsMuted = true;
+                        if (nottick)
+                        {
+                            peer.Events.Lobby.SendModerationMutePlayer(true);
+                        }
+                    }
+                    else
+                    {
+                        peer.Events.Lobby.SendModerationMutePlayer(false);
+                        string text2 = File.ReadAllText(ubm.MuteData);
+                        text2 = text2.Replace(text, "");
+                        text2 = Regex.Replace(text2, "^\\s+$[\\r\\n]*", string.Empty, RegexOptions.Multiline);
+                        peer.Actor.MuteEndTime = DateTime.UtcNow;
+                        File.WriteAllText(ubm.MuteData, text2);
+                        peer.Actor.IsMuted = false;
+                    }
+                }
+                catch
+                {
+
+                }
+            }
         }
 
         public void Leave(CommPeer peer)
@@ -296,44 +336,132 @@ namespace UberStrok.Realtime.Server.Comm
             }
         }
 
+        private void BanUberBeatUser(CommPeer peer, CommPeer target, int cmid, int duration = -1)
+        {
+            UberBeatManager uberBeatManager = new UberBeatManager();
+            if (!((duration != -1) ? uberBeatManager.CreateBan(cmid, duration) : uberBeatManager.CreateBan(cmid)))
+            {
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "Couldnt find target cmid in UberBeatDB.");
+                return;
+            }
+            if (target != null)
+            {
+                if (duration == -1)
+                {
+                    target.SendError("Your account has been banned permanently.");
+                }
+                else
+                {
+                    target.SendError("Your account has been temporarily banned for " + duration + " minutes.");
+                }
+                target.Disconnect();
+                target.Dispose();
+            }
+            HashSet<string> hashSet = uberBeatManager.FindAlt(cmid);
+            HashSet<int> hashSet2 = new HashSet<int>();
+            foreach (string item in hashSet)
+            {
+                try
+                {
+                    _ = int.TryParse(item.Substring(0, item.IndexOf(" ")), out int result);
+                    _ = hashSet2.Add(result);
+                }
+                catch
+                {
+                }
+            }
+            foreach (int item2 in hashSet2)
+            {
+                try
+                {
+                    CommPeer commPeer = Find(item2);
+                    if (commPeer != null)
+                    {
+                        commPeer.SendError("Your computer has been Banned.");
+                        commPeer.Disconnect();
+                        commPeer.Dispose();
+                    }
+                }
+                catch
+                {
+                }
+            }
+            peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "Target account and hwid has been banned");
+        }
+
+        private void UnBanUberBeatUser(CommPeer peer, int cmid)
+        {
+            if (new UberBeatManager().Unban(cmid))
+            {
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "Target User Unbanned");
+            }
+            else
+            {
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "Unknown error while unbanning the user");
+            }
+        }
+
         private void FindAlts(CommPeer peer, int cmid)
         {
-           
+            HashSet<string> hashSet = new UberBeatManager().FindAlt(cmid);
+            if (hashSet.Contains("Error"))
+            {
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "Some Error happened while searching for alt");
+                return;
+            }
+            if (hashSet.Count < 1)
+            {
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "No Alternative account Found");
+                return;
+            }
+            int num = 0;
+            foreach (string item in hashSet)
+            {
+                num++;
+                peer.Events.Lobby.SendLobbyChatMessage(0, "\"UberBeat Server\" List of Alternative Accounts of: " + cmid, $"[{num}] Alt: {item} ");
+            }
         }
 
         private void GetHWID(CommPeer peer, int cmid)
         {
-
-            CommPeer commPeer = Find(cmid);
-            if (commPeer != null)
+            List<string> hWID = new UberBeatManager().GetHWID(cmid);
+            if (hWID.Contains("Error"))
             {
-                List<string> list = new List<string>(Find(cmid).Actor.HDD);
-                foreach (string item in list)
-                {
-                    peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", $"HDD {item}");
-                }
-                List<string> list2 = new List<string>(Find(cmid).Actor.MOTHERBOARD);
-                foreach (string item in list2)
-                {
-                    peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", $"Motherboard {item}");
-                }
-                List<string> list3 = new List<string>(Find(cmid).Actor.MAC);
-                foreach (string item in list3)
-                {
-                    peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", $"MAC {item}");
-                }
-                List<string> list4 = new List<string>(Find(cmid).Actor.UNITY);
-                foreach (string item in list4)
-                {
-                    peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", $"Unity {item}");
-                }
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "Some Error happened while searching for alt");
+                return;
             }
-            
+            if (hWID.Count < 1)
+            {
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "Cant find account or any hwid linked to it.");
+                return;
+            }
+            int num = 0;
+            foreach (string item in hWID)
+            {
+                num++;
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server List of stored HWIDs of: " + cmid, $"[{num}] {item} ");
+            }
         }
 
         private void FindAccounts(CommPeer peer, string query)
         {
-            
+            HashSet<string> hashSet = new UberBeatManager().FindAccounts(query);
+            if (hashSet.Contains("Error"))
+            {
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "Some Error happened while searching for alt");
+                return;
+            }
+            if (hashSet.Count < 1)
+            {
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server", "No Account Found with given name");
+                return;
+            }
+            int num = 0;
+            foreach (string item in hashSet)
+            {
+                num++;
+                peer.Events.Lobby.SendLobbyChatMessage(0, "UberBeat Server \"Search List with Similar Names: ", $"[{num}] Account: {item} ");
+            }
         }
 
         public string Message(int cmid, string message)

@@ -57,17 +57,10 @@
       <Project>{3BAAA4FD-1AF2-4C32-B059-ABF0E111693D}</Project>
       <Name>UberStrok.Core.Views</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UberStrok.Realtime.Server.Comm\UberStrok.Realtime.Server.Comm.csproj">
-      <Project>{78369a8e-687e-4b7e-ae45-e3f2cee641a2}</Project>
-      <Name>UberStrok.Realtime.Server.Comm</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UberStrok.Realtime\UberStrok.Realtime.csproj">
       <Project>{8582768E-780F-4E5A-AD26-07A14893A1B3}</Project>
       <Name>UberStrok.Realtime</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

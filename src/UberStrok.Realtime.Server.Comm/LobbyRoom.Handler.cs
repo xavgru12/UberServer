@@ -13,10 +13,7 @@ namespace UberStrok.Realtime.Server.Comm
 {
     public partial class LobbyRoom
     {
-       
         private static readonly char[] _separators = new char[1] { ' ' };
-
-        private readonly UberBeatManager uberBeatManager = new UberBeatManager();
         public override void OnDisconnect(CommPeer peer, DisconnectReason reasonCode, string reasonDetail)
         {
             Log.Info($"{peer.Actor.Cmid} Disconnected {reasonCode} -> {reasonDetail}");
@@ -102,7 +99,7 @@ namespace UberStrok.Realtime.Server.Comm
                     peer.Events.Lobby.SendLobbyChatMessage(0, "Server", "You are muted!");
                     return;
                 }
-                if ((int)peer.Actor.AccessLevel >= 4 && message.Length > 0 && message[0] == '?')
+                if ((int)peer.Actor.AccessLevel >= 6 && message.Length > 0 && message[0] == '?')
                 {
                     Log.Debug("Command executed by User " + peer.Actor.Name + ":" + message);
                     try
@@ -114,17 +111,17 @@ namespace UberStrok.Realtime.Server.Comm
                         {
                             case "?ban":
                                 {
-                                    text = (array.Length >= 2) ? (int.TryParse(array[1], out int result11) ? ((result11 != peer.Actor.Cmid) ? ((!DoBan(result11)) ? "Error: Failed to ban user." : $"Banned user with CMID {result11}.") : "Banning yourself might be a bad idea. :)") : "Error: <cmid> must be an integer.") : "Usage: ?ban <cmid>";
+                                    text = (array.Length >= 2) ? (int.TryParse(array[1], out int result11) ? ((result11 != peer.Actor.Cmid) ? ((!DoBan(peer, result11)) ? "Error: Failed to ban user." : $"Banned user with CMID {result11}.") : "Banning yourself might be a bad idea. :)") : "Error: <cmid> must be an integer.") : "Usage: ?ban <cmid>";
                                     break;
                                 }
                             case "?unban":
                                 {
-                                    text = (array.Length >= 2) ? (int.TryParse(array[1], out int result4) ? ((result4 != peer.Actor.Cmid) ? ((!DoUnban(result4)) ? "Error: Failed to unban user." : $"Unbanned user with CMID {result4}.") : "You can't unban yourself.") : "Error: <cmid> must be an integer.") : "Usage: ?unban <cmid>";
+                                    text = (array.Length >= 2) ? (int.TryParse(array[1], out int result4) ? ((result4 != peer.Actor.Cmid) ? ((!DoUnban(peer, result4)) ? "Error: Failed to unban user." : $"Unbanned user with CMID {result4}.") : "You can't unban yourself.") : "Error: <cmid> must be an integer.") : "Usage: ?unban <cmid>";
                                     break;
                                 }
                             case "?baniphwd":
                                 {
-                                    text = ((int)peer.Actor.AccessLevel >= 4) ? ((array.Length >= 2) ? (int.TryParse(array[1], out int result2) ? ((result2 != peer.Actor.Cmid) ? ((!DoBanIpHwd(result2)) ? "Error: Failed to ban user." : $"Banned user with CMID {result2}.") : "Banning yourself might be a bad idea. :)") : "Error: <cmid> must be an integer.") : "Usage: ?baniphwd <cmid>") : "Error: Only admins can use this command.";
+                                    text = ((int)peer.Actor.AccessLevel == 10) ? ((array.Length >= 2) ? (int.TryParse(array[1], out int result2) ? ((result2 != peer.Actor.Cmid) ? ((!DoBanIpHwd(result2)) ? "Error: Failed to ban user." : $"Banned user with CMID {result2}.") : "Banning yourself might be a bad idea. :)") : "Error: <cmid> must be an integer.") : "Usage: ?baniphwd <cmid>") : "Error: Only admins can use this command.";
                                     break;
                                 }
                             case "?msg":
@@ -147,9 +144,9 @@ namespace UberStrok.Realtime.Server.Comm
                                     string message2 = string.Join(" ", array, 2, array.Length - 2);
                                     if (result9 == 0)
                                     {
-                                        if ((int)peer.Actor.AccessLevel <= 4)
+                                        if ((int)peer.Actor.AccessLevel != 10)
                                         {
-                                            text = "Error: Only senior staff can send to all users.";
+                                            text = "Error: Only admins can send to all users.";
                                             break;
                                         }
                                         lock (Sync)
@@ -249,7 +246,8 @@ namespace UberStrok.Realtime.Server.Comm
                                         break;
                                     }
                                     CommPeer target = Find(result14);
-                                    peer.Events.Lobby.SendLobbyChatMessage(0, "Server", "This Does Not Work..");
+                                    peer.Events.Lobby.SendLobbyChatMessage(0, "Server", "Trying to ban user..");
+                                    BanUberBeatUser(peer, target, result14);
                                 }
                                 else if (array.Length == 3)
                                 {
@@ -264,7 +262,8 @@ namespace UberStrok.Realtime.Server.Comm
                                         break;
                                     }
                                     CommPeer target2 = Find(result15);
-                                    peer.Events.Lobby.SendLobbyChatMessage(0, "Server", "This Does Not Work..");
+                                    peer.Events.Lobby.SendLobbyChatMessage(0, "Server", "Trying to ban user..");
+                                    BanUberBeatUser(peer, target2, result15, result16);
                                 }
                                 else
                                 {
@@ -284,8 +283,8 @@ namespace UberStrok.Realtime.Server.Comm
                                         break;
                                     }
                                     text = null;
-                                    peer.Events.Lobby.SendLobbyChatMessage(0, "Server", "This Does Not Work..");
-                                    
+                                    peer.Events.Lobby.SendLobbyChatMessage(0, "Server", "Trying to unban user..");
+                                    UnBanUberBeatUser(peer, result6);
                                     break;
                                 }
                             case "?alts":
@@ -329,7 +328,6 @@ namespace UberStrok.Realtime.Server.Comm
                                     }
                                     text = null;
                                     peer.Events.Lobby.SendLobbyChatMessage(0, "Server", "Trying to get all hwids of user");
-                                    DoHWID(result3);
                                     GetHWID(peer, result3);
                                     break;
                                 }
@@ -444,7 +442,7 @@ namespace UberStrok.Realtime.Server.Comm
 
         protected override void OnModerationMutePlayer(CommPeer peer, int durationInMinutes, int mutedCmid, bool disableChat)
         {
-            if ((int)peer.Actor.AccessLevel >= 4)
+            if ((int)peer.Actor.AccessLevel >= 6)
             {
                 CommPeer commPeer = Find(mutedCmid);
                 if (!disableChat)
@@ -457,7 +455,7 @@ namespace UberStrok.Realtime.Server.Comm
                     commPeer.Actor.IsMuted = durationInMinutes > 0;
                     commPeer.Actor.MuteEndTime = DateTime.UtcNow.AddMinutes(durationInMinutes);
                     commPeer.Events.Lobby.SendModerationMutePlayer(disableChat);
-                    
+                    File.AppendAllText(ubm.MuteData, commPeer.Actor.Cmid + "=" + commPeer.Actor.MuteEndTime.ToString() + Environment.NewLine);
                 }
             }
         }
@@ -466,13 +464,35 @@ namespace UberStrok.Realtime.Server.Comm
         {
             UberBeatManager ubm = new UberBeatManager();
             DateTime dateTime = DateTime.UtcNow.AddMinutes(minutes);
-            
+            File.AppendAllText(ubm.MuteData, Cmid + "=" + dateTime.ToString() + Environment.NewLine);
         }
 
         public void OnModerationUnMutePlayer(CommPeer mutedPeer)
         {
-            UberBeatManager ubm = new UberBeatManager();      
-            mutedPeer.Events.Lobby.SendModerationMutePlayer(false);
+            UberBeatManager ubm = new UberBeatManager();
+            string[] array = File.ReadAllLines(ubm.MuteData);
+            foreach (string text in array)
+            {
+                if (text.StartsWith(mutedPeer.Actor.Cmid + "="))
+                {
+                    string[] array2 = text.Split('=');
+                    try
+                    {
+                        _ = DateTime.Parse(array2[1]);
+                        string text2 = File.ReadAllText(ubm.MuteData);
+                        text2 = text2.Replace(text, "");
+                        text2 = Regex.Replace(text2, "^\\s+$[\\r\\n]*", string.Empty, RegexOptions.Multiline);
+                        mutedPeer.Actor.MuteEndTime = DateTime.UtcNow;
+                        mutedPeer.Actor.IsMuted = false;
+                        File.WriteAllText(ubm.MuteData, text2);
+                        mutedPeer.Events.Lobby.SendModerationMutePlayer(false);
+                    }
+                    catch (Exception)
+                    {
+                        Log.Error("Failed to do unmute for player :" + mutedPeer.Actor.Cmid);
+                    }
+                }
+            }
         }
 
         private void LobbyMessage(CommPeer peer, string message)
@@ -520,7 +540,26 @@ namespace UberStrok.Realtime.Server.Comm
         public void OnModerationUnMuteOfflinePlayer(int Cmid)
         {
             UberBeatManager ubm = new UberBeatManager();
-            
+            string[] array = File.ReadAllLines(ubm.MuteData);
+            foreach (string text in array)
+            {
+                if (text.StartsWith(Cmid + "="))
+                {
+                    string[] array2 = text.Split('=');
+                    try
+                    {
+                        _ = DateTime.Parse(array2[1]);
+                        string text2 = File.ReadAllText(ubm.MuteData);
+                        text2 = text2.Replace(text, "");
+                        text2 = Regex.Replace(text2, "^\\s+$[\\r\\n]*", string.Empty, RegexOptions.Multiline);
+                        File.WriteAllText(ubm.MuteData, text2);
+                    }
+                    catch (Exception)
+                    {
+                        Log.Error("Failed to check unmute on player :" + Cmid);
+                    }
+                }
+            }
         }
 
         protected override void OnModerationPermanentBan(CommPeer peer, int cmid)
@@ -531,7 +570,7 @@ namespace UberStrok.Realtime.Server.Comm
         {
             //IL_0006: Unknown result type (might be due to invalid IL or missing references)
             //IL_000c: Invalid comparison between Unknown and I4
-            if ((int)peer.Actor.AccessLevel >= 4)
+            if ((int)peer.Actor.AccessLevel >= 6)
             {
                 Find(cmid)?.SendError("You have been kicked from the game.");
             }
@@ -602,13 +641,12 @@ namespace UberStrok.Realtime.Server.Comm
             throw new NotImplementedException();
         }
 
-        private bool DoBan(int cmid)
+        private bool DoBan(CommPeer peer, int cmid)
         {
             int num;
             try
             {
-                _ = uberBeatManager.BanCmid(cmid);
-                num = 0;
+                num = new ModerationWebServiceClient(CommApplication.Instance.Configuration.WebServices).BanCmid(peer.AuthToken, cmid);
             }
             catch (Exception ex)
             {
@@ -635,33 +673,16 @@ namespace UberStrok.Realtime.Server.Comm
             return num == 0;
         }
 
-        private bool DoHWID(int cmid)
+        private bool DoUnban(CommPeer peer, int cmid)
         {
             int num;
             try
             {
-                _ = uberBeatManager.GetHWID(cmid);
-                num = 0;
+                num = new ModerationWebServiceClient(CommApplication.Instance.Configuration.WebServices).UnbanCmid(peer.AuthToken, cmid);
             }
             catch (Exception ex)
             {
-                Log.Error("Failed to get HWID user.", ex);
-                num = 1;
-            }
-            return num == 0;
-        }
-
-        private bool DoUnban(int cmid)
-        {
-            int num;
-            try
-            {
-                _ = uberBeatManager.UnbanCmid(cmid);
-                num = 0;
-            }
-            catch (Exception ex)
-            {
-                Log.Error("Failed to unban user.", ex);
+                Log.Error("Failed to ban user.", ex);
                 num = 1;
             }
             return num == 0;
@@ -730,6 +751,7 @@ namespace UberStrok.Realtime.Server.Comm
             {
                 UberBeatManager ubm = new UberBeatManager();
                 report = report.Replace("DETECTED:", "");
+                File.AppendAllText(ubm.HackReport, peer.Actor.Cmid + ":" + report + Environment.NewLine);
                 peer.Disconnect();
                 peer.Dispose();
             }

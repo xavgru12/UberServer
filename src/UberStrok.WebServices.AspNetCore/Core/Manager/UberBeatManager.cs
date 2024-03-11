@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -383,6 +382,7 @@ namespace UberStrok.WebServices.AspNetCore.Core.Manager
             FilterExceptionData(ref ub);
             HashSet<int>[] result = Task.WhenAll(userManager.MatchHWID("bios", ub.BIOS),
                 userManager.MatchHWID("mac", ub.MAC),
+                userManager.MatchHWID("mac", ub.MAC),
                 userManager.MatchHWID("hdd", ub.HDD),
                 userManager.MatchHWID("motherboard", ub.MOTHERBOARD)).GetAwaiter().GetResult();
             HashSet<int> bios = result[0];
@@ -392,11 +392,11 @@ namespace UberStrok.WebServices.AspNetCore.Core.Manager
             List<int> overallAlts = new List<int>();
             overallAlts.AddRange(bios); overallAlts.AddRange(mac); overallAlts.AddRange(hdd); overallAlts.AddRange(motherboard);
             IEnumerable<IGrouping<int, int>> keypair = overallAlts.GroupBy(i => i);
-            foreach (int Cmid in mac)
+            foreach (IGrouping<int, int> pair in keypair)
             {
-                if (hdd.Contains(Cmid))
+                if (pair.Count() > 1 && !alts.Contains(pair.Key))
                 {
-                    alts.Add(Cmid);
+                    alts.Add(pair.Key);
                 }
             }
             return alts;

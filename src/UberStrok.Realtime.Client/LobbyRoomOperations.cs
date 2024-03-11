@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using UberStrok.Core.Serialization;
-using UberStrok.Realtime.Server.Comm;
 
 namespace UberStrok.Realtime.Client
 {
@@ -31,7 +30,6 @@ namespace UberStrok.Realtime.Client
                     {_id, bytes.ToArray() }
                 };
                 _peer._peer.OpCustom((byte)ILobbyRoomOperationsType.ChatMessageToAll, parameter, true);
-                
             }
         }
         public void SendPrivateChatMessage(int cmid, string message)
@@ -73,18 +71,6 @@ namespace UberStrok.Realtime.Client
                     {_id, bytes.ToArray() }
                 };
                 _peer._peer.OpCustom((byte)ILobbyRoomOperationsType.FullPlayerListUpdate, parameter, true);
-            }
-        }
-        public void SendUpdateNaughtyList()
-        {
-            using ( var bytes = new MemoryStream())
-            {
-                var parameter = new Dictionary<byte, object>
-                {
-                    {_id, bytes.ToArray() }
-                };
-                _peer._peer.OpCustom((byte)ILobbyRoomOperationsType.UpdateNaughtyList, parameter, true);
-
             }
         }
     }
